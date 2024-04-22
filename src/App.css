@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+}
+
+*{
+  /*border: 1px solid red;*/
+  box-sizing: border-box;
+}
+
