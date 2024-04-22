@@ -17,7 +17,7 @@ function BasicLayout() {
 
 function RouterApp() {
     return (
-        <Router>
+        <Router basename="portfolio">
             <Routes>
                 <Route element={<BasicLayout />}>
                     <Route index element={<Home />} />
