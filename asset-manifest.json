@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.0535d79b.css",
+    "main.js": "/portfolio/static/js/main.afc92c77.js",
+    "static/js/453.1407b060.chunk.js": "/portfolio/static/js/453.1407b060.chunk.js",
+    "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.2ab2d40fd3ed3a304507.png",
+    "static/media/reservia.png": "/portfolio/static/media/reservia.3a70eee465a5e2e1a419.png",
+    "static/media/kanap.png": "/portfolio/static/media/kanap.da2470113117863290cb.png",
+    "static/media/kasa.PNG": "/portfolio/static/media/kasa.d29c492d3e716a35bacb.PNG",
+    "static/media/groupomania.PNG": "/portfolio/static/media/groupomania.72efda78123c88b329ad.PNG",
+    "static/media/oh-my-food.png": "/portfolio/static/media/oh-my-food.4f85ea5d8118a37071d1.png",
+    "static/media/gameon.PNG": "/portfolio/static/media/gameon.f9b44cd58e40eff323c4.PNG",
+    "static/media/fishEye.PNG": "/portfolio/static/media/fishEye.50277cc2302d9f04df80.PNG",
+    "static/media/learnhome.PNG": "/portfolio/static/media/learnhome.6c259d0661f42ccdbce5.PNG",
+    "static/media/piiquante.png": "/portfolio/static/media/piiquante.836c615131f7d9a49c1f.png",
+    "static/media/cardImage.png": "/portfolio/static/media/cardImage.9c427ca9a43373cc4fa0.png",
+    "static/media/billed.PNG": "/portfolio/static/media/billed.3a1db74a506f139ee434.PNG",
+    "static/media/lespetitsplats.PNG": "/portfolio/static/media/lespetitsplats.47bf158c420502806a12.PNG",
+    "static/media/logo.svg": "/portfolio/static/media/logo.bbb79dbb0c312a22672195d7a17161ed.svg",
+    "index.html": "/portfolio/index.html",
+    "main.0535d79b.css.map": "/portfolio/static/css/main.0535d79b.css.map",
+    "main.afc92c77.js.map": "/portfolio/static/js/main.afc92c77.js.map",
+    "453.1407b060.chunk.js.map": "/portfolio/static/js/453.1407b060.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0535d79b.css",
+    "static/js/main.afc92c77.js"
+  ]
+}

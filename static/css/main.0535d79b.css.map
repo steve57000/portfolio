@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.0535d79b.css","mappings":"AAAA,KACE,iBACF,CAKA,EAEE,qBACF","sources":["App.css"],"sourcesContent":[".App {\r\n  text-align: center;\r\n}\r\n\r\n.App-logo {\r\n}\r\n\r\n*{\r\n  /*border: 1px solid red;*/\r\n  box-sizing: border-box;\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}
