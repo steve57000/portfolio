@@ -14,7 +14,7 @@ import {
     CardSavoirImg
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
-const cocheGif = process.env.PUBLIC_UR + "/assets/icons/coche.png"
+const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
 const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo }) => {
     return (
         <CardContainer>
@@ -34,7 +34,7 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                 <>
                     {savoir.map((savoir, index) => (
                         <CardSavoirList key={index}>
-                            <CardSavoirImg src={cocheGif} alt="" width="16px" height="16px" />
+                            <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
                             {savoir}
                         </CardSavoirList>
                     ))}
