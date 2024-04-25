@@ -10,13 +10,13 @@ import {
     ImgContainer
 } from './CardDetailsContainerStyles';
 
-const importAll = (r) => {
-    let images = {};
-    r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-    return images;
-}
+// const importAll = (r) => {
+//     let images = {};
+//     r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+//     return images;
+// }
 
-const images = importAll(require.context('../../assets/images', false, /\.(png|jpe?g|svg)$/));
+// const images = importAll(require.context('/assets/images', false, /\.(png|jpe?g|svg)$/));
 
 const CardDetailsContainer = ({ project, onClose }) => {
     const [listStates, setListStates] = useState({});
@@ -65,7 +65,7 @@ const CardDetailsContainer = ({ project, onClose }) => {
                                 {func.imgs && listStates[project.id]?.[index] && (
                                     <>
                                         {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={images[image]} alt={""} />
+                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt={""} />
                                         ))}
                                     </>
                                 )}

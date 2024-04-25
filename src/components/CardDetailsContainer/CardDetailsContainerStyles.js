@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import chevron from '../../assets/icons/chevron.png'
+const chevron = process.env.PUBLIC_URL + '/assets/icons/chevron.png'
 
 export const CardDetailsStyles = styled.div`
   text-align: left;

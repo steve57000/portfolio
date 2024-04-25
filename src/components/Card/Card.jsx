@@ -14,7 +14,7 @@ import {
     CardSavoirImg
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
-import CocheGif from "../../assets/icons/coche.png"
+const cocheGif = process.env.PUBLIC_UR + "/assets/icons/coche.png"
 const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo }) => {
     return (
         <CardContainer>
@@ -34,7 +34,7 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                 <>
                     {savoir.map((savoir, index) => (
                         <CardSavoirList key={index}>
-                            <CardSavoirImg src={CocheGif} alt="" width="16px" height="16px" />
+                            <CardSavoirImg src={cocheGif} alt="" width="16px" height="16px" />
                             {savoir}
                         </CardSavoirList>
                     ))}
@@ -44,8 +44,8 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                 <CardLink
                     onClick={() => onClickMoreInfo(id)}
                     aria-label="Plus d'informations"
-                    role="button" // Indique que c'est un élément interactif de type bouton
-                    tabIndex={0} // Rend le lien focusable au clavier
+                    role="button"
+                    tabIndex={0}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             onClickMoreInfo(id); // Déclenche l'action lorsque la touche "Entrée" est pressée
@@ -59,8 +59,6 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                     <CardLink
                         href={websiteUrl}
                         aria-label="Visitez le site web"
-                        role="button" // Indique que c'est un élément interactif de type bouton
-                        tabIndex={0} // Rend le lien focusable au clavier
                     >
                         Voir le site web
                     </CardLink>

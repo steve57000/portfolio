@@ -53,7 +53,7 @@ export const CardImageContainer = styled.div`
   height: 250px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(127, 23, 4, 0.7);
-  background-image: url(${props => require(`../../assets/images/${props.image}`)});
+  background-image: url(${props => process.env.PUBLIC_URL + `/assets/images/${props.image}`});
   background-size: cover;
   background-position: top;
 `;
