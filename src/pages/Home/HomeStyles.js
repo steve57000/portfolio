@@ -28,20 +28,16 @@ export const ContainerProject = styled.div`
   justify-content: center;
   overflow: hidden;
 `;
-export const BorderContainerProjectCard = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 10px;
-  box-shadow: inset 0 0 10px 2px #2F3020;
-  z-index: 1;
-`;
 
 export const ContainerProjectCard = styled.div`
   display: flex;
   flex-wrap: nowrap;
   padding: 20px 30px 20px 50px;
   width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  max-height: 96vh;
   border-radius: 10px;
   background-color: rgba(70, 48, 44, 0.18);
   overflow-x: auto;
@@ -58,7 +54,24 @@ export const ContainerProjectCard = styled.div`
     padding: 10px 5px 10px 7px;
   }
 `;
+export const CardWrapper = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 620px;
+  margin-right: ${({ $cardMarginRight }) => $cardMarginRight}px;
+  z-index: 20;
+`;
 
+export const BorderContainerProjectCard = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px 2px #2F3020;
+  background: transparent;
+  z-index: 10;
+`;
 export const ArrowButton = styled.button`
   position: absolute;
   top: 50%;

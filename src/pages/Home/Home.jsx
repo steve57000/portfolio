@@ -4,7 +4,7 @@ import CardDetailsContainer from '../../components/CardDetailsContainer/CardDeta
 import {mockData} from '../../data/mockData';
 import useDataFetching from '../../hooks/useData';
 import {
-    BorderContainerProjectCard,
+    BorderContainerProjectCard, CardWrapper,
     ContainerProject,
     ContainerProjectCard,
     HomeContainer,
@@ -27,6 +27,7 @@ const Home = () => {
         const updateScrollAmount = () => {
             const cardWidth = containerRef.current?.firstChild?.offsetWidth;
             if (cardWidth) {
+                console.log(cardWidth)
                 setScrollAmount(cardWidth);
             }
         };
@@ -47,15 +48,11 @@ const Home = () => {
     }
 
     const scrollLeft = () => {
-        console.log(scrollAmount)
-        console.log(containerRef)
-        containerRef.current.scrollLeft -= scrollAmount + marginCard;
+        containerRef.current.scrollLeft -= scrollAmount - marginCard ;
     };
 
     const scrollRight = () => {
-        console.log(scrollAmount)
-        console.log(containerRef)
-        containerRef.current.scrollLeft += scrollAmount + marginCard;
+        containerRef.current.scrollLeft += scrollAmount - marginCard;
     };
 
     const handleMoreInfoClick = (id) => {
@@ -71,22 +68,27 @@ const Home = () => {
             <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
             <PageDescription>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</PageDescription>
                 <ContainerProject>
-                    <ContainerProjectCard ref={containerRef}>
-                        <>
-                            {data.map((project) => (
-                                <Card
-                                    key={project.id} // Assurez-vous d'avoir une clé unique pour chaque carte
-                                    title={project.title}
-                                    objectif={project.objectif}
-                                    tags={Array.isArray(project.tags) ? project.tags : []}
-                                    image={project.images}
-                                    savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                                    websiteUrl={project.websiteUrl}
-                                    onClickMoreInfo={() => handleMoreInfoClick(project.id)}
-                                />
-                            ))}
-                        </>
-                    </ContainerProjectCard>
+                        <ContainerProjectCard ref={containerRef}>
+                            <>
+                                {data.map((project, index) => (
+                                    <CardWrapper
+                                        key={project.id}
+                                        $cardMarginRight={index < data.length - 1 ? 20 : 2}
+                                    >
+                                        <Card
+                                            key={project.id}
+                                            title={project.title}
+                                            objectif={project.objectif}
+                                            tags={Array.isArray(project.tags) ? project.tags : []}
+                                            image={project.images}
+                                            savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                                            websiteUrl={project.websiteUrl}
+                                            onClickMoreInfo={() => handleMoreInfoClick(project.id)}
+                                        />
+                                    </CardWrapper>
+                                ))}
+                            </>
+                        </ContainerProjectCard>
                     <ScrollButtonLeft
                         onClick={scrollLeft}
                         tabIndex={1}

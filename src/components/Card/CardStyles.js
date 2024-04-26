@@ -7,7 +7,6 @@ export const CardContainer = styled.div`
   border-radius: 8px;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  margin-right: 20px; 
   width: 400px;
   height: 620px;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
