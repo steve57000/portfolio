@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Card from '../../components/Card/Card';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer'; // Importez le nouveau composant
-import { mockData } from '../../data/mockData';
+import {mockData} from '../../data/mockData';
 import useDataFetching from '../../hooks/useData';
 import {
-    HomeContainer,
-    PageTitle,
-    PageDescription,
-    ContainerProject,
     BorderContainerProjectCard,
+    ContainerProject,
     ContainerProjectCard,
+    HomeContainer,
+    PageDescription,
+    PageTitle,
     ScrollButtonLeft,
     ScrollButtonRight,
 } from './HomeStyles';
@@ -18,6 +18,24 @@ const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
     const containerRef = useRef(null);
     const [selectedCardId, setSelectedCardId] = useState(null);
+    const [scrollAmount, setScrollAmount] = useState(400);
+
+    const marginCard = 20
+
+    useEffect(() => {
+        // Fonction pour recalculer la valeur de défilement en fonction de la taille des cartes
+        const updateScrollAmount = () => {
+            const cardWidth = containerRef.current?.firstChild?.offsetWidth;
+            if (cardWidth) {
+                setScrollAmount(cardWidth);
+            }
+        };
+
+        // Mettre à jour la valeur de défilement lors du chargement initial et lorsque la fenêtre est redimensionnée
+        updateScrollAmount();
+        window.addEventListener('resize', updateScrollAmount);
+        return () => window.removeEventListener('resize', updateScrollAmount);
+    }, []);
 
     // Gérer les cas de chargement et d'erreur
     if (isLoading) {
@@ -29,11 +47,15 @@ const Home = () => {
     }
 
     const scrollLeft = () => {
-        containerRef.current.scrollLeft -= 400; // ajustez le nombre de pixels à défiler
+        console.log(scrollAmount)
+        console.log(containerRef)
+        containerRef.current.scrollLeft -= scrollAmount + marginCard;
     };
 
     const scrollRight = () => {
-        containerRef.current.scrollLeft += 400; // ajustez le nombre de pixels à défiler
+        console.log(scrollAmount)
+        console.log(containerRef)
+        containerRef.current.scrollLeft += scrollAmount + marginCard;
     };
 
     const handleMoreInfoClick = (id) => {

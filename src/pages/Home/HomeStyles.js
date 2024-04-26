@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   max-width: 1440px;
   padding: 2vw;
-  position: relative;
   margin: 0 auto;
   background: rgba(254, 180, 123, 0.53);
 `;
@@ -23,6 +22,7 @@ export const PageDescription = styled.p`
 
 export const ContainerProject = styled.div`
   position: relative;
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -35,9 +35,6 @@ export const BorderContainerProjectCard = styled.div`
   border-radius: 10px;
   box-shadow: inset 0 0 10px 2px #2F3020;
   z-index: 1;
-  @media (max-width: 420px){
-    
-  }
 `;
 
 export const ContainerProjectCard = styled.div`
@@ -47,7 +44,8 @@ export const ContainerProjectCard = styled.div`
   width: 100%;
   border-radius: 10px;
   background-color: rgba(70, 48, 44, 0.18);
-  overflow-x: auto; 
+  overflow-x: auto;
+  overflow-y: auto;
   scrollbar-width: none; /* Masquer la barre de défilement personnalisée pour Firefox */
   -ms-overflow-style: none; /* Masquer la barre de défilement personnalisée pour IE et Edge */
   &::-webkit-scrollbar {

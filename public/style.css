@@ -23,6 +23,7 @@ h1, h2 {
     width: 100vw;
     min-height: 100vh;
     background: rgba(254, 180, 123, 0.53);
+    position: relative;
 }
 
 .main-content {
@@ -32,6 +33,8 @@ header {
     width: 100vw;
 }
 footer {
+    position: absolute;
+    bottom: -108px;
     width: 100vw;
 }
 

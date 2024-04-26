@@ -2,9 +2,10 @@ import styled from "styled-components";
 const chevron = process.env.PUBLIC_URL + '/assets/icons/chevron.png'
 
 export const CardDetailsStyles = styled.div`
+  position: relative;
   text-align: left;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  margin-top: 20px;
+  margin: 0 0 40px 0;
   border-radius: 5px;
   padding: 0 20px;
   h2 {
