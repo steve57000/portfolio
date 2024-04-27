@@ -6,7 +6,11 @@
 *{
     box-sizing: border-box;
 }
-
+html{
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+}
 body {
     margin: 0;
     padding: 0;
@@ -23,20 +27,23 @@ h1, h2 {
 }
 
 #root {
-    min-height: 100vh;
     background: rgba(254, 180, 123, 0.53);
     position: relative;
 }
 
 .main-content {
 }
+
 header {
-    width: 100vw;
+    width: 100%;
+    max-width: 100vw;
 }
 footer {
     position: absolute;
     bottom: -107px;
-    width: 100vw;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
 }
 
 code {
