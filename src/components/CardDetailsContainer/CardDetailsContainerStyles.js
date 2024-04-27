@@ -5,12 +5,11 @@ export const CardDetailsStyles = styled.div`
   position: relative;
   text-align: left;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  margin: 0 0 40px 0;
   border-radius: 5px;
-  padding: 0 20px;
+  padding: 0 10px;
   h2 {
-    width: calc(100% + 40px);
-    margin-left: -20px;
+    width: calc(100% + 20px);
+    margin-left: -10px;
     padding: 10px 0;
     font-size: 2rem;
     text-align: center;
@@ -25,7 +24,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
 `
 export const ContainerList = styled.div`
   position: relative;
@@ -35,8 +33,7 @@ export const ContainerList = styled.div`
   box-shadow: 0 2px 4px #2F3020;
   cursor: pointer;
   margin-bottom: 10px;
-  padding: 10px;
-  min-width: 360px;
+  padding: 0 10px;
   width: 100%;
   h4 {
     margin-bottom: 0;
@@ -45,7 +42,7 @@ export const ContainerList = styled.div`
 
 export const Chevron = styled.span`
   position: absolute;
-  top: 27px;
+  top: 15px;
   right: 10px;
   width: 32px;
   height: 32px;
@@ -59,7 +56,7 @@ export const CardDetailsUl = styled.ul`
   list-style: circle inside;
   color: #571845;
   margin: 0;
-  padding: 10px;
+  padding: 0 10px;
   width: calc(100% - 4px);
   display: flex;
   flex-direction: column;
