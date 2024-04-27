@@ -49,7 +49,17 @@ const CardDetailsContainer = ({ project, onClose }) => {
             <Container>
                 <>
                     {project.fonction.map((func, index) => (
-                        <ContainerList key={index} onClick={() => toggleListVisibility(project.id, index)}>
+                        <ContainerList
+                            key={index}
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => toggleListVisibility(project.id, index)}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    toggleListVisibility(project.id, index) // Déclenche l'action lorsque la touche "Entrée" est pressée
+                                }
+                            }}
+                        >
                             <h4>{func.name}</h4>
                             <Chevron $isRotated={listStates[project.id]?.[index]} />
                             <CardDetailsUl>
