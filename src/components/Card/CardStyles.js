@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const CardContainer = styled.div`
   position: relative;
   display: flex;
@@ -7,11 +6,13 @@ export const CardContainer = styled.div`
   border-radius: 8px;
   padding: 0 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  width: 400px;
+  min-width: 400px;
+  max-width: 450px;
+  width: 100%;
   height: 620px;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  @media(max-width: 420px){
-    width: 360px;
+  @media(max-width: 720px){
+    min-width: 360px;
   }
 `;
 export const CardTitle = styled.h2`
@@ -47,8 +48,7 @@ export const CardTags = styled.span`
   box-shadow: 0 2px 4px #2F3020;
 `;
 export const CardImageContainer = styled.div`
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
   height: 250px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(127, 23, 4, 0.7);

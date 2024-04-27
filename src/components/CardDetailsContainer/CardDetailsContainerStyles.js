@@ -35,6 +35,10 @@ export const ContainerList = styled.div`
   margin-bottom: 10px;
   padding: 0 10px;
   width: 100%;
+  max-width: calc(100% / 1.3);
+  @media(max-width: 1080px){
+    max-width: 90%;
+  }
   h4 {
     margin-bottom: 0;
   }
@@ -57,20 +61,25 @@ export const CardDetailsUl = styled.ul`
   color: #571845;
   margin: 0;
   padding: 0 10px;
-  width: calc(100% - 4px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media(max-width: 720px){
+    padding: 0 1px;
+  }
 `;
 
 export const CardDetailsList = styled.li`
-  width: 100%;
+  width: calc(100% - 1.5%);
   background-color: #ff7e5f;
   text-align: left;
   padding: 10px;
   margin-top: 20px;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(144, 12, 62, 0.76);
+  @media(max-width: 1080px){
+    width: 100%;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -80,9 +89,18 @@ export const ImgContainer = styled.div`
   justify-content: center;
   padding: 10px;
   img {
-    min-width: 280px;
-    margin: 1%;
+    max-width: calc(100% / 2.09);
+    margin: 1% ;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
     border-radius: 1vh;
+    @media(max-width: 1080px){
+      min-width: 100%;
+    }
+    @media(max-width: 720px){
+      min-width: 102%;
+    }
+    @media(max-width: 620px){
+      min-width: 103%;
+    }
   }
 `
