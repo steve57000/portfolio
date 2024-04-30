@@ -15,6 +15,7 @@ export const CardContainer = styled.div`
     min-width: 360px;
   }
 `;
+
 export const CardTitle = styled.h2`
   width: calc(100% + 40px);
   margin: 0 -20px;
@@ -31,12 +32,14 @@ export const CardObjectif = styled.p`
   color: #c70039;
   text-align: center;
 `;
+
 export const CardContainerTags = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 `;
+
 export const CardTags = styled.span`
   font-size: 0.8rem;
   font-weight: bolder;
@@ -45,8 +48,9 @@ export const CardTags = styled.span`
   border-radius: 5px;
   background-color: #900c3e;
   color: #c70039;
-  box-shadow: 0 2px 4px #2F3020;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.42);
 `;
+
 export const CardImageContainer = styled.div`
   width: 100%;
   height: 250px;
@@ -59,7 +63,7 @@ export const CardImageContainer = styled.div`
 
 export const CardSavoir = styled.ul`
   margin: 0;
-  padding: 20px 0 20px 0;
+  padding: 20px 0;
   list-style-type: none;
   text-align: justify;
   position: relative;
@@ -70,12 +74,14 @@ export const CardSavoirImg = styled.img`
   left: 0;
   padding-top: 2px;
 `;
+
 export const CardSavoirList = styled.li`
   font-size: 13px;
   padding: 3px 0 3px 20px;
   margin: .4em 0;
   color: #571845;
 `;
+
 export const ContainerLink = styled.span`
   display: flex;
   justify-content: space-between;
@@ -83,6 +89,7 @@ export const ContainerLink = styled.span`
   position: absolute;
   bottom: 10px;
 `;
+
 export const CardLink = styled.a`
   color: #007bff;
   text-decoration: none;
@@ -92,6 +99,55 @@ export const CardLink = styled.a`
     text-decoration: underline;
   }
 `;
+
+export const Modal = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: rgba(254, 180, 123, 1);
+  border-radius: 5px;
+  padding: 0 10px 10px 10px;
+  text-align: center;
+  box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  p{
+    color: #900c3e;
+    font-weight: 500;
+  }
+`;
+
+export const ModalContent = styled.div`
+    /* Ajoutez des styles au contenu de la modale */
+`;
+
+export const ContainerButtonHandleLink = styled.div`
+    /* Ajoutez des styles au contenu de la modale */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+`;
+
+export const Button = styled.button`
+  border-radius: 10px;
+  border: none;
+  color: #571845;
+  background-color: rgba(255, 87, 51, 0.56);
+  padding: 5px;
+  min-width: 150px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
+  transition: filter .3s ease-in, color .2s linear, transform .2s ease-out;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 0 rgba(255, 87, 51, 0.86));
+    color: white;
+  }
+`;
+
 
 
 

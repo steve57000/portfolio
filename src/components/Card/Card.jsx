@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {
     CardContainer,
@@ -11,11 +11,25 @@ import {
     ContainerLink,
     CardLink,
     CardImageContainer,
-    CardSavoirImg
+    CardSavoirImg,
+    ModalContent,
+    Modal,
+    Button,
+    ContainerButtonHandleLink
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
 const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo }) => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleLinkClick = (openInNewTab) => {
+        if (openInNewTab) {
+            window.open(websiteUrl, '_blank');
+        } else {
+            window.location.href = websiteUrl;
+        }
+    };
+
     return (
         <CardContainer>
             <CardTitle>{title}</CardTitle>
@@ -42,10 +56,10 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
             </CardSavoir>
             <ContainerLink>
                 <CardLink
-                    onClick={() => onClickMoreInfo(id)}
                     aria-label="Plus d'informations"
                     role="button"
                     tabIndex={0}
+                    onClick={() => onClickMoreInfo(id)}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             onClickMoreInfo(id); // Déclenche l'action lorsque la touche "Entrée" est pressée
@@ -56,13 +70,23 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                 </CardLink>
 
                 {websiteUrl &&
-                    <CardLink
-                        href={websiteUrl}
-                        aria-label="Visitez le site web"
-                    >
-                        Voir le site web
-                    </CardLink>
-
+                    <>
+                        <CardLink onClick={() => setOpenModal(true)} aria-label="Visitez le site web">
+                            Voir le site web
+                        </CardLink>
+                        {openModal && (
+                            <Modal>
+                                <ModalContent>
+                                    <p>Comment voulez-vous ouvrir le lien?</p>
+                                    <ContainerButtonHandleLink>
+                                        <Button onClick={() => { handleLinkClick(true); }}>Dans un nouvel onglet</Button>
+                                        <Button onClick={() => { handleLinkClick(false); }}>Dans la page actuelle</Button>
+                                    </ContainerButtonHandleLink>
+                                    <Button onClick={() => setOpenModal(false)}>Annuler</Button>
+                                </ModalContent>
+                            </Modal>
+                        )}
+                    </>
                 }
             </ContainerLink>
         </CardContainer>
