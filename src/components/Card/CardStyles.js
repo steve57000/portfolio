@@ -102,10 +102,10 @@ export const CardLink = styled.a`
 
 export const Modal = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
+  width: calc(100% + 5px);
   background-color: rgba(254, 180, 123, 1);
   border-radius: 5px;
   padding: 0 10px 10px 10px;

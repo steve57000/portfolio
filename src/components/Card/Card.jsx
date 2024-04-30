@@ -71,7 +71,17 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
 
                 {websiteUrl &&
                     <>
-                        <CardLink onClick={() => setOpenModal(true)} aria-label="Visitez le site web">
+                        <CardLink
+                            onClick={() => setOpenModal(true)}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    setOpenModal(true); // Déclenche l'action lorsque la touche "Entrée" est pressée
+                                }
+                            }}
+                            aria-label="Visitez le site web"
+                            role="button"
+                            tabIndex={0}
+                        >
                             Voir le site web
                         </CardLink>
                         {openModal && (
@@ -79,8 +89,26 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                                 <ModalContent>
                                     <p>Comment voulez-vous ouvrir le lien?</p>
                                     <ContainerButtonHandleLink>
-                                        <Button onClick={() => { handleLinkClick(true); }}>Dans un nouvel onglet</Button>
-                                        <Button onClick={() => { handleLinkClick(false); }}>Dans la page actuelle</Button>
+                                        <Button
+                                            onClick={() => { handleLinkClick(true); }}
+                                            onKeyDown={(event) => {
+                                                if (event.key === 'Enter') {
+                                                    handleLinkClick(true);
+                                                }
+                                            }}
+                                        >
+                                            Dans un nouvel onglet
+                                        </Button>
+                                        <Button
+                                            onClick={() => { handleLinkClick(false); }}
+                                            onKeyDown={(event) => {
+                                                if (event.key === 'Enter') {
+                                                    handleLinkClick(false);
+                                                }
+                                            }}
+                                        >
+                                            Dans la page actuelle
+                                        </Button>
                                     </ContainerButtonHandleLink>
                                     <Button onClick={() => setOpenModal(false)}>Annuler</Button>
                                 </ModalContent>
