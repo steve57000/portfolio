@@ -39,6 +39,9 @@ export const ContainerList = styled.div`
   @media(max-width: 1080px){
     max-width: 90%;
   }
+  @media(max-width: 720px){
+    max-width: 99%;
+  }
   h4 {
     margin-bottom: 0;
   }
