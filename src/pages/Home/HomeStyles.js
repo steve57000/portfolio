@@ -19,19 +19,3 @@ export const PageDescription = styled.p`
   margin-bottom: 20px;
   text-align: justify;
 `;
-
-export const ArrowButton = styled.button`
-  position: absolute;
-  top: 50%;
-  font-weight: bold;
-  font-size: 30px;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: rgba(51, 51, 51, 0.4);
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-  &:hover, &:focus-visible {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgba(51, 51, 51, 0.8);
-  }
-`;

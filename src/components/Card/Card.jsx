@@ -19,7 +19,7 @@ import {
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo }) => {
+const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo, cardMarginRight }) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleLinkClick = (openInNewTab) => {
@@ -31,7 +31,7 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
     };
 
     return (
-        <CardContainer>
+        <CardContainer $cardMarginRight={cardMarginRight}>
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>
             <CardContainerTags>

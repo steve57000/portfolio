@@ -11,8 +11,11 @@ export const CardContainer = styled.div`
   width: 100%;
   height: 620px;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  margin-right: ${({ $cardMarginRight }) => $cardMarginRight}%;
   @media(max-width: 720px){
-    min-width: 360px;
+    //min-width: 360px;
+    min-width: 92vw;
+    width: 100%;
   }
 `;
 
@@ -94,7 +97,7 @@ export const CardLink = styled.a`
   color: #007bff;
   text-decoration: none;
   cursor: pointer;
-  z-index: 10;
+  //z-index: 10;
   &:hover {
     text-decoration: underline;
   }
@@ -111,7 +114,7 @@ export const Modal = styled.div`
   padding: 0 10px 10px 10px;
   text-align: center;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
-  z-index: 10;
+  //z-index: 10;
   p{
     color: #900c3e;
     font-weight: 500;

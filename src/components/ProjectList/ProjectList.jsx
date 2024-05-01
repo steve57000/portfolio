@@ -2,66 +2,122 @@ import React, { useRef, useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import {
     ContainerProjectCard,
-    CardWrapper,
-    ScrollButtonLeft,
-    ScrollButtonRight,
-    ContainerProject, BorderContainerProjectCard,
+    ContainerProject,
+    BorderContainerProjectCard,
+    ScrollBar,
+    ScrollThumb,
 } from './ProjectListStyles';
 
 const ProjectList = ({ data, handleMoreInfoClick }) => {
     const containerRef = useRef(null);
-    const [scrollAmount, setScrollAmount] = useState(400);
-    const marginCard = 20;
+    const thumbRef = useRef(null);
+    const [visibleWidthRatio, setVisibleWidthRatio] = useState(1);
+    const [isDragging, setIsDragging] = useState(false);
+    const [dragStartX, setDragStartX] = useState(0);
+    const [scrollStartX, setScrollStartX] = useState(0);
+
+    const calculateVisibleWidthRatio = () => {
+        const container = containerRef.current;
+        if (container) {
+            const visibleWidth = container.clientWidth;
+            const totalWidth = container.scrollWidth ;
+            const ratio = visibleWidth / totalWidth ;
+            setVisibleWidthRatio(ratio);
+        }
+    };
+
+    const handleScroll = () => {
+        const container = containerRef.current;
+        const scrollRatio = (container.scrollLeft + 10) / (container.scrollWidth - (container.clientWidth - 130));
+        const thumbWidth = container.clientWidth * visibleWidthRatio;
+        const thumbLeft = scrollRatio * (container.clientWidth - thumbWidth);
+
+        if (visibleWidthRatio !== 1) { // Ajoutez cette condition
+            thumbRef.current.style.width = `${thumbWidth}px`;
+            thumbRef.current.style.left = `${thumbLeft}px`;
+        }
+    };
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setDragStartX(e.clientX);
+        setScrollStartX(containerRef.current.scrollLeft);
+        const thumbWidth = containerRef.current.clientWidth * visibleWidthRatio;
+        thumbRef.current.style.width = `${thumbWidth}px`;
+    };
+
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        const container = containerRef.current;
+        const dragOffset = e.clientX - dragStartX;
+        const containerWidth = container.clientWidth;
+        const thumbWidth = containerWidth * visibleWidthRatio;
+        const scrollableWidth = container.scrollWidth - containerWidth;
+        const scrollRatio = dragOffset / (containerWidth - thumbWidth);
+        const scrollDistance = scrollableWidth * scrollRatio;
+
+        container.scrollLeft = scrollStartX + scrollDistance;
+        handleScroll();
+    };
 
     useEffect(() => {
-        const updateScrollAmount = () => {
-            const cardWidth = containerRef.current?.firstChild?.offsetWidth;
-            if (cardWidth) {
-                setScrollAmount(cardWidth);
-            }
+        const handleMouseUp = () => {
+            setIsDragging(false);
         };
 
-        updateScrollAmount();
-        window.addEventListener('resize', updateScrollAmount);
-        return () => window.removeEventListener('resize', updateScrollAmount);
+        if (isDragging) {
+            window.addEventListener('mousemove', handleMouseMove);
+            window.addEventListener('mouseup', handleMouseUp);
+        }
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [isDragging]);
+
+    useEffect(() => {
+        calculateVisibleWidthRatio();
+
+        window.addEventListener('resize', calculateVisibleWidthRatio);
+        return () => window.removeEventListener('resize', calculateVisibleWidthRatio);
     }, []);
 
-    const scrollLeft = () => {
-        containerRef.current.scrollLeft -= scrollAmount - marginCard;
-    };
-
-    const scrollRight = () => {
-        containerRef.current.scrollLeft += scrollAmount - marginCard;
-    };
+    useEffect(() => {
+        calculateVisibleWidthRatio();
+        handleScroll();
+    }, [data]);
 
     return (
         <ContainerProject>
-            <ContainerProjectCard ref={containerRef}>
+            <ContainerProjectCard ref={containerRef} onScroll={handleScroll} >
                 {data.map((project, index) => (
-                    <CardWrapper
+                    <Card
                         key={project.id}
-                        $cardMarginRight={index < data.length - 1 ? 20 : 2}
-                    >
-                        <Card
-                            key={project.id}
-                            title={project.title}
-                            objectif={project.objectif}
-                            tags={Array.isArray(project.tags) ? project.tags : []}
-                            image={project.images}
-                            savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                            websiteUrl={project.websiteUrl}
-                            onClickMoreInfo={() => handleMoreInfoClick(project.id)}
-                        />
-                    </CardWrapper>
+                        title={project.title}
+                        objectif={project.objectif}
+                        tags={Array.isArray(project.tags) ? project.tags : []}
+                        image={project.images}
+                        savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                        websiteUrl={project.websiteUrl}
+                        onClickMoreInfo={() => handleMoreInfoClick(project.id)}
+                        cardMarginRight={index < data.length - 1 ? 2 : 0}
+                    />
                 ))}
-                <ScrollButtonLeft onClick={scrollLeft} tabIndex={1} aria-label="Défiler vers la gauche" role="button">
-                    &lt;
-                </ScrollButtonLeft>
-                <ScrollButtonRight onClick={scrollRight} tabIndex={1} aria-label="Défiler vers la droite" role="button">
-                    &gt;
-                </ScrollButtonRight>
             </ContainerProjectCard>
-            <BorderContainerProjectCard></BorderContainerProjectCard>
+            <ScrollBar>
+                <ScrollThumb
+                    ref={thumbRef}
+                    $visibleWidthRatio={visibleWidthRatio}
+                    onMouseDown={(e) => {
+                        handleMouseDown(e)
+                    }}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={() => setIsDragging(false)}
+                />
+            </ScrollBar>
+            <BorderContainerProjectCard />
         </ContainerProject>
     );
 };
