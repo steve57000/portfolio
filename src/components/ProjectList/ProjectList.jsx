@@ -46,7 +46,6 @@ const ProjectList = ({ data, handleMoreInfoClick }) => {
         thumbRef.current.style.width = `${thumbWidth}px`;
     };
 
-
     const handleMouseMove = (e) => {
         if (!isDragging) return;
         const container = containerRef.current;
@@ -75,6 +74,7 @@ const ProjectList = ({ data, handleMoreInfoClick }) => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseup', handleMouseUp);
         };
+        // eslint-disable-next-line
     }, [isDragging]);
 
     useEffect(() => {
@@ -86,7 +86,9 @@ const ProjectList = ({ data, handleMoreInfoClick }) => {
 
     useEffect(() => {
         calculateVisibleWidthRatio();
+        // eslint-disable-next-line
         handleScroll();
+        // eslint-disable-next-line
     }, [data]);
 
     return (

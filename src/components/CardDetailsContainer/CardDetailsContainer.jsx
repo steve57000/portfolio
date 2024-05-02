@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
     CardDetailsStyles,
@@ -10,9 +10,9 @@ import {
     ImgContainer
 } from './CardDetailsContainerStyles';
 
-const CardDetailsContainer = ({ project, onClose }) => {
+const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
-
+    const anchorRef = useRef(null);
     const toggleListVisibility = (projectId, index) => {
         setListStates(prevStates => ({
             ...prevStates,
@@ -22,6 +22,12 @@ const CardDetailsContainer = ({ project, onClose }) => {
             },
         }));
     };
+
+    useEffect(() => {
+        if (scrollToProjectId && anchorRef.current) {
+            anchorRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [scrollToProjectId]);
 
     if (!project || !project.fonction) {
         return (
@@ -35,7 +41,7 @@ const CardDetailsContainer = ({ project, onClose }) => {
 
     return (
         <CardDetailsStyles>
-            <h2>{project.title}</h2>
+            <h2 ref={anchorRef}>{project.title}</h2>
             <h3>Déscription :</h3>
             <p>{project.description}</p>
             <Container>

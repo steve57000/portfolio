@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
 import useDataFetching from '../../hooks/useData';
 import { HomeContainer, PageDescription, PageTitle } from './HomeStyles';
 import ProjectList from '../../components/ProjectList/ProjectList';
-import {mockData} from "../../data/mockData";
+import { mockData } from "../../data/mockData";
 
 const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
     const [selectedCardId, setSelectedCardId] = useState(null);
+    const [scrollToProjectId, setScrollToProjectId] = useState(null);
 
     const handleMoreInfoClick = (id) => {
         setSelectedCardId(id);
     };
 
+    useEffect(() => {
+        if (selectedCardId) {
+            setScrollToProjectId(selectedCardId);
+        }
+    }, [selectedCardId]);
     const handleCloseDetails = () => {
         setSelectedCardId(null);
     };
@@ -34,6 +40,7 @@ const Home = () => {
                 <CardDetailsContainer
                     project={data.find((project) => project.id === selectedCardId)}
                     onClose={handleCloseDetails}
+                    scrollToProjectId={scrollToProjectId}
                 />
             )}
         </HomeContainer>
