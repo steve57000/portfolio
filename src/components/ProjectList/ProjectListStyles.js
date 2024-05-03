@@ -60,7 +60,28 @@ export const ScrollThumb = styled.div`
   background-color: #ba1313;
   border-radius: 4px;
   filter: drop-shadow(0 0 2px rgb(255, 79, 79));
+
+  /* Styles spécifiques pour les navigateurs mobiles */
+  @media only screen and (max-device-width: 768px) {
+    height: 8px; /* Ajustez la hauteur pour les appareils mobiles */
+    background-color: #ba1313; /* Couleur de fond pour les appareils mobiles */
+  }
+
+  /* Styles spécifiques pour les navigateurs Webkit (Chrome, Safari) */
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    &::-webkit-scrollbar-thumb {
+      background-color: #ba1313; /* Couleur de la poignée pour les navigateurs Webkit */
+      border-radius: 4px; /* Bordure arrondie pour la poignée */
+    }
+  }
+
+  /* Styles spécifiques pour Firefox */
+  @-moz-document url-prefix() {
+    background-color: #ba1313; /* Couleur de fond pour Firefox */
+    border-radius: 4px; /* Bordure arrondie pour Firefox */
+  }
 `;
+
 
 export const BorderContainerProjectCard = styled.div`
   width: 100%;
