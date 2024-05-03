@@ -98,7 +98,6 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                     <ButtonWithBottomMargin onClick={onClose}>Fermer</ButtonWithBottomMargin>
                 </>
             </Container>
-
         </CardDetailsStyles>
     );
 };
