@@ -92,11 +92,38 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                             </ImgContainer>
                         </ContainerList>
                     ))}
-                    {project.docs && project.docs.map((doc, index) => (
-                        <ButtonWithTopMargin key={index} onClick={() => handleOpenPDF(doc.link)}>Voir {doc.nameDocs}</ButtonWithTopMargin>
-                    ))}
-                    <ButtonWithBottomMargin onClick={onClose}>Fermer</ButtonWithBottomMargin>
                 </>
+                <>
+                    {project.docs && project.docs.map((doc, index) => (
+                        <ButtonWithTopMargin
+                            key={index}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`Ouvrir le document ${doc.nameDocs}`}
+                            onClick={() => handleOpenPDF(doc.link)}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    handleOpenPDF(doc.link)
+                                }
+                            }}
+                        >
+                            Voir {doc.nameDocs}
+                        </ButtonWithTopMargin>
+                    ))}
+                </>
+                <ButtonWithBottomMargin
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Fermer les détails du projet"
+                    onClick={onClose}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            onClose();
+                        }
+                    }}
+                >
+                    Fermer
+                </ButtonWithBottomMargin>
             </Container>
         </CardDetailsStyles>
     );

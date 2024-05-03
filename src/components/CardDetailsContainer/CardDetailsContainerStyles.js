@@ -27,7 +27,13 @@ export const CardDetailsStyles = styled.div`
   }
 `;
 
-export const ButtonStyles = styled.button`
+export const ButtonStyles = styled.div`
+  width: 100%;
+  height: 100%;
+  min-width: 150px;
+  max-width: 300px;
+  min-height: 50px;
+  text-align: center;
   padding: 15px 30px;
   border-radius: 10px;
   background-color: #ff7e5f;
@@ -37,15 +43,15 @@ export const ButtonStyles = styled.button`
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.52);
   transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
   transform-origin: center;
-  //overflow: hidden; /* Masquer le débordement lorsque le bouton est agrandi */
 
   &:hover {
     transform: scale(1.1);
     ${hoverStyles}
   }
-
+  
   &:focus {
     outline: none;
+    ${hoverStyles}
   }
 `;
 
