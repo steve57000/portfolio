@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
     CardDetailsStyles,
@@ -7,12 +7,16 @@ import {
     ContainerList,
     Container,
     Chevron,
-    ImgContainer
+    ImgContainer,
+    ButtonWithTopMargin,
+    ButtonWithBottomMargin
 } from './CardDetailsContainerStyles';
 
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
+
     const anchorRef = useRef(null);
+
     const toggleListVisibility = (projectId, index) => {
         setListStates(prevStates => ({
             ...prevStates,
@@ -29,6 +33,13 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
         }
     }, [scrollToProjectId]);
 
+    const handleOpenPDF = (pdfLink) => {
+        if (project.docs) {
+            // Ouvrir le PDF à partir du lien
+            window.open(process.env.PUBLIC_URL + `/assets/docs/${pdfLink}`, '_blank');
+        }
+    };
+
     if (!project || !project.fonction) {
         return (
             <div>
@@ -42,7 +53,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     return (
         <CardDetailsStyles>
             <h2 ref={anchorRef}>{project.title}</h2>
-            <h3>Déscription :</h3>
+            <h3>Description :</h3>
             <p>{project.description}</p>
             <Container>
                 <>
@@ -54,9 +65,10 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                             onClick={() => toggleListVisibility(project.id, index)}
                             onKeyDown={(event) => {
                                 if (event.key === 'Enter') {
-                                    toggleListVisibility(project.id, index) // Déclenche l'action lorsque la touche "Entrée" est pressée
+                                    toggleListVisibility(project.id, index);
                                 }
                             }}
+                            $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
                         >
                             <h4>{func.name}</h4>
                             <Chevron $isRotated={listStates[project.id]?.[index]} />
@@ -73,16 +85,20 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 {func.imgs && listStates[project.id]?.[index] && (
                                     <>
                                         {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt={""} />
+                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt="" />
                                         ))}
                                     </>
                                 )}
                             </ImgContainer>
                         </ContainerList>
                     ))}
+                    {project.docs && project.docs.map((doc, index) => (
+                        <ButtonWithTopMargin key={index} onClick={() => handleOpenPDF(doc.link)}>Voir {doc.nameDocs}</ButtonWithTopMargin>
+                    ))}
+                    <ButtonWithBottomMargin onClick={onClose}>Fermer</ButtonWithBottomMargin>
                 </>
             </Container>
-            <button onClick={onClose}>Fermer</button>
+
         </CardDetailsStyles>
     );
 };
@@ -97,8 +113,14 @@ CardDetailsContainer.propTypes = {
                 list: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
             }).isRequired
         ).isRequired,
+        docs: PropTypes.arrayOf(PropTypes.shape({
+            nameDocs: PropTypes.string.isRequired,
+            link: PropTypes.string.isRequired,
+        })),
     }).isRequired,
     onClose: PropTypes.func.isRequired,
+    scrollToProjectId: PropTypes.number, // Propriété pour le défilement jusqu'au projet spécifique
 };
 
 export default CardDetailsContainer;
+

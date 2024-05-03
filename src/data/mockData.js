@@ -222,6 +222,12 @@ export const mockData = [
         id: 3,
         title: "La Chouette Agence",
         images: "la-chouette-agence.png",
+        docs: [
+            {
+                nameDocs : "audit seo",
+                link: "audit-SEO.pdf"
+            }
+        ],
         objectif: "Optimisez un site web existant",
         description: "L’activité de l’entreprise a bien démarré mais aujourd’hui, elle est en perte de vitesse. La fondatrice de l’entreprise cherche une solution pour faire repartir l’activité. En tapant “Entreprise web design Lyon” sur Internet, elle s’aperçoit que le site de l’agence apparaît seulement en deuxième page des moteurs de recherche.",
         tags: ["HTML", "CSS", "SEO"],

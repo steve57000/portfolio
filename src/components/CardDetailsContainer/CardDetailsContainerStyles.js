@@ -1,5 +1,12 @@
 import styled from "styled-components";
 const chevron = process.env.PUBLIC_URL + '/assets/icons/chevron.png'
+const chevronPaint = process.env.PUBLIC_URL + '/assets/icons/chevronPaint.png'
+
+const hoverStyles = `
+  background-color: #900c3e;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.52);
+  color: #ff7e5f;
+`;
 
 export const CardDetailsStyles = styled.div`
   position: relative;
@@ -20,28 +27,82 @@ export const CardDetailsStyles = styled.div`
   }
 `;
 
+export const ButtonStyles = styled.button`
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: #ff7e5f;
+  color: #900c3e;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.52);
+  transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
+  transform-origin: center;
+  //overflow: hidden; /* Masquer le débordement lorsque le bouton est agrandi */
+
+  &:hover {
+    transform: scale(1.1);
+    ${hoverStyles}
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+// Bouton avec une marge en haut
+export const ButtonWithTopMargin = styled(ButtonStyles)`
+  margin: 20px 0 25px 0;
+`;
+
+// Bouton avec une marge en bas
+export const ButtonWithBottomMargin = styled(ButtonStyles)`
+  margin-bottom: 20px;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
+
 export const ContainerList = styled.div`
   position: relative;
-  background-color: #900c3e;
-  color: #ff7e5f;
+  background-color: #ff7e5f;
+  color: #900c3e;
   border-radius: 10px;
-  box-shadow: 0 2px 4px #2F3020;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.32);
   cursor: pointer;
   margin-bottom: 10px;
   padding: 0 10px;
   width: 100%;
   max-width: calc(100% / 1.3);
+  transition: all 0.3s;
+
+  ${props => props.$isOpen && hoverStyles}
+
+  &:hover {
+    ${hoverStyles}
+    span{
+      background-image: url(${chevron});
+    }
+  }
+
+  &:focus {
+    outline: none;
+    ${hoverStyles}
+    span{
+      background-image: url(${chevron});
+    }
+  }
+  
   @media(max-width: 1080px){
     max-width: 90%;
   }
+  
   @media(max-width: 720px){
     max-width: 99%;
   }
+  
   h4 {
     margin-bottom: 0;
   }
@@ -55,7 +116,7 @@ export const Chevron = styled.span`
   height: 32px;
   transform: ${({ $isRotated }) => $isRotated ? 'rotate(-90deg)' : 'rotate(90deg)'};
   transition: transform 0.3s ease;
-  background-image: url(${chevron});
+  background-image: ${({ $isRotated }) => $isRotated ? `url(${chevron})` : `url(${chevronPaint})`};
   background-size: contain;
   background-repeat: no-repeat;
 `;
@@ -67,7 +128,8 @@ export const CardDetailsUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media(max-width: 720px){
+  
+  @media(max-width: 768px){
     padding: 0 1px;
   }
 `;
@@ -80,6 +142,7 @@ export const CardDetailsList = styled.li`
   margin-top: 20px;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(144, 12, 62, 0.76);
+  
   @media(max-width: 1080px){
     width: 100%;
   }
@@ -99,7 +162,7 @@ export const ImgContainer = styled.div`
     @media(max-width: 1080px){
       min-width: 100%;
     }
-    @media(max-width: 720px){
+    @media(max-width: 768px){
       min-width: 102%;
     }
     @media(max-width: 620px){

@@ -13,23 +13,20 @@ export const ContainerProjectCard = styled.div`
   position: relative;
   flex-wrap: nowrap;
   padding: 30px 30px 40px 30px;
-  width: 100%; /* Mettez la largeur à 100% */
-  height: 100%; /* Utilisez la hauteur automatique pour permettre le défilement */
-  min-height: 100%; /* Ajoutez une hauteur minimale si nécessaire */
+  width: 100%; 
+  height: 100%; 
+  min-height: 100%; 
   max-height: 96vh;
   border-radius: 10px;
   background-color: rgba(70, 48, 44, 0.18);
   overflow-x: auto;
-  overflow-y: hidden; /* Utilisez overflow-y: hidden pour masquer la barre de défilement verticale */
+  overflow-y: hidden; 
   scrollbar-width: none; /* Masquer la barre de défilement personnalisée pour Firefox */
   -ms-overflow-style: none; /* Masquer la barre de défilement personnalisée pour IE et Edge */
   &::-webkit-scrollbar {
     display: none; /* Masquer la barre de défilement personnalisée pour Chrome, Safari et Opera */
   }
-  @media (max-width: 720px){
-    padding: 10px 10px 40px 10px;
-  }
-  @media (max-width: 420px){
+  @media (max-width: 768px){
     padding: 10px 10px 30px 10px;
   }
 `;
@@ -41,17 +38,43 @@ export const ScrollBar = styled.div`
   width: 98%;
   padding: 3px;
   height: 18px;
-  background-color: #ccc;
+  background-color: rgba(204, 204, 204, 0.33);
   border-radius: 6px;
   opacity: 0.7;
   transition: opacity 0.3s;
   cursor: pointer;
   pointer-events: auto;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.84);
+
   &:hover {
     opacity: 1;
   }
+
+  /* Styles spécifiques pour les navigateurs mobiles */
+  @media only screen and (max-device-width: 768px) {
+    height: 12px;
+    border-radius: 4px;
+    padding: 2px
+  }
+
+  /* Styles spécifiques pour les navigateurs Webkit (Chrome, Safari) */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+      border-radius: 4px;
+      background-color: rgba(204, 204, 204, 0.33);
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.84);
+    }
+  }
+
+  /* Styles spécifiques pour Firefox */
+  @-moz-document url-prefix() {
+    height: 12px;
+    border-radius: 4px;
+  }
 `;
+
 
 export const ScrollThumb = styled.div`
   position: absolute;
@@ -59,26 +82,25 @@ export const ScrollThumb = styled.div`
   height: 12px;
   background-color: #ba1313;
   border-radius: 4px;
-  filter: drop-shadow(0 0 2px rgb(255, 79, 79));
 
   /* Styles spécifiques pour les navigateurs mobiles */
   @media only screen and (max-device-width: 768px) {
-    height: 8px; /* Ajustez la hauteur pour les appareils mobiles */
-    background-color: #ba1313; /* Couleur de fond pour les appareils mobiles */
+    height: 8px;
+    background-color: #ba1313;
   }
 
   /* Styles spécifiques pour les navigateurs Webkit (Chrome, Safari) */
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
     &::-webkit-scrollbar-thumb {
-      background-color: #ba1313; /* Couleur de la poignée pour les navigateurs Webkit */
-      border-radius: 4px; /* Bordure arrondie pour la poignée */
+      background-color: #ba1313;
+      border-radius: 4px;
     }
   }
 
   /* Styles spécifiques pour Firefox */
   @-moz-document url-prefix() {
-    background-color: #ba1313; /* Couleur de fond pour Firefox */
-    border-radius: 4px; /* Bordure arrondie pour Firefox */
+    background-color: #ba1313;
+    border-radius: 4px;
   }
 `;
 
