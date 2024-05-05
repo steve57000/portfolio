@@ -3,6 +3,7 @@ export const mockData = [
         id: 1,
         title: "Réservia",
         images: "reservia.png",
+        video: "reservia.mp4",
         objectif: "Transformez une maquette en site web",
         description: "L’entreprise souhaite développer un site Internet qui permette aux usagers de trouver des hébergements et des activités dans la ville de leur choix. Vous êtes chargé d'intégrer l'interface du site avec du code HTML et CSS. Pour cela, vous travaillez en étroite collaboration avec Sarah, la CTO, et Loïc, l’UI designer.",
         tags: ["HTML", "CSS"],
@@ -132,6 +133,7 @@ export const mockData = [
         id: 2,
         title: "Oh My Food!!!",
         images: "oh-my-food.png",
+        video: "ohmyfood.mp4",
         objectif: "Dynamisez une page web avec des animations CSS",
         description: "Votre mission est de développer un site 'mobile first' qui répertorie les menus de restaurants gastronomiques. En plus des systèmes classiques de réservation, les clients pourront composer le menu pour que les plats soient prêts à leur arrivée. L’équipe commerciale a déjà réussi à convaincre 4 restaurateurs d’utiliser la plateforme",
         tags: ["HTML", "CSS"],
@@ -222,6 +224,7 @@ export const mockData = [
         id: 3,
         title: "La Chouette Agence",
         images: "la-chouette-agence.png",
+        video: "chouetteagence.mp4",
         docs: [
             {
                 nameDocs : "audit seo",
@@ -284,6 +287,7 @@ export const mockData = [
         id: 4,
         title: "Kanap",
         images: "kanap.png",
+        video: "kanap.mp4",
         objectif: "Construisez un site e-commerce",
         description: "Félicitations ! Vous avez été recruté en tant que développeur front-end par Kanap, une entreprise de commerce en ligne. Son credo ? Se démarquer des grands site e-commerce comme Amazon en créant des applications thématiques ne vendant qu’un seul groupe de produits.",
         tags: ["HTML", "CSS", "Javascript"],
@@ -724,11 +728,9 @@ export const mockData = [
         id: 11,
         title: "Learn@Home",
         images: "learnhome.PNG",
+        video: "learnhome.mp4",
         objectif: "Définissez les besoins pour une app de soutien scolaire",
-        description: "Vous travaillez chez Dev4U, une petite agence web dans laquelle tout le monde a une double casquette !\n" +
-            "\n" +
-            "\n" +
-            "Votre entreprise a décroché un nouveau client : Learn@Home. Cette association met en relation des enfants en difficulté scolaire avec des tuteurs bénévoles. Fonctionnant surtout par le bouche à oreille et les SMS, elle souhaite désormais avoir un site web complet. ",
+        description: "Vous travaillez chez Dev4U, une petite agence web dans laquelle tout le monde a une double casquette ! Votre entreprise a décroché un nouveau client : Learn@Home. Cette association met en relation des enfants en difficulté scolaire avec des tuteurs bénévoles. Fonctionnant surtout par le bouche à oreille et les SMS, elle souhaite désormais avoir un site web complet. ",
         tags: ["Figma", "User stories", "Kanban Notion"],
         savoir: [
             "Créer une maquette pour un client.",
