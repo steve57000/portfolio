@@ -12,11 +12,12 @@ import {
     ButtonWithBottomMargin
 } from './CardDetailsContainerStyles';
 
+import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
+
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
-
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const anchorRef = useRef(null);
-
     const toggleListVisibility = (projectId, index) => {
         setListStates(prevStates => ({
             ...prevStates,
@@ -35,9 +36,16 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
 
     const handleOpenPDF = (pdfLink) => {
         if (project.docs) {
-            // Ouvrir le PDF à partir du lien
             window.open(process.env.PUBLIC_URL + `/assets/docs/${pdfLink}`, '_blank');
         }
+    };
+
+    const handleOpenVideo = () => {
+        setIsVideoModalOpen(true);
+    };
+
+    const handleCloseVideoModal = () => {
+        setIsVideoModalOpen(false);
     };
 
     if (!project || !project.fonction) {
@@ -111,20 +119,21 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                         </ButtonWithTopMargin>
                     ))}
                 </>
-                <ButtonWithBottomMargin
-                    role="button"
-                    tabIndex={0}
-                    aria-label="Fermer les détails du projet"
-                    onClick={onClose}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                            onClose();
-                        }
-                    }}
-                >
+                {project.video && (
+                    <ButtonWithTopMargin onClick={handleOpenVideo}>
+                        Voir présentation PowerPoint
+                    </ButtonWithTopMargin>
+                )}
+                <ButtonWithBottomMargin onClick={onClose}>
                     Fermer
                 </ButtonWithBottomMargin>
             </Container>
+            {isVideoModalOpen && (
+                <FullScreenVideoModal
+                    videoSrc={project.video}
+                    onClose={handleCloseVideoModal}
+                />
+            )}
         </CardDetailsStyles>
     );
 };
@@ -143,10 +152,10 @@ CardDetailsContainer.propTypes = {
             nameDocs: PropTypes.string.isRequired,
             link: PropTypes.string.isRequired,
         })),
+        video: PropTypes.string, // Assuming a single video source
     }).isRequired,
     onClose: PropTypes.func.isRequired,
     scrollToProjectId: PropTypes.number, // Propriété pour le défilement jusqu'au projet spécifique
 };
 
 export default CardDetailsContainer;
-
