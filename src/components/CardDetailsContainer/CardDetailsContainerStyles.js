@@ -79,7 +79,7 @@ export const ContainerList = styled.div`
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.32);
   cursor: pointer;
   margin-bottom: 10px;
-  padding: 15px 10px 0 10px;
+  padding: 0 10px 0 10px;
   width: 100%;
   max-width: calc(100% / 1.3);
   transition: all 0.3s;

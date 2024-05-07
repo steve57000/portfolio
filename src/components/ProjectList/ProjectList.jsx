@@ -130,7 +130,6 @@ const ProjectList = ({ data = [], handleMoreInfoClick = () => {} }) => {
 ProjectList.propTypes = {
     data: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             objectif: PropTypes.string.isRequired,
             tags: PropTypes.arrayOf(PropTypes.string),

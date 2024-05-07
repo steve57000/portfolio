@@ -19,7 +19,7 @@ import {
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = ()=> {}, cardMarginRight = 0 }) => {
+const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = () => {}, cardMarginRight = 0 }) => {
     const [openModal, setOpenModal] = useState(false);
     const handleLinkClick = (openInNewTab) => {
         if (openInNewTab) {
@@ -121,7 +121,6 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
 };
 
 Card.propTypes = {
-    idProject: PropTypes.number,
     title: PropTypes.string.isRequired,
     objectif: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
