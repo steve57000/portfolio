@@ -17,6 +17,7 @@ import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+    const [selectedVideoIndex, setSelectedVideoIndex] = useState()
     const anchorRef = useRef(null);
     const toggleListVisibility = (projectId, index) => {
         setListStates(prevStates => ({
@@ -40,8 +41,9 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
         }
     };
 
-    const handleOpenVideo = () => {
+    const handleOpenVideo = (indexVideo) => {
         setIsVideoModalOpen(true);
+        setSelectedVideoIndex(indexVideo)
     };
 
     const handleCloseVideoModal = () => {
@@ -119,18 +121,21 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                         </ButtonWithTopMargin>
                     ))}
                 </>
-                {project.video && (
-                    <ButtonWithTopMargin onClick={handleOpenVideo}>
-                        Voir présentation PowerPoint
-                    </ButtonWithTopMargin>
-                )}
+                <>
+                    {project.video && project.video.map((video, index) => (
+                            <ButtonWithTopMargin key={index} onClick={ () => handleOpenVideo(index)}>
+                                Voir {video.name}
+                            </ButtonWithTopMargin>
+                        )
+                    )}
+                </>
                 <ButtonWithBottomMargin onClick={onClose}>
                     Fermer
                 </ButtonWithBottomMargin>
             </Container>
             {isVideoModalOpen && (
                 <FullScreenVideoModal
-                    videoSrc={project.video}
+                    videoSrc={project.video[selectedVideoIndex].link}
                     onClose={handleCloseVideoModal}
                 />
             )}
@@ -148,11 +153,17 @@ CardDetailsContainer.propTypes = {
                 list: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
             }).isRequired
         ).isRequired,
-        docs: PropTypes.arrayOf(PropTypes.shape({
-            nameDocs: PropTypes.string.isRequired,
-            link: PropTypes.string.isRequired,
+        docs: PropTypes.arrayOf(
+            PropTypes.shape({
+                nameDocs: PropTypes.string.isRequired,
+                link: PropTypes.string.isRequired,
         })),
-        video: PropTypes.string, // Assuming a single video source
+        video: PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                link: PropTypes.string.isRequired,
+            }).isRequired
+        ).isRequired,
     }).isRequired,
     onClose: PropTypes.func.isRequired,
     scrollToProjectId: PropTypes.number, // Propriété pour le défilement jusqu'au projet spécifique
