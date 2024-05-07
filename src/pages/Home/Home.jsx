@@ -11,7 +11,6 @@ const Home = () => {
     const [scrollToProjectId, setScrollToProjectId] = useState(null);
 
     const handleMoreInfoClick = (id) => {
-        console.log(id)
         setSelectedCardId(id);
     };
 
