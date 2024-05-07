@@ -10,8 +10,9 @@ const Home = () => {
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [scrollToProjectId, setScrollToProjectId] = useState(null);
 
-    const handleMoreInfoClick = () => {
-        setSelectedCardId();
+    const handleMoreInfoClick = (id) => {
+        console.log(id)
+        setSelectedCardId(id);
     };
 
     useEffect(() => {

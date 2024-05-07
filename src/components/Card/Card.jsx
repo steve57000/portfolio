@@ -19,9 +19,8 @@ import {
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = id => {}, cardMarginRight = 0 }) => {
+const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = ()=> {}, cardMarginRight = 0 }) => {
     const [openModal, setOpenModal] = useState(false);
-
     const handleLinkClick = (openInNewTab) => {
         if (openInNewTab) {
             window.open(websiteUrl, '_blank');
@@ -59,7 +58,7 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
                     aria-label="Plus d'informations"
                     role="button"
                     tabIndex={0}
-                    onClick={() => onClickMoreInfo }
+                    onClick={onClickMoreInfo}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             onClickMoreInfo(); // Déclenche l'action lorsque la touche "Entrée" est pressée
@@ -122,6 +121,7 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
 };
 
 Card.propTypes = {
+    idProject: PropTypes.number,
     title: PropTypes.string.isRequired,
     objectif: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
