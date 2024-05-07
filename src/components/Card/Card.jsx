@@ -19,7 +19,7 @@ import {
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMoreInfo, cardMarginRight }) => {
+const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = id => {}, cardMarginRight = 0 }) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleLinkClick = (openInNewTab) => {
@@ -59,10 +59,10 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
                     aria-label="Plus d'informations"
                     role="button"
                     tabIndex={0}
-                    onClick={() => onClickMoreInfo(id)}
+                    onClick={() => onClickMoreInfo }
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
-                            onClickMoreInfo(id); // Déclenche l'action lorsque la touche "Entrée" est pressée
+                            onClickMoreInfo(); // Déclenche l'action lorsque la touche "Entrée" est pressée
                         }
                     }}
                 >
@@ -122,23 +122,14 @@ const Card = ({ id, title, objectif, tags, image, savoir, websiteUrl, onClickMor
 };
 
 Card.propTypes = {
-    title: PropTypes.string,
-    objectif: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string),
-    image: PropTypes.string,
-    description: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    objectif: PropTypes.string.isRequired,
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    image: PropTypes.string.isRequired,
+    savoir: PropTypes.arrayOf(PropTypes.string),
     websiteUrl: PropTypes.string,
     onClickMoreInfo: PropTypes.func.isRequired, // Fonction appelée lors du clic sur "Plus d'informations"
-};
-
-
-Card.defaultProps = {
-    title: "Titre par défaut",
-    objectif: "Objectif de mission",
-    tags: ["tag1", "tag2"],
-    image: "cardImage.png",
-    description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    onClickMoreInfo: null,
+    cardMarginRight: PropTypes.number.isRequired,
 };
 
 export default Card;

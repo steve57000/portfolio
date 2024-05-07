@@ -9,7 +9,7 @@ import {
     Chevron,
     ImgContainer,
     ButtonWithTopMargin,
-    ButtonWithBottomMargin
+    ButtonWithBottomMargin,
 } from './CardDetailsContainerStyles';
 
 import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
@@ -82,6 +82,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                         >
                             <h4>{func.name}</h4>
                             <Chevron $isRotated={listStates[project.id]?.[index]} />
+
                             <CardDetailsUl>
                                 {listStates[project.id]?.[index] && (
                                     <>
@@ -155,15 +156,16 @@ CardDetailsContainer.propTypes = {
         ).isRequired,
         docs: PropTypes.arrayOf(
             PropTypes.shape({
-                nameDocs: PropTypes.string.isRequired,
-                link: PropTypes.string.isRequired,
-        })),
+                nameDocs: PropTypes.string,
+                link: PropTypes.string,
+        })
+        ),
         video: PropTypes.arrayOf(
             PropTypes.shape({
-                name: PropTypes.string.isRequired,
-                link: PropTypes.string.isRequired,
-            }).isRequired
-        ).isRequired,
+                name: PropTypes.string,
+                link: PropTypes.string,
+            })
+        ),
     }).isRequired,
     onClose: PropTypes.func.isRequired,
     scrollToProjectId: PropTypes.number, // Propriété pour le défilement jusqu'au projet spécifique

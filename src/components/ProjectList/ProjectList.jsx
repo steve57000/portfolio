@@ -7,8 +7,9 @@ import {
     ScrollBar,
     ScrollThumb,
 } from './ProjectListStyles';
+import PropTypes from "prop-types";
 
-const ProjectList = ({ data, handleMoreInfoClick }) => {
+const ProjectList = ({ data = [], handleMoreInfoClick = () => {} }) => {
     const containerRef = useRef(null);
     const thumbRef = useRef(null);
     const [visibleWidthRatio, setVisibleWidthRatio] = useState(1);
@@ -94,19 +95,21 @@ const ProjectList = ({ data, handleMoreInfoClick }) => {
     return (
         <ContainerProject>
             <ContainerProjectCard ref={containerRef} onScroll={handleScroll} >
-                {data.map((project, index) => (
-                    <Card
-                        key={project.id}
-                        title={project.title}
-                        objectif={project.objectif}
-                        tags={Array.isArray(project.tags) ? project.tags : []}
-                        image={project.images}
-                        savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                        websiteUrl={project.websiteUrl}
-                        onClickMoreInfo={() => handleMoreInfoClick(project.id)}
-                        cardMarginRight={index < data.length - 1 ? 2 : 0}
-                    />
-                ))}
+                <>
+                    {data.map((project, index) => (
+                        <Card
+                            key={project.id}
+                            title={project.title}
+                            objectif={project.objectif}
+                            tags={Array.isArray(project.tags) ? project.tags : []}
+                            image={project.images}
+                            savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                            websiteUrl={project.websiteUrl}
+                            onClickMoreInfo={() => handleMoreInfoClick(project.id)}
+                            cardMarginRight={index < data.length - 1 ? 2 : 0}
+                        />
+                    ))}
+                </>
             </ContainerProjectCard>
             <ScrollBar>
                 <ScrollThumb
@@ -122,6 +125,21 @@ const ProjectList = ({ data, handleMoreInfoClick }) => {
             <BorderContainerProjectCard />
         </ContainerProject>
     );
+};
+
+ProjectList.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            objectif: PropTypes.string.isRequired,
+            tags: PropTypes.arrayOf(PropTypes.string),
+            images: PropTypes.string,
+            savoir: PropTypes.arrayOf(PropTypes.string),
+            websiteUrl: PropTypes.string,
+        })
+    ).isRequired,
+    handleMoreInfoClick: PropTypes.func.isRequired,
 };
 
 export default ProjectList;
