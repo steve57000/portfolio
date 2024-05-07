@@ -16,7 +16,7 @@ const FullScreenVideoModal = ({ videoSrc, onClose }) => {
             <ModalContent>
                 <VideoContainer>
                     <Video controls autoPlay  >
-                        <source src={process.env.PUBLIC_URL + `/assets/videos/${videoSrc}`} type="video/mp4" />
+                        <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </Video>
                 </VideoContainer>
