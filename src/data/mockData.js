@@ -3,7 +3,12 @@ export const mockData = [
         id: 1,
         title: "Réservia",
         images: "reservia.png",
-        video: "reservia.mp4",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/zdKRljCuUDBwi5al/reservia.mp4"
+            }
+        ],
         objectif: "Transformez une maquette en site web",
         description: "L’entreprise souhaite développer un site Internet qui permette aux usagers de trouver des hébergements et des activités dans la ville de leur choix. Vous êtes chargé d'intégrer l'interface du site avec du code HTML et CSS. Pour cela, vous travaillez en étroite collaboration avec Sarah, la CTO, et Loïc, l’UI designer.",
         tags: ["HTML", "CSS"],
@@ -133,7 +138,12 @@ export const mockData = [
         id: 2,
         title: "Oh My Food!!!",
         images: "oh-my-food.png",
-        video: "ohmyfood.mp4",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/SNYZ9aLwsdlA9jOi/Ohmyfood.mp4 "
+            }
+        ],
         objectif: "Dynamisez une page web avec des animations CSS",
         description: "Votre mission est de développer un site 'mobile first' qui répertorie les menus de restaurants gastronomiques. En plus des systèmes classiques de réservation, les clients pourront composer le menu pour que les plats soient prêts à leur arrivée. L’équipe commerciale a déjà réussi à convaincre 4 restaurateurs d’utiliser la plateforme",
         tags: ["HTML", "CSS"],
@@ -224,7 +234,12 @@ export const mockData = [
         id: 3,
         title: "La Chouette Agence",
         images: "la-chouette-agence.png",
-        video: "chouetteagence.mp4",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/mtMVhtFK9DVUFO_q/chouetteagence.mp4"
+            }
+        ],
         docs: [
             {
                 nameDocs : "audit seo",
@@ -287,7 +302,12 @@ export const mockData = [
         id: 4,
         title: "Kanap",
         images: "kanap.png",
-        video: "kanap.mp4",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/FzvfuDkYAO3-8j4X/kanap.mp4"
+            }
+        ],
         objectif: "Construisez un site e-commerce",
         description: "Félicitations ! Vous avez été recruté en tant que développeur front-end par Kanap, une entreprise de commerce en ligne. Son credo ? Se démarquer des grands site e-commerce comme Amazon en créant des applications thématiques ne vendant qu’un seul groupe de produits.",
         tags: ["HTML", "CSS", "Javascript"],
@@ -678,6 +698,12 @@ export const mockData = [
         title: "Billed",
         images: "billed.PNG",
         objectif: "Débuggez et testez un SaaS RH",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/0SfI-qLZe-0gOget/Pr%C3%A9sentationBilled.mp4 "
+            }
+        ],
         description: "Vous êtes développeur front-end chez Billed, une entreprise qui produit des solutions Saas destinées aux équipes de ressources humaines. Malheureusement pour Billed, Garance, une collègue de la feature team “note de frais” a quitté l’entreprise avant d’avoir terminé l’application. Dans deux semaines, l’équipe doit montrer la solution qui fonctionne à l’ensemble de l’entreprise.",
         tags: ["Jest", "Kanban Notion"],
         savoir: [
