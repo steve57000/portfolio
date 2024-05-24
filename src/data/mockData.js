@@ -503,6 +503,12 @@ export const mockData = [
         id: 7,
         title: "GameOn",
         images: "gameon.PNG",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/R0pcTqNF7XSespyn/gameon.mp4"
+            }
+        ],
         objectif: "Créez une landing page avec Javascript",
         description: "Vous avez récemment été embauché comme développeur Front-End junior dans une PME, GameOn, spécialisée dans les conférences et les concours de jeux.",
         tags: ["HTML", "CSS", "Javascript"],
@@ -713,7 +719,7 @@ export const mockData = [
         video: [
             {
                 name: "présentation PowerPoint",
-                link: "https://steve-bell.freeboxos.fr:3446/share/0SfI-qLZe-0gOget/Pr%C3%A9sentationBilled.mp4 "
+                link: "https://steve-bell.freeboxos.fr:3446/share/KLI0IcObRXmmoKUI/presentationbilled.mp4"
             }
         ],
         description: "Vous êtes développeur front-end chez Billed, une entreprise qui produit des solutions Saas destinées aux équipes de ressources humaines. Malheureusement pour Billed, Garance, une collègue de la feature team “note de frais” a quitté l’entreprise avant d’avoir terminé l’application. Dans deux semaines, l’équipe doit montrer la solution qui fonctionne à l’ensemble de l’entreprise.",
@@ -766,7 +772,12 @@ export const mockData = [
         id: 11,
         title: "Learn@Home",
         images: "learnhome.PNG",
-        video: "learnhome.mp4",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/o-2mpFIekZJdwAld/Learn%40home.mp4"
+            }
+        ],
         objectif: "Définissez les besoins pour une app de soutien scolaire",
         description: "Vous travaillez chez Dev4U, une petite agence web dans laquelle tout le monde a une double casquette ! Votre entreprise a décroché un nouveau client : Learn@Home. Cette association met en relation des enfants en difficulté scolaire avec des tuteurs bénévoles. Fonctionnant surtout par le bouche à oreille et les SMS, elle souhaite désormais avoir un site web complet. ",
         tags: ["Figma", "User stories", "Kanban Notion"],
