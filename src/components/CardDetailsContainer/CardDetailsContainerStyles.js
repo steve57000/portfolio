@@ -57,12 +57,12 @@ export const ButtonStyles = styled.div`
 
 // Bouton avec une marge en haut
 export const ButtonWithTopMargin = styled(ButtonStyles)`
-  margin: 20px 0 25px 0;
+  margin: 20px 0 0;
 `;
 
 // Bouton avec une marge en bas
 export const ButtonWithBottomMargin = styled(ButtonStyles)`
-  margin-bottom: 20px;
+  margin: 20px 0;
 `;
 
 export const Container = styled.div`
