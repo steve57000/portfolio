@@ -384,6 +384,12 @@ export const mockData = [
         id: 5,
         title: "Piiquante",
         images: "piiquante.png",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/O3P3YUUHoYGWkPG3/piiquante.mp4"
+            }
+        ],
         objectif: "Construisez une API sécurisée",
         description: "Les sauces piquantes sont de plus en plus populaires, en grande partie grâce à la série YouTube « Hot Ones » . C’est pourquoi ce nouveau client, la marque de condiments à base de piment Piiquante, veut développer une application web de critique des sauces piquantes appelée « Hot Takes » .",
         tags: ["Express", "NodeJS", "MongoDB", "Multer"],
@@ -553,6 +559,12 @@ export const mockData = [
         id: 8,
         title: "FishEye!!!",
         images: "fishEye.PNG",
+        video: [
+            {
+                name: "présentation PowerPoint",
+                link: "https://steve-bell.freeboxos.fr:3446/share/N1VH3zCelGQ7wsFj/fisheye.mp4"
+            }
+        ],
         objectif: "Créez un site accessible pour une plateforme de photographes",
         description: "Depuis quelques semaines, vous êtes développeur junior chez Techasite, une société de conseil spécialisée dans le développement de sites web et d'applications mobiles. Avec votre cheffe de projet Amanda et le Designer UI, vous venez de faire une réunion de lancement du projet avec un nouveau client, FishEye. FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. ",
         tags: ["HTML", "CSS", "Javascript"],

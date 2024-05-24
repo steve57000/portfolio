@@ -9,7 +9,7 @@ import {
 } from './ProjectListStyles';
 import PropTypes from "prop-types";
 
-const ProjectList = ({ data = [], handleMoreInfoClick = () => {} }) => {
+const ProjectList = ({ data = [], handleMoreInfoClick = id => {} }) => {
     const containerRef = useRef(null);
     const thumbRef = useRef(null);
     const [visibleWidthRatio, setVisibleWidthRatio] = useState(1);
