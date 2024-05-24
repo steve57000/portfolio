@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import FocusTrap from 'focus-trap-react';
 import {
     CardDetailsStyles,
     CardDetailsUl,
@@ -17,8 +18,9 @@ import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-    const [selectedVideoIndex, setSelectedVideoIndex] = useState()
+    const [selectedVideoIndex, setSelectedVideoIndex] = useState();
     const anchorRef = useRef(null);
+
     const toggleListVisibility = (projectId, index) => {
         setListStates(prevStates => ({
             ...prevStates,
@@ -32,6 +34,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     useEffect(() => {
         if (scrollToProjectId && anchorRef.current) {
             anchorRef.current.scrollIntoView({ behavior: 'smooth' });
+            anchorRef.current.focus();
         }
     }, [scrollToProjectId]);
 
@@ -43,7 +46,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
 
     const handleOpenVideo = (indexVideo) => {
         setIsVideoModalOpen(true);
-        setSelectedVideoIndex(indexVideo)
+        setSelectedVideoIndex(indexVideo);
     };
 
     const handleCloseVideoModal = () => {
@@ -61,86 +64,91 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     }
 
     return (
-        <CardDetailsStyles>
-            <h2 ref={anchorRef}>{project.title}</h2>
-            <h3>Description :</h3>
-            <p>{project.description}</p>
-            <Container>
-                <>
-                    {project.fonction.map((func, index) => (
-                        <ContainerList
-                            key={index}
-                            role="button"
-                            tabIndex={0}
-                            onClick={() => toggleListVisibility(project.id, index)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    toggleListVisibility(project.id, index);
-                                }
-                            }}
-                            $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
-                        >
-                            <h4>{func.name}</h4>
-                            <Chevron $isRotated={listStates[project.id]?.[index]} />
+        <FocusTrap>
+            <CardDetailsStyles>
+                <h2 ref={anchorRef} tabIndex="-1">{project.title}</h2>
+                <h3>Description :</h3>
+                <p>{project.description}</p>
+                <Container>
+                    <>
+                        {project.fonction.map((func, index) => (
+                            <ContainerList
+                                key={index}
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => toggleListVisibility(project.id, index)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        toggleListVisibility(project.id, index);
+                                    }
+                                }}
+                                $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
+                            >
+                                <h4>{func.name}</h4>
+                                <Chevron $isRotated={listStates[project.id]?.[index]} />
 
-                            <CardDetailsUl>
-                                {listStates[project.id]?.[index] && (
-                                    <>
-                                        {func.list.map((item, idx) => (
-                                            <CardDetailsList key={idx}>{item}</CardDetailsList>
-                                        ))}
-                                    </>
-                                )}
-                            </CardDetailsUl>
-                            <ImgContainer>
-                                {func.imgs && listStates[project.id]?.[index] && (
-                                    <>
-                                        {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt="" />
-                                        ))}
-                                    </>
-                                )}
-                            </ImgContainer>
-                        </ContainerList>
-                    ))}
-                </>
-                <>
-                    {project.docs && project.docs.map((doc, index) => (
-                        <ButtonWithTopMargin
-                            key={index}
-                            role="button"
-                            tabIndex={0}
-                            aria-label={`Ouvrir le document ${doc.nameDocs}`}
-                            onClick={() => handleOpenPDF(doc.link)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    handleOpenPDF(doc.link)
-                                }
-                            }}
-                        >
-                            Voir {doc.nameDocs}
-                        </ButtonWithTopMargin>
-                    ))}
-                </>
-                <>
-                    {project.video && project.video.map((video, index) => (
-                            <ButtonWithTopMargin key={index} onClick={ () => handleOpenVideo(index)}>
+                                <CardDetailsUl>
+                                    {listStates[project.id]?.[index] && (
+                                        <>
+                                            {func.list.map((item, idx) => (
+                                                <CardDetailsList key={idx}>{item}</CardDetailsList>
+                                            ))}
+                                        </>
+                                    )}
+                                </CardDetailsUl>
+                                <ImgContainer>
+                                    {func.imgs && listStates[project.id]?.[index] && (
+                                        <>
+                                            {func.imgs.map((image, idx) => (
+                                                <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt="" />
+                                            ))}
+                                        </>
+                                    )}
+                                </ImgContainer>
+                            </ContainerList>
+                        ))}
+                    </>
+                    <>
+                        {project.docs && project.docs.map((doc, index) => (
+                            <ButtonWithTopMargin
+                                key={index}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`Ouvrir le document ${doc.nameDocs}`}
+                                onClick={() => handleOpenPDF(doc.link)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        handleOpenPDF(doc.link);
+                                    }
+                                }}
+                            >
+                                Voir {doc.nameDocs}
+                            </ButtonWithTopMargin>
+                        ))}
+                    </>
+                    <>
+                        {project.video && project.video.map((video, index) => (
+                            <ButtonWithTopMargin key={index} onClick={() => handleOpenVideo(index)}>
                                 Voir {video.name}
                             </ButtonWithTopMargin>
-                        )
-                    )}
-                </>
-                <ButtonWithBottomMargin onClick={onClose}>
-                    Fermer
-                </ButtonWithBottomMargin>
-            </Container>
-            {isVideoModalOpen && (
-                <FullScreenVideoModal
-                    videoSrc={project.video[selectedVideoIndex].link}
-                    onClose={handleCloseVideoModal}
-                />
-            )}
-        </CardDetailsStyles>
+                        ))}
+                    </>
+                    <ButtonWithBottomMargin onClick={onClose} role="button" tabIndex={0} onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            onClose();
+                        }
+                    }}>
+                        Fermer
+                    </ButtonWithBottomMargin>
+                </Container>
+                {isVideoModalOpen && (
+                    <FullScreenVideoModal
+                        videoSrc={project.video[selectedVideoIndex].link}
+                        onClose={handleCloseVideoModal}
+                    />
+                )}
+            </CardDetailsStyles>
+        </FocusTrap>
     );
 };
 
@@ -158,7 +166,7 @@ CardDetailsContainer.propTypes = {
             PropTypes.shape({
                 nameDocs: PropTypes.string,
                 link: PropTypes.string,
-        })
+            })
         ),
         video: PropTypes.arrayOf(
             PropTypes.shape({
@@ -172,3 +180,4 @@ CardDetailsContainer.propTypes = {
 };
 
 export default CardDetailsContainer;
+

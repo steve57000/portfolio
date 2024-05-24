@@ -1,7 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
+import React, {useState, useEffect, useRef} from 'react';
 import useDataFetching from '../../hooks/useData';
-import { HomeContainer, PageDescription, PageTitle } from './HomeStyles';
+import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
+import {
+    HomeContainer,
+    PageDescription,
+    PageTitle
+} from './HomeStyles';
 import ProjectList from '../../components/ProjectList/ProjectList';
 import { mockData } from "../../data/mockData";
 
@@ -9,9 +13,11 @@ const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [scrollToProjectId, setScrollToProjectId] = useState(null);
+    const lastFocusedElement = useRef(null);
 
-    const handleMoreInfoClick = (id) => {
-        setSelectedCardId(id);
+    const handleMoreInfoClick = (event) => {
+        setSelectedCardId(event);
+        lastFocusedElement.current = event.currentTarget;
     };
 
     useEffect(() => {
@@ -21,6 +27,9 @@ const Home = () => {
     }, [selectedCardId]);
     const handleCloseDetails = () => {
         setSelectedCardId(null);
+        if (lastFocusedElement.current) {
+            lastFocusedElement.current.focus();
+        }
     };
 
     if (isLoading) {
