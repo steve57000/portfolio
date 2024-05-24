@@ -32,6 +32,7 @@ export const CardTitle = styled.h2`
 `;
 export const CardObjectif = styled.p`
   width: 100%;
+  height: 40px;
   color: #c70039;
   text-align: center;
 `;
