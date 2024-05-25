@@ -1,0 +1,17 @@
+export const cvStyles = {
+    containerColor: "#f4f4f9",
+    titleColor: "#ff7e5f",
+    titleFontSize: "3em",
+    sectionTitleColor: "#ff7e5f",
+    sectionTitleFontSize: "2em",
+    paragraphColor: "#c70039",
+    paragraphFontSize: "1.2em",
+    positionColor: "#571845",
+    positionFontSize: "1.5em",
+    companyColor: "#571845",
+    companyFontSize: "1.2em",
+    dateColor: "#ff5733",
+    dateFontSize: "1em",
+    descriptionColor: "#900c3e",
+    descriptionFontSize: "1.1em",
+};

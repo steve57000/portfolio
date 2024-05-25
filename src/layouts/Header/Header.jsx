@@ -1,13 +1,13 @@
 import React from 'react';
-import { HeaderContainer, Logo } from './HeaderStyles'; // Importez vos styles
+import { HeaderContainer, Logo } from './HeaderStyles';
+import NavLinks from '../../components/NavLinks/NavLinks';
 
 
 const Header = () => {
     return (
         <HeaderContainer>
-            {/* Utilisez votre styled-component pour le logo */}
             <Logo src={process.env.PUBLIC_URL + '/assets/images/logo.svg'} alt="Logo" />
-            {/* Ajoutez d'autres éléments du header ici si nécessaire */}
+            <NavLinks />
         </HeaderContainer>
     );
 }

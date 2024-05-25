@@ -1,3 +1,4 @@
+// useDataFetching.js
 import { useState, useEffect } from 'react';
 
 function useDataFetching(url) {
@@ -44,4 +45,6 @@ function useDataFetching(url) {
 }
 
 export default useDataFetching;
+
+
 

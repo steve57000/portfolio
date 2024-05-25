@@ -911,3 +911,56 @@ export const mockData = [
         ]
     }
 ];
+
+export const curriculumVitae = {
+    id: 1000,
+    title: "Curriculum Vitae",
+    objectif: "Recherche d'emploi dans le domaine du développement web",
+    tags: ["CV", "Développement Web", "Expérience Professionnelle"],
+    image: "cvImage.png",
+    savoir: [
+        "Langages de programmation : HTML, CSS, JavaScript, Python",
+        "Frameworks : React.js, Vue.js, Django",
+        "Outils de versionnement : Git, GitHub",
+        "Conception web responsive",
+        "Développement Frontend et Backend",
+        "Bonne compréhension des concepts de base de données",
+        "Expérience dans le déploiement d'applications web",
+    ],
+    description: "Je suis un développeur web passionné à la recherche de nouvelles opportunités professionnelles.",
+    websiteUrl: "https://example.com/mon-cv",
+    // Autres informations pertinentes sur le CV
+    experience: [
+        {
+            poste: "Développeur Web Full Stack",
+            entreprise: "Entreprise ABC",
+            lieu: "Ville ABC",
+            dateDebut: "Janvier 2020",
+            dateFin: "Présent",
+            description: "Développement et maintenance d'applications web frontend et backend.",
+        },
+        // Ajouter d'autres expériences professionnelles si nécessaire
+    ],
+    formations: [
+        {
+            diplome: "Baccalauréat en Informatique",
+            etablissement: "Université XYZ",
+            lieu: "Ville XYZ",
+            dateObtention: "Juin 2019",
+        },
+        // Ajouter d'autres formations si nécessaire
+    ],
+    competences: [
+        "Développement web",
+        "Conception UI/UX",
+        "Résolution de problèmes",
+        "Travail d'équipe",
+        // Ajouter d'autres compétences si nécessaire
+    ],
+    langues: [
+        { langue: "Anglais", niveau: "Avancé" },
+        { langue: "Français", niveau: "Natif" },
+        // Ajouter d'autres langues si nécessaire
+    ],
+};
+
