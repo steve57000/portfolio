@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   max-width: 800px;
-  margin: 100px auto;
+  margin: 100px auto 0 auto;
   padding: 20px;
   font-family: 'Arial, sans-serif',serif;
   color: ${props => props.color || '#333'};
