@@ -19,7 +19,7 @@ import {
 } from './CardStyles';
 import {StyleSheetManager} from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = () => {}, cardMarginRight = 0 }) => {
+const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = () => {} }) => {
     const [openModal, setOpenModal] = useState(false);
     const handleLinkClick = (openInNewTab) => {
         if (openInNewTab) {
@@ -30,7 +30,7 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
     };
 
     return (
-        <CardContainer $cardMarginRight={cardMarginRight}>
+        <CardContainer>
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>
             <CardContainerTags>
@@ -128,7 +128,6 @@ Card.propTypes = {
     savoir: PropTypes.arrayOf(PropTypes.string),
     websiteUrl: PropTypes.string,
     onClickMoreInfo: PropTypes.func.isRequired, // Fonction appelée lors du clic sur "Plus d'informations"
-    cardMarginRight: PropTypes.number.isRequired,
 };
 
 export default Card;
