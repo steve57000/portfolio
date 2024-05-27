@@ -11,9 +11,12 @@ const hoverStyles = `
 export const CardDetailsStyles = styled.div`
   position: relative;
   text-align: left;
+  max-width: 1280px;
+  margin: 0 auto;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
   border-radius: 5px;
   padding: 0 10px;
+  z-index: 10000;
   h2 {
     width: calc(100% + 20px);
     margin-left: -10px;
@@ -83,7 +86,6 @@ export const ContainerList = styled.div`
   width: 100%;
   max-width: calc(100% / 1.3);
   transition: all 0.3s;
-
   ${props => props.$isOpen && hoverStyles}
 
   &:hover {

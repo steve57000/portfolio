@@ -23,10 +23,29 @@ export const Title = styled.h1`
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
   margin-bottom: 0;
 `;
+
 export const BorderContainer = styled.div`
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
   padding: 30px 20px;
   border-radius: 0 0 10px 10px;
+`;
+
+export const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const TwoColumnContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+`;
+
+export const ThreeColumnContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 `;
 
 export const Section = styled.section`
@@ -84,3 +103,5 @@ export const Description = styled.p`
   font-size: ${props => props.fontSize || '1.1em'};
   color: ${props => props.color || '#7f8c8d'};
 `;
+
+

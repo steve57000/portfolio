@@ -1,13 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useDataFetching from '../../hooks/useData';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
-import {
-    HomeContainer,
-    PageDescription,
-    PageTitle
-} from './HomeStyles';
-import ProjectList from '../../components/ProjectList/ProjectList';
+import {HomeContainer, ModalBackdrop} from './HomeStyles'; // Import de la balise HomeContainer
 import { mockData } from "../../data/mockData";
+import ProjectList from "../../components/ProjectList/ProjectList";
 
 const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
@@ -42,23 +38,24 @@ const Home = () => {
 
     return (
         <HomeContainer>
-            <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
-            <PageDescription>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</PageDescription>
-            <ProjectList data={data} handleMoreInfoClick={handleMoreInfoClick} />
-            {selectedCardId && (
-                <CardDetailsContainer
-                    project={data.find((project) => project.id === selectedCardId)}
-                    onClose={handleCloseDetails}
-                    scrollToProjectId={scrollToProjectId}
-                />
+            {selectedCardId ? (
+                <>
+                    <ModalBackdrop onClick={handleCloseDetails} />
+                    <CardDetailsContainer
+                        project={data.find((project) => project.id === selectedCardId)}
+                        onClose={handleCloseDetails}
+                        scrollToProjectId={scrollToProjectId}
+                    />
+                </>
+            ) : (
+                <>
+                    <h1>Bienvenue sur la page d'accueil</h1>
+                    <p>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</p>
+                    <ProjectList data={data} handleMoreInfoClick={handleMoreInfoClick} />
+                </>
             )}
         </HomeContainer>
     );
 };
 
 export default Home;
-
-
-
-
-

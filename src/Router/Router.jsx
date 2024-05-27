@@ -23,7 +23,7 @@ function RouterApp() {
                 <Route element={<BasicLayout />}>
                     <Route index element={<Home />} />
                     {/*<Route path="contact" element={<Contact />} />*/}
-                    <Route path="cv" element={<CV />} />
+                    <Route path="cv" element={<CV layout="one-column" />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

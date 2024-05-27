@@ -4,19 +4,14 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  padding: 0 20px;
+  padding: 0 20px 40px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   min-width: 400px;
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
-  height: 620px;
+  max-height: 90vh;
+  margin: 0 auto;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  margin-right: ${({ $cardMarginRight }) => $cardMarginRight}%;
-  @media(max-width: 720px){
-    //min-width: 360px;
-    min-width: 92vw;
-    width: 100%;
-  }
 `;
 
 export const CardTitle = styled.h2`
@@ -56,8 +51,7 @@ export const CardTags = styled.span`
 `;
 
 export const CardImageContainer = styled.div`
-  width: 100%;
-  height: 250px;
+  height: 350px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(127, 23, 4, 0.7);
   background-image: url(${props => process.env.PUBLIC_URL + `/assets/images/${props.image}`});
@@ -115,7 +109,6 @@ export const Modal = styled.div`
   padding: 0 10px 10px 10px;
   text-align: center;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2);
-  //z-index: 10;
   p{
     color: #900c3e;
     font-weight: 500;
@@ -123,11 +116,9 @@ export const Modal = styled.div`
 `;
 
 export const ModalContent = styled.div`
-    /* Ajoutez des styles au contenu de la modale */
 `;
 
 export const ContainerButtonHandleLink = styled.div`
-    /* Ajoutez des styles au contenu de la modale */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
