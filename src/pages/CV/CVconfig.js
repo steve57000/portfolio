@@ -14,10 +14,16 @@ export const cvStyles = {
     dateFontSize: "1em", // Taille de police des dates.
     descriptionColor: "#900c3e", // Couleur des descriptions
     descriptionFontSize: "1.1em", // Taille de police des descriptions.
-    layout: {
+    borderBottomDash: "2px dashed #c70039",
+    layout : {
         oneColumn: "one-column", // Mise en page en une colonne.
         twoColumns: "two-columns", // Mise en page en deux colonnes.
         threeColumns: "three-columns" // Mise en page en trois colonnes.
+    },
+    sectionLayout : {
+        oneColumn: "one-column",
+        twoColumns: "two-columns",
+        threeColumns: "three-columns"
     }
 };
 

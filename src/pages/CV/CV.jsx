@@ -17,11 +17,12 @@ import {
     Position,
     Company,
     Date,
-    Description
+    Description,
 } from './CVstyles';
 import { cvStyles } from './CVconfig';
+import PropTypes from "prop-types";
 
-const CV = ({ layout }) => {
+const CV = ({ layout, sectionLayout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
 
     if (isLoading) {
@@ -37,6 +38,7 @@ const CV = ({ layout }) => {
     }
 
     let ContentContainer;
+    let SectionContainer;
 
     switch (layout) {
         case 'one-column':
@@ -53,16 +55,39 @@ const CV = ({ layout }) => {
             break;
     }
 
+    switch (sectionLayout) {
+        case 'one-column':
+            SectionContainer = ColumnContainer;
+            break;
+        case 'two-columns':
+            SectionContainer = TwoColumnContainer;
+            break;
+        case 'three-columns':
+            SectionContainer = ThreeColumnContainer;
+            break;
+        default:
+            SectionContainer = ColumnContainer;
+            break;
+    }
+
     return (
         <Container color={cvStyles.containerColor}>
             <Title color={cvStyles.titleColor} fontSize={cvStyles.titleFontSize}>{data.title}</Title>
             <BorderContainer>
                 <ContentContainer>
-                    {/* Objectif */}
-                    <Section>
-                        <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Objectif</SectionTitle>
-                        <Paragraph color={cvStyles.paragraphColor} fontSize={cvStyles.paragraphFontSize}>{data.objectif}</Paragraph>
-                    </Section>
+                    <SectionContainer>
+                        {/* Descripton */}
+                        <Section>
+                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Déscription</SectionTitle>
+                            <Paragraph color={cvStyles.paragraphColor} fontSize={cvStyles.paragraphFontSize}>{data.description}</Paragraph>
+                        </Section>
+
+                        {/* Objectif */}
+                        <Section>
+                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Objectif</SectionTitle>
+                            <Paragraph color={cvStyles.paragraphColor} fontSize={cvStyles.paragraphFontSize}>{data.objectif}</Paragraph>
+                        </Section>
+                    </SectionContainer>
 
                     {/* Expérience professionnelle */}
                     <Section>
@@ -89,7 +114,7 @@ const CV = ({ layout }) => {
                         <List>
                             <>
                                 {data.formations && data.formations.map((edu, index) => (
-                                    <ListItem key={index}>
+                                    <ListItem key={index} style={{borderBottom: cvStyles.borderBottomDash}}>
                                         <Position color={cvStyles.positionColor} fontSize={cvStyles.positionFontSize}>{edu.diplome}</Position>
                                         <Company color={cvStyles.companyColor} fontSize={cvStyles.companyFontSize}>{edu.etablissement}, {edu.lieu}</Company>
                                         <Date color={cvStyles.dateColor} fontSize={cvStyles.dateFontSize}>{edu.dateObtention}</Date>
@@ -99,23 +124,41 @@ const CV = ({ layout }) => {
                         </List>
                     </Section>
 
-                    {/* Compétences */}
-                    <Section>
-                        <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Compétences</SectionTitle>
-                        <List>
-                            <>
-                                {data.competences && data.competences.map((skill, index) => (
-                                    <ListItem key={index}>{skill}</ListItem>
-                                ))}
-                            </>
-                        </List>
-                    </Section>
+                    <SectionContainer>
+                        {/* Compétences */}
+                        <Section>
+                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Compétences</SectionTitle>
+                            <List>
+                                <>
+                                    {data.competences && data.competences.map((hardSkill, index) => (
+                                        <ListItem key={index}>{hardSkill}</ListItem>
+                                    ))}
+                                </>
+                            </List>
+                        </Section>
+
+                        {/* Savoir */}
+                        <Section>
+                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Savoir</SectionTitle>
+                            <List>
+                                <>
+                                    {data.savoir && data.savoir.map((softSkill, index) => (
+                                        <ListItem key={index}>{softSkill}</ListItem>
+                                    ))}
+                                </>
+                            </List>
+                        </Section>
+                    </SectionContainer>
                 </ContentContainer>
             </BorderContainer>
         </Container>
     );
 };
 
+CV.propTypes = {
+    layout: PropTypes.string.isRequired,
+    sectionLayout: PropTypes.string.isRequired,
+};
 export default CV;
 
 

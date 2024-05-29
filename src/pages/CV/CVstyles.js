@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   width: 1280px;
   max-width: 95vw;
-  margin: 80px auto 0 auto;
+  margin: 4% auto 0 auto;
   padding:  120px 0 20px 0;
   gap: 20px;
   font-family: 'Arial, sans-serif',serif;
@@ -14,13 +14,13 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   position: absolute;
-  top: 0;
+  top: 5px;
   width: 100%;
   text-align: center;
   font-size: ${props => props.fontSize || '2.5em'};
   color: ${props => props.color || '#2c3e50'};
   background-color: #571845;
-  border: 1px solid #571845;
+  border-bottom: 1px solid #571845;
   border-radius: 20px 20px 0 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
   margin-bottom: 0;
@@ -32,7 +32,7 @@ export const Title = styled.h1`
 
 export const BorderContainer = styled.div`
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  padding: 30px 20px;
+  padding: 30px 3%;
   border-radius: 0 0 20px 20px;
   
   @media (max-width: 767px) {
@@ -92,6 +92,7 @@ export const ListItem = styled.li`
 
 export const ExperienceItem = styled.div`
   margin-bottom: 15px;
+  border-bottom: 2px dashed #c70039;
 `;
 
 export const Position = styled.h3`
