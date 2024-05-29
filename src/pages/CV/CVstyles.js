@@ -2,32 +2,42 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  max-width: 800px;
-  margin: 100px auto 0 auto;
-  padding: 20px;
+  width: 1280px;
+  max-width: 95vw;
+  margin: 80px auto 0 auto;
+  padding:  120px 0 20px 0;
+  gap: 20px;
   font-family: 'Arial, sans-serif',serif;
   color: ${props => props.color || '#333'};
-  line-height: 1.6;
+  line-height: 1.8;
 `;
 
 export const Title = styled.h1`
   position: absolute;
-  top: -90px;
-  width: calc(100% - 40px);
+  top: 0;
+  width: 100%;
   text-align: center;
   font-size: ${props => props.fontSize || '2.5em'};
   color: ${props => props.color || '#2c3e50'};
   background-color: #571845;
   border: 1px solid #571845;
-  border-radius: 10px 10px 0 0;
+  border-radius: 20px 20px 0 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
   margin-bottom: 0;
+  
+  @media (max-width: 767px) {
+    border-radius: 10px 10px 0 0;
+  }
 `;
 
 export const BorderContainer = styled.div`
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
   padding: 30px 20px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 20px 20px;
+  
+  @media (max-width: 767px) {
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
 export const ColumnContainer = styled.div`

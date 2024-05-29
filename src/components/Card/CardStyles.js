@@ -3,29 +3,38 @@ export const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  padding: 0 20px 40px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  min-width: 400px;
+  border-radius: 10px;
+  gap: 20px;
+  padding: 50px 10px;
+  box-shadow: 0 2px 4px rgba(32, 32, 32, 0.4);
   max-width: 600px;
   width: 100%;
   max-height: 90vh;
   margin: 0 auto;
   background: linear-gradient(135deg, #ff7e5f, #feb47b);
+
+  &:hover {
+    box-shadow: 0 4px 10px 3px rgba(32, 32, 32, 0.48);
+  }
 `;
 
 export const CardTitle = styled.h2`
-  width: calc(100% + 40px);
-  margin: 0 -20px;
-  padding: 8px 0 5px 0;
-  font-size: 1.8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  font-size: 2rem;
   text-align: center;
   color: #ff7e5f;
   background-color: #571845;
-  border-radius: 5px 5px 0 0;
-  box-shadow: 0 3px 5px rgba(87, 24, 69, 0.47);
+  border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 2px 8px 1px rgba(199, 0, 57, 0.68);
 `;
-export const CardObjectif = styled.p`
+export const CardObjectif = styled.h3`
+  font-size: 1rem;
+  margin-bottom: 0;
   width: 100%;
   height: 40px;
   color: #c70039;
@@ -36,22 +45,22 @@ export const CardContainerTags = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  gap: 10px;
 `;
 
 export const CardTags = styled.span`
   font-size: 0.8rem;
   font-weight: bolder;
-  padding: 5px;
-  margin-right: 10px;
+  padding: 8px;
   border-radius: 5px;
   background-color: #900c3e;
-  color: #c70039;
+  color: #e80344;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.42);
 `;
 
 export const CardImageContainer = styled.div`
-  height: 350px;
+  width: 100%;
+  height: 320px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(127, 23, 4, 0.7);
   background-image: url(${props => process.env.PUBLIC_URL + `/assets/images/${props.image}`});
@@ -92,7 +101,6 @@ export const CardLink = styled.a`
   color: #007bff;
   text-decoration: none;
   cursor: pointer;
-  //z-index: 10;
   &:hover {
     text-decoration: underline;
   }

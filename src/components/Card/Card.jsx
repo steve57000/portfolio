@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
     CardContainer,
@@ -17,10 +17,11 @@ import {
     Button,
     ContainerButtonHandleLink
 } from './CardStyles';
-import {StyleSheetManager} from "styled-components";
+import { StyleSheetManager } from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo = () => {} }) => {
+const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo }) => {
     const [openModal, setOpenModal] = useState(false);
+
     const handleLinkClick = (openInNewTab) => {
         if (openInNewTab) {
             window.open(websiteUrl, '_blank');
@@ -28,37 +29,32 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
             window.location.href = websiteUrl;
         }
     };
-
     return (
-        <CardContainer>
+        <CardContainer id={id}>
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>
             <CardContainerTags>
-                <>
-                    {tags.map((tag, index) => (
-                        <CardTags key={index}>{tag}</CardTags>
-                    ))}
-                </>
+                {tags.map((tag, index) => (
+                    <CardTags key={index}>{tag}</CardTags>
+                ))}
             </CardContainerTags>
             <StyleSheetManager shouldForwardProp={(prop) => prop !== 'image'}>
                 <CardImageContainer image={image} />
             </StyleSheetManager>
             <CardSavoir>
-                <>
-                    {savoir.map((savoir, index) => (
-                        <CardSavoirList key={index}>
-                            <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
-                            {savoir}
-                        </CardSavoirList>
-                    ))}
-                </>
+                {savoir.map((savoir, index) => (
+                    <CardSavoirList key={index}>
+                        <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
+                        {savoir}
+                    </CardSavoirList>
+                ))}
             </CardSavoir>
             <ContainerLink>
                 <CardLink
                     aria-label="Plus d'informations"
                     role="button"
                     tabIndex={0}
-                    onClick={(event) => onClickMoreInfo()}
+                    onClick={() => onClickMoreInfo()}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             onClickMoreInfo();
@@ -74,7 +70,7 @@ const Card = ({ title = "Titre par défaut", objectif = "Objectif de mission", t
                             onClick={() => setOpenModal(true)}
                             onKeyDown={(event) => {
                                 if (event.key === 'Enter') {
-                                    setOpenModal(true); // Déclenche l'action lorsque la touche "Entrée" est pressée
+                                    setOpenModal(true);
                                 }
                             }}
                             aria-label="Visitez le site web"
@@ -131,4 +127,3 @@ Card.propTypes = {
 };
 
 export default Card;
-

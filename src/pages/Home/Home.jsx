@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect} from 'react';
 import useDataFetching from '../../hooks/useData';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
-import {HomeContainer, ModalBackdrop} from './HomeStyles'; // Import de la balise HomeContainer
+import {ContainerProject, HomeContainer, ModalBackdrop} from './HomeStyles';
 import { mockData } from "../../data/mockData";
-import ProjectList from "../../components/ProjectList/ProjectList";
+import Card from "../../components/Card/Card";
 
 const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [scrollToProjectId, setScrollToProjectId] = useState(null);
-    const lastFocusedElement = useRef(null);
+    const [selectedCardIdRef, setSelectedCardIdRef] = useState(null);
 
-    const handleMoreInfoClick = (event) => {
-        setSelectedCardId(event);
-        lastFocusedElement.current = event.currentTarget;
+    const handleMoreInfoClick = (id) => {
+        setSelectedCardId(id);
+        setSelectedCardIdRef(id);
     };
 
     useEffect(() => {
@@ -21,12 +21,23 @@ const Home = () => {
             setScrollToProjectId(selectedCardId);
         }
     }, [selectedCardId]);
+
     const handleCloseDetails = () => {
         setSelectedCardId(null);
-        if (lastFocusedElement.current) {
-            lastFocusedElement.current.focus();
+        if (selectedCardIdRef) {
+            console.log(selectedCardIdRef)
+            const cardElement = document.getElementById(`card-${selectedCardIdRef}`);
+
+            if (cardElement) {
+                console.log(cardElement)
+                cardElement.scrollIntoView({ behavior: 'smooth' });
+                cardElement.focus();
+            }
         }
+        setSelectedCardIdRef(null); // Réinitialiser l'identifiant de référence
     };
+
+
 
     if (isLoading) {
         return <div>Chargement en cours...</div>;
@@ -51,7 +62,23 @@ const Home = () => {
                 <>
                     <h1>Bienvenue sur la page d'accueil</h1>
                     <p>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</p>
-                    <ProjectList data={data} handleMoreInfoClick={handleMoreInfoClick} />
+                    <ContainerProject>
+                        <>
+                            {data.map((project) => (
+                                <Card
+                                    key={project.id}
+                                    id={`card-${project.id}`}
+                                    title={project.title}
+                                    objectif={project.objectif}
+                                    tags={Array.isArray(project.tags) ? project.tags : []}
+                                    image={project.images}
+                                    savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                                    websiteUrl={project.websiteUrl}
+                                    onClickMoreInfo={() => handleMoreInfoClick(project.id)}
+                                />
+                            ))}
+                        </>
+                    </ContainerProject>
                 </>
             )}
         </HomeContainer>
@@ -59,3 +86,4 @@ const Home = () => {
 };
 
 export default Home;
+

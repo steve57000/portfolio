@@ -11,7 +11,6 @@ import {
     ButtonWithTopMargin,
     ButtonWithBottomMargin,
 } from './CardDetailsContainerStyles';
-
 import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
 
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
@@ -38,17 +37,20 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     }, [scrollToProjectId]);
 
     const handleOpenPDF = (pdfLink) => {
+        console.log("Opening PDF:", pdfLink);
         if (project.docs) {
             window.open(process.env.PUBLIC_URL + `/assets/docs/${pdfLink}`, '_blank');
         }
     };
 
     const handleOpenVideo = (indexVideo) => {
+        console.log("Opening video modal for video index:", indexVideo);
         setIsVideoModalOpen(true);
         setSelectedVideoIndex(indexVideo);
     };
 
     const handleCloseVideoModal = () => {
+        console.log("Closing video modal");
         setIsVideoModalOpen(false);
     };
 
@@ -98,7 +100,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 {func.imgs && listStates[project.id]?.[index] && (
                                     <>
                                         {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt="" />
+                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt=""/>
                                         ))}
                                     </>
                                 )}
@@ -147,10 +149,11 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                     tabIndex={0}
                     onClick={onClose}
                     onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
-                        onClose();
-                    }
-                }}>
+                        if (event.key === 'Enter') {
+                            onClose();
+                        }
+                    }}
+                >
                     Fermer
                 </ButtonWithBottomMargin>
             </Container>
@@ -192,3 +195,4 @@ CardDetailsContainer.propTypes = {
 };
 
 export default CardDetailsContainer;
+
