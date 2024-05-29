@@ -5,7 +5,7 @@ import Home from '../pages/Home/Home';
 // import Contact from './pages/Contact';
 import NotFound from '../pages/NotFound/NotFound';
 import CV from "../pages/CV/CV";
-
+import useWindowSize from '../hooks/useWindowSize';
 function BasicLayout() {
     return (
         <>
@@ -17,13 +17,15 @@ function BasicLayout() {
 }
 
 function RouterApp() {
+    const { width } = useWindowSize();
+    const sectionLayout = width < 763 ? 'one-column' : 'two-columns';
     return (
         <Router basename="portfolio">
             <Routes>
                 <Route element={<BasicLayout />}>
                     <Route index element={<Home />} />
                     {/*<Route path="contact" element={<Contact />} />*/}
-                    <Route path="cv" element={<CV layout="one-column" />} />
+                    <Route path="cv" element={<CV layout="one-column" sectionLayout={sectionLayout} />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
