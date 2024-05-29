@@ -13,7 +13,6 @@ export const Nav = styled.nav`
     text-align: center;
     padding: 10px;
     border-radius: 10px;
-    transition: all 3s linear;
     
     @media (max-width: 767px) {
       flex-direction: column;
@@ -22,7 +21,7 @@ export const Nav = styled.nav`
     }
     
     li{
-      transition: all .3s linear;
+      transition: background-color .3s linear, box-shadow .3s linear,color .3s linear;
       width: 120px;
       border-radius: 10px;
       
@@ -31,7 +30,6 @@ export const Nav = styled.nav`
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.52);
         color: #ff7e5f;
         a{
-          
           color: #ff7e5f;
         }
       }
