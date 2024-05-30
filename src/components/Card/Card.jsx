@@ -34,20 +34,24 @@ const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission"
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>
             <CardContainerTags>
-                {tags.map((tag, index) => (
-                    <CardTags key={index}>{tag}</CardTags>
-                ))}
+                <>
+                    {tags.map((tag, index) => (
+                        <CardTags key={index}>{tag}</CardTags>
+                    ))}
+                </>
             </CardContainerTags>
             <StyleSheetManager shouldForwardProp={(prop) => prop !== 'image'}>
                 <CardImageContainer image={image} />
             </StyleSheetManager>
             <CardSavoir>
-                {savoir.map((savoir, index) => (
-                    <CardSavoirList key={index}>
-                        <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
-                        {savoir}
-                    </CardSavoirList>
-                ))}
+                <>
+                    {savoir.map((savoir, index) => (
+                        <CardSavoirList key={index}>
+                            <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
+                            {savoir}
+                        </CardSavoirList>
+                    ))}
+                </>
             </CardSavoir>
             <ContainerLink>
                 <CardLink

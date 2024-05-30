@@ -1,10 +1,14 @@
 import React from 'react';
-import Router from './Router/Router'; // Importez votre composant Router
+import RouterApp from "./Router/Router";
+import { ThemeProvider } from 'styled-components';
+import { configTheme } from './utils/theme/configTheme';
 import './App.css';
 
 function App() {
     return (
-        <Router />
+        <ThemeProvider theme={configTheme}>
+            <RouterApp />
+        </ThemeProvider>
     );
 }
 

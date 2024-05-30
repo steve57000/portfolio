@@ -5,7 +5,7 @@ import Home from '../pages/Home/Home';
 // import Contact from './pages/Contact';
 import NotFound from '../pages/NotFound/NotFound';
 import CV from "../pages/CV/CV";
-import useWindowSize from '../hooks/useWindowSize';
+import useWindowSize from '../utils/hooks/useWindowSize';
 function BasicLayout() {
     return (
         <>
@@ -25,7 +25,7 @@ function RouterApp() {
                 <Route element={<BasicLayout />}>
                     <Route index element={<Home />} />
                     {/*<Route path="contact" element={<Contact />} />*/}
-                    <Route path="cv" element={<CV layout="one-column" sectionLayout={sectionLayout} />} />
+                    <Route path="cv" element={<CV layout={sectionLayout} />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

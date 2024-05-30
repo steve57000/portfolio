@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import useDataFetching from '../../hooks/useData';
+import React, { useState, useEffect } from 'react';
+import useDataFetching from '../../utils/hooks/useData';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
-import {ContainerProject, HomeContainer, ModalBackdrop} from './HomeStyles';
+import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription } from './HomeStyles';
 import { mockData } from "../../data/mockData";
 import Card from "../../components/Card/Card";
 
@@ -37,8 +37,6 @@ const Home = () => {
         setSelectedCardIdRef(null); // Réinitialiser l'identifiant de référence
     };
 
-
-
     if (isLoading) {
         return <div>Chargement en cours...</div>;
     }
@@ -60,8 +58,8 @@ const Home = () => {
                 </>
             ) : (
                 <>
-                    <h1>Bienvenue sur la page d'accueil</h1>
-                    <p>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</p>
+                    <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
+                    <PageDescription>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</PageDescription>
                     <ContainerProject>
                         <>
                             {data.map((project) => (
@@ -86,4 +84,3 @@ const Home = () => {
 };
 
 export default Home;
-

@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { configTheme } from '../../utils/theme/configTheme';
+
+const { colors, borders, fonts, sizes, boxShadow } = configTheme;
 
 export const Container = styled.div`
   position: relative;
-  width: 1280px;
+  width: ${sizes.maxWidth};
   max-width: 95vw;
   margin: 4% auto 0 auto;
-  padding:  120px 0 20px 0;
-  gap: 20px;
-  font-family: 'Arial, sans-serif',serif;
-  color: ${props => props.color || '#333'};
+  padding-top: 100px;
+  font-family: 'Arial, sans-serif', serif;
+  color: ${colors.primary};
   line-height: 1.8;
 `;
 
@@ -17,24 +19,26 @@ export const Title = styled.h1`
   top: 5px;
   width: 100%;
   text-align: center;
-  font-size: ${props => props.fontSize || '2.5em'};
-  color: ${props => props.color || '#2c3e50'};
-  background-color: #571845;
-  border-bottom: 1px solid #571845;
+  font-size: ${fonts.sizeLarge};
+  letter-spacing: 3px;
+  color: ${colors.primary};
+  background-color: ${colors.fourth};
+  border-bottom: ${borders.solid};
   border-radius: 20px 20px 0 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
   margin-bottom: 0;
-  
+  padding: 10px 0;
+  box-shadow:  ${boxShadow.shadowInset};
+
   @media (max-width: 767px) {
     border-radius: 10px 10px 0 0;
   }
 `;
 
 export const BorderContainer = styled.div`
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  background: ${colors.backgroundGradient};
   padding: 30px 3%;
   border-radius: 0 0 20px 20px;
-  
+
   @media (max-width: 767px) {
     border-radius: 0 0 10px 10px;
   }
@@ -63,21 +67,24 @@ export const Section = styled.section`
   padding: 0 0 20px 0;
   border-top: none;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.49);
+  box-shadow: ${boxShadow.shadowLight};
+  background: ${colors.backgroundGradientLight};
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: ${props => props.fontSize || '1.8em'};
-  color: ${props => props.color || '#34495e'};
+  font-size: ${fonts.sizeMedium};
+  letter-spacing: 2px;
+  color: ${colors.primary};
   border-radius: 10px 10px 0 0;
-  padding: 0 20px;
+  padding: 5px 20px;
+  line-height:  2; 
   margin-top: 0;
-  background-color: #900c3e;
+  background-color: ${colors.fifth};
 `;
 
 export const Paragraph = styled.p`
-  font-size: ${props => props.fontSize || '1.2em'};
-  color: ${props => props.color || '#7f8c8d'};
+  font-size: ${fonts.sizeRegular};
+  color: ${colors.fourthLight};
   padding: 0 20px;
 `;
 
@@ -88,31 +95,39 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   margin-bottom: 10px;
+  color: ${colors.fourthLight};
+`;
+
+export const ListItemBorder = styled(ListItem)`
+  border-bottom: ${borders.dashed};
 `;
 
 export const ExperienceItem = styled.div`
   margin-bottom: 15px;
-  border-bottom: 2px dashed #c70039;
+  border-bottom: ${borders.dashed};
 `;
 
 export const Position = styled.h3`
-  font-size: ${props => props.fontSize || '1.5em'};
-  color: ${props => props.color || '#2980b9'};
+  font-size: ${fonts.sizeRegular};
+  color: ${colors.fourth};
+  letter-spacing: 1px;
 `;
 
 export const Company = styled.p`
-  font-size: ${props => props.fontSize || '1.2em'};
-  color: ${props => props.color || '#8e44ad'};
+  margin-top: -20px;
+  font-size: ${fonts.sizeSmall};
+  color: ${colors.fourthLight};
+  letter-spacing: 1px;
 `;
 
 export const Date = styled.p`
-  font-size: ${props => props.fontSize || '1em'};
-  color: ${props => props.color || '#95a5a6'};
+  margin-top: -20px;
+  font-size: ${fonts.sizeExtraSmall};
+  color: ${colors.sixthLight};
 `;
 
 export const Description = styled.p`
-  font-size: ${props => props.fontSize || '1.1em'};
-  color: ${props => props.color || '#7f8c8d'};
+  font-size: ${fonts.sizeSmall};
+  color: ${colors.fifth};
+  line-height: 1.2;
 `;
-
-

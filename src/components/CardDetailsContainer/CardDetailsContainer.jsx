@@ -8,8 +8,7 @@ import {
     Container,
     Chevron,
     ImgContainer,
-    ButtonWithTopMargin,
-    ButtonWithBottomMargin,
+    ButtonStyles,
 } from './CardDetailsContainerStyles';
 import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
 
@@ -110,7 +109,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                 </>
                 <>
                     {project.docs && project.docs.map((doc, index) => (
-                        <ButtonWithTopMargin
+                        <ButtonStyles
                             key={index}
                             role="button"
                             tabIndex={0}
@@ -123,12 +122,12 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                             }}
                         >
                             Voir {doc.nameDocs}
-                        </ButtonWithTopMargin>
+                        </ButtonStyles>
                     ))}
                 </>
                 <>
                     {project.video && project.video.map((video, index) => (
-                        <ButtonWithTopMargin
+                        <ButtonStyles
                             key={index}
                             role="button"
                             tabIndex={0}
@@ -141,10 +140,10 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                             }}
                         >
                             Voir {video.name}
-                        </ButtonWithTopMargin>
+                        </ButtonStyles>
                     ))}
                 </>
-                <ButtonWithBottomMargin
+                <ButtonStyles
                     role="button"
                     tabIndex={0}
                     onClick={onClose}
@@ -155,7 +154,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                     }}
                 >
                     Fermer
-                </ButtonWithBottomMargin>
+                </ButtonStyles>
             </Container>
             {isVideoModalOpen && (
                 <FullScreenVideoModal

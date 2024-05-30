@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import { configTheme } from '../../utils/theme/configTheme';
 
+const { colors } = configTheme
 export const Nav = styled.nav`
   text-align: right;
   font-size: 1.2rem;
@@ -9,7 +11,7 @@ export const Nav = styled.nav`
     margin: 10px;
     gap: 10px;
     list-style-type: none;
-    background-color: #ff7e5f;
+    background-color: ${colors.primary};
     text-align: center;
     padding: 10px;
     border-radius: 10px;
@@ -18,30 +20,21 @@ export const Nav = styled.nav`
       flex-direction: column;
       gap: 5px;
       margin: 0;
+      background: none;
     }
     
     li{
       transition: background-color .3s linear, box-shadow .3s linear,color .3s linear;
       width: 120px;
       border-radius: 10px;
-      
-      &:hover {
+
+      &:hover, &:focus {
         background-color: #900c3e;
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.52);
-        color: #ff7e5f;
         a{
-          color: #ff7e5f;
+          color: ${colors.primary};
         }
       }
-    }
-    
-    a{
-      display: block;
-      width: 100%;
-      height: 100%;
-      padding: 10px;
-      text-decoration: none;
-      color: #900c3e;
     }
   }
 `;

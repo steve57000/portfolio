@@ -1,16 +1,23 @@
 import styled from 'styled-components';
+import { configTheme } from '../../utils/theme/configTheme';
 
+const { sizes, colors } = configTheme
 export const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  width: 100%;
+  background: ${colors.backgroundGradient};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   @media (max-width: 767px) {
     border-radius:  0 0 10px 0;
     padding:  0 0 0 10px;
   }
+`;
+export const HeaderSize = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: ${sizes.maxWidth};
+  margin: 0 auto;
+  padding: 10px;
 `;
 
 export const Logo = styled.img`

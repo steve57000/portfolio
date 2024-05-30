@@ -1,8 +1,9 @@
 import React from 'react';
-import useDataFetching from '../../hooks/useData';
+import useDataFetching from '../../utils/hooks/useData';
 import { curriculumVitae } from "../../data/mockData";
 import {
     Container,
+    ContentContainer,
     Title,
     BorderContainer,
     ColumnContainer,
@@ -18,11 +19,11 @@ import {
     Company,
     Date,
     Description,
+    ListItemBorder,
 } from './CVstyles';
-import { cvStyles } from './CVconfig';
 import PropTypes from "prop-types";
 
-const CV = ({ layout, sectionLayout }) => {
+const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
 
     if (isLoading) {
@@ -38,7 +39,6 @@ const CV = ({ layout, sectionLayout }) => {
     }
 
     let ContentContainer;
-    let SectionContainer;
 
     switch (layout) {
         case 'one-column':
@@ -55,100 +55,83 @@ const CV = ({ layout, sectionLayout }) => {
             break;
     }
 
-    switch (sectionLayout) {
-        case 'one-column':
-            SectionContainer = ColumnContainer;
-            break;
-        case 'two-columns':
-            SectionContainer = TwoColumnContainer;
-            break;
-        case 'three-columns':
-            SectionContainer = ThreeColumnContainer;
-            break;
-        default:
-            SectionContainer = ColumnContainer;
-            break;
-    }
-
     return (
-        <Container color={cvStyles.containerColor}>
-            <Title color={cvStyles.titleColor} fontSize={cvStyles.titleFontSize}>{data.title}</Title>
+        <Container>
+            <Title>{data.title}</Title>
             <BorderContainer>
                 <ContentContainer>
-                    <SectionContainer>
-                        {/* Descripton */}
-                        <Section>
-                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Déscription</SectionTitle>
-                            <Paragraph color={cvStyles.paragraphColor} fontSize={cvStyles.paragraphFontSize}>{data.description}</Paragraph>
-                        </Section>
-
-                        {/* Objectif */}
-                        <Section>
-                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Objectif</SectionTitle>
-                            <Paragraph color={cvStyles.paragraphColor} fontSize={cvStyles.paragraphFontSize}>{data.objectif}</Paragraph>
-                        </Section>
-                    </SectionContainer>
-
-                    {/* Expérience professionnelle */}
+                    {/* Descripton */}
                     <Section>
-                        <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Expérience professionnelle</SectionTitle>
+                        <SectionTitle>Déscription</SectionTitle>
+                        <Paragraph>{data.description}</Paragraph>
+                    </Section>
+
+                    {/* Objectif */}
+                    <Section>
+                        <SectionTitle>Objectif</SectionTitle>
+                        <Paragraph>{data.objectif}</Paragraph>
+                    </Section>
+                </ContentContainer>
+
+                {/* Expérience professionnelle */}
+                <Section>
+                    <SectionTitle>Expérience professionnelle</SectionTitle>
+                    <List>
+                        <>
+                            {data.experience && data.experience.map((exp, index) => (
+                                <ListItem key={index}>
+                                    <ExperienceItem>
+                                        <Position>{exp.poste}</Position>
+                                        <Company>{exp.entreprise}, {exp.lieu}</Company>
+                                        <Date>{exp.dateDebut} - {exp.dateFin}</Date>
+                                        <Description>{exp.description}</Description>
+                                    </ExperienceItem>
+                                </ListItem>
+                            ))}
+                        </>
+                    </List>
+                </Section>
+
+                {/* Éducation */}
+                <Section>
+                    <SectionTitle>Éducation</SectionTitle>
+                    <List>
+                        <>
+                            {data.formations && data.formations.map((edu, index) => (
+                                <ListItemBorder key={index}>
+                                    <Position>{edu.diplome}</Position>
+                                    <Company>{edu.etablissement}, {edu.lieu}</Company>
+                                    <Date>{edu.dateObtention}</Date>
+                                </ListItemBorder>
+                            ))}
+                        </>
+                    </List>
+                </Section>
+
+                <ContentContainer>
+                    {/* Compétences */}
+                    <Section>
+                        <SectionTitle>Compétences</SectionTitle>
                         <List>
                             <>
-                                {data.experience && data.experience.map((exp, index) => (
-                                    <ListItem key={index}>
-                                        <ExperienceItem>
-                                            <Position color={cvStyles.positionColor} fontSize={cvStyles.positionFontSize}>{exp.poste}</Position>
-                                            <Company color={cvStyles.companyColor} fontSize={cvStyles.companyFontSize}>{exp.entreprise}, {exp.lieu}</Company>
-                                            <Date color={cvStyles.dateColor} fontSize={cvStyles.dateFontSize}>{exp.dateDebut} - {exp.dateFin}</Date>
-                                            <Description color={cvStyles.descriptionColor} fontSize={cvStyles.descriptionFontSize}>{exp.description}</Description>
-                                        </ExperienceItem>
-                                    </ListItem>
+                                {data.competences && data.competences.map((hardSkill, index) => (
+                                    <ListItem key={index}>{hardSkill}</ListItem>
                                 ))}
                             </>
                         </List>
                     </Section>
 
-                    {/* Éducation */}
+                    {/* Savoir */}
                     <Section>
-                        <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Éducation</SectionTitle>
+                        <SectionTitle>Savoir</SectionTitle>
                         <List>
                             <>
-                                {data.formations && data.formations.map((edu, index) => (
-                                    <ListItem key={index} style={{borderBottom: cvStyles.borderBottomDash}}>
-                                        <Position color={cvStyles.positionColor} fontSize={cvStyles.positionFontSize}>{edu.diplome}</Position>
-                                        <Company color={cvStyles.companyColor} fontSize={cvStyles.companyFontSize}>{edu.etablissement}, {edu.lieu}</Company>
-                                        <Date color={cvStyles.dateColor} fontSize={cvStyles.dateFontSize}>{edu.dateObtention}</Date>
-                                    </ListItem>
+                                {data.savoir && data.savoir.map((softSkill, index) => (
+                                    <ListItem key={index}>{softSkill}</ListItem>
                                 ))}
                             </>
                         </List>
                     </Section>
-
-                    <SectionContainer>
-                        {/* Compétences */}
-                        <Section>
-                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Compétences</SectionTitle>
-                            <List>
-                                <>
-                                    {data.competences && data.competences.map((hardSkill, index) => (
-                                        <ListItem key={index}>{hardSkill}</ListItem>
-                                    ))}
-                                </>
-                            </List>
-                        </Section>
-
-                        {/* Savoir */}
-                        <Section>
-                            <SectionTitle color={cvStyles.sectionTitleColor} fontSize={cvStyles.sectionTitleFontSize}>Savoir</SectionTitle>
-                            <List>
-                                <>
-                                    {data.savoir && data.savoir.map((softSkill, index) => (
-                                        <ListItem key={index}>{softSkill}</ListItem>
-                                    ))}
-                                </>
-                            </List>
-                        </Section>
-                    </SectionContainer>
                 </ContentContainer>
             </BorderContainer>
         </Container>
@@ -157,7 +140,6 @@ const CV = ({ layout, sectionLayout }) => {
 
 CV.propTypes = {
     layout: PropTypes.string.isRequired,
-    sectionLayout: PropTypes.string.isRequired,
 };
 export default CV;
 
