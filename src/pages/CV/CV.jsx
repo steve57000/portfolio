@@ -3,7 +3,6 @@ import useDataFetching from '../../utils/hooks/useData';
 import { curriculumVitae } from "../../data/mockData";
 import {
     Container,
-    ContentContainer,
     Title,
     BorderContainer,
     ColumnContainer,
