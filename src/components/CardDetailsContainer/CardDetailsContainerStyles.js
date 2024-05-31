@@ -22,9 +22,13 @@ export const CardDetailsStyles = styled.div`
   padding: 0 10px 20px 10px;
   z-index: 10000;
 
+  @media (max-width: 767px) {
+    padding: 0 5px 20px 5px;
+  }
+
   h2 {
     width: calc(100% + 20px);
-    margin-left: -10px;
+    margin: -20px -10px 0 -10px;
     padding: 10px 0;
     font-size: ${fonts.sizeLarge};
     text-align: center;
@@ -32,6 +36,11 @@ export const CardDetailsStyles = styled.div`
     background-color: ${colors.fifth};
     border-radius: 8px 8px 0 0;
     box-shadow: 0 3px 5px rgba(87, 24, 69, 0.47);
+
+    @media (max-width: 767px) {
+      width: calc(100% + 12px);
+      margin: -20px -6px 0 -6px;
+    }
   }
 `;
 
@@ -42,7 +51,7 @@ export const ButtonStyles = styled.div`
   max-width: 300px;
   min-height: 50px;
   text-align: center;
-  padding: 15px 30px;
+  //padding: 15px 30px;
   border-radius: 10px;
   background-color: ${colors.primary};
   color: ${colors.fifth};
@@ -52,6 +61,10 @@ export const ButtonStyles = styled.div`
   transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
   transform-origin: center;
 
+  @media (max-width: 767px) {
+    
+  }
+  
   &:hover {
     transform: scale(1.1);
     ${hoverStyles}
@@ -68,6 +81,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  
+  @media (max-width: 767px) {
+    gap: 10px;
+  }
 `
 
 export const ContainerList = styled.div`
@@ -77,12 +94,16 @@ export const ContainerList = styled.div`
   border-radius: 10px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.32);
   cursor: pointer;
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   width: 100%;
   max-width: calc(100% / 1.3);
   transition: all 0.3s;
-  ${props => props.$isOpen && hoverStyles}
+  ${props => props.$isOpen && hoverStyles};
 
+  @media (max-width: 767px) {
+    padding: 0 5px;
+  }
+  
   &:hover {
     ${hoverStyles}
     span{

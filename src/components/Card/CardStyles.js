@@ -22,6 +22,7 @@ export const CardContainer = styled.div`
   }
   @media (max-width: 767px) {
     padding: 70px 10px;
+    gap: 10px;
   }
 `;
 
@@ -47,6 +48,10 @@ export const CardObjectif = styled.h3`
   min-height: 120px;
   color: ${colors.third};
   text-align: center;
+  @media (max-width: 767px) {
+    font-size: ${fonts.sizeSmall};
+    min-height: 90px;
+  }
 `;
 
 export const CardContainerTags = styled.div`
@@ -57,6 +62,10 @@ export const CardContainerTags = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
+  
+  @media (max-width: 767px) {
+    top: 140px;
+  }
 `;
 
 export const CardTags = styled.span`
@@ -67,6 +76,10 @@ export const CardTags = styled.span`
   background-color: ${colors.fifth};
   color: ${colors.sixth};
   box-shadow: ${boxShadow.shadowLight};
+  @media (max-width: 767px) {
+    padding: 5px;
+    font-size: ${fonts.sizeExtraSmall};
+  }
 `;
 
 export const CardImageContainer = styled.div`
@@ -89,7 +102,6 @@ export const CardSavoir = styled.ul`
 export const CardSavoirImg = styled.img`
   position: absolute;
   left: 0;
-  padding-top: 2px;
 `;
 
 export const CardSavoirList = styled.li`

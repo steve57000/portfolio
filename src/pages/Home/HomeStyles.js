@@ -6,12 +6,19 @@ export const HomeContainer = styled.div`
   max-width: ${sizes.maxWidth};
   padding: ${sizes.padding};
   margin: 0 auto;
+  @media (max-width: 767px) {
+    padding: ${sizes.paddingMin};
+  }
 `;
 
 export const PageTitle = styled.h1`
-  font-size: 2rem;
+  font-size: ${fonts.sizeLarge};
   margin-bottom: 20px;
   color: ${colors.textDark};
+  
+  @media (max-width: 767px) {
+    font-size: ${fonts.sizeMedium};
+  }
 `;
 
 export const PageDescription = styled.p`

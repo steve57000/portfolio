@@ -38,6 +38,7 @@ export const configTheme = {
     sizes: {
         maxWidth: "1920px", // Largeur maximale de la page d'accueil
         padding: "20px", // Espacement intérieur de la page d'accueil
+        paddingMin: "10px",
     },
     layout: {
         oneColumn: "one-column",

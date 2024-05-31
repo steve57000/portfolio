@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   @media (max-width: 767px) {
     border-radius:  0 0 10px 0;
-    padding:  0 0 0 10px;
+    padding:  0;
   }
 `;
 export const HeaderSize = styled.div`
@@ -18,6 +18,10 @@ export const HeaderSize = styled.div`
   max-width: ${sizes.maxWidth};
   margin: 0 auto;
   padding: 10px;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
 export const Logo = styled.img`
