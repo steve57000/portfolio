@@ -71,7 +71,7 @@ export const CardTags = styled.span`
 
 export const CardImageContainer = styled.div`
   width: 100%;
-  min-height: 320px;
+  min-height: 280px;
   max-height: 320px;
   border-radius: 5px;
   box-shadow: ${boxShadow.shadowLight};
