@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { configTheme } from "../../utils/theme/configTheme";
+import {fadeInSlideDown, fadeInSlideUp, fadeInZoom} from "../../utils/stylesKeyframes/stylesKeyframes";
 
 const { colors, fonts } = configTheme;
 
@@ -50,8 +51,6 @@ export const ButtonStyles = styled.div`
   min-width: 150px;
   max-width: 300px;
   min-height: 50px;
-  text-align: center;
-  //padding: 15px 30px;
   border-radius: 10px;
   background-color: ${colors.primary};
   color: ${colors.fifth};
@@ -61,8 +60,9 @@ export const ButtonStyles = styled.div`
   transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
   transform-origin: center;
 
-  @media (max-width: 767px) {
-    
+  p {
+    width: 100%;
+    text-align: center;
   }
   
   &:hover {
@@ -98,6 +98,9 @@ export const ContainerList = styled.div`
   width: 100%;
   max-width: calc(100% / 1.3);
   transition: all 0.3s;
+  opacity: 0;
+  animation: ${fadeInSlideDown} 0.5s ease forwards;
+  animation-delay: ${({ $index }) => $index * 0.2}s;
   ${props => props.$isOpen && hoverStyles};
 
   @media (max-width: 767px) {
@@ -153,7 +156,7 @@ export const CardDetailsUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   @media(max-width: 768px){
     padding: 0 1px;
   }
@@ -167,7 +170,9 @@ export const CardDetailsList = styled.li`
   margin-top: 20px;
   border-radius: 10px;
   box-shadow: inset 0 1px 3px rgba(144, 12, 62, 0.76);
-
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: ${({ $index }) => $index * 0.3}s;
   @media(max-width: 1080px){
     width: 100%;
   }
@@ -184,6 +189,9 @@ export const ImgContainer = styled.div`
     margin: 1% ;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
     border-radius: 1vh;
+    opacity: 0;
+    animation: ${fadeInZoom} 0.5s ease forwards;
+    animation-delay: 0.8s;
     @media(max-width: 1080px){
       min-width: 100%;
     }

@@ -62,10 +62,11 @@ const Home = () => {
                     <PageDescription>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</PageDescription>
                     <ContainerProject>
                         <>
-                            {data.map((project) => (
+                            {data.map((project, index) => (
                                 <Card
                                     key={project.id}
                                     id={`card-${project.id}`}
+                                    index={index}
                                     title={project.title}
                                     objectif={project.objectif}
                                     tags={Array.isArray(project.tags) ? project.tags : []}

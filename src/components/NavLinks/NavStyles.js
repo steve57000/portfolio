@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { configTheme } from '../../utils/theme/configTheme';
+import {fadeInSlideUp} from "../../utils/stylesKeyframes/stylesKeyframes";
 
 const { colors, fonts } = configTheme
 export const Nav = styled.nav`
@@ -28,6 +29,8 @@ export const Nav = styled.nav`
       transition: background-color .3s linear, box-shadow .3s linear,color .3s linear;
       width: 120px;
       border-radius: 10px;
+      opacity: 0;
+      animation: ${fadeInSlideUp} 0.5s ease forwards;
       
       @media (max-width: 767px) {
         width: 100px;

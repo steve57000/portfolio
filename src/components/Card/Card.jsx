@@ -19,7 +19,7 @@ import {
 } from './CardStyles';
 import { StyleSheetManager } from "styled-components";
 const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
-const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo }) => {
+const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo }) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleLinkClick = (openInNewTab) => {
@@ -30,10 +30,10 @@ const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission"
         }
     };
     return (
-        <CardContainer id={id}>
-            <CardTitle>{title}</CardTitle>
-            <CardObjectif>{objectif}</CardObjectif>
-            <CardContainerTags>
+        <CardContainer id={id} $index={index}>
+            <CardTitle $index={index}>{title}</CardTitle>
+            <CardObjectif $index={index}>{objectif}</CardObjectif>
+            <CardContainerTags $index={index}>
                 <>
                     {tags.map((tag, index) => (
                         <CardTags key={index}>{tag}</CardTags>
@@ -41,19 +41,19 @@ const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission"
                 </>
             </CardContainerTags>
             <StyleSheetManager shouldForwardProp={(prop) => prop !== 'image'}>
-                <CardImageContainer image={image} />
+                <CardImageContainer $index={index} image={image} />
             </StyleSheetManager>
-            <CardSavoir>
+            <CardSavoir $index={index}>
                 <>
-                    {savoir.map((savoir, index) => (
-                        <CardSavoirList key={index}>
+                    {savoir.map((savoirItem, idx) => (
+                        <CardSavoirList key={idx}>
                             <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
-                            {savoir}
+                            {savoirItem}
                         </CardSavoirList>
                     ))}
                 </>
             </CardSavoir>
-            <ContainerLink>
+            <ContainerLink $index={index}>
                 <CardLink
                     aria-label="Plus d'informations"
                     role="button"
@@ -122,6 +122,7 @@ const Card = ({id, title = "Titre par défaut", objectif = "Objectif de mission"
 
 Card.propTypes = {
     title: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
     objectif: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     image: PropTypes.string.isRequired,

@@ -73,6 +73,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                     {project.fonction.map((func, index) => (
                         <ContainerList
                             key={index}
+                            $index={index}
                             role="button"
                             tabIndex={0}
                             onClick={() => toggleListVisibility(project.id, index)}
@@ -90,12 +91,12 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 {listStates[project.id]?.[index] && (
                                     <>
                                         {func.list.map((item, idx) => (
-                                            <CardDetailsList key={idx}>{item}</CardDetailsList>
+                                            <CardDetailsList key={idx} $index={idx} >{item}</CardDetailsList>
                                         ))}
                                     </>
                                 )}
                             </CardDetailsUl>
-                            <ImgContainer>
+                            <ImgContainer >
                                 {func.imgs && listStates[project.id]?.[index] && (
                                     <>
                                         {func.imgs.map((image, idx) => (
@@ -121,7 +122,9 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 }
                             }}
                         >
-                            Voir {doc.nameDocs}
+                            <p>
+                                Voir {doc.nameDocs}
+                            </p>
                         </ButtonStyles>
                     ))}
                 </>
@@ -139,7 +142,9 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 }
                             }}
                         >
-                            Voir {video.name}
+                            <p>
+                                Voir {video.name}
+                            </p>
                         </ButtonStyles>
                     ))}
                 </>
@@ -153,7 +158,9 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                         }
                     }}
                 >
-                    Fermer
+                    <p>
+                        Fermer
+                    </p>
                 </ButtonStyles>
             </Container>
             {isVideoModalOpen && (

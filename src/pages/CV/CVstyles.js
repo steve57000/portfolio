@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { configTheme } from '../../utils/theme/configTheme';
+import {fadeInRight, fadeInLeft, fadeInSlideDown, fadeInSlideUp} from "../../utils/stylesKeyframes/stylesKeyframes";
 
 const { colors, borders, fonts, sizes, boxShadow } = configTheme;
 
@@ -12,6 +13,8 @@ export const Container = styled.div`
   font-family: 'Arial, sans-serif', serif;
   color: ${colors.primary};
   line-height: 1.8;
+  opacity: 0;
+  animation: ${fadeInSlideDown} 2s ease forwards;
 `;
 
 export const Title = styled.h1`
@@ -28,6 +31,9 @@ export const Title = styled.h1`
   margin-bottom: 0;
   padding: 10px 0;
   box-shadow:  ${boxShadow.shadowInset};
+  opacity: 0;
+  animation: ${fadeInLeft} 1s ease forwards;
+  animation-delay: 0.5s;
 
   @media (max-width: 767px) {
     border-radius: 10px 10px 0 0;
@@ -48,18 +54,27 @@ export const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 0.6s;
 `;
 
 export const TwoColumnContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 0.6s;
 `;
 
 export const ThreeColumnContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 0.6s;
 `;
 
 export const Section = styled.section`
@@ -80,6 +95,9 @@ export const SectionTitle = styled.h2`
   line-height:  2; 
   margin-top: 0;
   background-color: ${colors.fifth};
+  opacity: 0;
+  animation: ${fadeInLeft} 0.5s ease forwards;
+  animation-delay: 0.7s;
 `;
 
 export const Paragraph = styled.p`
@@ -91,11 +109,17 @@ export const Paragraph = styled.p`
 export const List = styled.ul`
   list-style: none;
   padding: 0 20px;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 0.8s;
 `;
 
 export const ListItem = styled.li`
   margin-bottom: 10px;
   color: ${colors.fourthLight};
+  opacity: 0;
+  animation: ${fadeInRight} 0.6s ease forwards;
+  animation-delay: 0.9s;
 `;
 
 export const ListItemBorder = styled(ListItem)`
@@ -105,6 +129,9 @@ export const ListItemBorder = styled(ListItem)`
 export const ExperienceItem = styled.div`
   margin-bottom: 15px;
   border-bottom: ${borders.dashed};
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 1s;
 `;
 
 export const Position = styled.h3`

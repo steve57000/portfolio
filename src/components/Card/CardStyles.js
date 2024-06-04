@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import {
+    fadeInLeft,
+    fadeInRight,
+    fadeInSlideDown,
+    fadeInZoom
+} from '../../utils/stylesKeyframes/stylesKeyframes';
 import { configTheme } from '../../utils/theme/configTheme';
 
 const { colors, boxShadow, fonts } = configTheme;
@@ -15,6 +21,10 @@ export const CardContainer = styled.div`
   max-height: 90vh;
   width: 100%;
   background: ${colors.backgroundGradient};
+  transition: box-shadow 0.3s ease-in-out;
+  opacity: 0;
+  animation: ${fadeInSlideDown} 0.5s ease forwards;
+  animation-delay: ${({ $index }) => $index * 0.3}s; /* Appliquer un délai basé sur l'index */
   margin: 0 auto;
 
   &:hover {
@@ -39,6 +49,9 @@ export const CardTitle = styled.h2`
   background-color: ${colors.fourth};
   border-radius: 10px 10px 0 0;
   box-shadow: ${boxShadow.shadowInset};
+  opacity: 0;
+  animation: ${fadeInLeft} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.2}s;}
 `;
 
 export const CardObjectif = styled.h3`
@@ -48,6 +61,9 @@ export const CardObjectif = styled.h3`
   min-height: 120px;
   color: ${colors.third};
   text-align: center;
+  opacity: 0;
+  animation: ${fadeInRight} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.3}s;}
   @media (max-width: 767px) {
     font-size: ${fonts.sizeSmall};
     min-height: 90px;
@@ -62,7 +78,9 @@ export const CardContainerTags = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  
+  opacity: 0;
+  animation: ${fadeInZoom} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.4}s;}
   @media (max-width: 767px) {
     top: 140px;
   }
@@ -91,12 +109,18 @@ export const CardImageContainer = styled.div`
   background-image: url(${props => process.env.PUBLIC_URL + `/assets/images/${props.image}`});
   background-size: cover;
   background-position: top;
+  opacity: 0;
+  animation: ${fadeInZoom} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.5}s;}
 `;
 
 export const CardSavoir = styled.ul`
   margin: 0;
   list-style-type: none;
   position: relative;
+  opacity: 0;
+  animation: ${fadeInLeft} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.6}s;}
 `;
 
 export const CardSavoirImg = styled.img`
@@ -117,6 +141,9 @@ export const ContainerLink = styled.span`
   width: calc(100% - 40px); // taille 100% moins le padding-left(20px) et gauche(20px) 
   position: absolute;
   bottom: 10px;
+  opacity: 0;
+  animation: ${fadeInRight} 0.5s forwards;
+  animation-delay: ${({ $index }) => $index + 0.7}s;}
   @media (max-width: 767px) {
     width: calc(100% - 20px);
   }
