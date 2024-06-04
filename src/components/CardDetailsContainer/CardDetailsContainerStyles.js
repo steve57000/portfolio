@@ -58,6 +58,9 @@ export const ButtonStyles = styled.div`
   cursor: pointer;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.52);
   transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 1s;
   transform-origin: center;
 
   p {
