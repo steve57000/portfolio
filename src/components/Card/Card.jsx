@@ -31,9 +31,9 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
     };
     return (
         <CardContainer id={id} $index={index}>
-            <CardTitle $index={index}>{title}</CardTitle>
-            <CardObjectif $index={index}>{objectif}</CardObjectif>
-            <CardContainerTags $index={index}>
+            <CardTitle>{title}</CardTitle>
+            <CardObjectif>{objectif}</CardObjectif>
+            <CardContainerTags>
                 <>
                     {tags.map((tag, index) => (
                         <CardTags key={index}>{tag}</CardTags>
@@ -41,9 +41,9 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                 </>
             </CardContainerTags>
             <StyleSheetManager shouldForwardProp={(prop) => prop !== 'image'}>
-                <CardImageContainer $index={index} image={image} />
+                <CardImageContainer image={image} />
             </StyleSheetManager>
-            <CardSavoir $index={index}>
+            <CardSavoir>
                 <>
                     {savoir.map((savoirItem, idx) => (
                         <CardSavoirList key={idx}>
@@ -53,7 +53,7 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                     ))}
                 </>
             </CardSavoir>
-            <ContainerLink $index={index}>
+            <ContainerLink>
                 <CardLink
                     aria-label="Plus d'informations"
                     role="button"

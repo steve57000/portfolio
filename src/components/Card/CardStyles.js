@@ -51,7 +51,7 @@ export const CardTitle = styled.h2`
   box-shadow: ${boxShadow.shadowInset};
   opacity: 0;
   animation: ${fadeInLeft} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.2}s;}
+  animation-delay:  0.2s;
 `;
 
 export const CardObjectif = styled.h3`
@@ -63,7 +63,7 @@ export const CardObjectif = styled.h3`
   text-align: center;
   opacity: 0;
   animation: ${fadeInRight} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.3}s;}
+  animation-delay:  0.3s;}
   @media (max-width: 767px) {
     font-size: ${fonts.sizeSmall};
     min-height: 90px;
@@ -80,7 +80,7 @@ export const CardContainerTags = styled.div`
   gap: 10px;
   opacity: 0;
   animation: ${fadeInZoom} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.4}s;}
+  animation-delay:  0.4s;
   @media (max-width: 767px) {
     top: 140px;
   }
@@ -111,7 +111,7 @@ export const CardImageContainer = styled.div`
   background-position: top;
   opacity: 0;
   animation: ${fadeInZoom} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.5}s;}
+  animation-delay:  0.5s;
 `;
 
 export const CardSavoir = styled.ul`
@@ -120,7 +120,7 @@ export const CardSavoir = styled.ul`
   position: relative;
   opacity: 0;
   animation: ${fadeInLeft} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.6}s;}
+  animation-delay: 0.6s;
 `;
 
 export const CardSavoirImg = styled.img`
@@ -143,7 +143,7 @@ export const ContainerLink = styled.span`
   bottom: 10px;
   opacity: 0;
   animation: ${fadeInRight} 0.5s forwards;
-  animation-delay: ${({ $index }) => $index + 0.7}s;}
+  animation-delay:  0.7s;
   @media (max-width: 767px) {
     width: calc(100% - 20px);
   }
