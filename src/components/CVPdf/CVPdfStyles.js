@@ -5,9 +5,9 @@ export const styles = StyleSheet.create({
     page: {
         flexDirection: 'row',
         backgroundColor: '#FFFFFF',
+        padding: CVPdfConfig.pagePadding,
     },
     container: {
-        padding: CVPdfConfig.pagePadding,
         width: '100%',
         height: '100%',
         backgroundColor: '#F0F2F5',
