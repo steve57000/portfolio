@@ -3,7 +3,6 @@ import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
 import PropTypes from "prop-types";
 import { styles } from './CVPdfStyles';
 
-// Importez vos icônes PNG depuis le dossier `src/icons`
 import descriptionIcon from '../../icons/description.png';
 import objectifIcon from '../../icons/objectif.png';
 import experienceIcon from '../../icons/experience.png';
@@ -85,18 +84,22 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
                                     <Image style={styles.icon} src={skillsIcon} />
                                     <Text style={styles.columnTitle}>Compétences</Text>
                                 </View>
-                                {competences.map((hardSkill, index) => (
-                                    <Text key={index} style={styles.text}>{hardSkill}</Text>
-                                ))}
+                                <>
+                                    {competences.map((hardSkill, index) => (
+                                        <Text key={index} style={styles.text}>{hardSkill}</Text>
+                                    ))}
+                                </>
                             </View>
                             <View style={styles.column}>
                                 <View style={styles.iconTextContainer}>
                                     <Image style={styles.icon} src={knowledgeIcon} />
                                     <Text style={styles.columnTitle}>Savoir</Text>
                                 </View>
-                                {savoir.map((softSkill, index) => (
-                                    <Text key={index} style={styles.text}>{softSkill}</Text>
-                                ))}
+                                <>
+                                    {savoir.map((softSkill, index) => (
+                                        <Text key={index} style={styles.text}>{softSkill}</Text>
+                                    ))}
+                                </>
                             </View>
                         </View>
                     </View>

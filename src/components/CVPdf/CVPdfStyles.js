@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     column: {
-        width: '48%', // Adjust as needed
+        width: '48%',
     },
     columnTitle: {
         fontSize: 14,
@@ -54,10 +54,10 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
     },
     icon: {
-        width: 20, // Adjusted size
-        height: 20, // Adjusted size
+        width: 20,
+        height: 20,
         marginRight: 10,
-        alignSelf: 'center', // Align icon vertically with text
+        alignSelf: 'center',
     },
 });
 

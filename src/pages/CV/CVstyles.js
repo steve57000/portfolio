@@ -104,8 +104,8 @@ export const SectionTitle = styled.h2`
   opacity: 0;
   animation: ${fadeInLeft} 0.5s ease forwards;
   animation-delay: 0.7s;
-  display: flex; /* Ajout */
-  align-items: center; /* Ajout */
+  display: flex;
+  align-items: center; /
 `;
 
 
