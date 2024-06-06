@@ -5,12 +5,11 @@ export const styles = StyleSheet.create({
     page: {
         flexDirection: 'row',
         backgroundColor: '#FFFFFF',
-        padding: CVPdfConfig.pagePadding,
     },
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: '#F0F2F5',
+        padding: CVPdfConfig.pagePadding,
         color: '#333333',
     },
     title: {
@@ -24,13 +23,13 @@ export const styles = StyleSheet.create({
         marginBottom: CVPdfConfig.sectionMarginBottom,
     },
     sectionTitle: {
-        fontSize: 16,
-        marginBottom: CVPdfConfig.sectionMarginBottom,
+        fontSize: 14,
+        marginBottom: 0,
         color: '#007BFF',
         fontWeight: CVPdfConfig.fontWeight,
     },
     text: {
-        fontSize: 10,
+        fontSize: 9,
         color: '#666666',
     },
     listItem: {
@@ -45,10 +44,22 @@ export const styles = StyleSheet.create({
     },
     columnTitle: {
         fontSize: 14,
-        marginBottom: 5,
+        marginBottom: 0,
         color: '#007BFF',
         fontWeight: CVPdfConfig.fontWeight,
     },
+    iconTextContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    icon: {
+        width: 20, // Adjusted size
+        height: 20, // Adjusted size
+        marginRight: 10,
+        alignSelf: 'center', // Align icon vertically with text
+    },
 });
+
 
 

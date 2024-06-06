@@ -1,8 +1,15 @@
 import React from 'react';
-import { Page, Text, View, Document } from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
 import PropTypes from "prop-types";
 import { styles } from './CVPdfStyles';
-import { CVPdfConfig } from "./CVPdfConfig";
+
+// Importez vos icônes PNG depuis le dossier `src/icons`
+import descriptionIcon from '../../icons/description.png';
+import objectifIcon from '../../icons/objectif.png';
+import experienceIcon from '../../icons/experience.png';
+import educationIcon from '../../icons/education.png';
+import skillsIcon from '../../icons/skills.png';
+import knowledgeIcon from '../../icons/knowledge.png';
 
 const CVPdf = ({ title, description, objectif, experience, formations, competences, savoir }) => (
     <Document>
@@ -14,11 +21,17 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
                     <View style={styles.section}>
                         <View style={styles.inlineContainer}>
                             <View style={styles.column}>
-                                <Text style={styles.columnTitle}>Description</Text>
+                                <View style={styles.iconTextContainer}>
+                                    <Image style={styles.icon} src={descriptionIcon} />
+                                    <Text style={styles.columnTitle}>Description</Text>
+                                </View>
                                 <Text style={styles.text}>{description}</Text>
                             </View>
                             <View style={styles.column}>
-                                <Text style={styles.columnTitle}>Objectif</Text>
+                                <View style={styles.iconTextContainer}>
+                                    <Image style={styles.icon} src={objectifIcon} />
+                                    <Text style={styles.columnTitle}>Objectif</Text>
+                                </View>
                                 <Text style={styles.text}>{objectif}</Text>
                             </View>
                         </View>
@@ -27,7 +40,10 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
 
                 {experience && (
                     <View style={styles.section}>
-                        <Text style={styles.sectionTitle}>Expérience professionnelle</Text>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={styles.icon} src={experienceIcon} />
+                            <Text style={styles.sectionTitle}>Expérience professionnelle</Text>
+                        </View>
                         <>
                             {experience.map((exp, index) => (
                                 <View key={index} style={styles.listItem}>
@@ -44,7 +60,10 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
 
                 {formations && (
                     <View style={styles.section}>
-                        <Text style={styles.sectionTitle}>Éducation</Text>
+                        <View style={styles.iconTextContainer}>
+                            <Image style={styles.icon} src={educationIcon} />
+                            <Text style={styles.sectionTitle}>Éducation</Text>
+                        </View>
                         <>
                             {formations.map((edu, index) => (
                                 <View key={index} style={styles.listItem}>
@@ -62,13 +81,19 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
                     <View style={styles.section}>
                         <View style={styles.inlineContainer}>
                             <View style={styles.column}>
-                                <Text style={styles.columnTitle}>Compétences</Text>
+                                <View style={styles.iconTextContainer}>
+                                    <Image style={styles.icon} src={skillsIcon} />
+                                    <Text style={styles.columnTitle}>Compétences</Text>
+                                </View>
                                 {competences.map((hardSkill, index) => (
                                     <Text key={index} style={styles.text}>{hardSkill}</Text>
                                 ))}
                             </View>
                             <View style={styles.column}>
-                                <Text style={styles.columnTitle}>Savoir</Text>
+                                <View style={styles.iconTextContainer}>
+                                    <Image style={styles.icon} src={knowledgeIcon} />
+                                    <Text style={styles.columnTitle}>Savoir</Text>
+                                </View>
                                 {savoir.map((softSkill, index) => (
                                     <Text key={index} style={styles.text}>{softSkill}</Text>
                                 ))}

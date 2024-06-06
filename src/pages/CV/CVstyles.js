@@ -86,19 +86,28 @@ export const Section = styled.section`
   background: ${colors.backgroundGradientLight};
 `;
 
+export const SectionTitleIcon = styled.img`
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+  margin-top: -5px;
+`;
+
 export const SectionTitle = styled.h2`
   font-size: ${fonts.sizeMedium};
   letter-spacing: 2px;
   color: ${colors.primary};
   border-radius: 10px 10px 0 0;
-  padding: 5px 20px;
-  line-height:  2; 
-  margin-top: 0;
+  padding: 5px 0 0 15px;
+  margin: 0;
   background-color: ${colors.fifth};
   opacity: 0;
   animation: ${fadeInLeft} 0.5s ease forwards;
   animation-delay: 0.7s;
+  display: flex; /* Ajout */
+  align-items: center; /* Ajout */
 `;
+
 
 export const Paragraph = styled.p`
   font-size: ${fonts.sizeRegular};

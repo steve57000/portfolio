@@ -12,6 +12,7 @@ import {
     ThreeColumnContainer,
     Section,
     SectionTitle,
+    SectionTitleIcon,
     Paragraph,
     List,
     ListItem,
@@ -23,6 +24,14 @@ import {
     ListItemBorder,
 } from './CVstyles';
 import PropTypes from "prop-types";
+
+// Import icons
+import descriptionIcon from '../../icons/description-de-lemploi.png';
+import objectifIcon from '../../icons/realisation.png';
+import experienceIcon from '../../icons/experience-professionnelle.png';
+import educationIcon from '../../icons/carriere.png';
+import skillsIcon from '../../icons/competence.png';
+import knowledgeIcon from '../../icons/savoir-faire.png';
 
 const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
@@ -75,14 +84,20 @@ const CV = ({ layout }) => {
                 <ContentContainer>
                     {description && (
                         <Section>
-                            <SectionTitle>Description</SectionTitle>
+                            <SectionTitle>
+                                <SectionTitleIcon src={descriptionIcon} alt="description" />
+                                Description
+                            </SectionTitle>
                             <Paragraph>{description}</Paragraph>
                         </Section>
                     )}
 
                     {objectif && (
                         <Section>
-                            <SectionTitle>Objectif</SectionTitle>
+                            <SectionTitle>
+                                <SectionTitleIcon src={objectifIcon} alt="objectif" />
+                                Objectif
+                            </SectionTitle>
                             <Paragraph>{objectif}</Paragraph>
                         </Section>
                     )}
@@ -90,7 +105,10 @@ const CV = ({ layout }) => {
 
                 {experience && (
                     <Section>
-                        <SectionTitle>Expérience professionnelle</SectionTitle>
+                        <SectionTitle>
+                            <SectionTitleIcon src={experienceIcon} alt="expérience" />
+                            Expérience professionnelle
+                        </SectionTitle>
                         <List>
                             {experience.map((exp, index) => (
                                 <ListItem key={index}>
@@ -108,7 +126,10 @@ const CV = ({ layout }) => {
 
                 {formations && (
                     <Section>
-                        <SectionTitle>Éducation</SectionTitle>
+                        <SectionTitle>
+                            <SectionTitleIcon src={educationIcon} alt="éducation" />
+                            Éducation
+                        </SectionTitle>
                         <List>
                             <>
                                 {formations.map((edu, index) => (
@@ -126,7 +147,10 @@ const CV = ({ layout }) => {
                 <ContentContainer>
                     {competences && (
                         <Section>
-                            <SectionTitle>Compétences</SectionTitle>
+                            <SectionTitle>
+                                <SectionTitleIcon src={skillsIcon} alt="compétences" />
+                                Compétences
+                            </SectionTitle>
                             <List>
                                 {competences.map((hardSkill, index) => (
                                     <ListItem key={index}>{hardSkill}</ListItem>
@@ -137,11 +161,16 @@ const CV = ({ layout }) => {
 
                     {savoir && (
                         <Section>
-                            <SectionTitle>Savoir</SectionTitle>
+                            <SectionTitle>
+                                <SectionTitleIcon src={knowledgeIcon} alt="savoir" />
+                                Savoir
+                            </SectionTitle>
                             <List>
-                                {savoir.map((softSkill, index) => (
-                                    <ListItem key={index}>{softSkill}</ListItem>
-                                ))}
+                                <>
+                                    {savoir.map((softSkill, index) => (
+                                        <ListItem key={index}>{softSkill}</ListItem>
+                                    ))}
+                                </>
                             </List>
                         </Section>
                     )}
