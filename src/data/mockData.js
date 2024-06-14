@@ -1050,6 +1050,6 @@ export const curriculumVitae = {
     },
     portfolioLink: "https://steve57000.github.io/portfolio",
     socialLinks: [
-        "www.linkedin.com/in/steve-bell57",
+        "https://www.linkedin.com/in/steve-bell57",
     ],
 };
