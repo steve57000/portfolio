@@ -1,26 +1,23 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.f0308f38.js",
+    "main.js": "/portfolio/static/js/main.b9573761.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/media/experience.png": "/portfolio/static/media/experience.5579d1cdb4a4a20d3cce.png",
     "static/media/experience-professionnelle.png": "/portfolio/static/media/experience-professionnelle.841c992f76a8b951699e.png",
-    "static/media/objectif.png": "/portfolio/static/media/objectif.61f8c81978c9e6e343ca.png",
     "static/media/education.png": "/portfolio/static/media/education.130a09df1d5eb7e37716.png",
     "static/media/realisation.png": "/portfolio/static/media/realisation.e0f495875124d65a903f.png",
-    "static/media/skills.png": "/portfolio/static/media/skills.4432604569c2c22ad683.png",
     "static/media/carriere.png": "/portfolio/static/media/carriere.4d5dda4c17c91ba953c6.png",
-    "static/media/knowledge.png": "/portfolio/static/media/knowledge.032a246303f5f2414eef.png",
     "static/media/description.png": "/portfolio/static/media/description.42ff557379291596302f.png",
     "static/media/competence.png": "/portfolio/static/media/competence.f147d894129e74a3d22e.png",
     "static/media/savoir-faire.png": "/portfolio/static/media/savoir-faire.d9e972821ee2c78c3bfd.png",
     "static/media/description-de-lemploi.png": "/portfolio/static/media/description-de-lemploi.61032d5dffa1ed870e90.png",
     "index.html": "/portfolio/index.html",
-    "main.f0308f38.js.map": "/portfolio/static/js/main.f0308f38.js.map",
+    "main.b9573761.js.map": "/portfolio/static/js/main.b9573761.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.f0308f38.js"
+    "static/js/main.b9573761.js"
   ]
 }
