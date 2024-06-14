@@ -46,11 +46,8 @@ export const CardDetailsStyles = styled.div`
 `;
 
 export const ButtonStyles = styled.div`
-  width: 100%;
-  height: 100%;
-  min-width: 150px;
-  max-width: 300px;
-  min-height: 50px;
+  width: 250px;
+  height: 50px;
   border-radius: 10px;
   background-color: ${colors.primary};
   color: ${colors.fifth};
@@ -62,15 +59,11 @@ export const ButtonStyles = styled.div`
   animation: ${fadeInSlideUp} 0.5s ease forwards;
   animation-delay: 1s;
   transform-origin: center;
-
-  p {
-    width: 100%;
-    text-align: center;
-  }
+  text-align: center;
+  font-weight: bold;
   
   &:hover {
-    transform: scale(1.1);
-    ${hoverStyles}
+    ${hoverStyles};
   }
 
   &:focus {
