@@ -1,65 +1,86 @@
 import { StyleSheet } from '@react-pdf/renderer';
-import { CVPdfConfig } from './CVPdfConfig';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     page: {
         flexDirection: 'row',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#E4E4E4',
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingHorizontal: 10,
     },
     container: {
-        width: '100%',
-        height: '100%',
-        padding: CVPdfConfig.pagePadding,
-        color: '#333333',
+        flex: 1,
+        marginLeft: 30,
+        marginRight: 30,
+    },
+    leftColumn: {
+        flexDirection: 'column',
+        width: 170,
+        paddingTop: 30,
+        paddingRight: 15,
+        borderRightWidth: 2,
+        borderRightColor: '#ccc',
+    },
+    leftColumnTitle: {
+        fontSize: 14,
+        marginTop: 10,
+        marginBottom: 5,
+        fontWeight: 'bold',
+    },
+    leftColumnText: {
+        fontSize: 9, // Réduire la taille de la police pour la colonne de gauche
+        color: '#333',
     },
     title: {
-        fontSize: 22,
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 20,
         textAlign: 'center',
-        marginBottom: CVPdfConfig.sectionMarginBottom,
-        color: '#007BFF',
-        fontWeight: CVPdfConfig.fontWeight,
     },
     section: {
-        marginBottom: CVPdfConfig.sectionMarginBottom,
+        marginBottom: 10,
+    },
+    sectionTitleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255,153,0,0.71)',
+        borderRadius: 5,
+        padding: 5,
+        marginVertical: 5,
     },
     sectionTitle: {
-        fontSize: 14,
+        fontSize: 16,
+        fontWeight: 'bold',
         marginBottom: 0,
-        color: '#007BFF',
-        fontWeight: CVPdfConfig.fontWeight,
+        color: '#ffffff',
+        textAlign: 'center',
+    },
+    listItem: {
+        marginBottom: 10,
     },
     text: {
         fontSize: 9,
-        color: '#666666',
-    },
-    listItem: {
-        marginBottom: CVPdfConfig.listItemMarginBottom,
-    },
-    inlineContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    column: {
-        width: '48%',
-    },
-    columnTitle: {
-        fontSize: 14,
-        marginBottom: 0,
-        color: '#007BFF',
-        fontWeight: CVPdfConfig.fontWeight,
-    },
-    iconTextContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 10,
+        color: '#333',
     },
     icon: {
         width: 20,
         height: 20,
-        marginRight: 10,
-        alignSelf: 'center',
+        marginRight: 15,
+    },
+    columnTitle: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
+    iconTextContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 5,
     },
 });
+
+export { styles };
+
 
 
 
