@@ -20,12 +20,12 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                 <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
                 <>
                     {socialLinks.map((link, index) => (
-                        <Link key={index} src={link} style={styles.link}>{link}</Link>
+                        <Link key={index} src={link} style={styles.button}>{link}</Link>
                     ))}
                 </>
 
                 <Text style={styles.leftColumnTitle}>Portfolio</Text>
-                <Link src={portfolioLink} style={styles.link}>{portfolioLink}</Link>
+                <Link src={portfolioLink} style={styles.button}>{portfolioLink}</Link>
 
                 <Text style={styles.leftColumnTitle}>Compétences</Text>
                 <>
