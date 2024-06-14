@@ -7,7 +7,7 @@ import descriptionIcon from '../../icons/description.png';
 import experienceIcon from '../../icons/experience.png';
 import educationIcon from '../../icons/education.png';
 
-const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks, address }) => (
+const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks }) => (
     <Document>
         <Page size="A4" style={styles.page}>
             {/* Colonne gauche */}
