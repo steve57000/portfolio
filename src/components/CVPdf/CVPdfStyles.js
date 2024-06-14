@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 5,
     },
-
     button: {
         fontSize: 9,
         backgroundColor: '#158afd',
@@ -87,6 +86,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         textAlign: 'center',
         textDecoration: 'none',
+        cursor: 'pointer',
     }
 });
 

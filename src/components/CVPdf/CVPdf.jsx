@@ -21,12 +21,20 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                 <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
                 <>
                     {socialLinks.map((link, index) => (
-                        <Link key={index} src={link} style={styles.button}>{link}</Link>
+                        <View key={index} style={{ marginBottom: 5 }}>
+                            <Link src={link} style={styles.button} target="_blank">
+                                {link}
+                            </Link>
+                        </View>
                     ))}
                 </>
 
                 <Text style={styles.leftColumnTitle}>Portfolio</Text>
-                <Link src={portfolioLink} style={styles.button}>{portfolioLink}</Link>
+                <View style={{ marginBottom: 5 }}>
+                    <Link src={portfolioLink} style={styles.button} target="_blank">
+                        {portfolioLink}
+                    </Link>
+                </View>
 
                 <Text style={styles.leftColumnTitle}>Compétences</Text>
                 <>
