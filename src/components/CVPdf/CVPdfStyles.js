@@ -77,6 +77,23 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 5,
     },
+    link: {
+        fontSize: 9,
+        color: 'blue',
+        textDecoration: 'underline',
+        marginBottom: 5,
+    },
+    button: {
+        display: 'inline-block',
+        padding: '5px 10px',
+        fontSize: 10,
+        backgroundColor: '#007bff',
+        color: '#fff',
+        textAlign: 'center',
+        textDecoration: 'none',
+        borderRadius: 5,
+        marginBottom: 5,
+    }
 });
 
 export { styles };

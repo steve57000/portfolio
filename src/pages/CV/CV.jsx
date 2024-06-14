@@ -82,6 +82,11 @@ const CV = ({ layout }) => {
             break;
     }
 
+    const isMobile = () => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
+    };
+
     const openPdfInNewTab = async () => {
         try {
             const blob = await pdf(
@@ -100,12 +105,22 @@ const CV = ({ layout }) => {
 
             const url = URL.createObjectURL(blob);
 
-            // Utilisation d'un lien temporaire pour ouvrir l'URL
-            const link = document.createElement('a');
-            link.href = url;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            link.click();
+            if (isMobile()) {
+                // Téléchargement sur les appareils mobiles
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'CV-Steve-Bell.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // Ouverture dans un nouvel onglet sur les ordinateurs
+                const link = document.createElement('a');
+                link.href = url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.click();
+            }
 
             // Révoquer l'URL Blob après une courte période pour libérer de la mémoire
             setTimeout(() => URL.revokeObjectURL(url), 100);
@@ -280,4 +295,3 @@ CV.propTypes = {
 };
 
 export default CV;
-

@@ -927,7 +927,6 @@ export const curriculumVitae = {
         "Expérience dans le déploiement d'applications web",
     ],
     description: "Je suis un développeur web passionné à la recherche de nouvelles opportunités professionnelles.",
-    websiteUrl: "https://example.com/mon-cv",
     experience: [
         {
             poste: "Poseur assainissement",
@@ -1048,7 +1047,7 @@ export const curriculumVitae = {
         phone: "07 44 44 85 61",
         email: "steve57b@hotmail.fr",
     },
-    portfolioLink: "https://steve57000.github.io/portfolio/",
+    portfolioLink: "https://steve57000.github.io/portfolio",
     socialLinks: [
         "www.linkedin.com/in/steve-bell57",
     ],

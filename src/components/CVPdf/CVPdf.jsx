@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Text, View, Document, Image } from '@react-pdf/renderer';
+import { Page, Text, View, Document, Image, Link } from '@react-pdf/renderer';
 import PropTypes from "prop-types";
 import { styles } from './CVPdfStyles';
 
@@ -20,12 +20,12 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                 <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
                 <>
                     {socialLinks.map((link, index) => (
-                        <Text key={index} style={styles.leftColumnText}>{link}</Text>
+                        <Link key={index} src={link} style={styles.link}>{link}</Link>
                     ))}
                 </>
 
                 <Text style={styles.leftColumnTitle}>Portfolio</Text>
-                <Text style={styles.leftColumnText}>{portfolioLink}</Text>
+                <Link src={portfolioLink} style={styles.link}>{portfolioLink}</Link>
 
                 <Text style={styles.leftColumnTitle}>Compétences</Text>
                 <>
