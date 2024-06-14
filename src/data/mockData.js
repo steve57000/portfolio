@@ -914,7 +914,7 @@ export const mockData = [
 
 export const curriculumVitae = {
     id: 1000,
-    title: "Curriculum Vitae",
+    title: "Développeur web frontend",
     objectif: "Recherche d'emploi dans le domaine du développement web",
     image: "cvImage.png",
     savoir: [
@@ -928,7 +928,6 @@ export const curriculumVitae = {
     ],
     description: "Je suis un développeur web passionné à la recherche de nouvelles opportunités professionnelles.",
     websiteUrl: "https://example.com/mon-cv",
-    // Autres informations pertinentes sur le CV
     experience: [
         {
             poste: "Poseur assainissement",
@@ -1037,12 +1036,20 @@ export const curriculumVitae = {
         "Concevoir une maquette de présentation",
         "Résolution de problèmes",
         "Travail d'équipe",
-        // Ajouter d'autres compétences si nécessaire
     ],
     langues: [
         { langue: "Anglais", niveau: "Avancé" },
         { langue: "Français", niveau: "Natif" },
-        // Ajouter d'autres langues si nécessaire
+    ],
+    contactInfo: {
+        name: "Bell",
+        lastName: "Steve",
+        address: "3 rue René Cassin",
+        phone: "07 44 44 85 61",
+        email: "steve57b@hotmail.fr",
+    },
+    portfolioLink: "https://steve57000.github.io/portfolio/",
+    socialLinks: [
+        "www.linkedin.com/in/steve-bell57",
     ],
 };
-
