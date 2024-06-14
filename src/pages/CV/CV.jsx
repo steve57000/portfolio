@@ -205,11 +205,13 @@ const CV = ({ layout }) => {
                                 Langues
                             </SectionTitle>
                             <List>
-                                {langues.map((langue, index) => (
-                                    <ListItem key={index}>
-                                        <strong>{langue.langue}</strong>: {langue.niveau}
-                                    </ListItem>
-                                ))}
+                                <>
+                                    {langues.map((langue, index) => (
+                                        <ListItem key={index}>
+                                            <strong>{langue.langue}</strong>: {langue.niveau}
+                                        </ListItem>
+                                    ))}
+                                </>
                             </List>
                         </Section>
                     )}
@@ -221,17 +223,20 @@ const CV = ({ layout }) => {
                                 Réseaux Sociaux
                             </SectionTitle>
                             <List>
-                                {socialLinks.map((link, index) => (
-                                    <ListItem key={index}>
-                                        {link}
-                                    </ListItem>
-                                ))}
+                                <>
+                                    {socialLinks.map((link, index) => (
+                                        <ListItem key={index}>
+                                            {link}
+                                        </ListItem>
+                                    ))}
+                                </>
                             </List>
                         </Section>
                     )}
 
                     {/* Bouton pour afficher le PDF dans un nouvel onglet */}
-                    {title &&
+                    {
+                        title &&
                         description &&
                         objectif &&
                         experience &&
