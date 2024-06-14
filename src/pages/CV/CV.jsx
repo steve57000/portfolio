@@ -83,22 +83,42 @@ const CV = ({ layout }) => {
     }
 
     const openPdfInNewTab = async () => {
-        const blob = await pdf(
-            <CVPdf
-                title={title}
-                description={description}
-                experience={experience}
-                formations={formations}
-                competences={competences}
-                savoir={savoir}
-                socialLinks={socialLinks}
-                contactInfo={contactInfo}
-                portfolioLink={portfolioLink}
-            />
-        ).toBlob();
+        try {
+            const blob = await pdf(
+                <CVPdf
+                    title={title}
+                    description={description}
+                    experience={experience}
+                    formations={formations}
+                    competences={competences}
+                    savoir={savoir}
+                    socialLinks={socialLinks}
+                    contactInfo={contactInfo}
+                    portfolioLink={portfolioLink}
+                />
+            ).toBlob();
 
-        const url = URL.createObjectURL(blob);
-        window.open(url, '_blank');
+            const url = URL.createObjectURL(blob);
+
+            // Utilisation d'un lien temporaire pour ouvrir l'URL
+            const link = document.createElement('a');
+            link.href = url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.click();
+
+            // Révoquer l'URL Blob après une courte période pour libérer de la mémoire
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+        } catch (error) {
+            console.error('Erreur lors de la génération ou de l\'ouverture du PDF :', error);
+            // Gérer les erreurs ici
+        }
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            openPdfInNewTab();
+        }
     };
 
     return (
@@ -247,7 +267,7 @@ const CV = ({ layout }) => {
                         socialLinks &&
                         contactInfo &&
                         portfolioLink && (
-                        <ButtonPdf onClick={openPdfInNewTab}>Voir le PDF</ButtonPdf>
+                            <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
                     )}
                 </ContentContainer>
             </BorderContainer>
