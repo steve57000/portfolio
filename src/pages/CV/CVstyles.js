@@ -23,7 +23,6 @@ export const Title = styled.h1`
   width: 100%;
   text-align: center;
   font-size: ${fonts.sizeLarge};
-  letter-spacing: 3px;
   color: ${colors.primary};
   background-color: ${colors.fourth};
   border-bottom: ${borders.solid};
@@ -37,6 +36,8 @@ export const Title = styled.h1`
 
   @media (max-width: 767px) {
     border-radius: 10px 10px 0 0;
+    font-size: ${fonts.sizeMedium};
+    top: 10px;
   }
 `;
 
@@ -48,6 +49,7 @@ export const BorderContainer = styled.div`
   @media (max-width: 767px) {
     border-radius: 0 0 10px 10px;
   }
+  
 `;
 
 export const ColumnContainer = styled.div`
@@ -105,7 +107,7 @@ export const SectionTitle = styled.h2`
   animation: ${fadeInLeft} 0.5s ease forwards;
   animation-delay: 0.7s;
   display: flex;
-  align-items: center; /
+  align-items: center;
 `;
 
 
@@ -166,4 +168,30 @@ export const Description = styled.p`
   font-size: ${fonts.sizeSmall};
   color: ${colors.fifth};
   line-height: 1.2;
+`;
+
+export const ButtonPdf = styled.button`
+  width: 100%;
+  height: 100%;
+  min-width: 150px;
+  max-width: 300px;
+  min-height: 50px;
+  border-radius: 10px;
+  background-color: ${colors.primary};
+  color: ${colors.fifth};
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.52);
+  transition: background-color 0.3s, color 0.4s, box-shadow 0.3s, transform 0.2s;
+  opacity: 0;
+  animation: ${fadeInSlideUp} 0.5s ease forwards;
+  animation-delay: 1s;
+  transform-origin: center;
+
+  &:hover {
+    transform: scale(1.5);
+    background-color: ${colors.fifth};
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.52);
+    color: ${colors.primary};
+  }
 `;
