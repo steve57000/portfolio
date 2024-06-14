@@ -97,6 +97,7 @@ export const CardTags = styled.span`
   @media (max-width: 767px) {
     padding: 5px;
     font-size: ${fonts.sizeExtraSmall};
+    margin-top: 20px;
   }
 `;
 
@@ -130,7 +131,7 @@ export const CardSavoirImg = styled.img`
 
 export const CardSavoirList = styled.li`
   font-size: ${fonts.sizeExtraSmall};
-  padding: 3px 0 3px 20px;
+  padding: 3px 0 ;
   margin: .4em 0;
   color: ${colors.fourth};
 `;
