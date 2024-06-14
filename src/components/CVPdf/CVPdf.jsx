@@ -4,42 +4,61 @@ import PropTypes from "prop-types";
 import { styles } from './CVPdfStyles';
 
 import descriptionIcon from '../../icons/description.png';
-import objectifIcon from '../../icons/objectif.png';
 import experienceIcon from '../../icons/experience.png';
 import educationIcon from '../../icons/education.png';
-import skillsIcon from '../../icons/skills.png';
-import knowledgeIcon from '../../icons/knowledge.png';
 
-const CVPdf = ({ title, description, objectif, experience, formations, competences, savoir }) => (
+const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks, address }) => (
     <Document>
         <Page size="A4" style={styles.page}>
+            {/* Colonne gauche */}
+            <View style={styles.leftColumn}>
+                <Text style={styles.leftColumnTitle}>{contactInfo.name} {contactInfo.lastName}</Text>
+                <Text style={styles.leftColumnText}>{contactInfo.address}</Text>
+                <Text style={styles.leftColumnText}>{contactInfo.phone}</Text>
+                <Text style={styles.leftColumnText}>{contactInfo.email}</Text>
+
+                <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
+                <>
+                    {socialLinks.map((link, index) => (
+                        <Text key={index} style={styles.leftColumnText}>{link}</Text>
+                    ))}
+                </>
+
+                <Text style={styles.leftColumnTitle}>Portfolio</Text>
+                <Text style={styles.leftColumnText}>{portfolioLink}</Text>
+
+                <Text style={styles.leftColumnTitle}>Compétences</Text>
+                <>
+                    {competences.map((hardSkill, index) => (
+                        <Text key={index} style={styles.leftColumnText}>{hardSkill}</Text>
+                    ))}
+                </>
+
+                <Text style={styles.leftColumnTitle}>Savoir</Text>
+                <>
+                    {savoir.map((softSkill, index) => (
+                        <Text key={index} style={styles.leftColumnText}>{softSkill}</Text>
+                    ))}
+                </>
+            </View>
+
+            {/* Colonne principale */}
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>
 
-                {description && objectif && (
+                {description && (
                     <View style={styles.section}>
-                        <View style={styles.inlineContainer}>
-                            <View style={styles.column}>
-                                <View style={styles.iconTextContainer}>
-                                    <Image style={styles.icon} src={descriptionIcon} />
-                                    <Text style={styles.columnTitle}>Description</Text>
-                                </View>
-                                <Text style={styles.text}>{description}</Text>
-                            </View>
-                            <View style={styles.column}>
-                                <View style={styles.iconTextContainer}>
-                                    <Image style={styles.icon} src={objectifIcon} />
-                                    <Text style={styles.columnTitle}>Objectif</Text>
-                                </View>
-                                <Text style={styles.text}>{objectif}</Text>
-                            </View>
+                        <View style={styles.sectionTitleContainer}>
+                            <Image style={styles.icon} src={descriptionIcon} />
+                            <Text style={styles.sectionTitle}>Description</Text>
                         </View>
+                        <Text style={styles.text}>{description}</Text>
                     </View>
                 )}
 
                 {experience && (
                     <View style={styles.section}>
-                        <View style={styles.iconTextContainer}>
+                        <View style={styles.sectionTitleContainer}>
                             <Image style={styles.icon} src={experienceIcon} />
                             <Text style={styles.sectionTitle}>Expérience professionnelle</Text>
                         </View>
@@ -59,7 +78,7 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
 
                 {formations && (
                     <View style={styles.section}>
-                        <View style={styles.iconTextContainer}>
+                        <View style={styles.sectionTitleContainer}>
                             <Image style={styles.icon} src={educationIcon} />
                             <Text style={styles.sectionTitle}>Éducation</Text>
                         </View>
@@ -75,35 +94,6 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
                         </>
                     </View>
                 )}
-
-                {competences && savoir && (
-                    <View style={styles.section}>
-                        <View style={styles.inlineContainer}>
-                            <View style={styles.column}>
-                                <View style={styles.iconTextContainer}>
-                                    <Image style={styles.icon} src={skillsIcon} />
-                                    <Text style={styles.columnTitle}>Compétences</Text>
-                                </View>
-                                <>
-                                    {competences.map((hardSkill, index) => (
-                                        <Text key={index} style={styles.text}>{hardSkill}</Text>
-                                    ))}
-                                </>
-                            </View>
-                            <View style={styles.column}>
-                                <View style={styles.iconTextContainer}>
-                                    <Image style={styles.icon} src={knowledgeIcon} />
-                                    <Text style={styles.columnTitle}>Savoir</Text>
-                                </View>
-                                <>
-                                    {savoir.map((softSkill, index) => (
-                                        <Text key={index} style={styles.text}>{softSkill}</Text>
-                                    ))}
-                                </>
-                            </View>
-                        </View>
-                    </View>
-                )}
             </View>
         </Page>
     </Document>
@@ -112,7 +102,6 @@ const CVPdf = ({ title, description, objectif, experience, formations, competenc
 CVPdf.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    objectif: PropTypes.string,
     experience: PropTypes.arrayOf(PropTypes.shape({
         poste: PropTypes.string.isRequired,
         entreprise: PropTypes.string.isRequired,
@@ -129,6 +118,15 @@ CVPdf.propTypes = {
     })),
     competences: PropTypes.arrayOf(PropTypes.string),
     savoir: PropTypes.arrayOf(PropTypes.string),
+    contactInfo: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        address: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+    }),
+    portfolioLink: PropTypes.string.isRequired,
+    socialLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CVPdf;
