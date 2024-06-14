@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PDFDownloadLink } from '@react-pdf/renderer';
+import { pdf } from '@react-pdf/renderer';
 import CVPdf from '../../components/CVPdf/CVPdf';
 import useDataFetching from '../../utils/hooks/useData';
 import { curriculumVitae } from "../../data/mockData";
@@ -12,7 +12,6 @@ import {
     ThreeColumnContainer,
     Section,
     SectionTitle,
-    SectionTitleIcon,
     Paragraph,
     List,
     ListItem,
@@ -22,10 +21,12 @@ import {
     Date,
     Description,
     ListItemBorder,
+    SectionTitleIcon,
+    ButtonPdf // Import de SectionTitleIcon
 } from './CVstyles';
 import PropTypes from "prop-types";
 
-// Import icons
+// Import des icônes
 import descriptionIcon from '../../icons/description-de-lemploi.png';
 import objectifIcon from '../../icons/realisation.png';
 import experienceIcon from '../../icons/experience-professionnelle.png';
@@ -58,7 +59,11 @@ const CV = ({ layout }) => {
         experience,
         formations,
         competences,
-        savoir
+        savoir,
+        langues,
+        socialLinks,
+        contactInfo,
+        portfolioLink,
     } = loadedData;
 
     let ContentContainer;
@@ -76,6 +81,25 @@ const CV = ({ layout }) => {
             ContentContainer = ColumnContainer;
             break;
     }
+
+    const openPdfInNewTab = async () => {
+        const blob = await pdf(
+            <CVPdf
+                title={title}
+                description={description}
+                experience={experience}
+                formations={formations}
+                competences={competences}
+                savoir={savoir}
+                socialLinks={socialLinks}
+                contactInfo={contactInfo}
+                portfolioLink={portfolioLink}
+            />
+        ).toBlob();
+
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+    };
 
     return (
         <Container>
@@ -174,23 +198,54 @@ const CV = ({ layout }) => {
                             </List>
                         </Section>
                     )}
+
+                    {langues && (
+                        <Section>
+                            <SectionTitle>
+                                Langues
+                            </SectionTitle>
+                            <List>
+                                {langues.map((langue, index) => (
+                                    <ListItem key={index}>
+                                        <strong>{langue.langue}</strong>: {langue.niveau}
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Section>
+                    )}
+
+                    {/* Affichage des liens vers les réseaux sociaux */}
+                    {socialLinks && socialLinks.length > 0 && (
+                        <Section>
+                            <SectionTitle>
+                                Réseaux Sociaux
+                            </SectionTitle>
+                            <List>
+                                {socialLinks.map((link, index) => (
+                                    <ListItem key={index}>
+                                        {link}
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Section>
+                    )}
+
+                    {/* Bouton pour afficher le PDF dans un nouvel onglet */}
+                    {title &&
+                        description &&
+                        objectif &&
+                        experience &&
+                        formations &&
+                        competences &&
+                        savoir &&
+                        langues &&
+                        socialLinks &&
+                        contactInfo &&
+                        portfolioLink && (
+                        <ButtonPdf onClick={openPdfInNewTab}>Voir le PDF</ButtonPdf>
+                    )}
                 </ContentContainer>
             </BorderContainer>
-
-            {title && description && objectif && experience && formations && competences && savoir && (
-                <PDFDownloadLink document={<CVPdf
-                    title={title}
-                    description={description}
-                    objectif={objectif}
-                    experience={experience}
-                    formations={formations}
-                    competences={competences}
-                    savoir={savoir}
-                />} fileName="cv.pdf">
-                    {({ loading }) => (loading ? 'Création du PDF...' : 'Télécharger le PDF')}
-                </PDFDownloadLink>
-            )}
-
         </Container>
     );
 };
@@ -200,3 +255,4 @@ CV.propTypes = {
 };
 
 export default CV;
+
