@@ -14,6 +14,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
             <View style={styles.leftColumn}>
                 <Text style={styles.leftColumnTitle}>{contactInfo.name} {contactInfo.lastName}</Text>
                 <Text style={styles.leftColumnText}>{contactInfo.address}</Text>
+                <Text style={styles.leftColumnText}>{contactInfo.ville}</Text>
                 <Text style={styles.leftColumnText}>{contactInfo.phone}</Text>
                 <Text style={styles.leftColumnText}>{contactInfo.email}</Text>
 
@@ -122,6 +123,7 @@ CVPdf.propTypes = {
         name: PropTypes.string.isRequired,
         lastName: PropTypes.string.isRequired,
         address: PropTypes.string.isRequired,
+        ville: PropTypes.string.isRequired,
         phone: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
     }),

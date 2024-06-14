@@ -159,7 +159,7 @@ export const Company = styled.p`
 `;
 
 export const Date = styled.p`
-  margin-top: -20px;
+  margin-top: -15px;
   font-size: ${fonts.sizeExtraSmall};
   color: ${colors.sixthLight};
 `;
@@ -168,6 +168,12 @@ export const Description = styled.p`
   font-size: ${fonts.sizeSmall};
   color: ${colors.fifth};
   line-height: 1.2;
+`;
+
+export const CenterButton = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
 `;
 
 export const ButtonPdf = styled.button`

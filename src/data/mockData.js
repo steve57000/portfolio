@@ -1044,6 +1044,7 @@ export const curriculumVitae = {
         name: "Bell",
         lastName: "Steve",
         address: "3 rue René Cassin",
+        ville: "57130 Ars Sur Moselle",
         phone: "07 44 44 85 61",
         email: "steve57b@hotmail.fr",
     },

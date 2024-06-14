@@ -22,7 +22,8 @@ import {
     Description,
     ListItemBorder,
     SectionTitleIcon,
-    ButtonPdf // Import de SectionTitleIcon
+    ButtonPdf,
+    CenterButton
 } from './CVstyles';
 import PropTypes from "prop-types";
 
@@ -268,7 +269,8 @@ const CV = ({ layout }) => {
                             </List>
                         </Section>
                     )}
-
+                </ContentContainer>
+                <CenterButton>
                     {/* Bouton pour afficher le PDF dans un nouvel onglet */}
                     {
                         title &&
@@ -283,8 +285,8 @@ const CV = ({ layout }) => {
                         contactInfo &&
                         portfolioLink && (
                             <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
-                    )}
-                </ContentContainer>
+                        )}
+                </CenterButton>
             </BorderContainer>
         </Container>
     );
