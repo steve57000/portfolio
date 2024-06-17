@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.4febd69e.js",
+    "main.js": "/portfolio/static/js/main.2c9ee48f.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/media/experience.png": "/portfolio/static/media/experience.5579d1cdb4a4a20d3cce.png",
     "static/media/experience-professionnelle.png": "/portfolio/static/media/experience-professionnelle.841c992f76a8b951699e.png",
@@ -12,12 +12,13 @@
     "static/media/competence.png": "/portfolio/static/media/competence.f147d894129e74a3d22e.png",
     "static/media/savoir-faire.png": "/portfolio/static/media/savoir-faire.d9e972821ee2c78c3bfd.png",
     "static/media/description-de-lemploi.png": "/portfolio/static/media/description-de-lemploi.61032d5dffa1ed870e90.png",
+    "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.4febd69e.js.map": "/portfolio/static/js/main.4febd69e.js.map",
+    "main.2c9ee48f.js.map": "/portfolio/static/js/main.2c9ee48f.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.4febd69e.js"
+    "static/js/main.2c9ee48f.js"
   ]
 }
