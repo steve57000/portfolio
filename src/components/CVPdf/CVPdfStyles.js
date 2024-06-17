@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
         color: 'rgb(255,153,0)',
         textDecoration: 'underline',
     },
+    leftColumnTextContact: {
+        fontSize: 9,
+        color: '#333',
+    },
     leftColumnText: {
         fontSize: 9,
         color: '#333',
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
     containerRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: 15,
+        marginTop: 10,
         marginBottom: 10,
     },
     containerDate: {
@@ -89,8 +93,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     listItem: {
-        marginBottom: 10,
         flexDirection: 'row',
+        marginBottom: 10,
     },
     text: {
         fontSize: 9,
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
         marginRight: 5,
-        marginLeft: 20,
+        marginLeft: 10,
     },
     iconLeft: {
         width: 15,
@@ -130,6 +134,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 5,
+        marginTop: 5
     },
     buttonStyles: {
         fontSize: 9,

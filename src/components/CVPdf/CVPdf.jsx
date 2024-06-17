@@ -29,17 +29,17 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                     <Image style={styles.iconSmall} src={adressIcon} />
                     <View>
                         <Text style={styles.leftColumnTextName}>{contactInfo.name} {contactInfo.lastName}</Text>
-                        <Text style={styles.leftColumnText}>{contactInfo.address}</Text>
-                        <Text style={styles.leftColumnText}>{contactInfo.ville}</Text>
+                        <Text style={styles.leftColumnTextContact}>{contactInfo.address}</Text>
+                        <Text style={styles.leftColumnTextContact}>{contactInfo.ville}</Text>
                     </View>
                 </View>
                 <View style={styles.contactInfos}>
                     <Image style={styles.iconSmall} src={phoneIcon} />
-                    <Text style={styles.leftColumnText}>{contactInfo.phone}</Text>
+                    <Text style={styles.leftColumnTextContact}>{contactInfo.phone}</Text>
                 </View>
                 <View style={styles.contactInfos}>
                     <Image style={styles.iconSmall} src={emailIcon} />
-                    <Text style={styles.leftColumnText}>{contactInfo.email}</Text>
+                    <Text style={styles.leftColumnTextContact}>{contactInfo.email}</Text>
                 </View>
 
                 <View style={styles.containerRow}>
