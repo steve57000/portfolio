@@ -6,44 +6,82 @@ import { styles } from './CVPdfStyles';
 import descriptionIcon from '../../icons/description.png';
 import experienceIcon from '../../icons/experience.png';
 import educationIcon from '../../icons/education.png';
+import competencesIcon from '../../icons/competence.png';
+import contactIcon from '../../icons/contact.png';
+import sociauxIcon from '../../icons/sociaux.png';
+import portfolioIcon from '../../icons/portfolio.png';
+import savoirIcon from '../../icons/savoir-faire.png';
+import adressIcon from '../../icons/adresse.png'
+import phoneIcon from '../../icons/telephone.png'
+import emailIcon from '../../icons/arobase.png'
 
 const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks }) => (
     <Document>
         <Page size="A4" style={styles.page}>
             {/* Colonne gauche */}
             <View style={styles.leftColumn}>
-                <Text style={styles.leftColumnTitle}>{contactInfo.name} {contactInfo.lastName}</Text>
-                <Text style={styles.leftColumnText}>{contactInfo.address}</Text>
-                <Text style={styles.leftColumnText}>{contactInfo.ville}</Text>
-                <Text style={styles.leftColumnText}>{contactInfo.phone}</Text>
-                <Text style={styles.leftColumnText}>{contactInfo.email}</Text>
+                <View style={styles.containerRow}>
+                    <Image style={styles.iconLeft} src={contactIcon} />
+                    <Text style={styles.leftColumnTitle}>Contact</Text>
+                </View>
 
-                <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
+                <View style={styles.contactInfos}>
+                    <Image style={styles.iconSmall} src={adressIcon} />
+                    <View>
+                        <Text style={styles.leftColumnTextName}>{contactInfo.name} {contactInfo.lastName}</Text>
+                        <Text style={styles.leftColumnText}>{contactInfo.address}</Text>
+                        <Text style={styles.leftColumnText}>{contactInfo.ville}</Text>
+                    </View>
+                </View>
+                <View style={styles.contactInfos}>
+                    <Image style={styles.iconSmall} src={phoneIcon} />
+                    <Text style={styles.leftColumnText}>{contactInfo.phone}</Text>
+                </View>
+                <View style={styles.contactInfos}>
+                    <Image style={styles.iconSmall} src={emailIcon} />
+                    <Text style={styles.leftColumnText}>{contactInfo.email}</Text>
+                </View>
+
+                <View style={styles.containerRow}>
+                    <Image style={styles.iconLeft} src={sociauxIcon} />
+                    <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
+                </View>
                 <>
                     {socialLinks.map((link, index) => (
                         <View key={index} style={{ marginBottom: 5 }}>
-                            <Link src={link} style={styles.button} target="_blank">
+                            <Link src={link} style={styles.buttonStyles} target="_blank">
                                 {link}
                             </Link>
                         </View>
                     ))}
                 </>
 
-                <Text style={styles.leftColumnTitle}>Portfolio</Text>
+                <View style={styles.containerRow}>
+                    <Image style={styles.iconLeft} src={portfolioIcon} />
+                    <Text style={styles.leftColumnTitle}>Portfolio</Text>
+                </View>
+
                 <View style={{ marginBottom: 5 }}>
-                    <Link src={portfolioLink} style={styles.button} target="_blank">
+                    <Link src={portfolioLink} style={styles.buttonStyles} target="_blank">
                         {portfolioLink}
                     </Link>
                 </View>
 
-                <Text style={styles.leftColumnTitle}>Compétences</Text>
+                <View style={styles.containerRow}>
+                    <Image style={styles.iconLeft} src={competencesIcon} />
+                    <Text style={styles.leftColumnTitle}>Compétences</Text>
+                </View>
                 <>
                     {competences.map((hardSkill, index) => (
                         <Text key={index} style={styles.leftColumnText}>{hardSkill}</Text>
                     ))}
                 </>
 
-                <Text style={styles.leftColumnTitle}>Savoir</Text>
+                <View style={styles.containerRow}>
+                    <Image style={styles.iconLeft} src={savoirIcon} />
+                    <Text style={styles.leftColumnTitle}>Savoir</Text>
+                </View>
+
                 <>
                     {savoir.map((softSkill, index) => (
                         <Text key={index} style={styles.leftColumnText}>{softSkill}</Text>
@@ -74,11 +112,14 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                         <>
                             {experience.map((exp, index) => (
                                 <View key={index} style={styles.listItem}>
-                                    <Text style={styles.text}>
-                                        <Text style={{ fontWeight: 'bold' }}>{exp.poste}</Text> - {exp.entreprise}, {exp.lieu}
-                                    </Text>
-                                    <Text style={styles.text}>{exp.dateDebut} - {exp.dateFin}</Text>
-                                    <Text style={styles.text}>{exp.description}</Text>
+                                    <View style={styles.containerDate}>
+                                        <Text style={styles.textDate}>{exp.dateDebut}</Text>
+                                        <Text style={styles.textDate}>{exp.dateFin}</Text>
+                                    </View>
+                                    <View style={styles.maxWidth}>
+                                        <Text style={styles.textBold}>{exp.poste} - {exp.entreprise}, {exp.lieu}</Text>
+                                        <Text style={styles.text}>{exp.description}</Text>
+                                    </View>
                                 </View>
                             ))}
                         </>
@@ -93,10 +134,9 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                         </View>
                         <>
                             {formations.map((edu, index) => (
-                                <View key={index} style={styles.listItem}>
-                                    <Text style={styles.text}>
-                                        <Text style={{ fontWeight: 'bold' }}>{edu.diplome}</Text> - {edu.etablissement}, {edu.lieu}
-                                    </Text>
+                                <View key={index} style={styles.textColumn}>
+                                    <Text style={styles.textBold}>{edu.diplome}</Text>
+                                    <Text style={styles.text}>{edu.etablissement}, {edu.lieu}</Text>
                                     <Text style={styles.text}>{edu.dateObtention}</Text>
                                 </View>
                             ))}

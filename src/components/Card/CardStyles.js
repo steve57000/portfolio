@@ -52,13 +52,15 @@ export const CardTitle = styled.h2`
   opacity: 0;
   animation: ${fadeInLeft} 0.5s forwards;
   animation-delay:  0.2s;
+  @media (max-width: 767px) {
+    font-size: ${fonts.sizeMedium};
+  }
 `;
 
 export const CardObjectif = styled.h3`
   font-size: ${fonts.sizeRegular};
-  margin-bottom: 0;
+  margin: 0;
   width: 100%;
-  min-height: 120px;
   color: ${colors.third};
   text-align: center;
   opacity: 0;
@@ -71,19 +73,12 @@ export const CardObjectif = styled.h3`
 `;
 
 export const CardContainerTags = styled.div`
-  position: absolute;
-  top: 160px;
-  left: 0;
-  width: 100%;
   display: flex;
   justify-content: center;
   gap: 10px;
   opacity: 0;
   animation: ${fadeInZoom} 0.5s forwards;
   animation-delay:  0.4s;
-  @media (max-width: 767px) {
-    top: 140px;
-  }
 `;
 
 export const CardTags = styled.span`
