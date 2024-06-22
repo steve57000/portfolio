@@ -25,11 +25,9 @@ const Home = () => {
     const handleCloseDetails = () => {
         setSelectedCardId(null);
         if (selectedCardIdRef) {
-            console.log(selectedCardIdRef)
             const cardElement = document.getElementById(`card-${selectedCardIdRef}`);
 
             if (cardElement) {
-                console.log(cardElement)
                 cardElement.scrollIntoView({ behavior: 'smooth' });
                 cardElement.focus();
             }

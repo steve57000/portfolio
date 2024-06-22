@@ -4,8 +4,8 @@ import {fadeInSlideDown, fadeInSlideUp, fadeInZoom} from "../../utils/stylesKeyf
 
 const { colors, fonts } = configTheme;
 
-const chevron = process.env.PUBLIC_URL + '/assets/icons/chevron.png';
-const chevronPaint = process.env.PUBLIC_URL + '/assets/icons/chevronPaint.png';
+const chevron = require('../../assets/icons/chevron.png');
+const chevronPaint = require('../../assets/icons/chevronPaint.png');
 
 const hoverStyles = `
   background-color: ${colors.fifth};

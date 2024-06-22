@@ -6,7 +6,6 @@ import {
     fadeInZoom
 } from '../../utils/stylesKeyframes/stylesKeyframes';
 import { configTheme } from '../../utils/theme/configTheme';
-
 const { colors, boxShadow, fonts } = configTheme;
 
 export const CardContainer = styled.div`
@@ -102,7 +101,7 @@ export const CardImageContainer = styled.div`
   max-height: 320px;
   border-radius: 5px;
   box-shadow: ${boxShadow.shadowLight};
-  background-image: url(${props => process.env.PUBLIC_URL + `/assets/images/${props.image}`});
+  background-image: url(${props => require(`../../assets/images/${props.image}`)});
   background-size: cover;
   background-position: top;
   opacity: 0;

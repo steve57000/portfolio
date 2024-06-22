@@ -18,7 +18,8 @@ import {
     ContainerButtonHandleLink
 } from './CardStyles';
 import { StyleSheetManager } from "styled-components";
-const cochePng = process.env.PUBLIC_URL + "/assets/icons/coche.png"
+// import CochePng from '../../assets/icons/coche.png'
+const CochePng = require('../../assets/icons/coche.png')
 const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo }) => {
     const [openModal, setOpenModal] = useState(false);
 
@@ -47,7 +48,7 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                 <>
                     {savoir.map((savoirItem, idx) => (
                         <CardSavoirList key={idx}>
-                            <CardSavoirImg src={cochePng} alt="" width="16px" height="16px" />
+                            <CardSavoirImg src={CochePng} alt="" width="16px" height="16px" />
                             {savoirItem}
                         </CardSavoirList>
                     ))}

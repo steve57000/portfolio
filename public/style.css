@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Colonna MT';
-    src: url('./assets/fonts/colonna-mt/colonnamt.ttf') format('truetype'); /* Remplacez 'chemin/vers/ColonnaMT.ttf' par le chemin où se trouve votre fichier de police */
+    src: url('./assets/fonts/colonna-mt/colonnamt.ttf') format('truetype');
 }
 
 *{

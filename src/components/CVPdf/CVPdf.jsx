@@ -1,19 +1,21 @@
 import React from 'react';
-import { Page, Text, View, Document, Image, Link } from '@react-pdf/renderer';
+import {Page, Text, View, Document, Image, Link } from '@react-pdf/renderer';
 import PropTypes from "prop-types";
 import { styles } from './CVPdfStyles';
 
-import descriptionIcon from '../../icons/description.png';
-import experienceIcon from '../../icons/experience.png';
-import educationIcon from '../../icons/education.png';
-import competencesIcon from '../../icons/competence.png';
-import contactIcon from '../../icons/contact.png';
-import sociauxIcon from '../../icons/sociaux.png';
-import portfolioIcon from '../../icons/portfolio.png';
-import savoirIcon from '../../icons/savoir-faire.png';
-import adressIcon from '../../icons/adresse.png'
-import phoneIcon from '../../icons/telephone.png'
-import emailIcon from '../../icons/arobase.png'
+import descriptionIcon from '../../assets/icons/description.png';
+import experienceIcon from '../../assets/icons/experience.png';
+import educationIcon from '../../assets/icons/education.png';
+import competencesIcon from '../../assets/icons/competence.png';
+import contactIcon from '../../assets/icons/contact.png';
+import sociauxIcon from '../../assets/icons/sociaux.png';
+import portfolioIcon from '../../assets/icons/portfolio.png';
+import savoirIcon from '../../assets/icons/savoir-faire.png';
+import adressIcon from '../../assets/icons/adresse.png'
+import phoneIcon from '../../assets/icons/telephone.png'
+import emailIcon from '../../assets/icons/arobase.png'
+
+// Register the font from the public folder
 
 const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks }) => (
     <Document>
@@ -56,7 +58,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                         </View>
                         <>
                             {socialLinks.map((link, index) => (
-                                <View key={index} style={{ marginBottom: 5 }}>
+                                <View key={index}>
                                     <Link src={link} style={styles.buttonStyles} target="_blank">
                                         {link}
                                     </Link>
@@ -69,7 +71,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             <Text style={styles.leftColumnTitle}>Portfolio</Text>
                         </View>
 
-                        <View style={{ marginBottom: 5 }}>
+                        <View>
                             <Link src={portfolioLink} style={styles.buttonStyles} target="_blank">
                                 {portfolioLink}
                             </Link>
@@ -81,7 +83,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                         </View>
                         <>
                             {competences.map((hardSkill, index) => (
-                                <Text key={index} style={styles.leftColumnText}>{hardSkill}</Text>
+                                <Text key={index} style={styles.leftColumnText}>-{hardSkill}</Text>
                             ))}
                         </>
 
@@ -92,7 +94,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
 
                         <>
                             {savoir.map((softSkill, index) => (
-                                <Text key={index} style={styles.leftColumnText}>{softSkill}</Text>
+                                <Text key={index} style={styles.leftColumnText}>-{softSkill}</Text>
                             ))}
                         </>
                     </View>
@@ -137,7 +139,7 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                     )}
 
                     {formations && (
-                        <View style={styles.section}>
+                        <View style={[styles.section, styles.sectionEnd]}>
                             <View style={styles.sectionShadow} />
                             <View style={styles.sectionTitleContainer}>
                                 <Image style={styles.icon} src={educationIcon} />

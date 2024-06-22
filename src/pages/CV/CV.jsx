@@ -28,12 +28,12 @@ import {
 import PropTypes from "prop-types";
 
 // Import des icônes
-import descriptionIcon from '../../icons/description-de-lemploi.png';
-import objectifIcon from '../../icons/realisation.png';
-import experienceIcon from '../../icons/experience-professionnelle.png';
-import educationIcon from '../../icons/carriere.png';
-import skillsIcon from '../../icons/competence.png';
-import knowledgeIcon from '../../icons/savoir-faire.png';
+import descriptionIcon from '../../assets/icons/description-de-lemploi.png';
+import objectifIcon from '../../assets/icons/realisation.png';
+import experienceIcon from '../../assets/icons/experience-professionnelle.png';
+import educationIcon from '../../assets/icons/carriere.png';
+import skillsIcon from '../../assets/icons/competence.png';
+import knowledgeIcon from '../../assets/icons/savoir-faire.png';
 
 const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);

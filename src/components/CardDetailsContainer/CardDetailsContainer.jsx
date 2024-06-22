@@ -38,7 +38,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const handleOpenPDF = (pdfLink) => {
         console.log("Opening PDF:", pdfLink);
         if (project.docs) {
-            window.open(process.env.PUBLIC_URL + `/assets/docs/${pdfLink}`, '_blank');
+            window.open(require(`../../assets/docs/${pdfLink}`), '_blank');
         }
     };
 
@@ -100,7 +100,7 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
                                 {func.imgs && listStates[project.id]?.[index] && (
                                     <>
                                         {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={process.env.PUBLIC_URL + `/assets/images/${image}`} alt=""/>
+                                            <img key={idx} src={require(`../../assets/images/${image}`)} alt="" />
                                         ))}
                                     </>
                                 )}
