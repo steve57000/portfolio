@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     leftColumnContainer: {
         position: 'relative',
         width: '33%',
-        marginRight: 10,
+        marginRight: 5,
     },
     leftColumn: {
         flexDirection: 'column',
