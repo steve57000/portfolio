@@ -1,8 +1,28 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.575e581e.js",
+    "main.js": "/portfolio/static/js/main.6e7d359e.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
+    "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.fc60616c77a444a39751.png",
+    "static/media/ohmyfood-menu.png": "/portfolio/static/media/ohmyfood-menu.13c8ab9ae8b73add9d48.png",
+    "static/media/reservia.png": "/portfolio/static/media/reservia.4b099cf015217172f8fc.png",
+    "static/media/kanap.png": "/portfolio/static/media/kanap.10cc08988c6513036896.png",
+    "static/media/audit-SEO.pdf": "/portfolio/static/media/audit-SEO.112b282e858ae2e38b98.pdf",
+    "static/media/kasa.PNG": "/portfolio/static/media/kasa.a604be3c411c41ab71e1.PNG",
+    "static/media/reservia-activity.png": "/portfolio/static/media/reservia-activity.68e9765296696ca33d33.png",
+    "static/media/Montserrat-SemiBoldItalic.ttf": "/portfolio/static/media/Montserrat-SemiBoldItalic.60907ef6dc10bb4e826a.ttf",
+    "static/media/Montserrat-MediumItalic.ttf": "/portfolio/static/media/Montserrat-MediumItalic.67e6dda3939a21720991.ttf",
+    "static/media/Montserrat-Bold.ttf": "/portfolio/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
+    "static/media/oh-my-food.png": "/portfolio/static/media/oh-my-food.81c7d6f86ccd9038cf22.png",
+    "static/media/ohmyfood-accueil-middle.png": "/portfolio/static/media/ohmyfood-accueil-middle.f29e1c0e89fff9ee661f.png",
+    "static/media/reservia-lodging.png": "/portfolio/static/media/reservia-lodging.516d9c1d9a5431d52147.png",
+    "static/media/groupomania.PNG": "/portfolio/static/media/groupomania.a5bffc8c37ce77bede7c.PNG",
+    "static/media/Merriweather-Regular.ttf": "/portfolio/static/media/Merriweather-Regular.da67ca8c38ef44c4773d.ttf",
+    "static/media/gameon.PNG": "/portfolio/static/media/gameon.d124b9fecaec710b9eea.PNG",
+    "static/media/cardImage.png": "/portfolio/static/media/cardImage.9c427ca9a43373cc4fa0.png",
+    "static/media/fishEye.PNG": "/portfolio/static/media/fishEye.3bf3ca4e9d8b70c25365.PNG",
+    "static/media/learnhome.PNG": "/portfolio/static/media/learnhome.6016229c44b0f2cf5927.PNG",
+    "static/media/piiquante.png": "/portfolio/static/media/piiquante.c4911ce983480f28a509.png",
     "static/media/experience.png": "/portfolio/static/media/experience.5579d1cdb4a4a20d3cce.png",
     "static/media/experience-professionnelle.png": "/portfolio/static/media/experience-professionnelle.841c992f76a8b951699e.png",
     "static/media/education.png": "/portfolio/static/media/education.130a09df1d5eb7e37716.png",
@@ -11,14 +31,18 @@
     "static/media/description.png": "/portfolio/static/media/description.42ff557379291596302f.png",
     "static/media/competence.png": "/portfolio/static/media/competence.f147d894129e74a3d22e.png",
     "static/media/savoir-faire.png": "/portfolio/static/media/savoir-faire.d9e972821ee2c78c3bfd.png",
+    "static/media/billed.PNG": "/portfolio/static/media/billed.7763eebce9eb4e270768.PNG",
     "static/media/description-de-lemploi.png": "/portfolio/static/media/description-de-lemploi.61032d5dffa1ed870e90.png",
+    "static/media/lespetitsplats.PNG": "/portfolio/static/media/lespetitsplats.46ba00541020b8a8a394.PNG",
+    "static/media/logo.svg": "/portfolio/static/media/logo.bbb79dbb0c312a22672195d7a17161ed.svg",
+    "static/media/ohmyfood-accueil-top.png": "/portfolio/static/media/ohmyfood-accueil-top.f27034a9630b190d5645.png",
     "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.575e581e.js.map": "/portfolio/static/js/main.575e581e.js.map",
+    "main.6e7d359e.js.map": "/portfolio/static/js/main.6e7d359e.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.575e581e.js"
+    "static/js/main.6e7d359e.js"
   ]
 }
