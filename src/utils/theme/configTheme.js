@@ -37,6 +37,7 @@ export const configTheme = {
     },
     sizes: {
         maxWidth: "1920px", // Largeur maximale de la page d'accueil
+        maxWidthCv: "1280px",
         padding: "20px", // Espacement intérieur de la page d'accueil
         paddingMin: "10px",
     },

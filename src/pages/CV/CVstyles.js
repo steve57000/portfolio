@@ -6,7 +6,7 @@ const { colors, borders, fonts, sizes, boxShadow } = configTheme;
 
 export const Container = styled.div`
   position: relative;
-  width: ${sizes.maxWidth};
+  width: ${sizes.maxWidthCv};
   max-width: 95vw;
   margin: 4% auto 0 auto;
   padding-top: 100px;
