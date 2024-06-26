@@ -22,7 +22,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-family: 'Colonna MT', serif;
     font-weight: 500;
 }

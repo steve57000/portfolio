@@ -35,8 +35,11 @@ import educationIcon from '../../assets/icons/carriere.png';
 import skillsIcon from '../../assets/icons/competence.png';
 import knowledgeIcon from '../../assets/icons/savoir-faire.png';
 
+import { useInitial } from '../../utils/hooks/useInitial'; // Import du hook
+
 const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
+    const { loading, error: initialError } = useInitial(); // Utilisation du hook
     const [loadedData, setLoadedData] = useState(null);
 
     useEffect(() => {
@@ -45,12 +48,13 @@ const CV = ({ layout }) => {
         }
     }, [isLoading, error, data]);
 
-    if (isLoading || !loadedData) {
+    // Gestion des états de chargement et d'erreur globaux
+    if (loading || isLoading || !loadedData) {
         return <div>Chargement en cours...</div>;
     }
 
-    if (error) {
-        return <div>Une erreur s'est produite : {error.message}</div>;
+    if (initialError || error) {
+        return <div>Une erreur s'est produite : {initialError ? initialError.message : error.message}</div>;
     }
 
     const {

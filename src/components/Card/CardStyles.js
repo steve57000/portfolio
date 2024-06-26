@@ -35,7 +35,7 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const CardTitle = styled.h2`
+export const CardTitle = styled.h3`
   position: absolute;
   top: 0;
   left: 0;
@@ -56,7 +56,7 @@ export const CardTitle = styled.h2`
   }
 `;
 
-export const CardObjectif = styled.h3`
+export const CardObjectif = styled.h4`
   font-size: ${fonts.sizeRegular};
   margin: 0;
   width: 100%;

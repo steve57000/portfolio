@@ -4,9 +4,11 @@ import CardDetailsContainer from '../../components/CardDetailsContainer/CardDeta
 import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription } from './HomeStyles';
 import { mockData } from "../../data/mockData";
 import Card from "../../components/Card/Card";
+import { useInitial } from '../../utils/hooks/useInitial'; // Import du hook
 
 const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
+    const { loading, error: initialError } = useInitial(); // Utilisation du hook
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [scrollToProjectId, setScrollToProjectId] = useState(null);
     const [selectedCardIdRef, setSelectedCardIdRef] = useState(null);
@@ -35,12 +37,13 @@ const Home = () => {
         setSelectedCardIdRef(null); // Réinitialiser l'identifiant de référence
     };
 
-    if (isLoading) {
+    // Gestion des états de chargement et d'erreur globaux
+    if (loading || isLoading) {
         return <div>Chargement en cours...</div>;
     }
 
-    if (error) {
-        return <div>Une erreur s'est produite : {error.message}</div>;
+    if (initialError || error) {
+        return <div>Une erreur s'est produite : {initialError ? initialError.message : error.message}</div>;
     }
 
     return (
@@ -57,25 +60,31 @@ const Home = () => {
             ) : (
                 <>
                     <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
-                    <PageDescription>C'est ici que vous pouvez présenter votre portfolio, vos projets, etc.</PageDescription>
-                    <ContainerProject>
-                        <>
-                            {data.map((project, index) => (
-                                <Card
-                                    key={project.id}
-                                    id={`card-${project.id}`}
-                                    index={index}
-                                    title={project.title}
-                                    objectif={project.objectif}
-                                    tags={Array.isArray(project.tags) ? project.tags : []}
-                                    image={project.images}
-                                    savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                                    websiteUrl={project.websiteUrl}
-                                    onClickMoreInfo={() => handleMoreInfoClick(project.id)}
-                                />
-                            ))}
-                        </>
-                    </ContainerProject>
+                    <section>
+                        <h2>Présentation :</h2>
+                        <PageDescription>Je suis Steve Bell, un développeur web frontend passionné à la recherche de nouvelles opportunités professionnelles. Fort de plusieurs années d'expérience dans divers domaines techniques, j'ai acquis des compétences solides en développement web, notamment en utilisant des technologies telles que HTML, CSS, JavaScript, React.js et Vue.js. Mon objectif est de continuer à évoluer dans le domaine du développement web et de contribuer à des projets innovants et stimulants.</PageDescription>
+                    </section>
+                    <section>
+                        <h2>Mes Projets :</h2>
+                        <ContainerProject>
+                            <>
+                                {data.map((project, index) => (
+                                    <Card
+                                        key={project.id}
+                                        id={`card-${project.id}`}
+                                        index={index}
+                                        title={project.title}
+                                        objectif={project.objectif}
+                                        tags={Array.isArray(project.tags) ? project.tags : []}
+                                        image={project.images}
+                                        savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                                        websiteUrl={project.websiteUrl}
+                                        onClickMoreInfo={() => handleMoreInfoClick(project.id)}
+                                    />
+                                ))}
+                            </>
+                        </ContainerProject>
+                    </section>
                 </>
             )}
         </HomeContainer>

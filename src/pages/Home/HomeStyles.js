@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { configTheme  } from '../../utils/theme/configTheme';
-const { colors, sizes, fonts } = configTheme;
+const { colors, sizes, fonts, boxShadow } = configTheme;
 
 export const HomeContainer = styled.div`
   max-width: ${sizes.maxWidth};
@@ -24,7 +24,11 @@ export const PageTitle = styled.h1`
 export const PageDescription = styled.p`
   font-size: ${fonts.sizeSmall};
   margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
   text-align: justify;
+  background: ${colors.backgroundGradient};
+  box-shadow: ${boxShadow.shadowLight};
 `;
 
 export const ModalBackdrop = styled.div`
