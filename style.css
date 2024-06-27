@@ -27,6 +27,18 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
+h1 {
+    text-align: center;
+}
+h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-top: 80px;
+    color: #571845;
+    padding: 10px;
+    text-decoration: underline 4px #900c3e;
+}
+
 #root {
     background: rgba(254, 180, 123, 0.53);
     position: relative;
