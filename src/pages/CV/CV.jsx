@@ -35,7 +35,8 @@ import educationIcon from '../../assets/icons/carriere.png';
 import skillsIcon from '../../assets/icons/competence.png';
 import knowledgeIcon from '../../assets/icons/savoir-faire.png';
 
-import { useInitial } from '../../utils/hooks/useInitial'; // Import du hook
+import { useInitial } from '../../utils/hooks/useInitial';
+import LoadingScreen from "../../components/Loader/Loader";
 
 const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
@@ -50,7 +51,7 @@ const CV = ({ layout }) => {
 
     // Gestion des états de chargement et d'erreur globaux
     if (loading || isLoading || !loadedData) {
-        return <div>Chargement en cours...</div>;
+        return <LoadingScreen />;
     }
 
     if (initialError || error) {

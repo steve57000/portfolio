@@ -13,7 +13,7 @@ const fetchData = async () => {
             } else {
                 reject("Error fetching data");
             }
-        }, 500);
+        }, 1500);
     });
 };
 

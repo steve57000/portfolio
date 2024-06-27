@@ -54,14 +54,3 @@ export const fadeInZoom = keyframes`
     transform: scale(1);
   }
 `;
-
-export const slideHeightDown = keyframes`
-  0% {
-    opacity: 0;
-    height: 50px;
-  }
-  100% {
-    opacity: 1;
-    height: 100%;
-  }
-`;

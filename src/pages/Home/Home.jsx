@@ -4,7 +4,8 @@ import CardDetailsContainer from '../../components/CardDetailsContainer/CardDeta
 import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription } from './HomeStyles';
 import { mockData } from "../../data/mockData";
 import Card from "../../components/Card/Card";
-import { useInitial } from '../../utils/hooks/useInitial'; // Import du hook
+import { useInitial } from '../../utils/hooks/useInitial';
+import LoadingScreen from "../../components/Loader/Loader";
 
 const Home = () => {
     const { data, isLoading, error } = useDataFetching(mockData);
@@ -39,7 +40,7 @@ const Home = () => {
 
     // Gestion des états de chargement et d'erreur globaux
     if (loading || isLoading) {
-        return <div>Chargement en cours...</div>;
+        return <LoadingScreen />;
     }
 
     if (initialError || error) {
