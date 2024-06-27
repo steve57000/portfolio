@@ -7,10 +7,10 @@ import {
     ContainerList,
     Container,
     Chevron,
-    ImgContainer,
-    ButtonStyles,
+    ButtonStyles, ContainerDescription,
 } from './CardDetailsContainerStyles';
 import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
+import {GlobalStyle} from "./CardDetailsContainerStyles";
 
 const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     const [listStates, setListStates] = useState({});
@@ -64,112 +64,108 @@ const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
     }
 
     return (
-        <CardDetailsStyles>
-            <h2 ref={anchorRef}>{project.title}</h2>
-            <h3>Description :</h3>
-            <p>{project.description}</p>
-            <Container>
-                <>
-                    {project.fonction.map((func, index) => (
-                        <ContainerList
-                            key={index}
-                            $index={index}
-                            role="button"
-                            tabIndex={0}
-                            onClick={() => toggleListVisibility(project.id, index)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    toggleListVisibility(project.id, index);
-                                }
-                            }}
-                            $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
-                        >
-                            <h4>{func.name}</h4>
-                            <Chevron $isRotated={listStates[project.id]?.[index]} />
+        <>
+            <GlobalStyle />
+            <CardDetailsStyles>
+                <h2 ref={anchorRef}>{project.title}</h2>
+                <ContainerDescription>
+                    <h3>Description :</h3>
+                    <p>{project.description}</p>
+                </ContainerDescription>
+                <Container>
+                    <>
+                        {project.fonction.map((func, index) => (
+                            <ContainerList
+                                key={index}
+                                $index={index}
+                                role="button"
+                                tabIndex={0}
+                                onClick={() => toggleListVisibility(project.id, index)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        toggleListVisibility(project.id, index);
+                                    }
+                                }}
+                                $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
+                            >
+                                <h4>{func.name}</h4>
+                                <Chevron $isRotated={listStates[project.id]?.[index]} />
 
-                            <CardDetailsUl>
-                                {listStates[project.id]?.[index] && (
-                                    <>
-                                        {func.list.map((item, idx) => (
-                                            <CardDetailsList key={idx} $index={idx} >{item}</CardDetailsList>
-                                        ))}
-                                    </>
-                                )}
-                            </CardDetailsUl>
-                            <ImgContainer >
-                                {func.imgs && listStates[project.id]?.[index] && (
-                                    <>
-                                        {func.imgs.map((image, idx) => (
-                                            <img key={idx} src={require(`../../assets/images/${image}`)} alt="" />
-                                        ))}
-                                    </>
-                                )}
-                            </ImgContainer>
-                        </ContainerList>
-                    ))}
-                </>
-                <>
-                    {project.docs && project.docs.map((doc, index) => (
-                        <ButtonStyles
-                            key={index}
-                            role="button"
-                            tabIndex={0}
-                            aria-label={`Ouvrir le document ${doc.nameDocs}`}
-                            onClick={() => handleOpenPDF(doc.link)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    handleOpenPDF(doc.link);
-                                }
-                            }}
-                        >
-                            <p>
-                                Voir {doc.nameDocs}
-                            </p>
-                        </ButtonStyles>
-                    ))}
-                </>
-                <>
-                    {project.video && project.video.map((video, index) => (
-                        <ButtonStyles
-                            key={index}
-                            role="button"
-                            tabIndex={0}
-                            aria-label={`Ouvrir ${video.name}`}
-                            onClick={() => handleOpenVideo(index)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    handleOpenVideo(index);
-                                }
-                            }}
-                        >
-                            <p>
-                                Voir {video.name}
-                            </p>
-                        </ButtonStyles>
-                    ))}
-                </>
-                <ButtonStyles
-                    role="button"
-                    tabIndex={0}
-                    onClick={onClose}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                            onClose();
-                        }
-                    }}
-                >
-                    <p>
-                        Fermer
-                    </p>
-                </ButtonStyles>
-            </Container>
-            {isVideoModalOpen && (
-                <FullScreenVideoModal
-                    videoSrc={project.video[selectedVideoIndex].link}
-                    onClose={handleCloseVideoModal}
-                />
-            )}
-        </CardDetailsStyles>
+                                <CardDetailsUl>
+                                    {listStates[project.id]?.[index] && (
+                                        <>
+                                            {func.list.map((item, idx) => (
+                                                <CardDetailsList key={idx} $index={idx} >{item}</CardDetailsList>
+                                            ))}
+                                        </>
+                                    )}
+                                </CardDetailsUl>
+                            </ContainerList>
+                        ))}
+                    </>
+                    <>
+                        {project.docs && project.docs.map((doc, index) => (
+                            <ButtonStyles
+                                key={index}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`Ouvrir le document ${doc.nameDocs}`}
+                                onClick={() => handleOpenPDF(doc.link)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        handleOpenPDF(doc.link);
+                                    }
+                                }}
+                            >
+                                <p>
+                                    Voir {doc.nameDocs}
+                                </p>
+                            </ButtonStyles>
+                        ))}
+                    </>
+                    <>
+                        {project.video && project.video.map((video, index) => (
+                            <ButtonStyles
+                                key={index}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`Ouvrir ${video.name}`}
+                                onClick={() => handleOpenVideo(index)}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter') {
+                                        handleOpenVideo(index);
+                                    }
+                                }}
+                            >
+                                <p>
+                                    Voir {video.name}
+                                </p>
+                            </ButtonStyles>
+                        ))}
+                    </>
+                    <ButtonStyles
+                        role="button"
+                        tabIndex={0}
+                        onClick={onClose}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                onClose();
+                            }
+                        }}
+                    >
+                        <p>
+                            Fermer
+                        </p>
+                    </ButtonStyles>
+                </Container>
+                {isVideoModalOpen && (
+                    <FullScreenVideoModal
+                        videoSrc={project.video[selectedVideoIndex].link}
+                        onClose={handleCloseVideoModal}
+                    />
+                )}
+            </CardDetailsStyles>
+        </>
     );
 };
 

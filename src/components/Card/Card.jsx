@@ -31,6 +31,7 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
         }
     };
     return (
+
         <CardContainer id={id} $index={index}>
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>

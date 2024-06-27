@@ -161,7 +161,7 @@ export const Position = styled.h3`
   font-family: 'MyFontText', serif;
   color: ${colors.fourth};
   letter-spacing: 1px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 export const Company = styled.p`

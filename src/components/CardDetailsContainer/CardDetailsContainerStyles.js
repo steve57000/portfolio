@@ -1,11 +1,22 @@
-import styled from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 import { configTheme } from "../../utils/theme/configTheme";
-import {fadeInSlideDown, fadeInSlideUp, fadeInZoom} from "../../utils/stylesKeyframes/stylesKeyframes";
+import { fadeInSlideDown, fadeInSlideUp } from "../../utils/stylesKeyframes/stylesKeyframes";
+
+import MyFontText from '../../assets/fonts/Merriweather-Regular.ttf';
 
 const { colors, fonts } = configTheme;
 
 const chevron = require('../../assets/icons/chevron.png');
 const chevronPaint = require('../../assets/icons/chevronPaint.png');
+
+export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'MyFontText';
+    src: url(${MyFontText}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+`;
 
 const hoverStyles = `
   background-color: ${colors.fifth};
@@ -15,7 +26,6 @@ const hoverStyles = `
 
 export const CardDetailsStyles = styled.div`
   position: relative;
-  text-align: left;
   max-width: 1280px;
   margin: 0 auto;
   background: linear-gradient(135deg, ${colors.primary}, ${colors.secondary});
@@ -44,6 +54,24 @@ export const CardDetailsStyles = styled.div`
     }
   }
 `;
+
+export const ContainerDescription = styled.div`
+  width: 100%;
+  max-width: calc(100% / 1.3);
+  margin: 0 auto;
+  
+  h3 {
+    font-family: 'MyFontText', serif;
+  }
+  
+  @media(max-width: 1080px){
+    max-width: 90%;
+  }
+  
+  @media(max-width: 720px){
+    max-width: 99%;
+  }
+`
 
 export const ButtonStyles = styled.div`
   width: 250px;
@@ -98,10 +126,6 @@ export const ContainerList = styled.div`
   animation: ${fadeInSlideDown} 0.5s ease forwards;
   animation-delay: ${({ $index }) => $index * 0.2}s;
   ${props => props.$isOpen && hoverStyles};
-
-  @media (max-width: 767px) {
-    padding: 0 5px;
-  }
   
   &:hover {
     ${hoverStyles}
@@ -120,6 +144,10 @@ export const ContainerList = styled.div`
 
   @media(max-width: 1080px){
     max-width: 90%;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 5px;
   }
 
   @media(max-width: 720px){
@@ -148,13 +176,13 @@ export const CardDetailsUl = styled.ul`
   list-style: circle inside;
   color: ${colors.fourth};
   margin: 0;
-  padding: 0 10px;
+  padding: 0 5px 20px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   
   @media(max-width: 768px){
-    padding: 0 1px;
+    padding: 0 1px 15px 1px;
   }
 `;
 
@@ -171,31 +199,5 @@ export const CardDetailsList = styled.li`
   animation-delay: ${({ $index }) => $index * 0.3}s;
   @media(max-width: 1080px){
     width: 100%;
-  }
-`;
-
-export const ImgContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 10px;
-  img {
-    max-width: calc(100% / 2.09);
-    margin: 1% ;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
-    border-radius: 1vh;
-    opacity: 0;
-    animation: ${fadeInZoom} 0.5s ease forwards;
-    animation-delay: 0.8s;
-    @media(max-width: 1080px){
-      min-width: 100%;
-    }
-    @media(max-width: 768px){
-      min-width: 102%;
-    }
-    @media(max-width: 620px){
-      min-width: 103%;
-    }
   }
 `;

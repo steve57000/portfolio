@@ -5,7 +5,9 @@ import {
     fadeInSlideDown,
     fadeInZoom
 } from '../../utils/stylesKeyframes/stylesKeyframes';
+
 import { configTheme } from '../../utils/theme/configTheme';
+
 const { colors, boxShadow, fonts } = configTheme;
 
 export const CardContainer = styled.div`
@@ -56,7 +58,7 @@ export const CardTitle = styled.h3`
 
 export const CardObjectif = styled.h4`
   margin: 10px 0 0 0;
-  font-size: ${fonts.sizesizeSmall};
+  font-size: ${fonts.sizeSmall};
   color: ${colors.third};
   text-align: center;
   opacity: 0;
@@ -64,7 +66,7 @@ export const CardObjectif = styled.h4`
   animation-delay:  0.3s;
 
   @media (max-width: 620px) {
-    font-size: ${fonts.sizeLightSamll};
+    font-size: ${fonts.sizeLightSmall};
   }
 `;
 
