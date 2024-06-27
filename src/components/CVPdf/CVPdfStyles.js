@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingHorizontal: 10,
         fontFamily: 'MyTextFont',
-        border: '1px solid red'
     },
     banner: {
         width: '100%',
