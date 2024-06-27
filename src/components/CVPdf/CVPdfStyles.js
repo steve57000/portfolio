@@ -9,6 +9,7 @@ import MyFontText from '../../assets/fonts/Merriweather-Regular.ttf';
 Font.register({
     family: 'MyTitleFontBold',
     src: MyFontTitleBold,
+    format: 'truetype'
 });
 
 Font.register({

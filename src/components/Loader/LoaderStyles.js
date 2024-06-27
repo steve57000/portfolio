@@ -45,5 +45,5 @@ export const LoadingText = styled.div`
 export const Letter = styled.span`
   display: inline-block;
   animation: ${colorChange} 1s linear infinite;
-  animation-delay: ${({ delay }) => delay};
+  animation-delay: ${({ $delay }) => $delay};
 `;

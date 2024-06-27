@@ -29,7 +29,8 @@ export const CardContainer = styled.div`
   &:hover {
     box-shadow: ${boxShadow.shadowHigh};
   }
-  @media (max-width: 767px) {
+  
+  @media (max-width: 1600px) {
     padding: 70px 10px;
     gap: 10px;
   }
@@ -41,8 +42,8 @@ export const CardTitle = styled.h3`
   left: 0;
   margin: 0;
   width: 100%;
-  padding: 10px 0 10px 0;
-  font-size: ${fonts.sizeLarge};
+  padding: 15px 0 15px 0;
+  font-size: ${fonts.sizeMedium};
   text-align: center;
   color: ${colors.primary};
   background-color: ${colors.fourth};
@@ -51,23 +52,19 @@ export const CardTitle = styled.h3`
   opacity: 0;
   animation: ${fadeInLeft} 0.5s forwards;
   animation-delay:  0.2s;
-  @media (max-width: 767px) {
-    font-size: ${fonts.sizeMedium};
-  }
 `;
 
 export const CardObjectif = styled.h4`
-  font-size: ${fonts.sizeRegular};
-  margin: 0;
-  width: 100%;
+  margin: 10px 0 0 0;
+  font-size: ${fonts.sizesizeSmall};
   color: ${colors.third};
   text-align: center;
   opacity: 0;
   animation: ${fadeInRight} 0.5s forwards;
-  animation-delay:  0.3s;}
-  @media (max-width: 767px) {
-    font-size: ${fonts.sizeSmall};
-    min-height: 90px;
+  animation-delay:  0.3s;
+
+  @media (max-width: 620px) {
+    font-size: ${fonts.sizeLightSamll};
   }
 `;
 
@@ -81,17 +78,16 @@ export const CardContainerTags = styled.div`
 `;
 
 export const CardTags = styled.span`
-  font-size: ${fonts.sizeSmall};
-  font-weight: bolder;
+  font-size: ${fonts.sizeExtraSmall};
+  letter-spacing: 1px;
   padding: 8px;
   border-radius: 5px;
   background-color: ${colors.fifth};
-  color: ${colors.sixth};
+  color: ${colors.primary};
   box-shadow: ${boxShadow.shadowLight};
-  @media (max-width: 767px) {
+  
+  @media (max-width: 1500px) {
     padding: 5px;
-    font-size: ${fonts.sizeExtraSmall};
-    margin-top: 20px;
   }
 `;
 
@@ -109,6 +105,11 @@ export const CardImageContainer = styled.div`
   animation-delay:  0.5s;
 `;
 
+export const CardSavoirImg = styled.img`
+  position: absolute;
+  left: 0;
+`;
+
 export const CardSavoir = styled.ul`
   margin: 0;
   list-style-type: none;
@@ -118,10 +119,6 @@ export const CardSavoir = styled.ul`
   animation-delay: 0.6s;
 `;
 
-export const CardSavoirImg = styled.img`
-  position: absolute;
-  left: 0;
-`;
 
 export const CardSavoirList = styled.li`
   font-size: ${fonts.sizeExtraSmall};
@@ -139,6 +136,7 @@ export const ContainerLink = styled.span`
   opacity: 0;
   animation: ${fadeInRight} 0.5s forwards;
   animation-delay:  0.7s;
+  
   @media (max-width: 767px) {
     width: calc(100% - 20px);
   }

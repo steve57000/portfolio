@@ -1,4 +1,3 @@
-// Animation pour le loader
 import {keyframes} from "styled-components";
 
 export const spin = keyframes`

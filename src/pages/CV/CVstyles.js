@@ -1,8 +1,18 @@
-import styled from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 import { configTheme } from '../../utils/theme/configTheme';
 import {fadeInRight, fadeInLeft, fadeInSlideDown, fadeInSlideUp} from "../../utils/stylesKeyframes/stylesKeyframes";
+import MyFontText from '../../assets/fonts/Merriweather-Regular.ttf';
 
 const { colors, borders, fonts, sizes, boxShadow } = configTheme;
+
+export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'MyFontText';
+    src: url(${MyFontText}) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+`;
 
 export const Container = styled.div`
   position: relative;
@@ -42,14 +52,16 @@ export const Title = styled.h1`
 `;
 
 export const BorderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   background: ${colors.backgroundGradient};
-  padding: 30px 3%;
+  padding: 45px 3%;
   border-radius: 0 0 20px 20px;
 
   @media (max-width: 767px) {
     border-radius: 0 0 10px 10px;
   }
-  
 `;
 
 export const ColumnContainer = styled.div`
@@ -80,7 +92,6 @@ export const ThreeColumnContainer = styled.div`
 `;
 
 export const Section = styled.section`
-  margin: 20px 0;
   padding: 0 0 20px 0;
   border-top: none;
   border-radius: 10px;
@@ -147,8 +158,10 @@ export const ExperienceItem = styled.div`
 
 export const Position = styled.h3`
   font-size: ${fonts.sizeRegular};
+  font-family: 'MyFontText', serif;
   color: ${colors.fourth};
   letter-spacing: 1px;
+  margin-bottom: 5px;
 `;
 
 export const Company = styled.p`

@@ -23,7 +23,7 @@ import {
     ListItemBorder,
     SectionTitleIcon,
     ButtonPdf,
-    CenterButton
+    CenterButton, GlobalStyle
 } from './CVstyles';
 import PropTypes from "prop-types";
 
@@ -143,157 +143,160 @@ const CV = ({ layout }) => {
     };
 
     return (
-        <Container>
-            <Title>{title}</Title>
-            <BorderContainer>
-                <ContentContainer>
-                    {description && (
-                        <Section>
-                            <SectionTitle>
-                                <SectionTitleIcon src={descriptionIcon} alt="description" />
-                                Description
-                            </SectionTitle>
-                            <Paragraph>{description}</Paragraph>
-                        </Section>
-                    )}
-
-                    {objectif && (
-                        <Section>
-                            <SectionTitle>
-                                <SectionTitleIcon src={objectifIcon} alt="objectif" />
-                                Objectif
-                            </SectionTitle>
-                            <Paragraph>{objectif}</Paragraph>
-                        </Section>
-                    )}
-                </ContentContainer>
-
-                {experience && (
-                    <Section>
-                        <SectionTitle>
-                            <SectionTitleIcon src={experienceIcon} alt="expérience" />
-                            Expérience professionnelle
-                        </SectionTitle>
-                        <List>
-                            {experience.map((exp, index) => (
-                                <ListItem key={index}>
-                                    <ExperienceItem>
-                                        <Position>{exp.poste}</Position>
-                                        <Company>{exp.entreprise}, {exp.lieu}</Company>
-                                        <Date>{exp.dateDebut} - {exp.dateFin}</Date>
-                                        <Description>{exp.description}</Description>
-                                    </ExperienceItem>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Section>
-                )}
-
-                {formations && (
-                    <Section>
-                        <SectionTitle>
-                            <SectionTitleIcon src={educationIcon} alt="éducation" />
-                            Éducation
-                        </SectionTitle>
-                        <List>
-                            <>
-                                {formations.map((edu, index) => (
-                                    <ListItemBorder key={index}>
-                                        <Position>{edu.diplome}</Position>
-                                        <Company>{edu.etablissement}, {edu.lieu}</Company>
-                                        <Date>{edu.dateObtention}</Date>
-                                    </ListItemBorder>
-                                ))}
-                            </>
-                        </List>
-                    </Section>
-                )}
-
-                <ContentContainer>
-                    {competences && (
-                        <Section>
-                            <SectionTitle>
-                                <SectionTitleIcon src={skillsIcon} alt="compétences" />
-                                Compétences
-                            </SectionTitle>
-                            <List>
-                                {competences.map((hardSkill, index) => (
-                                    <ListItem key={index}>{hardSkill}</ListItem>
-                                ))}
-                            </List>
-                        </Section>
-                    )}
-
-                    {savoir && (
-                        <Section>
-                            <SectionTitle>
-                                <SectionTitleIcon src={knowledgeIcon} alt="savoir" />
-                                Savoir
-                            </SectionTitle>
-                            <List>
-                                <>
-                                    {savoir.map((softSkill, index) => (
-                                        <ListItem key={index}>{softSkill}</ListItem>
-                                    ))}
-                                </>
-                            </List>
-                        </Section>
-                    )}
-
-                    {langues && (
-                        <Section>
-                            <SectionTitle>
-                                Langues
-                            </SectionTitle>
-                            <List>
-                                <>
-                                    {langues.map((langue, index) => (
-                                        <ListItem key={index}>
-                                            <strong>{langue.langue}</strong>: {langue.niveau}
-                                        </ListItem>
-                                    ))}
-                                </>
-                            </List>
-                        </Section>
-                    )}
-
-                    {/* Affichage des liens vers les réseaux sociaux */}
-                    {socialLinks && socialLinks.length > 0 && (
-                        <Section>
-                            <SectionTitle>
-                                Réseaux Sociaux
-                            </SectionTitle>
-                            <List>
-                                <>
-                                    {socialLinks.map((link, index) => (
-                                        <ListItem key={index}>
-                                            {link}
-                                        </ListItem>
-                                    ))}
-                                </>
-                            </List>
-                        </Section>
-                    )}
-                </ContentContainer>
-                <CenterButton>
-                    {/* Bouton pour afficher le PDF dans un nouvel onglet */}
-                    {
-                        title &&
-                        description &&
-                        objectif &&
-                        experience &&
-                        formations &&
-                        competences &&
-                        savoir &&
-                        langues &&
-                        socialLinks &&
-                        contactInfo &&
-                        portfolioLink && (
-                            <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
+        <>
+            <GlobalStyle />
+            <Container>
+                <Title>{title}</Title>
+                <BorderContainer>
+                    <ContentContainer>
+                        {description && (
+                            <Section>
+                                <SectionTitle>
+                                    <SectionTitleIcon src={descriptionIcon} alt="description" />
+                                    Description
+                                </SectionTitle>
+                                <Paragraph>{description}</Paragraph>
+                            </Section>
                         )}
-                </CenterButton>
-            </BorderContainer>
-        </Container>
+
+                        {objectif && (
+                            <Section>
+                                <SectionTitle>
+                                    <SectionTitleIcon src={objectifIcon} alt="objectif" />
+                                    Objectif
+                                </SectionTitle>
+                                <Paragraph>{objectif}</Paragraph>
+                            </Section>
+                        )}
+                    </ContentContainer>
+
+                    {experience && (
+                        <Section>
+                            <SectionTitle>
+                                <SectionTitleIcon src={experienceIcon} alt="expérience" />
+                                Expérience professionnelle
+                            </SectionTitle>
+                            <List>
+                                {experience.map((exp, index) => (
+                                    <ListItem key={index}>
+                                        <ExperienceItem>
+                                            <Position>{exp.poste}</Position>
+                                            <Company>{exp.entreprise}, {exp.lieu}</Company>
+                                            <Date>{exp.dateDebut} - {exp.dateFin}</Date>
+                                            <Description>{exp.description}</Description>
+                                        </ExperienceItem>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Section>
+                    )}
+
+                    {formations && (
+                        <Section>
+                            <SectionTitle>
+                                <SectionTitleIcon src={educationIcon} alt="éducation" />
+                                Éducation
+                            </SectionTitle>
+                            <List>
+                                <>
+                                    {formations.map((edu, index) => (
+                                        <ListItemBorder key={index}>
+                                            <Position>{edu.diplome}</Position>
+                                            <Company>{edu.etablissement}, {edu.lieu}</Company>
+                                            <Date>{edu.dateObtention}</Date>
+                                        </ListItemBorder>
+                                    ))}
+                                </>
+                            </List>
+                        </Section>
+                    )}
+
+                    <ContentContainer>
+                        {competences && (
+                            <Section>
+                                <SectionTitle>
+                                    <SectionTitleIcon src={skillsIcon} alt="compétences" />
+                                    Compétences
+                                </SectionTitle>
+                                <List>
+                                    {competences.map((hardSkill, index) => (
+                                        <ListItem key={index}>{hardSkill}</ListItem>
+                                    ))}
+                                </List>
+                            </Section>
+                        )}
+
+                        {savoir && (
+                            <Section>
+                                <SectionTitle>
+                                    <SectionTitleIcon src={knowledgeIcon} alt="savoir" />
+                                    Savoir
+                                </SectionTitle>
+                                <List>
+                                    <>
+                                        {savoir.map((softSkill, index) => (
+                                            <ListItem key={index}>{softSkill}</ListItem>
+                                        ))}
+                                    </>
+                                </List>
+                            </Section>
+                        )}
+
+                        {langues && (
+                            <Section>
+                                <SectionTitle>
+                                    Langues
+                                </SectionTitle>
+                                <List>
+                                    <>
+                                        {langues.map((langue, index) => (
+                                            <ListItem key={index}>
+                                                <strong>{langue.langue}</strong>: {langue.niveau}
+                                            </ListItem>
+                                        ))}
+                                    </>
+                                </List>
+                            </Section>
+                        )}
+
+                        {/* Affichage des liens vers les réseaux sociaux */}
+                        {socialLinks && socialLinks.length > 0 && (
+                            <Section>
+                                <SectionTitle>
+                                    Réseaux Sociaux
+                                </SectionTitle>
+                                <List>
+                                    <>
+                                        {socialLinks.map((link, index) => (
+                                            <ListItem key={index}>
+                                                {link}
+                                            </ListItem>
+                                        ))}
+                                    </>
+                                </List>
+                            </Section>
+                        )}
+                    </ContentContainer>
+                    <CenterButton>
+                        {/* Bouton pour afficher le PDF dans un nouvel onglet */}
+                        {
+                            title &&
+                            description &&
+                            objectif &&
+                            experience &&
+                            formations &&
+                            competences &&
+                            savoir &&
+                            langues &&
+                            socialLinks &&
+                            contactInfo &&
+                            portfolioLink && (
+                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
+                            )}
+                    </CenterButton>
+                </BorderContainer>
+            </Container>
+        </>
     );
 };
 

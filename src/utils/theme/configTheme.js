@@ -26,10 +26,11 @@ export const configTheme = {
     },
     fonts: {
         sizeLarge: "2.5em",
-        sizeMedium: "1.8em",
+        sizeMedium: "2em",
         sizeRegular: "1.2em",
         sizeSmall: "1em",
-        sizeExtraSmall: "0.8em"
+        sizeLightSmall: "0.8em",
+        sizeExtraSmall: "0.7em"
     },
     borders: {
         dashed: "1px dashed #c70039",

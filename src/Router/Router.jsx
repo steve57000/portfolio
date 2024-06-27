@@ -18,7 +18,7 @@ function BasicLayout() {
 
 function RouterApp() {
     const { width } = useWindowSize();
-    const sectionLayout = width < 763 ? 'one-column' : 'two-columns';
+    const sectionLayout = width < 763 ? 'one-column' : 'two-columns' ;
     return (
         <Router basename="/portfolio">
             <Routes>
