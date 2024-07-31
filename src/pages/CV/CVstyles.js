@@ -214,3 +214,12 @@ export const ButtonPdf = styled.button`
     color: ${colors.primary};
   }
 `;
+
+export const SpanInfoMessageDownloadPdf = styled.div`
+  width: 100%;
+  text-align: center;
+  color: #900c3e; 
+  display: block; 
+  margin: 10px 0; 
+  font-size: 16px; 
+`;
