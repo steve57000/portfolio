@@ -123,7 +123,7 @@ const CV = ({ layout }) => {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            openPdfInNewTab();
+            openPdfInNewTab().then(r => r);
         }
     };
 
