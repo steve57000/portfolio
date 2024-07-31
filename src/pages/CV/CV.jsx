@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { saveAs } from 'file-saver';
 import { pdf } from '@react-pdf/renderer';
 import CVPdf from '../../components/CVPdf/CVPdf';
 import useDataFetching from '../../utils/hooks/useData';
@@ -89,11 +88,6 @@ const CV = ({ layout }) => {
             break;
     }
 
-    const isMobile = () => {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        return /Mobi|Android|iPhone|iPad|iPod/i.test(userAgent);
-    };
-
     const openPdfInNewTab = async () => {
         try {
             const blob = await pdf(
@@ -110,13 +104,17 @@ const CV = ({ layout }) => {
                 />
             ).toBlob();
 
-            if (!blob) {
-                throw new Error('La génération du Blob a échoué.');
-            }
+            const url = URL.createObjectURL(blob);
 
-            const fileName = 'CV-Steve-Bell.pdf';
-            saveAs(blob, fileName);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'CV-Steve-Bell.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
+            // Révoquer l'URL Blob après une courte période pour libérer de la mémoire
+            setTimeout(() => URL.revokeObjectURL(url), 100);
         } catch (error) {
             console.error('Erreur lors de la génération ou de l\'ouverture du PDF :', error);
             // Gérer les erreurs ici
@@ -278,7 +276,7 @@ const CV = ({ layout }) => {
                             socialLinks &&
                             contactInfo &&
                             portfolioLink && (
-                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Télécharger le PDF</ButtonPdf>
+                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
                             )}
                     </CenterButton>
                 </BorderContainer>
@@ -292,3 +290,4 @@ CV.propTypes = {
 };
 
 export default CV;
+
