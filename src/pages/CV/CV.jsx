@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { saveAs } from 'file-saver';
 import { pdf } from '@react-pdf/renderer';
 import CVPdf from '../../components/CVPdf/CVPdf';
 import useDataFetching from '../../utils/hooks/useData';
@@ -109,27 +110,13 @@ const CV = ({ layout }) => {
                 />
             ).toBlob();
 
-            const url = URL.createObjectURL(blob);
-
-            if (isMobile()) {
-                // Téléchargement sur les appareils mobiles
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'CV-Steve-Bell.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                // Ouverture dans un nouvel onglet sur les ordinateurs
-                const link = document.createElement('a');
-                link.href = url;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.click();
+            if (!blob) {
+                throw new Error('La génération du Blob a échoué.');
             }
 
-            // Révoquer l'URL Blob après une courte période pour libérer de la mémoire
-            setTimeout(() => URL.revokeObjectURL(url), 100);
+            const fileName = 'CV-Steve-Bell.pdf';
+            saveAs(blob, fileName);
+
         } catch (error) {
             console.error('Erreur lors de la génération ou de l\'ouverture du PDF :', error);
             // Gérer les erreurs ici
@@ -291,7 +278,7 @@ const CV = ({ layout }) => {
                             socialLinks &&
                             contactInfo &&
                             portfolioLink && (
-                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
+                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Télécharger le PDF</ButtonPdf>
                             )}
                     </CenterButton>
                 </BorderContainer>
