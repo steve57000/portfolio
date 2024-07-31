@@ -23,7 +23,9 @@ import {
     ListItemBorder,
     SectionTitleIcon,
     ButtonPdf,
-    CenterButton, GlobalStyle
+    CenterButton,
+    GlobalStyle,
+    SpanInfoMessageDownloadPdf
 } from './CVstyles';
 import PropTypes from "prop-types";
 
@@ -43,6 +45,9 @@ const CV = ({ layout }) => {
     const { loading, error: initialError } = useInitial(); // Utilisation du hook
     const [loadedData, setLoadedData] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
+    const [loadingMessage, setLoadingMessage] = useState(''); // État pour le message de chargement
+    const [successMessage, setSuccessMessage] = useState(''); // État pour le message de succès
+
 
     useEffect(() => {
         if (!isLoading && !error && data) {
@@ -90,7 +95,11 @@ const CV = ({ layout }) => {
     }
 
     const openPdfInNewTab = async () => {
+        setErrorMessage(''); // Réinitialiser les messages d'erreur
+        setLoadingMessage('Génération du PDF en cours...'); // Message de chargement
+
         try {
+            // Génération du PDF
             const blob = await pdf(
                 <CVPdf
                     title={title}
@@ -105,8 +114,8 @@ const CV = ({ layout }) => {
                 />
             ).toBlob();
 
+            // Création de l'URL Blob et téléchargement du fichier
             const url = URL.createObjectURL(blob);
-
             const link = document.createElement('a');
             link.href = url;
             link.download = 'CV-Steve-Bell.pdf';
@@ -116,16 +125,40 @@ const CV = ({ layout }) => {
 
             // Révoquer l'URL Blob après une courte période pour libérer de la mémoire
             setTimeout(() => URL.revokeObjectURL(url), 100);
+
+            // Réinitialiser le message de chargement et afficher le message de succès
+            setLoadingMessage('');
+            setSuccessMessage('PDF généré et téléchargé avec succès !');
+
+            // Réinitialiser le message de succès
+            setTimeout(() => setSuccessMessage(''), 2000);
+
         } catch (error) {
             console.error('Erreur lors de la génération ou de l\'ouverture du PDF :', error);
-            // Gérer les erreurs ici
+            // Réinitialiser le message de chargement et afficher le message d'erreur
+            setLoadingMessage('');
             setErrorMessage('Une erreur s\'est produite lors de la génération ou de l\'ouverture du PDF. Veuillez réessayer.');
         }
     };
 
-    const handleKeyDown = (event) => {
+
+    const handleKeyDown = async (event) => {
         if (event.key === 'Enter') {
-            openPdfInNewTab().then(r => r);
+            setErrorMessage(''); // Réinitialiser les messages d'erreur
+            setLoadingMessage('Génération du PDF en cours...'); // Message de chargement
+
+            try {
+                await openPdfInNewTab();
+                setLoadingMessage(''); // Réinitialiser le message de chargement
+                setSuccessMessage('PDF généré et téléchargé avec succès !'); // Message de succès
+
+                // Réinitialiser le message de succès
+                setTimeout(() => setSuccessMessage(''), 2000);
+            } catch (error) {
+                console.error('Erreur lors de l\'ouverture du PDF:', error);
+                setLoadingMessage(''); // Réinitialiser le message de chargement
+                setErrorMessage('Une erreur s\'est produite lors de la génération ou de l\'ouverture du PDF. Veuillez réessayer.');
+            }
         }
     };
 
@@ -265,7 +298,6 @@ const CV = ({ layout }) => {
                         )}
                     </ContentContainer>
                     <CenterButton>
-                        {/* Bouton pour afficher le PDF dans un nouvel onglet */}
                         {
                             title &&
                             description &&
@@ -281,7 +313,11 @@ const CV = ({ layout }) => {
                                 <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
                             )}
                     </CenterButton>
-                    {errorMessage && <span>{errorMessage}</span>}
+                    <>
+                        {loadingMessage && <SpanInfoMessageDownloadPdf>{loadingMessage}</SpanInfoMessageDownloadPdf>} {/* Affichage du message de chargement */}
+                        {successMessage && <SpanInfoMessageDownloadPdf>{successMessage}</SpanInfoMessageDownloadPdf>} {/* Affichage du message de succès */}
+                        {errorMessage && <SpanInfoMessageDownloadPdf>{errorMessage}</SpanInfoMessageDownloadPdf>} {/* Affichage du message d'erreur */}
+                    </>
                 </BorderContainer>
             </Container>
         </>
