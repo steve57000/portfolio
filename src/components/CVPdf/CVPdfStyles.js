@@ -30,23 +30,33 @@ const styles = StyleSheet.create({
     page: {
         flexDirection: 'column',
         backgroundColor: '#E4E4E4',
-        paddingTop: 10,
+        paddingTop: 12,
         paddingBottom: 10,
         paddingHorizontal: 10,
         fontFamily: 'MyTextFont',
     },
-    banner: {
+    bannerShadow: {
+        position: 'relative',
         width: '100%',
-        backgroundColor: 'rgb(232,143,3)',
-        color: 'white',
-        padding: 10,
-        fontSize: 24,
+        height: 50,
+        backgroundColor: 'rgba(46,46,46,0.1)',
+        zIndex: 0,
+        borderRadius: 10,
         marginBottom: 10,
+    },
+    banner: {
+        position: 'absolute',
+        width: '99.8%',
+        height: '98%',
+        top: 0,
+        left: 0,
+        backgroundColor: 'rgb(255,204,0)',
+        color: 'white',
+        fontSize: 24,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 50,
         borderRadius: 10,
     },
     container: {
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
     leftColumnContainer: {
         position: 'relative',
         width: '33%',
-        marginRight: 5,
+        marginRight: 8,
     },
     leftColumn: {
         flexDirection: 'column',
@@ -88,12 +98,13 @@ const styles = StyleSheet.create({
     },
     leftColumnTextContact: {
         fontSize: 8,
-        color: '#333',
+        color: '#2a2a2a',
     },
     leftColumnText: {
-        fontSize: 8,
-        color: '#333',
+        fontSize: 7,
+        color: '#2a2a2a',
         marginBottom: 8,
+        paddingLeft: 2
     },
     leftColumnTextName: {
         fontSize: 10,
@@ -110,8 +121,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(253,253,253)',
         borderRadius: 10,
         paddingTop: 40,
+        paddingBottom: 2.5,
         width: '100%',
-        zIndex: 1,
     },
     sectionEnd: {
         marginBottom: 0,
@@ -142,8 +153,7 @@ const styles = StyleSheet.create({
     containerRow: {
         flexDirection: 'row',
         marginTop: 10,
-        marginBottom: 5,
-        paddingLeft: 2
+        marginBottom: 5
     },
     maxWidth: {
        width: '100%',
@@ -204,15 +214,16 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     iconSmall: {
-        width: 10,
-        height: 10,
+        width: 12,
+        height: 12,
         marginRight: 5,
-        marginLeft: 10,
+        padding: 1
     },
     iconLeft: {
         width: 15,
         height: 15,
         marginRight: 5,
+        padding: 1
     },
     columnTitle: {
         fontSize: 13,
@@ -227,14 +238,13 @@ const styles = StyleSheet.create({
     contactInfos: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingBottom: 5,
-        paddingTop: 5,
-        paddingLeft: 10
+        paddingBottom: 6,
+        paddingLeft: 15
     },
     buttonStyles: {
         width: '100%',
-        fontSize: 7.5,
-        backgroundColor: '#158afd',
+        fontSize: 7.2,
+        backgroundColor: 'rgb(0,35,102)',
         color: '#fff',
         paddingTop: 5,
         paddingBottom: 5,
