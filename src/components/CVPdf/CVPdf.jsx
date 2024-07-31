@@ -21,8 +21,10 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
     <Document>
         <Page size="A4" style={styles.page}>
             {/* Titre principal */}
-            <View style={styles.banner}>
-                <Text style={styles.title}>{title}</Text>
+            <View style={styles.bannerShadow}>
+                <View style={styles.banner}>
+                    <Text style={styles.title}>{title}</Text>
+                </View>
             </View>
 
             <View style={styles.containerRow}>
