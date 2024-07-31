@@ -42,6 +42,7 @@ const CV = ({ layout }) => {
     const { data, isLoading, error } = useDataFetching(curriculumVitae);
     const { loading, error: initialError } = useInitial(); // Utilisation du hook
     const [loadedData, setLoadedData] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         if (!isLoading && !error && data) {
@@ -118,6 +119,7 @@ const CV = ({ layout }) => {
         } catch (error) {
             console.error('Erreur lors de la génération ou de l\'ouverture du PDF :', error);
             // Gérer les erreurs ici
+            setErrorMessage('Une erreur s\'est produite lors de la génération ou de l\'ouverture du PDF. Veuillez réessayer.');
         }
     };
 
@@ -279,6 +281,7 @@ const CV = ({ layout }) => {
                                 <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
                             )}
                     </CenterButton>
+                    {errorMessage && <span>{errorMessage}</span>}
                 </BorderContainer>
             </Container>
         </>
