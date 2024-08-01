@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'column',
         backgroundColor: '#ffffff',
-        paddingTop: 10,
+        paddingTop: 20,
         paddingBottom: 10,
         paddingHorizontal: 10,
         fontFamily: 'MyTextFont',
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(28,28,28,0.3)',
         borderRadius: 10,
         width: '100%',
-        marginBottom: 25,
+        marginBottom: 20,
     },
     sectionShadowDescription: {
         height: '12%'
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         height: '68%'
     },
     sectionShadowFormation: {
-        height: '32%',
+        height: '35%',
         marginBottom: 0
     },
     section: {
