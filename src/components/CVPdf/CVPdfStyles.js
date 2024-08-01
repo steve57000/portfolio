@@ -28,9 +28,10 @@ Font.register({
 });
 const styles = StyleSheet.create({
     page: {
+        width: '100%',
         flexDirection: 'column',
-        backgroundColor: '#E4E4E4',
-        paddingTop: 12,
+        backgroundColor: '#ffffff',
+        paddingTop: 10,
         paddingBottom: 10,
         paddingHorizontal: 10,
         fontFamily: 'MyTextFont',
@@ -38,8 +39,8 @@ const styles = StyleSheet.create({
     bannerShadow: {
         position: 'relative',
         width: '100%',
-        height: 50,
-        backgroundColor: 'rgba(46,46,46,0.1)',
+        height: 55,
+        backgroundColor: 'rgba(28,28,28,0.3)',
         zIndex: 0,
         borderRadius: 10,
         marginBottom: 10,
@@ -59,35 +60,47 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
     },
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-    },
     leftColumnContainer: {
-        position: 'relative',
-        width: '33%',
+        width: '32%',
         marginRight: 8,
     },
     leftColumn: {
-        flexDirection: 'column',
-        width: '99%',
-        height: '99.9%',
-        paddingLeft: 10,
-        paddingRight: 10,
-        backgroundColor: 'rgb(253,253,253)',
-        borderRadius: 10,
-        zIndex: 1,
-    },
-    leftColumnShadow: {
         position: 'absolute',
         top: 0,
         left: 0,
+        flexDirection: 'column',
+        width: '99.4%',
+        height: '99.9%',
+        paddingLeft: 8,
+        paddingRight: 8,
+        backgroundColor: 'rgb(239,239,239)',
+        borderRadius: 10,
+        opacity: 1,
+    },
+    leftColumnShadow: {
+        position: 'relative',
         width: '100%',
         height: '100%',
-        backgroundColor: 'rgba(186,185,185,0.2)',
-        opacity: 0.2,
-        zIndex: 0,
+        backgroundColor: 'rgba(28,28,28,0.3)',
         borderRadius: 10,
+    },
+    borderProfilPhoto: {
+        position: 'relative',
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        backgroundColor: 'rgb(21,21,21)',
+        marginTop: 15,
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    },
+    profilPhoto: {
+        position: 'absolute',
+        width: 60,
+        height: 90,
+        top: -10,
+        left: 10,
+        opacity: 1,
     },
     leftColumnTitle: {
         fontSize: 12,
@@ -115,28 +128,46 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'MyTitleFontBold'
     },
-    section: {
-        position: 'relative',
-        marginBottom: 20,
-        backgroundColor: 'rgb(253,253,253)',
-        borderRadius: 10,
-        paddingTop: 40,
-        paddingBottom: 2.5,
+    container: {
+        flex: 1,
+        flexDirection: 'column',
         width: '100%',
-    },
-    sectionEnd: {
-        marginBottom: 0,
+        height: '100%',
     },
     sectionShadow: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: -1,
-        bottom: -1,
-        backgroundColor: 'rgba(186,185,185,0.2)',
-        opacity: 0.2,
-        zIndex: 0,
+        position: 'relative',
+        backgroundColor: 'rgba(28,28,28,0.3)',
         borderRadius: 10,
+        width: '100%',
+        marginBottom: 25,
+    },
+    sectionShadowDescription: {
+        height: '12%'
+    },
+    sectionShadowExperience: {
+        height: '68%'
+    },
+    sectionShadowFormation: {
+        height: '32%',
+        marginBottom: 0
+    },
+    section: {
+        position: 'absolute',
+        width: '99.8%',
+        backgroundColor: 'rgb(239,239,239)',
+        borderRadius: 10,
+        paddingTop: 45,
+        paddingBottom: 4,
+        opacity: 1,
+    },
+    sectionDescription: {
+        height: '99%',
+    },
+    sectionExperience: {
+        height: '99.8%',
+    },
+    sectionFormation: {
+        height: '99.5%',
     },
     sectionTitleContainer: {
         position: 'absolute',
@@ -148,7 +179,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,153,0,0.71)',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        padding: 5,
+        padding: 8,
     },
     containerRow: {
         flexDirection: 'row',
