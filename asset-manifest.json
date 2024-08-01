@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.c7b96927.js",
+    "main.js": "/portfolio/static/js/main.7d487005.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/js/312.c24acc88.chunk.js": "/portfolio/static/js/312.c24acc88.chunk.js",
     "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.fc60616c77a444a39751.png",
     "static/media/ohmyfood-menu.png": "/portfolio/static/media/ohmyfood-menu.13c8ab9ae8b73add9d48.png",
     "static/media/reservia.png": "/portfolio/static/media/reservia.4b099cf015217172f8fc.png",
     "static/media/kanap.png": "/portfolio/static/media/kanap.10cc08988c6513036896.png",
+    "static/media/profil.png": "/portfolio/static/media/profil.700955c306a8e4da4c3b.png",
     "static/media/audit-SEO.pdf": "/portfolio/static/media/audit-SEO.112b282e858ae2e38b98.pdf",
     "static/media/kasa.PNG": "/portfolio/static/media/kasa.a604be3c411c41ab71e1.PNG",
     "static/media/reservia-activity.png": "/portfolio/static/media/reservia-activity.68e9765296696ca33d33.png",
@@ -39,12 +40,12 @@
     "static/media/ohmyfood-accueil-top.png": "/portfolio/static/media/ohmyfood-accueil-top.f27034a9630b190d5645.png",
     "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.c7b96927.js.map": "/portfolio/static/js/main.c7b96927.js.map",
+    "main.7d487005.js.map": "/portfolio/static/js/main.7d487005.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map",
     "312.c24acc88.chunk.js.map": "/portfolio/static/js/312.c24acc88.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.c7b96927.js"
+    "static/js/main.7d487005.js"
   ]
 }
