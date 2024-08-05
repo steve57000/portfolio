@@ -1017,13 +1017,13 @@ export const curriculumVitae = {
         {
             diplome: "Bac pro, Vendeur spécialisé en magasin",
             etablissement: "Afpa",
-            lieu: "Paris",
+            lieu: "Woippy",
             dateObtention: "2011",
         },
         {
             diplome: "CAP, Carreleur",
             etablissement: "CFA Montigny-Les-Metz",
-            lieu: "Paris",
+            lieu: "Montigny-Lès-Metz",
             dateObtention: "2001",
         },
     ],
