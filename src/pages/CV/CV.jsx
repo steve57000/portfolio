@@ -311,7 +311,7 @@ const CV = ({ layout }) => {
                             socialLinks &&
                             contactInfo &&
                             portfolioLink && (
-                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Voir le PDF</ButtonPdf>
+                                <ButtonPdf onClick={openPdfInNewTab} onKeyDown={handleKeyDown} >Télécharger le CV en PDF</ButtonPdf>
                             )}
                     </CenterButton>
                     <>
