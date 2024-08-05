@@ -17,8 +17,6 @@ import phoneIcon from '../../assets/icons/telephone.png'
 import emailIcon from '../../assets/icons/arobase.png'
 import speaksIcon from '../../assets/icons/speaks.png'
 
-// Register the font from the public folder
-
 const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks, speaks }) => (
     <Document>
         <Page size="A4" style={styles.page}>
@@ -28,7 +26,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                     <Text style={styles.title}>{title}</Text>
                 </View>
             </View>
-
             <View style={styles.containerRow}>
                 {/* Colonne gauche */}
                 <View style={styles.leftColumnContainer}>
@@ -37,7 +34,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             <View style={styles.borderProfilPhoto}> >
                                 <Image style={styles.profilPhoto} src={ProfilPhoto} />
                             </View>
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={contactIcon} />
@@ -60,7 +56,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                     <Text style={styles.leftColumnTextContact}>{contactInfo.email}</Text>
                                 </View>
                             </View>
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={sociauxIcon} />
@@ -76,8 +71,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                     ))}
                                 </>
                             </View>
-
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={portfolioIcon} />
@@ -87,7 +80,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                     {portfolioLink}
                                 </Link>
                             </View>
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={competencesIcon} />
@@ -99,7 +91,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                     ))}
                                 </>
                             </View>
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={savoirIcon} />
@@ -112,7 +103,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                     ))}
                                 </>
                             </View>
-
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={speaksIcon} />
@@ -127,7 +117,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                         </View>
                     </View>
                 </View>
-
 
                 {/* Colonne principale */}
                 <View style={styles.container}>
@@ -166,7 +155,6 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             </View>
                         )}
                     </View>
-
                     <View style={[styles.sectionShadow, styles.sectionShadowFormation]}>
                         {formations && (
                             <View style={[styles.section, styles.sectionFormation]}>
@@ -186,10 +174,8 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             </View>
                         )}
                     </View>
-
                 </View>
             </View>
-
         </Page>
     </Document>
 );
