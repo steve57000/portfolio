@@ -15,10 +15,11 @@ import savoirIcon from '../../assets/icons/savoir-faire.png';
 import adressIcon from '../../assets/icons/adresse.png'
 import phoneIcon from '../../assets/icons/telephone.png'
 import emailIcon from '../../assets/icons/arobase.png'
+import speaksIcon from '../../assets/icons/speaks.png'
 
 // Register the font from the public folder
 
-const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks }) => (
+const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks, speaks }) => (
     <Document>
         <Page size="A4" style={styles.page}>
             {/* Titre principal */}
@@ -37,76 +38,94 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                                 <Image style={styles.profilPhoto} src={ProfilPhoto} />
                             </View>
 
-                            <View style={styles.containerRow}>
-                                <Image style={styles.iconLeft} src={contactIcon} />
-                                <Text style={styles.leftColumnTitle}>Contact</Text>
-                            </View>
-
-                            <View style={styles.contactInfos}>
-                                <Image style={styles.iconSmall} src={adressIcon} />
-                                <View>
-                                    <Text style={styles.leftColumnTextName}>{contactInfo.name} {contactInfo.lastName}</Text>
-                                    <Text style={styles.leftColumnTextContact}>{contactInfo.address}</Text>
-                                    <Text style={styles.leftColumnTextContact}>{contactInfo.ville}</Text>
+                            <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={contactIcon} />
+                                    <Text style={styles.leftColumnTitle}>Contact</Text>
                                 </View>
-                            </View>
-                            <View style={styles.contactInfos}>
-                                <Image style={styles.iconSmall} src={phoneIcon} />
-                                <Text style={styles.leftColumnTextContact}>{contactInfo.phone}</Text>
-                            </View>
-                            <View style={styles.contactInfos}>
-                                <Image style={styles.iconSmall} src={emailIcon} />
-                                <Text style={styles.leftColumnTextContact}>{contactInfo.email}</Text>
-                            </View>
-
-                            <View style={styles.containerRow}>
-                                <Image style={styles.iconLeft} src={sociauxIcon} />
-                                <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
-                            </View>
-                            <>
-                                {socialLinks.map((link, index) => (
-                                    <View key={index}>
-                                        <Link src={link} style={styles.buttonStyles} target="_blank">
-                                            {link}
-                                        </Link>
+                                <View style={styles.contactInfos}>
+                                    <Image style={styles.iconSmall} src={adressIcon} />
+                                    <View>
+                                        <Text style={styles.leftColumnTextName}>{contactInfo.name} {contactInfo.lastName}</Text>
+                                        <Text style={styles.leftColumnTextContact}>{contactInfo.address}</Text>
+                                        <Text style={styles.leftColumnTextContact}>{contactInfo.ville}</Text>
                                     </View>
-                                ))}
-                            </>
-
-                            <View style={styles.containerRow}>
-                                <Image style={styles.iconLeft} src={portfolioIcon} />
-                                <Text style={styles.leftColumnTitle}>Portfolio</Text>
+                                </View>
+                                <View style={styles.contactInfos}>
+                                    <Image style={styles.iconSmall} src={phoneIcon} />
+                                    <Text style={styles.leftColumnTextContact}>{contactInfo.phone}</Text>
+                                </View>
+                                <View style={styles.contactInfos}>
+                                    <Image style={styles.iconSmall} src={emailIcon} />
+                                    <Text style={styles.leftColumnTextContact}>{contactInfo.email}</Text>
+                                </View>
                             </View>
 
                             <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={sociauxIcon} />
+                                    <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
+                                </View>
+                                <>
+                                    {socialLinks.map((link, index) => (
+                                        <View key={index}>
+                                            <Link src={link} style={styles.buttonStyles} target="_blank">
+                                                {link}
+                                            </Link>
+                                        </View>
+                                    ))}
+                                </>
+                            </View>
+
+
+                            <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={portfolioIcon} />
+                                    <Text style={styles.leftColumnTitle}>Portfolio</Text>
+                                </View>
                                 <Link src={portfolioLink} style={styles.buttonStyles} target="_blank">
                                     {portfolioLink}
                                 </Link>
                             </View>
 
-                            <View style={styles.containerRow}>
-                                <Image style={styles.iconLeft} src={competencesIcon} />
-                                <Text style={styles.leftColumnTitle}>Compétences</Text>
-                            </View>
-                            <>
-                                {competences.map((hardSkill, index) => (
-                                    <Text key={index} style={styles.leftColumnText}>-{hardSkill}</Text>
-                                ))}
-                            </>
-
-                            <View style={styles.containerRow}>
-                                <Image style={styles.iconLeft} src={savoirIcon} />
-                                <Text style={styles.leftColumnTitle}>Savoir</Text>
+                            <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={competencesIcon} />
+                                    <Text style={styles.leftColumnTitle}>Compétences</Text>
+                                </View>
+                                <>
+                                    {competences.map((hardSkill, index) => (
+                                        <Text key={index} style={styles.leftColumnText}>-{hardSkill}</Text>
+                                    ))}
+                                </>
                             </View>
 
-                            <>
-                                {savoir.map((softSkill, index) => (
-                                    <Text key={index} style={styles.leftColumnText}>-{softSkill}</Text>
-                                ))}
-                            </>
+                            <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={savoirIcon} />
+                                    <Text style={styles.leftColumnTitle}>Savoir</Text>
+                                </View>
+
+                                <>
+                                    {savoir.map((softSkill, index) => (
+                                        <Text key={index} style={styles.leftColumnText}>-{softSkill}</Text>
+                                    ))}
+                                </>
+                            </View>
+
+                            <View>
+                                <View style={styles.containerRow}>
+                                    <Image style={styles.iconLeft} src={speaksIcon} />
+                                    <Text style={styles.leftColumnTitle}>Langues</Text>
+                                </View>
+                                <>
+                                    {speaks.map((speak, index) => (
+                                        <Text key={index} style={styles.leftColumnText}>{speak.langue} - {speak.niveau}</Text>
+                                    ))}
+                                </>
+                            </View>
                         </View>
                     </View>
-
                 </View>
 
 
@@ -204,6 +223,10 @@ CVPdf.propTypes = {
     }),
     portfolioLink: PropTypes.string.isRequired,
     socialLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
+    speaks: PropTypes.arrayOf(PropTypes.shape({
+        langue: PropTypes.string.isRequired,
+        niveau: PropTypes.string.isRequired
+    })),
 };
 
 export default CVPdf;
