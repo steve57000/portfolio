@@ -75,7 +75,7 @@ const CV = ({ layout }) => {
         langues,
         socialLinks,
         contactInfo,
-        portfolioLink,
+        portfolioLink
     } = loadedData;
 
     let ContentContainer;
@@ -111,6 +111,7 @@ const CV = ({ layout }) => {
                     socialLinks={socialLinks}
                     contactInfo={contactInfo}
                     portfolioLink={portfolioLink}
+                    speaks={langues}
                 />
             ).toBlob();
 
