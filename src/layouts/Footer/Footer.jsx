@@ -3,9 +3,8 @@ import { FooterContainer, FooterText, FooterLink } from './FooterStyles'; // Imp
 
 const Footer = () => {
     return (
-        <FooterContainer> {/* Utilisation du composant stylé */}
-            <FooterText>Ceci est le footer de votre site.</FooterText>
-            <FooterLink href="#">Votre lien</FooterLink>
+        <FooterContainer>
+            <FooterText>&copy; {new Date().getFullYear()} Steve Bell. Tous droits réservés.</FooterText>
         </FooterContainer>
     );
 };
