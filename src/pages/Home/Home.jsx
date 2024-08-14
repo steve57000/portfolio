@@ -61,6 +61,7 @@ const Home = () => {
             ) : (
                 <>
                     <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
+                    <p style={{textAlign: 'center', color: 'darkred'}}>( Portfolio en cour de création... )</p>
                     <section>
                         <h2>Présentation :</h2>
                         <PageDescription>Je suis Steve Bell, un développeur web frontend passionné à la recherche de nouvelles opportunités professionnelles. Fort de plusieurs années d'expérience dans divers domaines techniques, j'ai acquis des compétences solides en développement web, notamment en utilisant des technologies telles que HTML, CSS, JavaScript, React.js et Vue.js. Mon objectif est de continuer à évoluer dans le domaine du développement web et de contribuer à des projets innovants et stimulants.</PageDescription>
