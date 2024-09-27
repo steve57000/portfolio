@@ -80,6 +80,7 @@ const Home = () => {
                                         tags={Array.isArray(project.tags) ? project.tags : []}
                                         image={project.images}
                                         savoir={Array.isArray(project.savoir) ? project.savoir : []}
+                                        fonction={Array.isArray(project.fonction) ? project.fonction : null}
                                         websiteUrl={project.websiteUrl}
                                         onClickMoreInfo={() => handleMoreInfoClick(project.id)}
                                     />

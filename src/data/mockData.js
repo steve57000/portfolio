@@ -909,6 +909,19 @@ export const mockData = [
                 ]
             },
         ]
+    },
+    {
+        id: 13,
+        title: "QrCode",
+        images: "QrCodeLogo.png",
+        objectif: "Créer un générateur de qrCode",
+        description: "Générez facilement des QR codes personnalisés avec notre application. Choisissez une URL, ajustez les couleurs et l'opacité du fond et du premier plan, et définissez le niveau de correction d'erreur.",
+        tags: ["HTML", "CSS", "JavaScript", "Qrious"],
+        savoir: [
+            "Créer un générateur de qrCode",
+            "Utiliser la blibliothèque Qrious"
+        ],
+        websiteUrl: "https://steve57000.github.io/GenerateQrCode/"
     }
 ];
 
@@ -917,15 +930,6 @@ export const curriculumVitae = {
     title: "Développeur web frontend",
     objectif: "Recherche d'emploi dans le domaine du développement web",
     image: "cvImage.png",
-    savoir: [
-        "Langages de programmation : HTML, CSS, JavaScript",
-        "Frameworks : React.js, Vue.js",
-        "Outils de versionnement : Git, GitHub",
-        "Conception web responsive",
-        "Développement Frontend et Backend",
-        "Bonne compréhension des concepts de base de données",
-        "Expérience dans le déploiement d'applications web",
-    ],
     description: "Je suis un développeur web passionné à la recherche de nouvelles opportunités professionnelles.",
     experience: [
         {
@@ -1003,10 +1007,16 @@ export const curriculumVitae = {
     ],
     formations: [
         {
-            diplome: "Titre de niveau 6, développeur d'application - JavaScript React ",
+            diplome: "Titre de niveau 6, concepteur d'application - Java ",
+            etablissement: "METZ NUMERIC SCHOOL",
+            lieu: "Metz",
+            dateObtention: "en cour",
+        },
+        {
+            diplome: "Titre de niveau 6, concepteur d'application - JavaScript React ",
             etablissement: "OPENCLASSROOMS",
             lieu: "Paris",
-            dateObtention: "en cour",
+            dateObtention: "2024",
         },
         {
             diplome: "Titre de niveau 5, développeur web",
@@ -1027,12 +1037,19 @@ export const curriculumVitae = {
             dateObtention: "2001",
         },
     ],
-    competences: [
-        "Concevoir une application web",
-        "Réseaux informatiques et télécoms",
-        "Développer une application en lien avec une base de données",
+    hardSkills: [
+        "Langages de programmation : HTML5, CSS3, JavaScript",
+        "Librairie : React.js",
+        "Outils de versionnement : Git, GitHub",
+        "Conception web responsive",
         "Concevoir et gérer un projet",
-        "Concevoir une maquette de présentation",
+        "Développer une application en lien avec une base de données",
+    ],
+    softSkills: [
+        "Flexibilité et adaptabilité",
+        "Curiosité",
+        "Culture d'apprentissage",
+        "Esprit d'analyse",
         "Résolution de problèmes",
         "Travail d'équipe",
     ],

@@ -20,7 +20,7 @@ import {
 import { StyleSheetManager } from "styled-components";
 // import CochePng from '../../assets/icons/coche.png'
 const CochePng = require('../../assets/icons/coche.png')
-const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", onClickMoreInfo }) => {
+const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", fonction = [], onClickMoreInfo }) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleLinkClick = (openInNewTab) => {
@@ -56,19 +56,23 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                 </>
             </CardSavoir>
             <ContainerLink>
-                <CardLink
-                    aria-label="Plus d'informations"
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => onClickMoreInfo()}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                            onClickMoreInfo();
-                        }
-                    }}
-                >
-                    Plus d'informations
-                </CardLink>
+                {fonction &&
+                    <>
+                        <CardLink
+                            aria-label="Plus d'informations"
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => onClickMoreInfo()}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                    onClickMoreInfo();
+                                }
+                            }}
+                        >
+                            Plus d'informations
+                        </CardLink>
+                    </>
+                }
 
                 {websiteUrl &&
                     <>
@@ -130,6 +134,7 @@ Card.propTypes = {
     image: PropTypes.string.isRequired,
     savoir: PropTypes.arrayOf(PropTypes.string),
     websiteUrl: PropTypes.string,
+    fonction: PropTypes.arrayOf(PropTypes.string),
     onClickMoreInfo: PropTypes.func.isRequired, // Fonction appelée lors du clic sur "Plus d'informations"
 };
 

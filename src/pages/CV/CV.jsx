@@ -70,8 +70,8 @@ const CV = ({ layout }) => {
         objectif,
         experience,
         formations,
-        competences,
-        savoir,
+        hardSkills,
+        softSkills,
         langues,
         socialLinks,
         contactInfo,
@@ -106,8 +106,8 @@ const CV = ({ layout }) => {
                     description={description}
                     experience={experience}
                     formations={formations}
-                    competences={competences}
-                    savoir={savoir}
+                    hardSkills={hardSkills}
+                    softSkills={softSkills}
                     socialLinks={socialLinks}
                     contactInfo={contactInfo}
                     portfolioLink={portfolioLink}
@@ -233,29 +233,29 @@ const CV = ({ layout }) => {
                     )}
 
                     <ContentContainer>
-                        {competences && (
+                        {hardSkills && (
                             <Section>
                                 <SectionTitle>
                                     <SectionTitleIcon src={skillsIcon} alt="compétences" />
-                                    Compétences
+                                    Hard Skills
                                 </SectionTitle>
                                 <List>
-                                    {competences.map((hardSkill, index) => (
+                                    {hardSkills.map((hardSkill, index) => (
                                         <ListItem key={index}>{hardSkill}</ListItem>
                                     ))}
                                 </List>
                             </Section>
                         )}
 
-                        {savoir && (
+                        {softSkills && (
                             <Section>
                                 <SectionTitle>
                                     <SectionTitleIcon src={knowledgeIcon} alt="savoir" />
-                                    Savoir
+                                    Soft Skills
                                 </SectionTitle>
                                 <List>
                                     <>
-                                        {savoir.map((softSkill, index) => (
+                                        {softSkills.map((softSkill, index) => (
                                             <ListItem key={index}>{softSkill}</ListItem>
                                         ))}
                                     </>
@@ -305,8 +305,8 @@ const CV = ({ layout }) => {
                             objectif &&
                             experience &&
                             formations &&
-                            competences &&
-                            savoir &&
+                            hardSkills &&
+                            softSkills &&
                             langues &&
                             socialLinks &&
                             contactInfo &&

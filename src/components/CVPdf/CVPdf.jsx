@@ -17,7 +17,7 @@ import phoneIcon from '../../assets/icons/telephone.png'
 import emailIcon from '../../assets/icons/arobase.png'
 import speaksIcon from '../../assets/icons/speaks.png'
 
-const CVPdf = ({ title, description, experience, formations, competences, savoir, contactInfo, portfolioLink, socialLinks, speaks }) => (
+const CVPdf = ({ title, description, experience, formations, hardSkills, softSkills, contactInfo, portfolioLink, socialLinks, speaks }) => (
     <Document>
         <Page size="A4" style={styles.page}>
             {/* Titre principal */}
@@ -83,10 +83,10 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={competencesIcon} />
-                                    <Text style={styles.leftColumnTitle}>Compétences</Text>
+                                    <Text style={styles.leftColumnTitle}>Hard Skills</Text>
                                 </View>
                                 <>
-                                    {competences.map((hardSkill, index) => (
+                                    {hardSkills.map((hardSkill, index) => (
                                         <Text key={index} style={styles.leftColumnText}>-{hardSkill}</Text>
                                     ))}
                                 </>
@@ -94,11 +94,11 @@ const CVPdf = ({ title, description, experience, formations, competences, savoir
                             <View>
                                 <View style={styles.containerRow}>
                                     <Image style={styles.iconLeft} src={savoirIcon} />
-                                    <Text style={styles.leftColumnTitle}>Savoir</Text>
+                                    <Text style={styles.leftColumnTitle}>Soft Skills</Text>
                                 </View>
 
                                 <>
-                                    {savoir.map((softSkill, index) => (
+                                    {softSkills.map((softSkill, index) => (
                                         <Text key={index} style={styles.leftColumnText}>-{softSkill}</Text>
                                     ))}
                                 </>
