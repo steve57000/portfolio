@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.54c090ea.js",
+    "main.js": "/portfolio/static/js/main.d99813e9.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
-    "static/js/312.96beb863.chunk.js": "/portfolio/static/js/312.96beb863.chunk.js",
+    "static/js/312.7378d75d.chunk.js": "/portfolio/static/js/312.7378d75d.chunk.js",
     "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.fc60616c77a444a39751.png",
     "static/media/ohmyfood-menu.png": "/portfolio/static/media/ohmyfood-menu.13c8ab9ae8b73add9d48.png",
     "static/media/reservia.png": "/portfolio/static/media/reservia.4b099cf015217172f8fc.png",
@@ -41,12 +41,12 @@
     "static/media/ohmyfood-accueil-top.png": "/portfolio/static/media/ohmyfood-accueil-top.f27034a9630b190d5645.png",
     "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.54c090ea.js.map": "/portfolio/static/js/main.54c090ea.js.map",
+    "main.d99813e9.js.map": "/portfolio/static/js/main.d99813e9.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map",
-    "312.96beb863.chunk.js.map": "/portfolio/static/js/312.96beb863.chunk.js.map"
+    "312.7378d75d.chunk.js.map": "/portfolio/static/js/312.7378d75d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.54c090ea.js"
+    "static/js/main.d99813e9.js"
   ]
 }
