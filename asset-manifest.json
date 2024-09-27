@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.a8c16058.js",
+    "main.js": "/portfolio/static/js/main.54c090ea.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/js/312.96beb863.chunk.js": "/portfolio/static/js/312.96beb863.chunk.js",
     "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.fc60616c77a444a39751.png",
@@ -23,6 +23,7 @@
     "static/media/gameon.PNG": "/portfolio/static/media/gameon.d124b9fecaec710b9eea.PNG",
     "static/media/cardImage.png": "/portfolio/static/media/cardImage.9c427ca9a43373cc4fa0.png",
     "static/media/fishEye.PNG": "/portfolio/static/media/fishEye.3bf3ca4e9d8b70c25365.PNG",
+    "static/media/QrCodeLogo.png": "/portfolio/static/media/QrCodeLogo.e7fe21b06978eb8ee187.png",
     "static/media/learnhome.PNG": "/portfolio/static/media/learnhome.6016229c44b0f2cf5927.PNG",
     "static/media/piiquante.png": "/portfolio/static/media/piiquante.c4911ce983480f28a509.png",
     "static/media/experience.png": "/portfolio/static/media/experience.5579d1cdb4a4a20d3cce.png",
@@ -40,12 +41,12 @@
     "static/media/ohmyfood-accueil-top.png": "/portfolio/static/media/ohmyfood-accueil-top.f27034a9630b190d5645.png",
     "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.a8c16058.js.map": "/portfolio/static/js/main.a8c16058.js.map",
+    "main.54c090ea.js.map": "/portfolio/static/js/main.54c090ea.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map",
     "312.96beb863.chunk.js.map": "/portfolio/static/js/312.96beb863.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.a8c16058.js"
+    "static/js/main.54c090ea.js"
   ]
 }
