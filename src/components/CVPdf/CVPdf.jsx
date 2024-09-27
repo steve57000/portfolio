@@ -62,10 +62,10 @@ const CVPdf = ({ title, description, experience, formations, hardSkills, softSki
                                     <Text style={styles.leftColumnTitle}>Réseaux Sociaux</Text>
                                 </View>
                                 <>
-                                    {socialLinks.map((link, index) => (
+                                    {socialLinks.map((socialLink, index) => (
                                         <View key={index}>
-                                            <Link src={link} style={styles.buttonStyles} target="_blank">
-                                                {link}
+                                            <Link src={socialLink} style={styles.buttonStyles} target="_blank">
+                                                {socialLink}
                                             </Link>
                                         </View>
                                     ))}
