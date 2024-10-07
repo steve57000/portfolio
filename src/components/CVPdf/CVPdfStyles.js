@@ -142,14 +142,14 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     sectionShadowDescription: {
-        height: '12%'
+        height: '13%'
     },
     sectionShadowExperience: {
-        height: '68%'
+        height: '68%',
+        marginBottom: 0
     },
     sectionShadowFormation: {
         height: '35%',
-        marginBottom: 0
     },
     section: {
         position: 'absolute',
@@ -238,6 +238,7 @@ const styles = StyleSheet.create({
         fontFamily: 'MyTitleFontBoldItalic',
         fontSize: 8.5,
         color: '#070707',
+        marginBottom: 2
     },
     icon: {
         width: 20,

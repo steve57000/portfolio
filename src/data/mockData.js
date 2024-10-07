@@ -927,10 +927,10 @@ export const mockData = [
 
 export const curriculumVitae = {
     id: 1000,
-    title: "Développeur web frontend",
+    title: "Stage développeur web frontend",
     objectif: "Recherche d'emploi dans le domaine du développement web",
     image: "cvImage.png",
-    description: "Je suis un développeur web passionné à la recherche de nouvelles opportunités professionnelles.",
+    description: "Passionné par le développement web, actuellemnt en recherche d'un stage de 3 semaines, je souhaite contribuer activement au développement de projets web tout en renforçant mon savoir-faire et mon expertise en tant que développeur web..",
     experience: [
         {
             poste: "Poseur assainissement",

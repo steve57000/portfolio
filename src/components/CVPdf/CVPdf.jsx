@@ -43,7 +43,7 @@ const CVPdf = ({ title, description, experience, formations, hardSkills, softSki
                                     <Image style={styles.iconSmall} src={adressIcon} />
                                     <View>
                                         <Text style={styles.leftColumnTextName}>{contactInfo.name} {contactInfo.lastName}</Text>
-                                        <Text style={styles.leftColumnTextContact}>{contactInfo.address}</Text>
+                                        {/*<Text style={styles.leftColumnTextContact}>{contactInfo.address}</Text>*/}
                                         <Text style={styles.leftColumnTextContact}>{contactInfo.ville}</Text>
                                     </View>
                                 </View>
@@ -131,6 +131,25 @@ const CVPdf = ({ title, description, experience, formations, hardSkills, softSki
                             </View>
                         )}
                     </View>
+                    <View style={[styles.sectionShadow, styles.sectionShadowFormation]}>
+                        {formations && (
+                            <View style={[styles.section, styles.sectionFormation]}>
+                                <View style={styles.sectionTitleContainer}>
+                                    <Image style={styles.icon} src={educationIcon} />
+                                    <Text style={styles.sectionTitle}>Éducation</Text>
+                                </View>
+                                <>
+                                    {formations.map((edu, index) => (
+                                        <View key={index} style={styles.textColumn}>
+                                            <Text style={styles.textBold}>{edu.diplome}</Text>
+                                            <Text style={styles.text}>{edu.etablissement}, {edu.lieu}</Text>
+                                            <Text style={styles.text}>{edu.dateObtention}</Text>
+                                        </View>
+                                    ))}
+                                </>
+                            </View>
+                        )}
+                    </View>
                     <View style={[styles.sectionShadow, styles.sectionShadowExperience]}>
                         {experience && (
                             <View style={[styles.section, styles.sectionExperience]}>
@@ -149,25 +168,6 @@ const CVPdf = ({ title, description, experience, formations, hardSkills, softSki
                                                 <Text style={styles.textBold}>{exp.poste} - {exp.entreprise}, {exp.lieu}</Text>
                                                 <Text style={styles.text}>{exp.description}</Text>
                                             </View>
-                                        </View>
-                                    ))}
-                                </>
-                            </View>
-                        )}
-                    </View>
-                    <View style={[styles.sectionShadow, styles.sectionShadowFormation]}>
-                        {formations && (
-                            <View style={[styles.section, styles.sectionFormation]}>
-                                <View style={styles.sectionTitleContainer}>
-                                    <Image style={styles.icon} src={educationIcon} />
-                                    <Text style={styles.sectionTitle}>Éducation</Text>
-                                </View>
-                                <>
-                                    {formations.map((edu, index) => (
-                                        <View key={index} style={styles.textColumn}>
-                                            <Text style={styles.textBold}>{edu.diplome}</Text>
-                                            <Text style={styles.text}>{edu.etablissement}, {edu.lieu}</Text>
-                                            <Text style={styles.text}>{edu.dateObtention}</Text>
                                         </View>
                                     ))}
                                 </>
