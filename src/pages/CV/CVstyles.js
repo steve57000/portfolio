@@ -56,7 +56,7 @@ export const BorderContainer = styled.div`
   flex-direction: column;
   gap: 20px;
   background: ${colors.backgroundGradient};
-  padding: 45px 3%;
+  padding: 90px 3% 80px;
   border-radius: 0 0 20px 20px;
 
   @media (max-width: 767px) {
