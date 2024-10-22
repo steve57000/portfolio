@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useDataFetching from '../../utils/hooks/useData';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
-import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription } from './HomeStyles';
+import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription, TitleH2 } from './HomeStyles';
 import { mockData } from "../../data/mockData";
 import Card from "../../components/Card/Card";
 import { useInitial } from '../../utils/hooks/useInitial';
@@ -63,11 +63,11 @@ const Home = () => {
                     <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
                     <p style={{textAlign: 'center', color: 'darkred'}}>( Portfolio en cour de création... )</p>
                     <section>
-                        <h2>Présentation :</h2>
+                        <TitleH2>Présentation :</TitleH2>
                         <PageDescription>Je suis Steve Bell, un développeur web frontend passionné à la recherche de nouvelles opportunités professionnelles. Fort de plusieurs années d'expérience dans divers domaines techniques, j'ai acquis des compétences solides en développement web, notamment en utilisant des technologies telles que HTML, CSS, JavaScript, React.js et Vue.js. Mon objectif est de continuer à évoluer dans le domaine du développement web et de contribuer à des projets innovants et stimulants.</PageDescription>
                     </section>
                     <section>
-                        <h2>Mes Projets :</h2>
+                        <TitleH2>Mes Projets :</TitleH2>
                         <ContainerProject>
                             <>
                                 {data.map((project, index) => (
@@ -80,7 +80,7 @@ const Home = () => {
                                         tags={Array.isArray(project.tags) ? project.tags : []}
                                         image={project.images}
                                         savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                                        fonction={Array.isArray(project.fonction) ? project.fonction : null}
+                                        fonction={Array.isArray(project.fonction) ? project.fonction : []}
                                         websiteUrl={project.websiteUrl}
                                         onClickMoreInfo={() => handleMoreInfoClick(project.id)}
                                     />

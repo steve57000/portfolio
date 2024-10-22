@@ -21,6 +21,19 @@ export const PageTitle = styled.h1`
   }
 `;
 
+export const TitleH2 = styled.h2`
+    width: 100%;
+    border-radius: 5px;
+    background-color: ${colors.fourth};
+    color: ${colors.secondary};
+    font-weight: 500;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-top: 60px;
+    padding: clamp(10px, 1vw, 20px);
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.7));
+`
+
 export const PageDescription = styled.p`
   font-size: ${fonts.sizeSmall};
   margin-bottom: 20px;

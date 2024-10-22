@@ -17,9 +17,12 @@ import {
     Button,
     ContainerButtonHandleLink
 } from './CardStyles';
+
 import { StyleSheetManager } from "styled-components";
-// import CochePng from '../../assets/icons/coche.png'
-const CochePng = require('../../assets/icons/coche.png')
+
+// const CochePng = require('../../assets/icons/coche.png').default;
+import CochePng from '../../assets/icons/coche.png';
+
 const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", fonction = [], onClickMoreInfo }) => {
     const [openModal, setOpenModal] = useState(false);
 
@@ -56,7 +59,7 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                 </>
             </CardSavoir>
             <ContainerLink>
-                {fonction &&
+                {fonction?.length > 0 &&
                     <>
                         <CardLink
                             aria-label="Plus d'informations"
@@ -134,7 +137,11 @@ Card.propTypes = {
     image: PropTypes.string.isRequired,
     savoir: PropTypes.arrayOf(PropTypes.string),
     websiteUrl: PropTypes.string,
-    fonction: PropTypes.arrayOf(PropTypes.string),
+    fonction: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        list: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imgs: PropTypes.arrayOf(PropTypes.string)
+    })),
     onClickMoreInfo: PropTypes.func.isRequired, // Fonction appelée lors du clic sur "Plus d'informations"
 };
 

@@ -20,6 +20,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -29,17 +30,6 @@ h1, h2, h3 {
 
 h1 {
     text-align: center;
-}
-
-h2 {
-    font-weight: 500;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    margin-top: 60px;
-    color: #571845;
-    padding: 10px;
-    text-decoration: underline 4px #900c3e;
-
 }
 
 #root {
