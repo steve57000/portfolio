@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
     CardContainer,
@@ -12,29 +12,12 @@ import {
     CardLink,
     CardImageContainer,
     CardSavoirImg,
-    ModalContent,
-    Modal,
-    Button,
-    ContainerButtonHandleLink
 } from './CardStyles';
 
-import { StyleSheetManager } from "styled-components";
-
-// const CochePng = require('../../assets/icons/coche.png').default;
 import CochePng from '../../assets/icons/coche.png';
 
-const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", fonction = [], onClickMoreInfo }) => {
-    const [openModal, setOpenModal] = useState(false);
-
-    const handleLinkClick = (openInNewTab) => {
-        if (openInNewTab) {
-            window.open(websiteUrl, '_blank');
-        } else {
-            window.location.href = websiteUrl;
-        }
-    };
+const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de mission", tags = ["tag1", "tag2"], image = "cardImage.png", savoir = [], websiteUrl = "", fonction = [], onClickMoreInfo, onOpenModal }) => {
     return (
-
         <CardContainer id={id} $index={index}>
             <CardTitle>{title}</CardTitle>
             <CardObjectif>{objectif}</CardObjectif>
@@ -45,9 +28,7 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                     ))}
                 </>
             </CardContainerTags>
-            <StyleSheetManager shouldForwardProp={(prop) => prop !== 'image'}>
-                <CardImageContainer image={image} />
-            </StyleSheetManager>
+            <CardImageContainer image={image} />
             <CardSavoir>
                 <>
                     {savoir.map((savoirItem, idx) => (
@@ -59,71 +40,38 @@ const Card = ({id, index, title = "Titre par défaut", objectif = "Objectif de m
                 </>
             </CardSavoir>
             <ContainerLink>
-                {fonction?.length > 0 &&
-                    <>
-                        <CardLink
-                            aria-label="Plus d'informations"
-                            role="button"
-                            tabIndex={0}
-                            onClick={() => onClickMoreInfo()}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    onClickMoreInfo();
-                                }
-                            }}
-                        >
-                            Plus d'informations
-                        </CardLink>
-                    </>
-                }
-
-                {websiteUrl &&
-                    <>
-                        <CardLink
-                            onClick={() => setOpenModal(true)}
-                            onKeyDown={(event) => {
-                                if (event.key === 'Enter') {
-                                    setOpenModal(true);
-                                }
-                            }}
-                            aria-label="Visitez le site web"
-                            role="button"
-                            tabIndex={0}
-                        >
-                            Voir le site web
-                        </CardLink>
-                        {openModal && (
-                            <Modal>
-                                <ModalContent>
-                                    <p>Comment voulez-vous ouvrir le lien?</p>
-                                    <ContainerButtonHandleLink>
-                                        <Button
-                                            onClick={() => { handleLinkClick(true); }}
-                                            onKeyDown={(event) => {
-                                                if (event.key === 'Enter') {
-                                                    handleLinkClick(true);
-                                                }
-                                            }}
-                                        >
-                                            Dans un nouvel onglet
-                                        </Button>
-                                        <Button
-                                            onClick={() => { handleLinkClick(false); }}
-                                            onKeyDown={(event) => {
-                                                if (event.key === 'Enter') {
-                                                    handleLinkClick(false);
-                                                }
-                                            }}
-                                        >
-                                            Dans la page actuelle
-                                        </Button>
-                                    </ContainerButtonHandleLink>
-                                    <Button onClick={() => setOpenModal(false)}>Annuler</Button>
-                                </ModalContent>
-                            </Modal>
-                        )}
-                    </>
-                }
+                {fonction?.length > 0 && (
+                    <CardLink
+                        aria-label="Plus d'informations"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => onClickMoreInfo()}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                event.stopPropagation();
+                                onClickMoreInfo();
+                            }
+                        }}
+                    >
+                        Plus d'informations
+                    </CardLink>
+                )}
+                {websiteUrl && (
+                    <CardLink
+                        onClick={onOpenModal}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                event.stopPropagation();
+                                onOpenModal();
+                            }
+                        }}
+                        aria-label="Visitez le site web"
+                        role="button"
+                        tabIndex={0}
+                    >
+                        Voir le site web
+                    </CardLink>
+                )}
             </ContainerLink>
         </CardContainer>
     );
@@ -142,7 +90,8 @@ Card.propTypes = {
         list: PropTypes.arrayOf(PropTypes.string).isRequired,
         imgs: PropTypes.arrayOf(PropTypes.string)
     })),
-    onClickMoreInfo: PropTypes.func.isRequired, // Fonction appelée lors du clic sur "Plus d'informations"
+    onClickMoreInfo: PropTypes.func.isRequired,
+    onOpenModal: PropTypes.func.isRequired,
 };
 
 export default Card;

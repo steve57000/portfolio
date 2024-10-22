@@ -72,4 +72,7 @@ footer {
     top: 100%;
 }
 
-
+/* Ajoutez ceci à votre fichier CSS */
+.no-scroll {
+    overflow: hidden;
+}
