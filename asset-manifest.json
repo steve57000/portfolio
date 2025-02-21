@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.31d6cfe0.css",
-    "main.js": "/portfolio/static/js/main.63a3592f.js",
+    "main.js": "/portfolio/static/js/main.ed10ad6e.js",
     "static/js/453.ace21015.chunk.js": "/portfolio/static/js/453.ace21015.chunk.js",
     "static/js/312.735e5787.chunk.js": "/portfolio/static/js/312.735e5787.chunk.js",
     "static/media/la-chouette-agence.png": "/portfolio/static/media/la-chouette-agence.fc60616c77a444a39751.png",
@@ -36,17 +36,18 @@
     "static/media/savoir-faire.png": "/portfolio/static/media/savoir-faire.d9e972821ee2c78c3bfd.png",
     "static/media/billed.PNG": "/portfolio/static/media/billed.7763eebce9eb4e270768.PNG",
     "static/media/description-de-lemploi.png": "/portfolio/static/media/description-de-lemploi.61032d5dffa1ed870e90.png",
+    "static/media/bt-accueil.webp": "/portfolio/static/media/bt-accueil.0ba781f0a3027f98cc17.webp",
     "static/media/lespetitsplats.PNG": "/portfolio/static/media/lespetitsplats.46ba00541020b8a8a394.PNG",
     "static/media/logo.svg": "/portfolio/static/media/logo.bbb79dbb0c312a22672195d7a17161ed.svg",
     "static/media/ohmyfood-accueil-top.png": "/portfolio/static/media/ohmyfood-accueil-top.f27034a9630b190d5645.png",
     "static/media/sociaux.png": "/portfolio/static/media/sociaux.975c86d9faccb7b97e8b.png",
     "index.html": "/portfolio/index.html",
-    "main.63a3592f.js.map": "/portfolio/static/js/main.63a3592f.js.map",
+    "main.ed10ad6e.js.map": "/portfolio/static/js/main.ed10ad6e.js.map",
     "453.ace21015.chunk.js.map": "/portfolio/static/js/453.ace21015.chunk.js.map",
     "312.735e5787.chunk.js.map": "/portfolio/static/js/312.735e5787.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.63a3592f.js"
+    "static/js/main.ed10ad6e.js"
   ]
 }
