@@ -1,5 +1,19 @@
 export const mockData = [
     {
+        id: 13,
+        title: "Bt-Carrelage",
+        images: "bt-accueil.webp",
+        objectif: "Concevoir et développer un site pour une entreprise de carrelage",
+        description: "BT Carrelage offre des services complets de pose de carrelage, rénovation et aménagement intérieur. Grâce à un savoir-faire d'exception et des solutions sur mesure, nous transformons vos espaces de vie en véritables œuvres d'art, alliant design moderne et qualité durable.",
+        tags: ["React", "Next.js", "MongoDB"],
+        savoir: [
+            "Concevoir un cahier des charges",
+            "Concevoir un guide technique",
+            "Développer un site fullstack"
+        ],
+        websiteUrl: "https://bt-carrelage.fr"
+    },
+  {
         id: 1,
         title: "Réservia",
         images: "reservia.png",
@@ -927,10 +941,10 @@ export const mockData = [
 
 export const curriculumVitae = {
     id: 1000,
-    title: "Stage développeur web frontend",
+    title: "Recherche stage développeur java",
     objectif: "Recherche d'emploi dans le domaine du développement web",
     image: "cvImage.png",
-    description: "Passionné par le développement web, actuellemnt en recherche d'un stage de 3 semaines, je souhaite contribuer activement au développement de projets web tout en renforçant mon savoir-faire et mon expertise en tant que développeur web..",
+    description: "Passionné par le développement web, actuellement en recherche d'un stage du 23 juin 2025 au 25 aout 2025, je souhaite contribuer activement au développement de projets web tout en renforçant mon savoir-faire et mon expertise en tant que développeur web..",
     experience: [
         {
             poste: "Poseur assainissement",
@@ -938,7 +952,7 @@ export const curriculumVitae = {
             lieu: "Metz",
             dateDebut: "Août 2018",
             dateFin: "Août 2020",
-            description: "Installation et maintenance des réseaux d'eau, d'assainissement, de gaz et de toutes les canalisations de transport et de distribution de fluides selon les règles de sécurité",
+            description: "Installation et maintenance des réseaux d'eau, d'assainissement, de gaz et de toutes les canalisations de transport et de distribution de fluides",
         },
         {
             poste: "Monteur / Cableur",
@@ -946,7 +960,7 @@ export const curriculumVitae = {
             lieu: "Woippy",
             dateDebut: "Octo. 2015",
             dateFin: "Août 2017",
-            description: "Réaliser la pose et raccorder un faisceau de câble en fibre optique où coaxial. Vérifier les liaisons réalisées et tester les performances avec des appareils de certification homologués",
+            description: "Réaliser la pose et raccorder un faisceau de câble en fibre optique où coaxial. Réalisées et tester les performances avec des appareils de certification homologués",
         },
         {
             poste: "Construction de réseaux électriques et de télécommunications",
@@ -968,8 +982,8 @@ export const curriculumVitae = {
             poste: "Conseiller de vente",
             entreprise: "Castorama",
             lieu: "Jouy-Aux-Arches",
-            dateDebut: "Avril 2012",
-            dateFin: "Juil. 2012",
+            dateDebut: "Mars 2011",
+            dateFin: "Avril. 2012",
             description: "Réaliser la vente de produits destinés à l'aménagement, la décoration et l'équipement du foyer, mise en rayon et facing",
         },
         {
@@ -1039,16 +1053,16 @@ export const curriculumVitae = {
     ],
     hardSkills: [
         "Langages de programmation : HTML5, CSS3, JavaScript",
-        "Librairie : React.js",
+        "Librairie : React.js, Next.js",
         "Outils de versionnement : Git, GitHub",
         "Conception web responsive",
         "Concevoir et gérer un projet",
         "Développer une application en lien avec une base de données",
     ],
     softSkills: [
-        "Flexibilité et adaptabilité",
-        "Curiosité",
-        "Culture d'apprentissage",
+        "Consciencieux",
+        "Observateur",
+        "Attentif aux détails",
         "Esprit d'analyse",
         "Résolution de problèmes",
         "Travail d'équipe",
