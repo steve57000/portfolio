@@ -942,9 +942,9 @@ export const mockData = [
 export const curriculumVitae = {
     id: 1000,
     title: "Recherche stage développeur java",
-    objectif: "Recherche d'emploi dans le domaine du développement web",
+    objectif: "Recherche d'emploi dans le domaine du développement web 23/06/25 au 25/08/25",
     image: "cvImage.png",
-    description: "Passionné par le développement web, actuellement en recherche d'un stage du 23 juin 2025 au 25 aout 2025, je souhaite contribuer activement au développement de projets web tout en renforçant mon savoir-faire et mon expertise en tant que développeur web..",
+    description: "Passionné par le développement web, je souhaite contribuer activement au développement de projets web tout en renforçant mon savoir-faire et mon expertise en tant que développeur web..",
     experience: [
         {
             poste: "Poseur assainissement",
