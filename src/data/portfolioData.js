@@ -10,6 +10,9 @@ import petitsPlatsImage from '../assets/images/lespetitsplats.PNG';
 import billedImage from '../assets/images/billed.PNG';
 import learnHomeImage from '../assets/images/learnhome.PNG';
 import btImage from '../assets/images/bt-accueil.webp';
+import laChouetteImage from '../assets/images/la-chouette-agence.png';
+import qrCodeImage from '../assets/images/QrCodeLogo.png';
+import piquanteImage from '../assets/images/piiquante.png';
 
 export const profile = {
   name: 'Steve Bell',
@@ -62,12 +65,16 @@ const imageFallback = cardImage;
 export const projects = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
-    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: imageFallback, accent: '#2d7f82',
+    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard JLH AutoPam', accent: '#2d7f82',
     stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker'],
     skills: ['Architecture front/back', 'API REST', 'Authentification', 'Rôles', 'Workflow métier'],
     summary: 'Application métier complète pour un garage automobile, avec espace client, administration, demandes, devis et rendez-vous.',
+    context: 'Projet vitrine orienté garage automobile : l’objectif est de relier les besoins client, le suivi administratif et le pilotage interne dans une même application web.',
     problem: 'Centraliser les demandes clients, les services, les rendez-vous et la gestion administrative dans une application unique.',
     solution: 'Frontend Angular SSR, API Spring Boot sécurisée, rôles client/admin, calendrier, documents, promotions et dashboard.',
+    deliverables: ['Espace client', 'Back-office manager', 'API REST sécurisée', 'Modèle PostgreSQL', 'Parcours demandes / devis / rendez-vous'],
+    decisions: ['Angular SSR pour une base front moderne et performante', 'Spring Boot 3.5 / Java 17 pour structurer les règles métier', 'JWT et rôles pour séparer les usages client et administration', 'Docker pour faciliter l’exécution locale'],
+    learned: 'Renforcement de la conception fullstack : découpage front/back, sécurité, workflow métier et restitution claire pour un utilisateur non technique.',
     impact: 'Projet le plus représentatif de mon profil fullstack actuel : conception applicative, sécurité, données et expérience utilisateur.',
     highlights: ['Authentification JWT', 'Espace client', 'Back-office manager', 'Devis et rendez-vous', 'Dashboard', 'Docker'],
     metrics: ['Angular SSR', 'Spring Boot 3.5', 'API REST sécurisée'],
@@ -75,44 +82,60 @@ export const projects = [
   },
   {
     id: 'bottleneck', title: 'BottleNeck — nettoyage et analyse des stocks', shortTitle: 'Stocks & CA', category: 'data-bi', featured: true,
-    status: 'Projet data analyst', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, accent: '#b66b33',
+    status: 'Projet data analyst', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, imageAlt: 'Visuel temporaire pour le notebook BottleNeck', accent: '#b66b33',
     stack: ['Python', 'pandas', 'numpy', 'Jupyter Notebook', 'Excel', 'matplotlib', 'seaborn'], skills: ['Nettoyage', 'Jointures', 'Outliers', 'Analyse commerciale'],
     summary: 'Consolidation de fichiers ERP, web et liaison pour analyser les produits, ventes, stocks et anomalies.',
+    context: 'Analyse d’un catalogue de vins à partir de sources ERP, web et fichier de liaison, avec un besoin de fiabiliser les rapprochements avant toute lecture commerciale.',
     problem: 'Rendre cohérentes plusieurs sources de données avant de produire des indicateurs fiables.',
     solution: 'Contrôles de qualité, jointures, calcul du chiffre d’affaires, analyse stock/rotation/marge et détection des prix atypiques.',
+    deliverables: ['Notebook Python documenté', 'Jeux de données nettoyés', 'Contrôles de jointure ERP / web / liaison', 'Analyse CA, stock, marges et outliers prix', 'Recommandations de fiabilisation ERP'],
+    decisions: ['Séparer les contrôles qualité des analyses métier', 'Tracer les anomalies plutôt que les masquer', 'Utiliser pandas pour consolider les sources et documenter chaque transformation'],
+    learned: 'Passage de fichiers bruts à une lecture décisionnelle : qualité des données, cohérence des clés, anomalies et restitution exploitable.',
     impact: 'Démontre la capacité à passer de fichiers bruts à une analyse lisible et actionnable.',
     highlights: ['Consolidation ERP/web', 'CA par produit', 'CA total', 'Stock et rotation', 'Outliers prix'], metrics: ['pandas', 'Notebook documenté', 'Recommandations ERP'],
     links: { repo: 'https://github.com/steve57000/p6' }
   },
   {
     id: 'assurance-data', title: 'Assurance habitation — SQL et modélisation', shortTitle: 'SQL assurance', category: 'data-bi', featured: true,
-    status: 'Projet data / SQL', period: 'Formation data', role: 'Concepteur base de données', image: imageFallback, accent: '#235a70',
+    status: 'Projet data / SQL', period: 'Formation data', role: 'Concepteur base de données', image: imageFallback, imageAlt: 'Visuel temporaire pour le schéma SQL assurance habitation', accent: '#235a70',
     stack: ['SQL', 'PostgreSQL', 'CSV', 'Modélisation relationnelle'], skills: ['Normalisation', 'Import CSV', 'Contrôle qualité', 'Analyse géographique'],
     summary: 'Transformation de fichiers CSV bruts en base relationnelle exploitable pour analyser des contrats d’assurance habitation.',
+    context: 'Projet SQL construit à partir de CSV bruts liés à l’assurance habitation, avec un enjeu de normalisation géographique et de requêtes métier fiables.',
     problem: 'Structurer des données brutes et hétérogènes dans un modèle robuste.',
     solution: 'Modèle REGION / DEPARTEMENT / COMMUNE / CONTRAT, tables temporaires, contrôles qualité et requêtes analytiques.',
+    deliverables: ['Schéma relationnel PostgreSQL', 'Tables REGION / DEPARTEMENT / COMMUNE / CONTRAT', 'Scripts d’import CSV', 'Contrôles qualité', 'Requêtes métier d’analyse géographique'],
+    decisions: ['Normaliser les dimensions géographiques', 'Passer par des tables temporaires pour contrôler les imports', 'Documenter les règles de transformation et les contrôles SQL'],
+    learned: 'Modélisation relationnelle, import de données, contrôles de cohérence et SQL orienté analyse métier.',
     impact: 'Met en avant une approche solide de modélisation et d’analyse SQL.',
     highlights: ['Modèle normalisé', 'Tables temporaires', 'Segmentation', 'Analyses géographiques'], metrics: ['PostgreSQL', 'CSV contrôlés', 'Requêtes métier'],
     links: { repo: 'https://github.com/steve57000/assurance_data' }
   },
   {
     id: 'rgpd-dev-immediat', title: "RGPD Dev'Immédiat", shortTitle: 'Anonymisation CRM', category: 'data-bi', featured: true,
-    status: 'Livrable data', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, accent: '#56616f',
+    status: 'Livrable data', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, imageAlt: 'Visuel temporaire pour le dataset anonymisé RGPD', accent: '#56616f',
     stack: ['CSV', 'Analyse de données', 'Documentation RGPD', 'Minimisation', 'Anonymisation'], skills: ['RGPD', 'Quasi-identifiants', 'Documentation', 'Qualité données'],
     summary: "Mise en conformité RGPD d'un CRM en conservant un dataset exploitable pour l'analyse.",
+    context: 'Travail sur un jeu de données CRM à partager ou analyser en limitant l’exposition des données personnelles.',
     problem: 'Réduire l’exposition des données personnelles sans supprimer la valeur analytique du fichier.',
     solution: 'Suppression des identifiants directs, transformation des quasi-identifiants, anonymisation et documentation des choix.',
+    deliverables: ['Dataset anonymisé exploitable', 'Liste des identifiants directs supprimés', 'Traitement des quasi-identifiants', 'Documentation des choix de minimisation'],
+    decisions: ['Conserver uniquement les champs utiles à l’analyse', 'Réduire le risque de ré-identification', 'Documenter les compromis entre conformité et valeur analytique'],
+    learned: 'Approche RGPD pragmatique : minimisation, anonymisation, qualité de donnée et traçabilité des traitements.',
     impact: 'Montre une sensibilité à la protection des données et aux compromis métier.',
     highlights: ['Identifiants directs supprimés', 'Quasi-identifiants transformés', 'Dataset final exploitable'], metrics: ['Logique RGPD', 'Minimisation', 'Traçabilité'],
     links: {}
   },
   {
     id: 'sportdatapulse', title: 'SportDataPulse', shortTitle: 'Football BI', category: 'data-bi', featured: true,
-    status: 'Projet SQL / BI', period: 'Formation data', role: 'Data analyst SQL', image: imageFallback, accent: '#1d6f56',
+    status: 'Projet SQL / BI', period: 'Formation data', role: 'Data analyst SQL', image: imageFallback, imageAlt: 'Visuel temporaire pour les requêtes SQL SportDataPulse', accent: '#1d6f56',
     stack: ['PostgreSQL', 'SQL', 'Data analysis', 'Présentation métier'], skills: ['Indicateurs', 'Shortlist', 'Requêtes métier', 'Décisionnel'],
     summary: 'Base sportive et analyses SQL autour des performances football pour éclairer recrutement et suivi joueurs/équipes.',
+    context: 'Projet BI football centré sur la transformation de données sportives en indicateurs lisibles pour un besoin de suivi et de recrutement.',
     problem: 'Transformer des données sportives en indicateurs compréhensibles pour décider.',
     solution: 'Requêtes SQL métier, indicateurs joueurs/équipes, shortlist et restitution orientée décision.',
+    deliverables: ['Requêtes SQL analytiques', 'Indicateurs joueurs et équipes', 'Shortlist recrutement', 'Restitution métier synthétique'],
+    decisions: ['Construire des indicateurs comparables', 'Séparer les requêtes exploratoires des requêtes de restitution', 'Présenter les résultats sous un angle décisionnel'],
+    learned: 'SQL analytique, construction de KPI sportifs et communication des résultats pour un public métier.',
     impact: 'Illustre le pont entre SQL, analyse et présentation métier.',
     highlights: ['Indicateurs joueurs', 'Comparaison équipes', 'Recrutement', 'Shortlist'], metrics: ['PostgreSQL', 'SQL analytique', 'Restitution métier'],
     links: {}
@@ -134,8 +157,14 @@ export const projects = [
   { id: 'gameon', title: 'GameOn', shortTitle: 'Formulaire', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Développeur front', image: gameonImage, accent: '#c33c54', stack: ['JavaScript', 'HTML/CSS'], skills: ['Formulaire', 'Validation', 'DOM'], summary: 'Landing page événementielle avec formulaire d’inscription et validations.', problem: 'Fiabiliser une modale de formulaire.', solution: 'Contrôles JavaScript, feedback utilisateur et responsive.', impact: 'Exercice structurant sur les interactions front.', highlights: ['Modal', 'Validation', 'Responsive'], metrics: ['Vanilla JS'], links: {} },
   { id: 'reservia', title: 'Réservia', shortTitle: 'Intégration responsive', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Intégrateur web', image: reserviaImage, accent: '#0065fc', stack: ['HTML', 'CSS'], skills: ['Responsive', 'Sémantique', 'Maquette'], summary: 'Intégration responsive d’une maquette de réservation.', problem: 'Transformer une maquette desktop/tablette/mobile en HTML/CSS.', solution: 'Structure sémantique, flexbox et media queries.', impact: 'Base solide d’intégration web.', highlights: ['Responsive', 'Flexbox', 'Sémantique'], metrics: ['HTML/CSS'], links: { demo: 'https://steve57000.github.io/BellSteve_P2_27072021/' } },
   { id: 'ohmyfood', title: 'OhMyFood', shortTitle: 'Animations CSS', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Intégrateur web', image: ohMyFoodImage, accent: '#9356dc', stack: ['HTML', 'CSS', 'Sass'], skills: ['Animations', 'Mobile first', 'UI'], summary: 'Site mobile first avec animations CSS et pages de menus.', problem: 'Créer une expérience animée sans JavaScript.', solution: 'Animations CSS, loader, transitions et approche mobile first.', impact: 'Travail sur la finition visuelle et les micro-interactions.', highlights: ['Loader', 'Animations', 'Mobile first'], metrics: ['CSS/Sass'], links: { demo: 'https://steve57000.github.io/Bell_steve_P3_04082021/index.html' } },
+
+  { id: 'la-chouette-agence', title: 'La Chouette Agence', shortTitle: 'SEO & accessibilité', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Intégrateur / audit SEO', image: laChouetteImage, imageAlt: 'Capture du site La Chouette Agence', accent: '#7f5d9b', stack: ['HTML', 'CSS', 'SEO', 'Accessibilité'], skills: ['Audit', 'Performance', 'WCAG', 'Optimisation'], summary: 'Optimisation d’un site existant pour améliorer référencement, performance et accessibilité.', problem: 'Le site manquait de visibilité et présentait des freins SEO, accessibilité et performance.', solution: 'Audit, corrections HTML/CSS, amélioration des contrastes, nettoyage du code et rapport d’optimisation.', impact: 'Archive utile pour montrer la sensibilité qualité web : accessibilité, maintenabilité et référencement.', highlights: ['Audit SEO', 'Contrastes WCAG', 'Performance', 'Code maintenable'], metrics: ['Rapport d’audit', 'HTML/CSS'], links: { demo: 'https://steve57000.github.io/P4_10092021_site_corrig-/' } },
+  { id: 'piquante', title: 'Piiquante', shortTitle: 'API sécurisée', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Développeur backend', image: piquanteImage, imageAlt: 'Capture du projet Piiquante', accent: '#a7432f', stack: ['Node.js', 'Express', 'MongoDB', 'Multer', 'JWT'], skills: ['API REST', 'Sécurité', 'CRUD', 'Upload'], summary: 'API sécurisée pour une application de sauces avec authentification, CRUD, upload d’images et likes.', problem: 'Créer un backend fiable pour gérer comptes, sauces, images et votes sans exposer les données utilisateurs.', solution: 'Routes Express, authentification JWT, hachage de mot de passe, modèle MongoDB et gestion d’upload avec Multer.', impact: 'Archive backend importante dans la progression vers les APIs sécurisées.', highlights: ['JWT', 'Hash mot de passe', 'CRUD sauces', 'Upload images'], metrics: ['Node/Express', 'MongoDB'], links: {} },
   { id: 'billed', title: 'Billed', shortTitle: 'Tests et debug', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Développeur front', image: billedImage, accent: '#0e8f88', stack: ['JavaScript', 'Jest', 'Testing Library'], skills: ['Tests', 'Debug', 'Qualité'], summary: 'Correction et tests d’un parcours de notes de frais.', problem: 'Stabiliser une application existante.', solution: 'Tests unitaires/intégration et corrections ciblées.', impact: 'Approche qualité et maintenance.', highlights: ['Tests', 'Debug', 'Parcours utilisateur'], metrics: ['Jest'], links: {} },
-  { id: 'learnhome', title: 'Learn@Home', shortTitle: 'Conception', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Concepteur application', image: learnHomeImage, accent: '#5d6d7e', stack: ['Figma', 'User stories', 'Kanban'], skills: ['Conception', 'Maquettes', 'Gestion projet'], summary: 'Préparation fonctionnelle d’une application de soutien scolaire.', problem: 'Clarifier le besoin avant développement.', solution: 'Maquettes, user stories, parcours et découpage Kanban.', impact: 'Renforce la conception et la documentation produit.', highlights: ['User stories', 'Wireframes', 'Kanban'], metrics: ['Documentation'], links: {} }
+  { id: 'learnhome', title: 'Learn@Home', shortTitle: 'Conception', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Concepteur application', image: learnHomeImage, accent: '#5d6d7e', stack: ['Figma', 'User stories', 'Kanban'], skills: ['Conception', 'Maquettes', 'Gestion projet'], summary: 'Préparation fonctionnelle d’une application de soutien scolaire avec cas d’usage, user stories, maquettes et Kanban.', problem: 'Clarifier le besoin d’une association de soutien scolaire avant le développement.', solution: 'Maquettes, user stories, parcours, tableau de bord, chat, calendrier et découpage Kanban.', impact: 'Renforce la conception produit, la documentation fonctionnelle et la préparation agile.', highlights: ['User stories', 'Wireframes', 'Kanban', 'Parcours utilisateurs'], metrics: ['Documentation'], links: {} },
+
+  { id: 'qrcode', title: 'QR Code', shortTitle: 'Générateur QR', category: 'archives', featured: false, status: 'Archive / progression', period: 'Projet personnel', role: 'Développeur front', image: qrCodeImage, imageAlt: 'Logo du générateur de QR Code', accent: '#2d6cdf', stack: ['HTML', 'CSS', 'JavaScript', 'Qrious'], skills: ['Canvas', 'Paramétrage UI', 'Librairie JS'], summary: 'Générateur de QR codes personnalisés avec réglage d’URL, couleurs, opacité et correction d’erreur.', problem: 'Créer un outil simple pour produire rapidement un QR code personnalisable.', solution: 'Interface statique, intégration de la bibliothèque Qrious et options de personnalisation.', impact: 'Petit outil personnel montrant la capacité à livrer une fonctionnalité ciblée et utilisable.', highlights: ['QR code', 'Couleurs', 'Correction d’erreur', 'Outil statique'], metrics: ['JavaScript'], links: { demo: 'https://steve57000.github.io/GenerateQrCode/' } }
+
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);

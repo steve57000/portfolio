@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardContainer, CardTop, CardTitle, CardObjectif, CardContainerTags, CardTags, CategoryPill, HighlightList, HighlightItem, ContainerLink, CardLink } from './CardStyles';
+import { CardContainer, CardMedia, CardImage, CardTop, CardTitle, CardObjectif, CardContainerTags, CardTags, CategoryPill, HighlightList, HighlightItem, ContainerLink, CardLink } from './CardStyles';
 
 const labels = { 'fullstack': 'Fullstack', 'data-bi': 'Data / BI', frontend: 'Front-end', tools: 'Outils', archives: 'Archive' };
 
 const Card = ({ project, onClickMoreInfo }) => (
   <CardContainer id={`card-${project.id}`} $accent={project.accent} tabIndex={-1}>
+    <CardMedia $accent={project.accent}>
+      <CardImage src={project.image} alt={project.imageAlt || `Aperçu du projet ${project.title}`} loading="lazy" />
+    </CardMedia>
     <CardTop>
       <div>
         <CardTitle>{project.title}</CardTitle>
@@ -14,11 +17,13 @@ const Card = ({ project, onClickMoreInfo }) => (
       <CategoryPill>{labels[project.category] || project.category}</CategoryPill>
     </CardTop>
     <CardContainerTags>
-      {project.stack.slice(0, 7).map((tag) => <CardTags key={tag}>{tag}</CardTags>)}
+      {(project.stack || []).slice(0, 7).map((tag) => <CardTags key={tag}>{tag}</CardTags>)}
     </CardContainerTags>
-    <HighlightList>
-      {project.highlights.slice(0, 4).map((item) => <HighlightItem key={item} $accent={project.accent}>{item}</HighlightItem>)}
-    </HighlightList>
+    {!!project.highlights?.length && (
+      <HighlightList>
+        {project.highlights.slice(0, 4).map((item) => <HighlightItem key={item} $accent={project.accent}>{item}</HighlightItem>)}
+      </HighlightList>
+    )}
     <ContainerLink>
       <CardLink as="button" type="button" onClick={() => onClickMoreInfo(project.id)} $accent={project.accent}>Étude rapide</CardLink>
       {project.links?.repo && <CardLink href={project.links.repo} target="_blank" rel="noreferrer" $accent={project.accent}>GitHub</CardLink>}
