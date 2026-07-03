@@ -1,200 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-    CardDetailsStyles,
-    CardDetailsUl,
-    CardDetailsList,
-    ContainerList,
-    Container,
-    Chevron,
-    ButtonStyles, ContainerDescription,
-} from './CardDetailsContainerStyles';
-import FullScreenVideoModal from "../FullScreenVideoModal/FullScreenVideoModal";
-import {GlobalStyle} from "./CardDetailsContainerStyles";
+import { GlobalStyle, CardDetailsStyles, ModalBackdrop, DetailMeta, ContainerDescription, DetailGrid, DetailBlock, TagWrap, Tag, ButtonRow, ButtonStyles, LinkButton } from './CardDetailsContainerStyles';
 
-const CardDetailsContainer = ({ project, onClose, scrollToProjectId }) => {
-    const [listStates, setListStates] = useState({});
-    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-    const [selectedVideoIndex, setSelectedVideoIndex] = useState();
-    const anchorRef = useRef(null);
+const CardDetailsContainer = ({ project, onClose }) => {
+  const closeRef = useRef(null);
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKeyDown = (event) => { if (event.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [onClose]);
 
-    const toggleListVisibility = (projectId, index) => {
-        setListStates(prevStates => ({
-            ...prevStates,
-            [projectId]: {
-                ...prevStates[projectId],
-                [index]: !prevStates[projectId]?.[index],
-            },
-        }));
-    };
+  if (!project) return null;
 
-    useEffect(() => {
-        if (scrollToProjectId && anchorRef.current) {
-            anchorRef.current.scrollIntoView({ behavior: 'smooth' });
-            anchorRef.current.focus();
-        }
-    }, [scrollToProjectId]);
-
-    const handleOpenPDF = (pdfLink) => {
-        console.log("Opening PDF:", pdfLink);
-        if (project.docs) {
-            window.open(require(`../../assets/docs/${pdfLink}`), '_blank');
-        }
-    };
-
-    const handleOpenVideo = (indexVideo) => {
-        console.log("Opening video modal for video index:", indexVideo);
-        setIsVideoModalOpen(true);
-        setSelectedVideoIndex(indexVideo);
-    };
-
-    const handleCloseVideoModal = () => {
-        console.log("Closing video modal");
-        setIsVideoModalOpen(false);
-    };
-
-    if (!project || !project.fonction) {
-        return (
-            <div>
-                <h2>Données manquantes</h2>
-                <p>Aucune donnée disponible</p>
-                <button onClick={onClose}>Fermer</button>
-            </div>
-        );
-    }
-
-    return (
-        <>
-            <GlobalStyle />
-            <CardDetailsStyles>
-                <h2 ref={anchorRef}>{project.title}</h2>
-                <ContainerDescription>
-                    <h3>Description :</h3>
-                    <p>{project.description}</p>
-                </ContainerDescription>
-                <Container>
-                    <>
-                        {project.fonction.map((func, index) => (
-                            <ContainerList
-                                key={index}
-                                $index={index}
-                                role="button"
-                                tabIndex={0}
-                                onClick={() => toggleListVisibility(project.id, index)}
-                                onKeyDown={(event) => {
-                                    if (event.key === 'Enter') {
-                                        toggleListVisibility(project.id, index);
-                                    }
-                                }}
-                                $isOpen={listStates[project.id]?.[index]} // Appliquer la couleur de la liste
-                            >
-                                <h4>{func.name}</h4>
-                                <Chevron $isRotated={listStates[project.id]?.[index]} />
-
-                                <CardDetailsUl>
-                                    {listStates[project.id]?.[index] && (
-                                        <>
-                                            {func.list.map((item, idx) => (
-                                                <CardDetailsList key={idx} $index={idx} >{item}</CardDetailsList>
-                                            ))}
-                                        </>
-                                    )}
-                                </CardDetailsUl>
-                            </ContainerList>
-                        ))}
-                    </>
-                    <>
-                        {project.docs && project.docs.map((doc, index) => (
-                            <ButtonStyles
-                                key={index}
-                                role="button"
-                                tabIndex={0}
-                                aria-label={`Ouvrir le document ${doc.nameDocs}`}
-                                onClick={() => handleOpenPDF(doc.link)}
-                                onKeyDown={(event) => {
-                                    if (event.key === 'Enter') {
-                                        handleOpenPDF(doc.link);
-                                    }
-                                }}
-                            >
-                                <p>
-                                    Voir {doc.nameDocs}
-                                </p>
-                            </ButtonStyles>
-                        ))}
-                    </>
-                    <>
-                        {project.video && project.video.map((video, index) => (
-                            <ButtonStyles
-                                key={index}
-                                role="button"
-                                tabIndex={0}
-                                aria-label={`Ouvrir ${video.name}`}
-                                onClick={() => handleOpenVideo(index)}
-                                onKeyDown={(event) => {
-                                    if (event.key === 'Enter') {
-                                        handleOpenVideo(index);
-                                    }
-                                }}
-                            >
-                                <p>
-                                    Voir {video.name}
-                                </p>
-                            </ButtonStyles>
-                        ))}
-                    </>
-                    <ButtonStyles
-                        role="button"
-                        tabIndex={0}
-                        onClick={onClose}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter') {
-                                onClose();
-                            }
-                        }}
-                    >
-                        <p>
-                            Fermer
-                        </p>
-                    </ButtonStyles>
-                </Container>
-                {isVideoModalOpen && (
-                    <FullScreenVideoModal
-                        videoSrc={project.video[selectedVideoIndex].link}
-                        onClose={handleCloseVideoModal}
-                    />
-                )}
-            </CardDetailsStyles>
-        </>
-    );
+  return (
+    <>
+      <GlobalStyle />
+      <ModalBackdrop onClick={onClose} />
+      <CardDetailsStyles role="dialog" aria-modal="true" aria-labelledby="project-detail-title">
+        <DetailMeta>{project.role} · {project.status} · {project.period}</DetailMeta>
+        <h2 id="project-detail-title">{project.title}</h2>
+        <ContainerDescription><p>{project.summary}</p></ContainerDescription>
+        <DetailGrid>
+          <DetailBlock><strong>Problème</strong><p>{project.problem}</p></DetailBlock>
+          <DetailBlock><strong>Solution</strong><p>{project.solution}</p></DetailBlock>
+          <DetailBlock><strong>Impact</strong><p>{project.impact}</p></DetailBlock>
+        </DetailGrid>
+        <TagWrap>{project.stack.map((item) => <Tag key={item}>{item}</Tag>)}</TagWrap>
+        <DetailGrid>
+          <DetailBlock><strong>Points clés</strong><p>{project.highlights.join(' · ')}</p></DetailBlock>
+          <DetailBlock><strong>Compétences</strong><p>{project.skills.join(' · ')}</p></DetailBlock>
+          <DetailBlock><strong>Repères</strong><p>{project.metrics.join(' · ')}</p></DetailBlock>
+        </DetailGrid>
+        <ButtonRow>
+          {project.links?.repo && <LinkButton href={project.links.repo} target="_blank" rel="noreferrer">Ouvrir le repository</LinkButton>}
+          {project.links?.demo && <LinkButton href={project.links.demo} target="_blank" rel="noreferrer">Ouvrir le site</LinkButton>}
+          <ButtonStyles ref={closeRef} type="button" onClick={onClose}>Fermer</ButtonStyles>
+        </ButtonRow>
+      </CardDetailsStyles>
+    </>
+  );
 };
 
-CardDetailsContainer.propTypes = {
-    project: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        fonction: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string.isRequired,
-                list: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-            }).isRequired
-        ).isRequired,
-        docs: PropTypes.arrayOf(
-            PropTypes.shape({
-                nameDocs: PropTypes.string,
-                link: PropTypes.string,
-            })
-        ),
-        video: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string,
-                link: PropTypes.string,
-            })
-        ),
-    }).isRequired,
-    onClose: PropTypes.func.isRequired,
-    scrollToProjectId: PropTypes.number, // Propriété pour le défilement jusqu'au projet spécifique
-};
-
+CardDetailsContainer.propTypes = { project: PropTypes.object, onClose: PropTypes.func.isRequired };
 export default CardDetailsContainer;
-

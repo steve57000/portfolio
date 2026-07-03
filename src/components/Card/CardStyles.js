@@ -1,154 +1,83 @@
 import styled from 'styled-components';
-import {
-    fadeInLeft,
-    fadeInRight,
-    fadeInSlideDown,
-    fadeInZoom
-} from '../../utils/stylesKeyframes/stylesKeyframes';
 
-import { configTheme } from '../../utils/theme/configTheme';
-
-const { colors, boxShadow, fonts } = configTheme;
-
-export const CardContainer = styled.div`
-  position: relative;
+export const CardContainer = styled.article`
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  gap: 20px;
-  padding: 70px 20px;
-  box-shadow: ${boxShadow.shadowLight};
-  max-width: 600px;
-  max-height: 90vh;
-  width: 100%;
-  background: ${colors.backgroundGradient};
-  transition: box-shadow 0.3s ease-in-out;
-  opacity: 0;
-  animation: ${fadeInSlideDown} 0.5s ease forwards;
-  animation-delay: ${({ $index }) => $index * 0.3}s; /* Appliquer un délai basé sur l'index */
-  margin: 0 auto;
+  gap: 16px;
+  min-height: 100%;
+  border: 1px solid #d8d1c5;
+  border-radius: 26px;
+  padding: 22px;
+  background: rgba(255,250,240,.82);
+  box-shadow: 0 18px 44px rgba(17,25,29,.07);
+  border-top: 6px solid ${({ $accent }) => $accent || '#2d7f82'};
+  transition: transform .2s ease, box-shadow .2s ease;
+  &:hover { transform: translateY(-4px); box-shadow: 0 22px 60px rgba(17,25,29,.12); }
+`;
 
-  &:hover {
-    box-shadow: ${boxShadow.shadowHigh};
-  }
-  
-  @media (max-width: 1600px) {
-    padding: 70px 10px;
-    gap: 10px;
-  }
+export const CardTop = styled.div`
+  display: flex; justify-content: space-between; gap: 18px; align-items: start;
 `;
 
 export const CardTitle = styled.h3`
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  width: 100%;
-  padding: 15px 0 15px 0;
-  font-size: ${fonts.sizeMedium};
-  text-align: center;
-  color: ${colors.primary};
-  background-color: ${colors.fourth};
-  border-radius: 10px 10px 0 0;
-  box-shadow: ${boxShadow.shadowInset};
-  opacity: 0;
-  animation: ${fadeInLeft} 0.5s forwards;
-  animation-delay:  0.2s;
+  color: #11191d;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  margin: 0 0 8px;
 `;
 
-export const CardObjectif = styled.h4`
-  margin: 10px 0 0 0;
-  font-size: ${fonts.sizeSmall};
-  color: ${colors.third};
-  text-align: center;
-  opacity: 0;
-  animation: ${fadeInRight} 0.5s forwards;
-  animation-delay:  0.3s;
+export const CardObjectif = styled.p`
+  color: #536168;
+  line-height: 1.6;
+  margin: 0;
+`;
 
-  @media (max-width: 620px) {
-    font-size: ${fonts.sizeLightSmall};
-  }
+export const CategoryPill = styled.span`
+  white-space: nowrap;
+  color: #fffaf0;
+  background: #11191d;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: .78rem;
+  font-weight: 800;
 `;
 
 export const CardContainerTags = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  opacity: 0;
-  animation: ${fadeInZoom} 0.5s forwards;
-  animation-delay:  0.4s;
+  display: flex; flex-wrap: wrap; gap: 8px;
 `;
 
 export const CardTags = styled.span`
-  font-size: ${fonts.sizeExtraSmall};
-  letter-spacing: 1px;
-  padding: 8px;
-  border-radius: 5px;
-  background-color: ${colors.fifth};
-  color: ${colors.primary};
-  box-shadow: ${boxShadow.shadowLight};
-  
-  @media (max-width: 1500px) {
-    padding: 5px;
-  }
+  border: 1px solid #cdd3d4;
+  color: #243238;
+  background: rgba(255,255,255,.62);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: .82rem;
+  font-weight: 700;
 `;
 
-export const CardImageContainer = styled.div`
-  width: 100%;
-  min-height: 280px;
-  max-height: 320px;
-  border-radius: 5px;
-  box-shadow: ${boxShadow.shadowLight};
-  background-image: url(${props => require(`../../assets/images/${props.image}`)});
-  background-size: cover;
-  background-position: top;
-  opacity: 0;
-  animation: ${fadeInZoom} 0.5s forwards;
-  animation-delay:  0.5s;
+export const HighlightList = styled.ul`
+  list-style: none; padding: 0; margin: 0; display: grid; gap: 7px;
 `;
 
-export const CardSavoirImg = styled.img`
-  position: absolute;
-  left: 0;
+export const HighlightItem = styled.li`
+  color: #2f3d43;
+  display: flex; gap: 8px; align-items: baseline;
+  &::before { content: '•'; color: ${({ $accent }) => $accent || '#2d7f82'}; font-weight: 900; }
 `;
 
-export const CardSavoir = styled.ul`
-  margin: 0;
-  list-style-type: none;
-  position: relative;
-  opacity: 0;
-  animation: ${fadeInLeft} 0.5s forwards;
-  animation-delay: 0.6s;
-`;
-
-
-export const CardSavoirList = styled.li`
-  font-size: ${fonts.sizeExtraSmall};
-  padding: 3px 0 ;
-  margin: .4em 0;
-  color: ${colors.fourth};
-`;
-
-export const ContainerLink = styled.span`
-  display: flex;
-  justify-content: space-between;
-  width: calc(100% - 40px); // taille 100% moins le padding-left(20px) et gauche(20px) 
-  position: absolute;
-  bottom: 10px;
-  opacity: 0;
-  animation: ${fadeInRight} 0.5s forwards;
-  animation-delay:  0.7s;
-  
-  @media (max-width: 767px) {
-    width: calc(100% - 20px);
-  }
+export const ContainerLink = styled.div`
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto;
 `;
 
 export const CardLink = styled.a`
-  color: #007bff;
+  color: #11191d;
   text-decoration: none;
   cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
+  border: 1px solid #bac5c7;
+  background: #fffaf0;
+  border-radius: 999px;
+  padding: 10px 13px;
+  font-weight: 800;
+  &:hover { border-color: ${({ $accent }) => $accent || '#2d7f82'}; }
 `;

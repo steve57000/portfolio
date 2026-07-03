@@ -53,19 +53,5 @@ export const configTheme = {
         contentBorderRadius: "10px",
         contentPadding: "20px",
         contentBoxShadow: "0 0 20px rgba(0, 0, 0, 0.5)",
-    },
-    video: {
-        containerMaxWidth: "100%",
-        containerMaxHeight: "80vh",
-        closeButton: {
-            marginTop: "20px",
-            padding: "10px 20px",
-            backgroundColor: "#ff7e5f",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            fontSize: "16px",
-        },
-    },
+    }
 };

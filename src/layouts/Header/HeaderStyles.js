@@ -1,31 +1,11 @@
 import styled from 'styled-components';
-import { configTheme } from '../../utils/theme/configTheme';
 
-const { sizes, colors } = configTheme
 export const HeaderContainer = styled.header`
-  width: 100%;
-  background: ${colors.backgroundGradient};
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  @media (max-width: 767px) {
-    border-radius:  0 0 10px 0;
-    padding:  0;
-  }
+  position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+  background: rgba(243,239,231,.86); border-bottom: 1px solid #d8d1c5;
 `;
 export const HeaderSize = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: ${sizes.maxWidth};
-  margin: 0 auto;
-  padding: 10px;
-  @media (max-width: 767px) {
-    flex-direction: column;
-    padding: 0;
-  }
+  width:min(1180px, calc(100% - 32px)); margin:0 auto; min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px;
+  @media(max-width:720px){ flex-direction:column; padding:12px 0; }
 `;
-
-export const Logo = styled.img`
-  width: 250px;
-  height: auto;
-  margin-bottom: 20px;
-`;
+export const Logo = styled.img`width:150px; height:auto; display:block;`;

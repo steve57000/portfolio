@@ -1,48 +1,7 @@
 import styled from 'styled-components';
-import { configTheme } from '../../utils/theme/configTheme';
-import {fadeInSlideUp} from "../../utils/stylesKeyframes/stylesKeyframes";
 
-const { colors, fonts } = configTheme
 export const Nav = styled.nav`
-  text-align: right;
-  font-size: 1.2rem;
-  ul {
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    gap: 10px;
-    list-style-type: none;
-    background-color: ${colors.primary};
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    
-    @media (max-width: 767px) {
-      gap: 5px;
-      margin: 0;
-      background: none;
-      padding: 0;
-      font-size: ${fonts.sizeExtraSmall};
-    }
-    
-    li{
-      transition: background-color .3s linear, box-shadow .3s linear,color .3s linear;
-      width: 120px;
-      border-radius: 10px;
-      opacity: 0;
-      animation: ${fadeInSlideUp} 0.5s ease forwards;
-      
-      @media (max-width: 767px) {
-        width: 100px;
-      }
-      
-      &:hover, &:focus {
-        background-color: #900c3e;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.52);
-        a{
-          color: ${colors.primary};
-        }
-      }
-    }
-  }
+  ul { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; list-style:none; margin:0; padding:0; }
+  a { display:block; color:#243238; text-decoration:none; font-weight:800; border:1px solid #d8d1c5; border-radius:999px; padding:10px 13px; background:rgba(255,250,240,.74); }
+  a:hover, a.active { border-color:#2d7f82; color:#11191d; }
 `;
