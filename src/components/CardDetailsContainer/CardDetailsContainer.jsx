@@ -17,6 +17,9 @@ const CardDetailsContainer = ({ project, onClose }) => {
 
   if (!project) return null;
 
+  const stack = Array.isArray(project.stack) ? project.stack : [];
+  const links = project.links || {};
+
   return (
     <>
       <GlobalStyle />
@@ -40,10 +43,10 @@ const CardDetailsContainer = ({ project, onClose }) => {
           {renderListBlock('Compétences', project.skills)}
           {renderListBlock('Repères', project.metrics)}
         </DetailGrid>
-        {!!project.stack?.length && <TagWrap>{project.stack.map((item) => <Tag key={item}>{item}</Tag>)}</TagWrap>}
+        {stack.length > 0 && <TagWrap>{stack.map((item) => <Tag key={item}>{item}</Tag>)}</TagWrap>}
         <ButtonRow>
-          {project.links?.repo && <LinkButton href={project.links.repo} target="_blank" rel="noreferrer">Ouvrir le repository</LinkButton>}
-          {project.links?.demo && <LinkButton href={project.links.demo} target="_blank" rel="noreferrer">Ouvrir le site</LinkButton>}
+          {links.repo && <LinkButton href={links.repo} target="_blank" rel="noreferrer">Ouvrir le repository</LinkButton>}
+          {links.demo && <LinkButton href={links.demo} target="_blank" rel="noreferrer">Ouvrir le site</LinkButton>}
           <ButtonStyles ref={closeRef} type="button" onClick={onClose}>Fermer</ButtonStyles>
         </ButtonRow>
       </CardDetailsStyles>

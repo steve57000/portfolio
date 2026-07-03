@@ -9,3 +9,4 @@ Aucun fichier binaire ne doit être généré automatiquement dans ce repository
 - `sportdatapulse-sql.webp` : aperçu base/requêtes football et indicateurs joueurs/équipes.
 - `guide-investissement-dashboard.webp` : aperçu dashboard Guide Investissement.
 - `recettes-app.webp` : aperçu application Recettes avec liste, portions et courses.
+- `sportsee-dashboard.webp` : capture dashboard SportSee avec graphiques et KPI utilisateur.

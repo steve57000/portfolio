@@ -11,7 +11,7 @@ const Home = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const selectedProject = projects.find((project) => project.id === selectedCardId);
   const filteredProjects = useMemo(() => activeCategory === 'all' ? projects : projects.filter((project) => project.category === activeCategory), [activeCategory]);
-  const caseStudies = featuredProjects.slice(0, 3);
+  const caseStudies = featuredProjects;
 
   const closeDetails = () => {
     const current = selectedCardId;
