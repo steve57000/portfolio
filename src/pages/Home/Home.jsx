@@ -4,6 +4,8 @@ import Card from '../../components/Card/Card';
 import { profile, projects, featuredProjects, projectCategories, capabilities, skills, journey } from '../../data/portfolioData';
 import { GlobalPortfolioStyle, HomeContainer, Hero, Eyebrow, PageTitle, HeroTitle, PageDescription, CtaRow, ButtonLink, HeroPanel, SignalGrid, Signal, Section, SectionHeader, FeaturedGrid, ContainerProject, FilterBar, FilterButton, CapabilityGrid, CapabilityCard, CaseStudy, DetailGrid, SkillsGrid, SkillCard, JourneyList, JourneyItem, ContactPanel } from './HomeStyles';
 
+const getSectionHref = (sectionId) => `${process.env.PUBLIC_URL || ''}/#${sectionId}`;
+
 const Home = () => {
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -27,8 +29,8 @@ const Home = () => {
           <HeroTitle>{profile.title}</HeroTitle>
           <PageDescription>{profile.summary} {profile.value}</PageDescription>
           <CtaRow>
-            <ButtonLink $variant="dark" href="#projets">Voir les projets</ButtonLink>
-            <ButtonLink href="#parcours">Voir le parcours</ButtonLink>
+            <ButtonLink $variant="dark" href={getSectionHref('projets')}>Voir les projets</ButtonLink>
+            <ButtonLink href={getSectionHref('parcours')}>Voir le parcours</ButtonLink>
             <ButtonLink href={profile.links.github} target="_blank" rel="noreferrer">GitHub</ButtonLink>
           </CtaRow>
         </div>
