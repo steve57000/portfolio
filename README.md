@@ -1,42 +1,42 @@
-# Portfolio Steve Bell
+# Portfolio — Steve Bell
 
-Portfolio React publié sur GitHub Pages : <https://steve57000.github.io/portfolio/>.
-
-## Positionnement
-
-Développeur fullstack Java / Angular & Data Analyst junior, orienté applications métier, APIs sécurisées, SQL, qualité de données, RGPD et dashboards.
+Portfolio statique publié sur GitHub Pages : <https://steve57000.github.io/portfolio/>.
 
 ## Stack
 
-- React / Create React App
-- styled-components
-- React Router avec `basename="/portfolio"`
-- Déploiement principal GitHub Pages via GitHub Actions Pages (`.github/workflows/pages.yml`)
-- Script `gh-pages` conservé comme option manuelle historique
+- Astro avec rendu statique pré-généré.
+- TypeScript pour les données du portfolio.
+- CSS natif structuré dans `src/styles/global.css`.
+- JavaScript natif léger dans `public/scripts/main.js` pour la navigation mobile, les filtres projets et les détails en dialogue.
+- Aucun runtime React n'est embarqué.
 
 ## Scripts
 
 ```bash
-npm install
-npm start
+npm run dev
 npm run build
-npm run deploy
+npm run preview
 ```
 
-## Déploiement
+## Déploiement GitHub Pages
 
-Le déploiement principal se fait via GitHub Actions Pages : le workflow construit l’application avec `npm run build`, puis publie le dossier `build` sur GitHub Pages.
+La configuration Astro est définie dans `astro.config.mjs` avec :
 
-La configuration doit rester compatible avec GitHub Pages : `homepage` pointe vers `/portfolio/`, le routeur utilise `basename="/portfolio"` et les liens internes doivent rester fonctionnels après build.
+- `site: 'https://steve57000.github.io'`
+- `base: '/portfolio'`
 
-## Contenu
+Le workflow `.github/workflows/pages.yml` utilise Node 24, installe les dépendances avec `npm ci`, construit le site avec `npm run build`, puis publie le dossier `dist` via GitHub Pages.
 
-Les données du portfolio sont centralisées dans `src/data/portfolioData.js` : profil, projets, compétences, parcours, catégories et projets vedettes.
+## Données portfolio
 
-Chaque projet doit au minimum déclarer : `id`, `title`, `shortTitle`, `category`, `status`, `period`, `role`, `image`, `imageAlt`, `accent`, `stack`, `skills`, `summary`, `problem`, `solution`, `impact`, `highlights`, `metrics` et `links`.
+Le contenu éditorial principal est centralisé dans `src/data/portfolioData.ts` : profil, liens, catégories, compétences, parcours, projets et projets vedettes.
 
-## Contraintes assets
+Le portfolio conserve 22 projets, dont 5 projets vedettes : JLH AutoPam, BottleNeck, Assurance Data, RGPD Dev’Immédiat et SportDataPulse.
 
-Aucun fichier binaire ne doit être généré automatiquement dans ce repository. Ne pas créer automatiquement de PNG, JPG, WEBP, PDF, vidéo, police, screenshot ou asset généré, et ne pas modifier les binaires existants.
+## Règle stricte sur les fichiers binaires
 
-Les images manquantes sont documentées uniquement dans `TODO_ASSETS.md`. Les assets doivent être ajoutés manuellement plus tard, puis reliés explicitement dans `src/data/portfolioData.js`.
+Aucun fichier binaire ne doit être créé, généré, modifié, déplacé, renommé ou supprimé automatiquement dans ce repository.
+
+Cela inclut notamment : PNG, JPG, WEBP, PDF, vidéos, polices, captures d’écran et assets générés. Les assets binaires existants restent à leur emplacement actuel. Les images manquantes doivent être documentées uniquement dans `TODO_ASSETS.md` et continuer à utiliser le visuel de repli `cardImage.png` tant qu’elles ne sont pas ajoutées manuellement.
+
+Le dossier de build `dist` ne doit pas être commité.
