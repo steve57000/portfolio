@@ -7,16 +7,36 @@ export const CardContainer = styled.article`
   min-height: 100%;
   border: 1px solid #d8d1c5;
   border-radius: 26px;
-  padding: 22px;
+  padding: 16px;
   background: rgba(255,250,240,.82);
   box-shadow: 0 18px 44px rgba(17,25,29,.07);
+  overflow: hidden;
   border-top: 6px solid ${({ $accent }) => $accent || '#2d7f82'};
   transition: transform .2s ease, box-shadow .2s ease;
   &:hover { transform: translateY(-4px); box-shadow: 0 22px 60px rgba(17,25,29,.12); }
 `;
 
+
+export const CardMedia = styled.div`
+  position: relative;
+  min-height: 170px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, ${({ $accent }) => $accent || '#2d7f82'}22, rgba(17,25,29,.08));
+  border: 1px solid rgba(17,25,29,.08);
+`;
+
+export const CardImage = styled.img`
+  width: 100%;
+  height: 190px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.96) contrast(1.02);
+`;
+
 export const CardTop = styled.div`
-  display: flex; justify-content: space-between; gap: 18px; align-items: start;
+  display: flex; justify-content: space-between; gap: 18px; align-items: start; padding: 0 6px;
 `;
 
 export const CardTitle = styled.h3`
@@ -43,7 +63,7 @@ export const CategoryPill = styled.span`
 `;
 
 export const CardContainerTags = styled.div`
-  display: flex; flex-wrap: wrap; gap: 8px;
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 0 6px;
 `;
 
 export const CardTags = styled.span`
@@ -57,7 +77,7 @@ export const CardTags = styled.span`
 `;
 
 export const HighlightList = styled.ul`
-  list-style: none; padding: 0; margin: 0; display: grid; gap: 7px;
+  list-style: none; padding: 0 6px; margin: 0; display: grid; gap: 7px;
 `;
 
 export const HighlightItem = styled.li`
@@ -67,7 +87,7 @@ export const HighlightItem = styled.li`
 `;
 
 export const ContainerLink = styled.div`
-  display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto;
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding: 0 6px 6px;
 `;
 
 export const CardLink = styled.a`
