@@ -1,0 +1,25 @@
+---
+const { project } = Astro.props;
+const links = project.links ?? {};
+---
+<dialog class="project-dialog" id={`project-${project.id}`} aria-labelledby={`project-${project.id}-title`}>
+  <div class="project-dialog__panel" style={`--accent:${project.accent}`}>
+    <form method="dialog"><button class="dialog-close" aria-label="Fermer les détails">×</button></form>
+    <p class="eyebrow">{project.category} · {project.role}</p>
+    <h3 id={`project-${project.id}-title`}>{project.title}</h3>
+    <p class="lead">{project.summary}</p>
+    <div class="detail-grid">
+      {project.context && <section><h4>Contexte</h4><p>{project.context}</p></section>}
+      {project.problem && <section><h4>Problème</h4><p>{project.problem}</p></section>}
+      {project.solution && <section><h4>Solution</h4><p>{project.solution}</p></section>}
+      {project.impact && <section><h4>Impact</h4><p>{project.impact}</p></section>}
+    </div>
+    {project.deliverables && <section><h4>Livrables</h4><ul>{project.deliverables.map((item) => <li>{item}</li>)}</ul></section>}
+    {project.decisions && <section><h4>Choix techniques</h4><ul>{project.decisions.map((item) => <li>{item}</li>)}</ul></section>}
+    <ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul>
+    <div class="project-card__actions">
+      {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer">Voir le repo</a>}
+      {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer">Voir la démo</a>}
+    </div>
+  </div>
+</dialog>

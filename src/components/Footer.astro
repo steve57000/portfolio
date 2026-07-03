@@ -1,0 +1,7 @@
+---
+import { profile } from '../data/portfolioData';
+---
+<footer class="site-footer" id="contact">
+  <div><p class="eyebrow">Contact</p><h2>Construire, fiabiliser, mesurer.</h2><p>{profile.summary}</p></div>
+  <address><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.links.github}>GitHub</a><a href={profile.links.linkedin}>LinkedIn</a></address>
+</footer>

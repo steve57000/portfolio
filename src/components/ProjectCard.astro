@@ -1,0 +1,23 @@
+---
+const { project, index = 0 } = Astro.props;
+const links = project.links ?? {};
+---
+<article class:list={["project-card", project.featured && "is-featured"]} data-project-card data-category={project.category} style={`--accent:${project.accent}`}>
+  <img src={project.image.src ?? project.image} alt={project.imageAlt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      <span>{project.status}</span>
+      <span>{project.period}</span>
+    </div>
+    <h3>{project.title}</h3>
+    <p>{project.summary}</p>
+    <ul class="tags" aria-label={`Technologies ${project.title}`}>
+      {project.stack.slice(0, 5).map((item) => <li>{item}</li>)}
+    </ul>
+    <div class="project-card__actions">
+      <button class="button button--ghost" type="button" data-project-open={project.id}>Détails</button>
+      {links.repo && <a class="text-link" href={links.repo} target="_blank" rel="noreferrer">Repo</a>}
+      {links.demo && <a class="text-link" href={links.demo} target="_blank" rel="noreferrer">Démo</a>}
+    </div>
+  </div>
+</article>
