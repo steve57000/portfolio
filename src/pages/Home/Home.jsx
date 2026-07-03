@@ -1,108 +1,91 @@
-import React, { useState } from 'react';
-import useDataFetching from '../../utils/hooks/useData';
+import React, { useMemo, useState } from 'react';
 import CardDetailsContainer from '../../components/CardDetailsContainer/CardDetailsContainer';
-import { ContainerProject, HomeContainer, ModalBackdrop, PageTitle, PageDescription, TitleH2 } from './HomeStyles';
-import { mockData } from "../../data/mockData";
-import Card from "../../components/Card/Card";
-import { useInitial } from '../../utils/hooks/useInitial';
-import LoadingScreen from "../../components/Loader/Loader";
-import FullPageModal from "../../components/FullPageModal/FullPageModal";
+import Card from '../../components/Card/Card';
+import { profile, projects, featuredProjects, projectCategories, capabilities, skills, journey } from '../../data/portfolioData';
+import { GlobalPortfolioStyle, HomeContainer, Hero, Eyebrow, PageTitle, HeroTitle, PageDescription, CtaRow, ButtonLink, HeroPanel, SignalGrid, Signal, Section, SectionHeader, FeaturedGrid, ContainerProject, FilterBar, FilterButton, CapabilityGrid, CapabilityCard, CaseStudy, DetailGrid, SkillsGrid, SkillCard, JourneyList, JourneyItem, ContactPanel } from './HomeStyles';
 
 const Home = () => {
-    const { data, isLoading, error } = useDataFetching(mockData);
-    const { loading, error: initialError } = useInitial();
-    const [selectedCardId, setSelectedCardId] = useState(null);
-    const [selectedCardIdRef, setSelectedCardIdRef] = useState(null);
-    const [openModal, setOpenModal] = useState(false);
-    const [websiteUrl, setWebsiteUrl] = useState("");
+  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
+  const selectedProject = projects.find((project) => project.id === selectedCardId);
+  const filteredProjects = useMemo(() => activeCategory === 'all' ? projects : projects.filter((project) => project.category === activeCategory), [activeCategory]);
+  const caseStudies = featuredProjects.slice(0, 3);
 
-    const handleMoreInfoClick = (id) => {
-        setSelectedCardId(id);
-        setSelectedCardIdRef(id);
-    };
+  const closeDetails = () => {
+    const current = selectedCardId;
+    setSelectedCardId(null);
+    window.setTimeout(() => document.getElementById(`card-${current}`)?.focus(), 0);
+  };
 
-    const handleOpenModal = (url) => {
-        setWebsiteUrl(url); // Mettez à jour l'URL ici
-        setOpenModal(true);
-    };
+  return (
+    <HomeContainer>
+      <GlobalPortfolioStyle />
+      <Hero>
+        <div>
+          <Eyebrow>{profile.location} · Applications métier · Data</Eyebrow>
+          <PageTitle>{profile.name}</PageTitle>
+          <HeroTitle>{profile.title}</HeroTitle>
+          <PageDescription>{profile.summary} {profile.value}</PageDescription>
+          <CtaRow>
+            <ButtonLink $variant="dark" href="#projets">Voir les projets</ButtonLink>
+            <ButtonLink href="#parcours">Voir le parcours</ButtonLink>
+            <ButtonLink href={profile.links.github} target="_blank" rel="noreferrer">GitHub</ButtonLink>
+          </CtaRow>
+        </div>
+        <HeroPanel aria-label="Signaux forts du profil">
+          <div>
+            <Eyebrow as="p">Cockpit</Eyebrow>
+            <h2>Construire, structurer, analyser.</h2>
+            <p>Un portfolio repositionné sur le fullstack Java / Angular, la donnée et les outils concrets.</p>
+          </div>
+          <SignalGrid>
+            {['Fullstack', 'Data / BI', 'SQL', 'Angular', 'Spring Boot', 'RGPD'].map((signal) => <Signal key={signal}><span>focus</span><strong>{signal}</strong></Signal>)}
+          </SignalGrid>
+        </HeroPanel>
+      </Hero>
 
-    const handleCloseDetails = () => {
-        setSelectedCardId(null);
-        if (selectedCardIdRef) {
-            const cardElement = document.getElementById(`card-${selectedCardIdRef}`);
-            if (cardElement) {
-                cardElement.scrollIntoView({ behavior: 'smooth' });
-                cardElement.focus();
-            }
-        }
-        setSelectedCardIdRef(null);
-    };
+      <Section id="projets">
+        <SectionHeader><div><Eyebrow>Priorité</Eyebrow><h2>Projets vedettes</h2></div><p>Les projets visibles en premier racontent le positionnement actuel : applications métier, architecture fullstack, SQL, qualité de données et décisionnel.</p></SectionHeader>
+        <FeaturedGrid>{featuredProjects.map((project) => <Card key={project.id} project={project} onClickMoreInfo={setSelectedCardId} />)}</FeaturedGrid>
+      </Section>
 
-    if (loading || isLoading) {
-        return <LoadingScreen />;
-    }
+      <Section>
+        <SectionHeader><div><Eyebrow>Atelier</Eyebrow><h2>Ce que je construis</h2></div><p>Des livrables compréhensibles, documentés et reliés à un usage métier.</p></SectionHeader>
+        <CapabilityGrid>{capabilities.map((capability) => <CapabilityCard key={capability.title}><h3>{capability.title}</h3><p>{capability.text}</p></CapabilityCard>)}</CapabilityGrid>
+      </Section>
 
-    if (initialError || error) {
-        return <div>Une erreur s'est produite : {initialError ? initialError.message : error.message}</div>;
-    }
+      <Section>
+        <SectionHeader><div><Eyebrow>Narration</Eyebrow><h2>Case studies</h2></div><p>Un format court pour comprendre le problème, la solution et la valeur de chaque projet principal.</p></SectionHeader>
+        {caseStudies.map((project) => (
+          <CaseStudy key={project.id} $accent={project.accent}>
+            <div><h3>{project.title}</h3><p>{project.summary}</p><ButtonLink href={`#card-${project.id}`} onClick={(event) => { event.preventDefault(); setSelectedCardId(project.id); }}>Lire l’étude</ButtonLink></div>
+            <DetailGrid><div><strong>Problème</strong><p>{project.problem}</p></div><div><strong>Solution</strong><p>{project.solution}</p></div><div><strong>Impact</strong><p>{project.impact}</p></div></DetailGrid>
+          </CaseStudy>
+        ))}
+      </Section>
 
-    return (
-        <HomeContainer>
-            {selectedCardId ? (
-                <>
-                    <ModalBackdrop onClick={handleCloseDetails} />
-                    <CardDetailsContainer
-                        project={data.find((project) => project.id === selectedCardId)}
-                        onClose={handleCloseDetails}
-                    />
-                </>
-            ) : (
-                <>
-                    <PageTitle>Bienvenue sur la page d'accueil</PageTitle>
-                    <p style={{ textAlign: 'center', color: 'darkred' }}>( Portfolio en cour de création... )</p>
-                    <section>
-                        <TitleH2>Présentation :</TitleH2>
-                        <PageDescription>Je suis Steve Bell, un développeur web frontend passionné à la recherche de nouvelles opportunités professionnelles. Fort de plusieurs années d'expérience dans divers domaines techniques, j'ai acquis des compétences solides en développement web, notamment en utilisant des technologies telles que HTML, CSS, JavaScript, React.js et Vue.js. Mon objectif est de continuer à évoluer dans le domaine du développement web et de contribuer à des projets innovants et stimulants.</PageDescription>
-                    </section>
-                    <section>
-                        <TitleH2>Mes Projets :</TitleH2>
-                        <ContainerProject>
-                            {data.map((project, index) => (
-                                <Card
-                                    key={project.id}
-                                    id={`card-${project.id}`}
-                                    index={index}
-                                    title={project.title}
-                                    objectif={project.objectif}
-                                    tags={Array.isArray(project.tags) ? project.tags : []}
-                                    image={project.images}
-                                    savoir={Array.isArray(project.savoir) ? project.savoir : []}
-                                    fonction={Array.isArray(project.fonction) ? project.fonction : []}
-                                    websiteUrl={project.websiteUrl}
-                                    onClickMoreInfo={() => handleMoreInfoClick(project.id)}
-                                    onOpenModal={() => handleOpenModal(project.websiteUrl)} // Utilisation de l'URL du projet
-                                />
-                            ))}
-                        </ContainerProject>
-                    </section>
-                </>
-            )}
-            {/* Afficher la modal ici */}
-            <FullPageModal
-                open={openModal}
-                onClose={() => setOpenModal(false)}
-                websiteUrl={websiteUrl} // Utilisation de l'URL stockée
-                onLinkClick={(openInNewTab) => {
-                    if (openInNewTab) {
-                        window.open(websiteUrl, '_blank');
-                    } else {
-                        window.location.href = websiteUrl;
-                    }
-                    setOpenModal(false);
-                }}
-            />
-        </HomeContainer>
-    );
+      <Section>
+        <SectionHeader><div><Eyebrow>Catalogue</Eyebrow><h2>Tous les projets</h2></div><p>Les archives restent présentes, mais ne dominent plus la lecture du parcours.</p></SectionHeader>
+        <FilterBar aria-label="Filtrer les projets par catégorie">
+          {projectCategories.map((category) => <FilterButton key={category.id} type="button" $active={activeCategory === category.id} onClick={() => setActiveCategory(category.id)}>{category.label}</FilterButton>)}
+        </FilterBar>
+        <ContainerProject>{filteredProjects.map((project) => <Card key={project.id} project={project} onClickMoreInfo={setSelectedCardId} />)}</ContainerProject>
+      </Section>
+
+      <Section>
+        <SectionHeader><div><Eyebrow>Stack</Eyebrow><h2>Compétences</h2></div><p>Une base web solide, renforcée par Java/Spring, Angular et une montée en puissance data / BI.</p></SectionHeader>
+        <SkillsGrid>{skills.map((skill) => <SkillCard key={skill.group}><h3>{skill.group}</h3><ul>{skill.items.map((item) => <li key={item}>{item}</li>)}</ul></SkillCard>)}</SkillsGrid>
+      </Section>
+
+      <Section id="parcours">
+        <SectionHeader><div><Eyebrow>Trajectoire</Eyebrow><h2>Parcours</h2></div><p>Un profil atypique qui combine culture terrain, reconversion technique, développement web et analyse de données.</p></SectionHeader>
+        <JourneyList>{journey.map((item) => <JourneyItem key={item.period}><strong>{item.period}</strong><div><h3>{item.title}</h3><p>{item.text}</p></div></JourneyItem>)}</JourneyList>
+      </Section>
+
+      <ContactPanel id="contact"><div><div><Eyebrow>Contact</Eyebrow><h2>Parlons projet.</h2><p>{profile.email}<br />{profile.location}</p></div><CtaRow><ButtonLink href={`mailto:${profile.email}`}>Email</ButtonLink><ButtonLink href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</ButtonLink><ButtonLink href={profile.links.github} target="_blank" rel="noreferrer">GitHub</ButtonLink></CtaRow></div></ContactPanel>
+      {selectedProject && <CardDetailsContainer project={selectedProject} onClose={closeDetails} />}
+    </HomeContainer>
+  );
 };
 
 export default Home;
