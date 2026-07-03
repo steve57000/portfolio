@@ -49,12 +49,12 @@ const Home = () => {
         <FeaturedGrid>{featuredProjects.map((project) => <Card key={project.id} project={project} onClickMoreInfo={setSelectedCardId} />)}</FeaturedGrid>
       </Section>
 
-      <Section>
+      <Section id="atelier">
         <SectionHeader><div><Eyebrow>Atelier</Eyebrow><h2>Ce que je construis</h2></div><p>Des livrables compréhensibles, documentés et reliés à un usage métier.</p></SectionHeader>
         <CapabilityGrid>{capabilities.map((capability) => <CapabilityCard key={capability.title}><h3>{capability.title}</h3><p>{capability.text}</p></CapabilityCard>)}</CapabilityGrid>
       </Section>
 
-      <Section>
+      <Section id="case-studies">
         <SectionHeader><div><Eyebrow>Narration</Eyebrow><h2>Case studies</h2></div><p>Un format court pour comprendre le problème, la solution et la valeur de chaque projet principal.</p></SectionHeader>
         {caseStudies.map((project) => (
           <CaseStudy key={project.id} $accent={project.accent}>
@@ -64,7 +64,7 @@ const Home = () => {
         ))}
       </Section>
 
-      <Section>
+      <Section id="catalogue">
         <SectionHeader><div><Eyebrow>Catalogue</Eyebrow><h2>Tous les projets</h2></div><p>Les archives restent présentes, mais ne dominent plus la lecture du parcours.</p></SectionHeader>
         <FilterBar aria-label="Filtrer les projets par catégorie">
           {projectCategories.map((category) => <FilterButton key={category.id} type="button" $active={activeCategory === category.id} onClick={() => setActiveCategory(category.id)}>{category.label}</FilterButton>)}
@@ -72,7 +72,7 @@ const Home = () => {
         <ContainerProject>{filteredProjects.map((project) => <Card key={project.id} project={project} onClickMoreInfo={setSelectedCardId} />)}</ContainerProject>
       </Section>
 
-      <Section>
+      <Section id="competences">
         <SectionHeader><div><Eyebrow>Stack</Eyebrow><h2>Compétences</h2></div><p>Une base web solide, renforcée par Java/Spring, Angular et une montée en puissance data / BI.</p></SectionHeader>
         <SkillsGrid>{skills.map((skill) => <SkillCard key={skill.group}><h3>{skill.group}</h3><ul>{skill.items.map((item) => <li key={item}>{item}</li>)}</ul></SkillCard>)}</SkillsGrid>
       </Section>
