@@ -1,13 +1,30 @@
 ---
-import { withBase } from '../utils/paths';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 const { name, label, class: className } = Astro.props as { name: string; label?: string; class?: string };
+
+const safeName = /^[a-z0-9-]+$/.test(name) ? name : 'details';
+const iconsDir = join(process.cwd(), 'public', 'assets', 'icons', 'ui');
+const iconPath = join(iconsDir, `${safeName}.svg`);
+const fallbackPath = join(iconsDir, 'details.svg');
+const rawSvg = readFileSync(existsSync(iconPath) ? iconPath : fallbackPath, 'utf-8');
+
+const escapeAttribute = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+const classes = ['icon', className].filter(Boolean).join(' ');
+const accessibility = label
+  ? `class="${escapeAttribute(classes)}" role="img" aria-label="${escapeAttribute(label)}" focusable="false"`
+  : `class="${escapeAttribute(classes)}" aria-hidden="true" focusable="false"`;
+
+const svg = rawSvg
+  .replace(/<title[^>]*>.*?<\/title>/s, '')
+  .replace(/aria-labelledby="[^"]*"/g, '')
+  .replace('<svg ', `<svg ${accessibility} `);
 ---
-<img
-  class:list={['icon', className]}
-  src={withBase(`assets/icons/ui/${name}.svg`)}
-  alt={label ?? ''}
-  aria-hidden={label ? undefined : 'true'}
-  loading="lazy"
-  decoding="async"
-/>
+<span class="icon-wrap" set:html={svg} />
