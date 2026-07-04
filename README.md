@@ -27,6 +27,8 @@ La configuration Astro est définie dans `astro.config.mjs` avec :
 
 Le workflow `.github/workflows/pages.yml` utilise Node 24, installe les dépendances avec `npm ci`, construit le site avec `npm run build`, puis publie le dossier `dist` via GitHub Pages.
 
+Dans **Settings → Pages**, la source de publication doit être réglée sur **GitHub Actions**. Si la source reste sur **Deploy from a branch**, GitHub Pages sert la racine du dépôt au lieu de l’artifact Astro généré, ce qui peut afficher une page 404 même lorsque le build réussit.
+
 ## Données portfolio
 
 Le contenu éditorial principal est centralisé dans `src/data/portfolioData.ts` : profil, liens, catégories, compétences, parcours, projets et projets vedettes.
