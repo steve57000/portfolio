@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="tools-title">
+  <title id="tools-title">Tools</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <path class="frame" d="M14 5a5 5 0 0 0 5 5l-8.5 8.5a3 3 0 0 1-4.2-4.2z"/><path class="main" d="M7 17l2 2"/><path class="accent" d="M15 4l5 5"/>
+</svg>

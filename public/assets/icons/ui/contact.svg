@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="contact-title">
+  <title id="contact-title">Contact</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <path class="frame" d="M4 6h16v11H8l-4 4z"/><path class="main" d="M8 10h8M8 13h5"/><path class="accent" d="M16 17h4"/>
+</svg>

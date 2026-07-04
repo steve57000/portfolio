@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="timeline-title">
+  <title id="timeline-title">Timeline</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <path class="main" d="M6 5v14"/><circle class="frame" cx="6" cy="6" r="2"/><circle class="frame" cx="6" cy="12" r="2"/><circle class="frame" cx="6" cy="18" r="2"/><path class="main" d="M10 6h8M10 12h6M10 18h7"/><path class="accent" d="M18 6v12"/>
+</svg>

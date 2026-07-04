@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="java-title">
+  <title id="java-title">Java</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <rect class="frame" x="5" y="7" width="14" height="11" rx="4"/><path class="main" d="M8 11h8M9 18c1.2 1 5.8 1 7 0M15 7c1-1.2 1-2.2 0-3"/><path class="accent" d="M11 7c1-1.2 1-2.2 0-3"/>
+</svg>

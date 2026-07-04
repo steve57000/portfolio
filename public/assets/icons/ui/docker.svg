@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="docker-title">
+  <title id="docker-title">Docker</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <path class="frame" d="M4 13h13l3-3c.3 2.9-1.3 8-7 8H7c-2 0-3-1.2-3-3z"/><path class="main" d="M7 10h2V8H7zM10 10h2V8h-2zM13 10h2V8h-2zM10 7h2V5h-2z"/><path class="accent" d="M18 9c1 0 2 .4 2 1.5"/>
+</svg>

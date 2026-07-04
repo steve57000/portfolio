@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="linkedin-title">
+  <title id="linkedin-title">Linkedin</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <rect class="frame" x="4" y="4" width="16" height="16" rx="4"/><path class="main" d="M8 11v6M8 8v.1M12 17v-6"/><path class="main" d="M12 13.5c0-1.5 1-2.5 2.4-2.5s2.6 1 2.6 3v3"/><path class="accent" d="M7 20h10"/>
+</svg>

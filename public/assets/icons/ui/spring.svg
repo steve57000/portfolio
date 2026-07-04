@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="spring-title">
+  <title id="spring-title">Spring</title>
+  <style>
+  .frame{fill:color-mix(in srgb,currentColor 7%,transparent);stroke:currentColor;stroke-width:1.45;opacity:.98}
+  .main{fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .accent{fill:none;stroke:var(--icon-accent,#d7b56d);stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  .dot{fill:var(--icon-accent,#d7b56d)}
+  .fill{fill:currentColor}
+</style>
+  <path class="frame" d="M20 5c-7.5 0-13 3.5-13 9a5 5 0 0 0 5 5c4.8 0 8-4.7 8-14z"/><path class="main" d="M7 18c2-5 5.8-8.4 11-10"/><path class="accent" d="M4 13c0 4 3 8 8 8"/>
+</svg>
