@@ -22,6 +22,11 @@ const applyProjectFilter = (filter) => {
     if (shouldShow) visibleCount += 1;
   });
 
+  projectGrid?.querySelectorAll('[data-project-group]').forEach((group) => {
+    const visibleCards = group.querySelectorAll('[data-project-card]:not([hidden])').length;
+    group.hidden = visibleCards === 0;
+  });
+
   if (emptyState) {
     emptyState.hidden = visibleCount > 0;
   }

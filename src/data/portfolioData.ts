@@ -7,6 +7,13 @@ export type ProjectLink = {
   repo?: string;
 };
 
+export type ProjectVisual = {
+  kind: 'dashboard' | 'data' | 'sql' | 'app' | 'api' | 'document' | 'tool';
+  eyebrow?: string;
+  title?: string;
+  metrics?: string[];
+};
+
 export type Project = {
   id: string;
   title: string;
@@ -18,6 +25,7 @@ export type Project = {
   role: string;
   image: ImageMetadata;
   imageAlt: string;
+  visual?: ProjectVisual;
   accent: string;
   stack: string[];
   skills: string[];
@@ -98,12 +106,12 @@ export const journey = [
   { period: 'Parcours terrain', title: 'Culture technique et usage réel', text: 'Expérience pratique issue de domaines techniques, utile pour comprendre les contraintes concrètes et les besoins opérationnels.' }
 ];
 
-const imageFallback = cardImage;
+const placeholderImage = cardImage;
 
 export const projects: Project[] = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
-    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard JLH AutoPam', accent: '#2d7f82',
+    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Interface métier JLH AutoPam générée en CSS', visual: { kind: 'app', eyebrow: 'Garage connecté', title: 'Demandes · devis · rendez-vous', metrics: ['Espace client', 'Back-office', 'JWT + rôles'] }, accent: '#2d7f82',
     stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker'],
     skills: ['Architecture front/back', 'API REST', 'Authentification', 'Rôles', 'Workflow métier'],
     summary: 'Application métier complète pour un garage automobile, avec espace client, administration, demandes, devis et rendez-vous.',
@@ -120,7 +128,7 @@ export const projects: Project[] = [
   },
   {
     id: 'bottleneck', title: 'BottleNeck — nettoyage et analyse des stocks', shortTitle: 'Stocks & CA', category: 'data-bi', featured: true,
-    status: 'Projet data analyst', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, imageAlt: 'Visuel temporaire pour le notebook BottleNeck', accent: '#b66b33',
+    status: 'Projet data analyst', period: 'Formation data', role: 'Data analyst junior', image: placeholderImage, imageAlt: 'Tableau de contrôle data BottleNeck généré en CSS', visual: { kind: 'data', eyebrow: 'Data quality', title: 'ERP + web + stocks', metrics: ['Jointures contrôlées', 'CA produit', 'Outliers prix'] }, accent: '#b66b33',
     stack: ['Python', 'pandas', 'numpy', 'Jupyter Notebook', 'Excel', 'matplotlib', 'seaborn'], skills: ['Nettoyage', 'Jointures', 'Outliers', 'Analyse commerciale'],
     summary: 'Consolidation de fichiers ERP, web et liaison pour analyser les produits, ventes, stocks et anomalies.',
     context: 'Analyse d’un catalogue de vins à partir de sources ERP, web et fichier de liaison, avec un besoin de fiabiliser les rapprochements avant toute lecture commerciale.',
@@ -135,7 +143,7 @@ export const projects: Project[] = [
   },
   {
     id: 'assurance-data', title: 'Assurance habitation — SQL et modélisation', shortTitle: 'SQL assurance', category: 'data-bi', featured: true,
-    status: 'Projet data / SQL', period: 'Formation data', role: 'Concepteur base de données', image: imageFallback, imageAlt: 'Visuel temporaire pour le schéma SQL assurance habitation', accent: '#235a70',
+    status: 'Projet data / SQL', period: 'Formation data', role: 'Concepteur base de données', image: placeholderImage, imageAlt: 'Schéma relationnel assurance habitation généré en CSS', visual: { kind: 'sql', eyebrow: 'PostgreSQL', title: 'Contrats · communes · régions', metrics: ['Modèle normalisé', 'Imports CSV', 'Requêtes métier'] }, accent: '#235a70',
     stack: ['SQL', 'PostgreSQL', 'CSV', 'Modélisation relationnelle'], skills: ['Normalisation', 'Import CSV', 'Contrôle qualité', 'Analyse géographique'],
     summary: 'Transformation de fichiers CSV bruts en base relationnelle exploitable pour analyser des contrats d’assurance habitation.',
     context: 'Projet SQL construit à partir de CSV bruts liés à l’assurance habitation, avec un enjeu de normalisation géographique et de requêtes métier fiables.',
@@ -149,8 +157,8 @@ export const projects: Project[] = [
     links: { repo: 'https://github.com/steve57000/assurance_data' }
   },
   {
-    id: 'rgpd-dev-immediat', title: "RGPD Dev'Immédiat", shortTitle: 'Anonymisation CRM', category: 'data-bi', featured: true,
-    status: 'Livrable data', period: 'Formation data', role: 'Data analyst junior', image: imageFallback, imageAlt: 'Visuel temporaire pour le dataset anonymisé RGPD', accent: '#56616f',
+    id: 'rgpd-dev-immediat', title: "RGPD Dev'Immédiat", shortTitle: 'Anonymisation CRM', category: 'data-bi', featured: false,
+    status: 'Livrable data', period: 'Formation data', role: 'Data analyst junior', image: placeholderImage, imageAlt: 'Document de conformité RGPD généré en CSS', visual: { kind: 'document', eyebrow: 'Privacy by design', title: 'Dataset anonymisé et documenté', metrics: ['Minimisation', 'Quasi-identifiants', 'Traçabilité'] }, accent: '#56616f',
     stack: ['CSV', 'Analyse de données', 'Documentation RGPD', 'Minimisation', 'Anonymisation'], skills: ['RGPD', 'Quasi-identifiants', 'Documentation', 'Qualité données'],
     summary: "Mise en conformité RGPD d'un CRM en conservant un dataset exploitable pour l'analyse.",
     context: 'Travail sur un jeu de données CRM à partager ou analyser en limitant l’exposition des données personnelles.',
@@ -164,8 +172,8 @@ export const projects: Project[] = [
     links: {}
   },
   {
-    id: 'sportdatapulse', title: 'SportDataPulse', shortTitle: 'Football BI', category: 'data-bi', featured: true,
-    status: 'Projet SQL / BI', period: 'Formation data', role: 'Data analyst SQL', image: imageFallback, imageAlt: 'Visuel temporaire pour les requêtes SQL SportDataPulse', accent: '#1d6f56',
+    id: 'sportdatapulse', title: 'SportDataPulse', shortTitle: 'Football BI', category: 'data-bi', featured: false,
+    status: 'Projet SQL / BI', period: 'Formation data', role: 'Data analyst SQL', image: placeholderImage, imageAlt: 'Dashboard football BI généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Football BI', title: 'KPI joueurs · équipes · shortlist', metrics: ['SQL analytique', 'Indicateurs', 'Décisionnel'] }, accent: '#1d6f56',
     stack: ['PostgreSQL', 'SQL', 'Data analysis', 'Présentation métier'], skills: ['Indicateurs', 'Shortlist', 'Requêtes métier', 'Décisionnel'],
     summary: 'Base sportive et analyses SQL autour des performances football pour éclairer recrutement et suivi joueurs/équipes.',
     context: 'Projet BI football centré sur la transformation de données sportives en indicateurs lisibles pour un besoin de suivi et de recrutement.',
@@ -179,16 +187,16 @@ export const projects: Project[] = [
     links: {}
   },
   {
-    id: 'guide-investissement', title: 'Guide Investissement', shortTitle: 'Outils finance perso', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard Guide Investissement', accent: '#8a6b2f',
+    id: 'guide-investissement', title: 'Guide Investissement', shortTitle: 'Outils finance perso', category: 'tools', featured: true, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Dashboard privacy-first Guide Investissement généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Outil publié', title: 'Journal local · dashboard · contenus', metrics: ['Démo GitHub Pages', 'Privacy-first', 'Astro statique'] }, accent: '#8a6b2f',
     stack: ['Astro', 'TypeScript', 'localStorage', 'GitHub Pages'], skills: ['SEO', 'Privacy-first', 'Scripts de vérification'], summary: 'Site éducatif statique avec outils interactifs, journal et dashboard personnel stockés localement.', context: 'Projet personnel orienté pédagogie financière et suivi local, sans collecte serveur ni compte utilisateur.', problem: 'Proposer un outil simple et privé pour suivre une démarche d’investissement personnelle.', solution: 'Architecture statique, données locales, contenus pédagogiques et contrôles automatisés.', deliverables: ['Site statique éducatif', 'Journal local', 'Dashboard personnel', 'Scripts de vérification'], decisions: ['Stocker les données dans le navigateur pour préserver la confidentialité', 'Favoriser des pages statiques compatibles GitHub Pages', 'Documenter les contrôles utiles avant publication'], learned: 'Structuration d’un outil privacy-first avec une attention SEO, contenu et vérification automatisée.', impact: 'Démontre une approche produit, SEO et respect de la confidentialité.', highlights: ['Journal', 'Dashboard', 'localStorage', 'SEO'], metrics: ['GitHub Pages', 'Privacy-first'], links: { repo: 'https://github.com/steve57000/guide-investissement', demo: 'https://steve57000.github.io/guide-investissement/' }
   },
   {
-    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour l’application Recettes', accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes', demo: 'https://steve57000.github.io/recettes/' }
+    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Mockup applicatif Recettes généré en CSS', visual: { kind: 'tool', eyebrow: 'Outil quotidien', title: 'Recettes · portions · courses', metrics: ['CRUD local', 'Export JSON', 'Sans backend'] }, accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes', demo: 'https://steve57000.github.io/recettes/' }
   },
 
   {
-    id: 'locatech', title: 'Locatech', shortTitle: 'Location matériel', category: 'fullstack', featured: false,
-    status: 'Projet MNS / application métier', period: 'Formation MNS', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le projet Locatech', accent: '#3b6f8f',
+    id: 'locatech', title: 'Locatech', shortTitle: 'Location matériel', category: 'fullstack', featured: true,
+    status: 'Projet MNS / application métier', period: 'Formation MNS', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Architecture métier Locatech générée en CSS', visual: { kind: 'api', eyebrow: 'Java / Angular', title: 'Location matériel orchestrée', metrics: ['Spring Boot', 'Angular 19', 'MySQL + MongoDB'] }, accent: '#3b6f8f',
     stack: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'SCSS', 'HTML', 'MySQL', 'MongoDB', 'Docker Compose'],
     skills: ['Architecture front/back', 'API REST', 'Données relationnelles', 'Données NoSQL', 'Conteneurisation'],
     summary: 'Application métier fullstack de location de matériel, structurée avec un frontend Angular, un backend Java Spring Boot et une orchestration Docker Compose.',
@@ -205,7 +213,7 @@ export const projects: Project[] = [
   },
   {
     id: 'bdshop', title: 'BDSHOP', shortTitle: 'Boutique', category: 'fullstack', featured: false,
-    status: 'Projet applicatif', period: 'Formation / pratique', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour BDSHOP', accent: '#8f5a3b',
+    status: 'Projet applicatif', period: 'Formation / pratique', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Mockup catalogue BDSHOP généré en CSS', visual: { kind: 'app', eyebrow: 'Catalogue', title: 'Boutique et parcours achat', metrics: ['Produits', 'Navigation', 'Dépôt GitHub'] }, accent: '#8f5a3b',
     stack: ['Application web'], skills: ['Catalogue', 'Architecture applicative', 'Git'],
     summary: 'Application de boutique en ligne centrée sur un catalogue produits et un parcours d’achat démonstratif.',
     problem: 'Organiser une expérience e-commerce lisible autour de produits consultables et d’une logique boutique.',
@@ -218,7 +226,7 @@ export const projects: Project[] = [
   },
   {
     id: 'compressor-img', title: 'compressorImg', shortTitle: 'Compression images', category: 'tools', featured: false,
-    status: 'Outil personnel', period: 'Projet public', role: 'Développeur front / outil', image: imageFallback, imageAlt: 'Visuel temporaire pour compressorImg', accent: '#6d6a9f',
+    status: 'Outil personnel', period: 'Projet public', role: 'Développeur front / outil', image: placeholderImage, imageAlt: 'Interface outil compressorImg générée en CSS', visual: { kind: 'tool', eyebrow: 'Web tool', title: 'Compression avant intégration', metrics: ['Optimisation', 'Navigateur', 'Workflow asset'] }, accent: '#6d6a9f',
     stack: ['Interface web'], skills: ['Optimisation', 'UX utilitaire', 'Front-end'],
     summary: 'Utilitaire front-end de compression d’images pour préparer des assets plus légers avant intégration web.',
     problem: 'Réduire le poids des images sans alourdir le workflow avec un outil serveur ou une chaîne complexe.',
@@ -231,7 +239,7 @@ export const projects: Project[] = [
   },
   { id: 'bt-carrelage', title: 'BT Carrelage', shortTitle: 'Site entreprise', category: 'fullstack', featured: false, status: 'Projet web', period: 'Projet existant', role: 'Développeur fullstack', image: btImage, imageAlt: 'Capture du site BT Carrelage', accent: '#6f5848', stack: ['React', 'Next.js', 'MongoDB'], skills: ['Cahier des charges', 'Guide technique', 'Site fullstack'], summary: 'Site pour une entreprise de carrelage, rénovation et aménagement intérieur.', problem: 'Présenter clairement une offre artisanale et ses services.', solution: 'Site web structuré autour des prestations, du savoir-faire et de la prise de contact.', impact: 'Expérience de conception et réalisation pour un contexte professionnel concret.', highlights: ['Cahier des charges', 'Guide technique', 'Responsive'], metrics: ['Site fullstack'], links: {} },
   { id: 'groupomania', title: 'Groupomania', shortTitle: 'Réseau social interne', category: 'fullstack', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur fullstack', image: groupomaniaImage, imageAlt: 'Capture du réseau social interne Groupomania', accent: '#c84b45', stack: ['Vue', 'Node.js', 'Express', 'MySQL', 'Sass'], skills: ['Auth', 'CRUD', 'Modération'], summary: "Réseau social d'entreprise avec posts, commentaires, likes, profil et modération admin.", problem: 'Créer un espace interne d’échange sécurisé.', solution: 'Frontend Vue, API Express, base MySQL et rôles de modération.', impact: 'Projet fondateur sur le fullstack JavaScript.', highlights: ['Authentification', 'Posts', 'Commentaires', 'Likes', 'Admin'], metrics: ['API REST', 'MySQL'], links: { repo: 'https://github.com/steve57000/Groupomania' } },
-  { id: 'sportsee', title: 'SportSee', shortTitle: 'Dashboard sportif', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard SportSee', accent: '#d35445', stack: ['React', 'D3', 'Axios'], skills: ['Dataviz', 'Composants', 'API'], summary: 'Dashboard sportif avec graphiques et indicateurs utilisateur.', problem: 'Rendre des données sportives lisibles sous forme de tableaux de bord.', solution: 'Composants React, intégration API et visualisations D3.', impact: 'Bon pont entre front-end et data visualisation.', highlights: ['Graphiques', 'KPI utilisateur', 'API'], metrics: ['React', 'D3'], links: { repo: 'https://github.com/steve57000/SportSee' } },
+  { id: 'sportsee', title: 'SportSee', shortTitle: 'Dashboard sportif', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur front', image: placeholderImage, imageAlt: 'Dashboard sportif SportSee généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Dataviz', title: 'KPI activité et graphiques', metrics: ['React', 'D3', 'API'] }, accent: '#d35445', stack: ['React', 'D3', 'Axios'], skills: ['Dataviz', 'Composants', 'API'], summary: 'Dashboard sportif avec graphiques et indicateurs utilisateur.', problem: 'Rendre des données sportives lisibles sous forme de tableaux de bord.', solution: 'Composants React, intégration API et visualisations D3.', impact: 'Bon pont entre front-end et data visualisation.', highlights: ['Graphiques', 'KPI utilisateur', 'API'], metrics: ['React', 'D3'], links: { repo: 'https://github.com/steve57000/SportSee' } },
   { id: 'kasa', title: 'Kasa', shortTitle: 'Location immobilière', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur React', image: kasaImage, imageAlt: 'Capture de l’application de location Kasa', accent: '#ff6f61', stack: ['React', 'React Router', 'Composants'], skills: ['Routing', 'Composants', 'Responsive'], summary: 'Application de location avec pages logement, galeries, accordéons et routing.', problem: 'Construire une SPA structurée à partir de données logements.', solution: 'React Router, composants réutilisables et interface responsive.', impact: 'Renforce les bases React et architecture de composants.', highlights: ['Routing', 'Galleries', 'Accordions'], metrics: ['SPA React'], links: { repo: 'https://github.com/steve57000/kasa', demo: 'https://steve57000.github.io/kasa/' } },
   { id: 'fisheye', title: 'FishEye', shortTitle: 'Accessibilité', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur front', image: fishEyeImage, imageAlt: 'Capture de la plateforme de photographes FishEye', accent: '#8f5e2d', stack: ['JavaScript vanilla', 'HTML/CSS', 'Accessibilité'], skills: ['A11y', 'Lightbox', 'Clavier', 'Patterns'], summary: 'Plateforme de photographes avec navigation clavier, lightbox et patterns factory/adapter.', problem: 'Créer une interface riche sans framework en respectant l’accessibilité.', solution: 'JavaScript modulaire, gestion clavier, lightbox et composants accessibles.', impact: 'Projet important pour la rigueur front-end et l’accessibilité.', highlights: ['Navigation clavier', 'Lightbox', 'Factory pattern', 'Adapter pattern'], metrics: ['Vanilla JS', 'A11y'], links: { repo: 'https://github.com/steve57000/front-end-FishEye', demo: 'https://steve57000.github.io/front-end-FishEye/' } },
   { id: 'kanap', title: 'Kanap', shortTitle: 'E-commerce', category: 'archives', featured: false, status: 'Archive / progression', period: 'Formation web', role: 'Développeur front', image: kanapImage, imageAlt: 'Capture du parcours e-commerce Kanap', accent: '#3d6f87', stack: ['JavaScript', 'API', 'localStorage'], skills: ['Panier', 'DOM', 'API'], summary: 'Parcours e-commerce avec panier, fiche produit et confirmation de commande.', problem: 'Connecter une interface statique à une API et gérer un panier.', solution: 'Appels API, stockage local et manipulation DOM.', impact: 'Étape clé dans la progression JavaScript.', highlights: ['Panier', 'Fiche produit', 'Confirmation'], metrics: ['JavaScript'], links: {} },
