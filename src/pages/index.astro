@@ -13,14 +13,14 @@ const archives = projects.filter((p) => p.category === 'archives');
 const proofStats = [
   { value: 'Applications métier', label: 'Java / Angular, workflows et API' },
   { value: 'SQL / Data', label: 'Modélisation, contrôle qualité, BI' },
-  { value: 'Sites publiés', label: 'Démos GitHub Pages visibles' },
+  { value: 'Sites publiés', label: 'Démos GitHub Pages et outils en ligne' },
   { value: 'Projets documentés', label: 'Contexte, livrables, décisions' }
 ];
 const projectGroups = [
-  { title: 'Projets clés', text: 'Les réalisations les plus alignées avec le positionnement fullstack Java/Angular, applications métier, SQL/data et projets publiés.', items: featuredProjects },
-  { title: 'Projets actuels et data', text: 'Applications métier, bases SQL, analyses et projets en cours non sélectionnés en case study.', items: projects.filter((p) => !p.featured && ['fullstack', 'data-bi', 'frontend'].includes(p.category)) },
-  { title: 'Outils personnels publiés', text: 'Utilitaires concrets avec démo quand une version publique fiable existe.', items: projects.filter((p) => !p.featured && p.category === 'tools') },
-  { title: 'Archives OpenClassrooms', text: 'Progression web conservée en second niveau : intégration, front-end, backend, tests et conception.', items: archives }
+  { title: 'Projets clés', text: 'Applications métier, data et outils publiés qui résument mon positionnement actuel.', items: featuredProjects },
+  { title: 'Applications & data', text: 'Projets orientés usage métier, modélisation, API, SQL et restitution exploitable.', items: projects.filter((p) => !p.featured && ['fullstack', 'data-bi', 'frontend'].includes(p.category)) },
+  { title: 'Outils publiés', text: 'Sites et utilitaires personnels disponibles en ligne, conçus pour des usages concrets.', items: projects.filter((p) => !p.featured && p.category === 'tools') },
+  { title: 'Fondations web', text: 'Projets de formation montrant les bases front-end, accessibilité, tests, intégration et backend.', items: archives }
 ];
 ---
 <!doctype html>
@@ -51,7 +51,8 @@ const projectGroups = [
           </div>
           <div class="hero__actions">
             <a class="button" href="#case-studies">Voir les projets clés</a>
-            <a class="button button--ghost" href={withBase('cv/')}>CV synthétique</a>
+            <a class="button button--ghost" href={withBase('cv/')}>Consulter le CV</a>
+            <a class="text-link" href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
         <aside class="hero__focus" data-reveal>
@@ -78,7 +79,7 @@ const projectGroups = [
       </section>
 
       <section id="projets" class="section" data-reveal>
-        <SectionHeader eyebrow="Portfolio" title="Projets, outils et archives" text="Les archives OpenClassrooms restent visibles, mais les projets actuels et data sont prioritaires." />
+        <SectionHeader eyebrow="Portfolio" title="Projets, outils et fondations web" text="Chaque projet présente un contexte, une stack, des décisions et les liens disponibles." />
         <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}><Icon name={cat.icon} />{cat.label}</button>)}</div>
         <div class="project-catalog" data-project-grid>
           {projectGroups.map((group) => group.items.length > 0 && (
@@ -92,7 +93,6 @@ const projectGroups = [
           ))}
         </div>
         <p class="project-empty" data-project-empty aria-live="polite" hidden>Aucun projet dans ce filtre pour le moment.</p>
-        <p class="archive-note">Archives OpenClassrooms visibles : {archives.length} projets secondaires documentant la progression web.</p>
       </section>
 
       <section id="competences" class="section split" data-reveal>
