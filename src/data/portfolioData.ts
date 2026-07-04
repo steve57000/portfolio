@@ -54,7 +54,7 @@ export const profile = {
   name: 'Steve Bell',
   title: 'Développeur fullstack Java / Angular & Data Analyst junior',
   location: 'Ars-sur-Moselle / Metz',
-  email: 'steve.bell57000@gmail.com',
+  email: 'steve57b@hotmail.fr',
   summary: "Je conçois des applications métier et des analyses de données exploitables, avec une attention forte portée à la qualité, à la clarté et à l'usage réel.",
   value: 'Applications métier, API sécurisées, SQL, dashboards et données propres pour prendre de meilleures décisions.',
   links: {
