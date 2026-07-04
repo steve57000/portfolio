@@ -32,10 +32,10 @@ const archives = projects.filter((p) => p.category === 'archives');
           <h1 id="hero-title">{profile.name}<span>{profile.title}</span></h1>
           <p class="hero__lead">{profile.value}</p>
           <div class="hero__chips" aria-label="Repères portfolio">
-            <span><span class="icon-badge"><Icon name="projects" /></span>{projects.length} projets</span>
-            <span><span class="icon-badge"><Icon name="case-studies" /></span>5 case studies</span>
-            <span><span class="icon-badge"><Icon name="fullstack" /></span>Fullstack + Data</span>
-            <span><span class="icon-badge"><Icon name="github-pages" /></span>Astro / GitHub Pages</span>
+            <span><span class="icon-badge icon-badge--sm"><Icon name="projects" /></span>{projects.length} projets</span>
+            <span><span class="icon-badge icon-badge--sm"><Icon name="case-studies" /></span>5 case studies</span>
+            <span><span class="icon-badge icon-badge--sm"><Icon name="fullstack" /></span>Fullstack + Data</span>
+            <span><span class="icon-badge icon-badge--sm"><Icon name="github-pages" /></span>Astro / GitHub Pages</span>
           </div>
           <div class="hero__actions">
             <a class="button" href="#case-studies">Voir les projets clés</a>
@@ -51,7 +51,7 @@ const archives = projects.filter((p) => p.category === 'archives');
             </div>
           </div>
           <ul>
-            {capabilities.map((cap) => <li><b><span class="icon-badge"><Icon name={cap.icon} /></span>{cap.title}</b><span>{cap.text}</span></li>)}
+            {capabilities.map((cap) => <li><b><span class="icon-badge icon-badge--lg"><Icon name={cap.icon} /></span>{cap.title}</b><span>{cap.text}</span></li>)}
           </ul>
         </aside>
       </section>
@@ -71,7 +71,7 @@ const archives = projects.filter((p) => p.category === 'archives');
 
       <section id="competences" class="section split" data-reveal>
         <SectionHeader eyebrow="Compétences" title="Un socle fullstack complété par la donnée" />
-        <div class="skill-grid">{skills.map((group) => <article data-reveal><h3><span class="icon-badge"><Icon name={group.icon} /></span>{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+        <div class="skill-grid">{skills.map((group) => <article data-reveal><h3><span class="icon-badge icon-badge--md"><Icon name={group.icon} /></span>{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
       </section>
 
       <section id="parcours" class="section" data-reveal>
