@@ -20,7 +20,7 @@ const projectGroups = [
   { title: 'Projets clés', text: 'Applications métier, data et outils publiés qui résument mon positionnement actuel.', items: featuredProjects },
   { title: 'Applications & data', text: 'Projets orientés usage métier, modélisation, API, SQL et restitution exploitable.', items: projects.filter((p) => !p.featured && ['fullstack', 'data-bi', 'frontend'].includes(p.category)) },
   { title: 'Outils publiés', text: 'Sites et utilitaires personnels disponibles en ligne, conçus pour des usages concrets.', items: projects.filter((p) => !p.featured && p.category === 'tools') },
-  { title: 'Fondations web', text: 'Projets de formation montrant les bases front-end, accessibilité, tests, intégration et backend.', items: archives }
+  { title: 'Fondations web sélectionnées', text: 'Réalisations de formation regroupées pour montrer le socle front-end, qualité, accessibilité et backend sans prendre le pas sur les projets récents.', items: archives }
 ];
 ---
 <!doctype html>
@@ -92,7 +92,7 @@ const projectGroups = [
             </section>
           ))}
         </div>
-        <p class="project-empty" data-project-empty aria-live="polite" hidden>Aucun projet dans ce filtre pour le moment.</p>
+        <p class="project-empty" data-project-empty aria-live="polite" hidden>Aucun projet ne correspond à ce filtre.</p>
       </section>
 
       <section id="competences" class="section split" data-reveal>
