@@ -36,8 +36,6 @@ const projectGroups = [
         const savedTheme = (() => { try { return localStorage.getItem(storageKey); } catch { return null; } })();
         const theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : getSystemTheme();
         root.dataset.theme = theme;
-        const meta = document.querySelector('meta[name="theme-color"]');
-        meta?.setAttribute('content', theme === 'dark' ? '#0b1110' : '#f5f1e8');
       })();
     </script>
     <SeoHead
