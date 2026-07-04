@@ -17,7 +17,7 @@ const proofStats = [
   { value: 'Projets documentés', label: 'Contexte, livrables, décisions' }
 ];
 const projectGroups = [
-  { title: 'Projets clés', text: 'Les réalisations les plus alignées avec le positionnement fullstack Java/Angular + data.', items: projects.filter((p) => p.featured) },
+  { title: 'Projets clés', text: 'Les réalisations les plus alignées avec le positionnement fullstack Java/Angular, applications métier, SQL/data et projets publiés.', items: featuredProjects },
   { title: 'Projets actuels et data', text: 'Applications métier, bases SQL, analyses et projets en cours non sélectionnés en case study.', items: projects.filter((p) => !p.featured && ['fullstack', 'data-bi', 'frontend'].includes(p.category)) },
   { title: 'Outils personnels publiés', text: 'Utilitaires concrets avec démo quand une version publique fiable existe.', items: projects.filter((p) => !p.featured && p.category === 'tools') },
   { title: 'Archives OpenClassrooms', text: 'Progression web conservée en second niveau : intégration, front-end, backend, tests et conception.', items: archives }
