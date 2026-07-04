@@ -1,9 +1,11 @@
 ---
-const { project, index = 0 } = Astro.props;
+import type { Project } from '../data/portfolioData';
+
+const { project, index = 0 } = Astro.props as { project: Project; index?: number };
 const links = project.links ?? {};
 ---
 <article class:list={["project-card", project.featured && "is-featured"]} data-project-card data-category={project.category} style={`--accent:${project.accent}`}>
-  <img src={project.image.src ?? project.image} alt={project.imageAlt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+  <img src={project.image.src} alt={project.imageAlt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
   <div class="project-card__body">
     <div class="project-card__meta">
       <span>{project.status}</span>
