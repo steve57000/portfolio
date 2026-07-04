@@ -1,0 +1,39 @@
+---
+import type { ProjectVisual as ProjectVisualType } from '../data/portfolioData';
+
+const { visual, title } = Astro.props as { visual: ProjectVisualType; title: string };
+const metrics = visual.metrics?.slice(0, 3) ?? [];
+---
+<div class:list={["project-visual", `project-visual--${visual.kind}`]} role="img" aria-label={`Visuel CSS du projet ${title}`}>
+  <div class="project-visual__chrome"><span></span><span></span><span></span></div>
+  <div class="project-visual__content">
+    <p>{visual.eyebrow ?? visual.kind}</p>
+    <strong>{visual.title ?? title}</strong>
+
+    {visual.kind === 'sql' && (
+      <div class="visual-sql" aria-hidden="true">
+        <code>SELECT region, COUNT(*)</code>
+        <code>FROM contrats</code>
+        <code>GROUP BY region;</code>
+      </div>
+    )}
+
+    {visual.kind === 'api' && (
+      <div class="visual-api" aria-hidden="true">
+        <span>Angular</span><i></i><span>REST API</span><i></i><span>SQL / NoSQL</span>
+      </div>
+    )}
+
+    {['dashboard', 'data', 'app', 'tool', 'document'].includes(visual.kind) && (
+      <div class="visual-panels" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    )}
+
+    {metrics.length > 0 && (
+      <ul>
+        {metrics.map((metric) => <li>{metric}</li>)}
+      </ul>
+    )}
+  </div>
+</div>

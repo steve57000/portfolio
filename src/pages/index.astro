@@ -10,6 +10,18 @@ import { profile, projectCategories, capabilities, skills, journey, projects, fe
 import '../styles/global.css';
 import { withBase } from '../utils/paths';
 const archives = projects.filter((p) => p.category === 'archives');
+const proofStats = [
+  { value: 'Applications métier', label: 'Java / Angular, workflows et API' },
+  { value: 'SQL / Data', label: 'Modélisation, contrôle qualité, BI' },
+  { value: 'Sites publiés', label: 'Démos GitHub Pages visibles' },
+  { value: 'Projets documentés', label: 'Contexte, livrables, décisions' }
+];
+const projectGroups = [
+  { title: 'Projets clés', text: 'Les réalisations les plus alignées avec le positionnement fullstack Java/Angular + data.', items: projects.filter((p) => p.featured) },
+  { title: 'Projets actuels et data', text: 'Applications métier, bases SQL, analyses et projets en cours non sélectionnés en case study.', items: projects.filter((p) => !p.featured && ['fullstack', 'data-bi', 'frontend'].includes(p.category)) },
+  { title: 'Outils personnels publiés', text: 'Utilitaires concrets avec démo quand une version publique fiable existe.', items: projects.filter((p) => !p.featured && p.category === 'tools') },
+  { title: 'Archives OpenClassrooms', text: 'Progression web conservée en second niveau : intégration, front-end, backend, tests et conception.', items: archives }
+];
 ---
 <!doctype html>
 <html lang="fr">
@@ -56,6 +68,10 @@ const archives = projects.filter((p) => p.category === 'archives');
         </aside>
       </section>
 
+      <section class="proof-strip" aria-label="Preuves rapides" data-reveal>
+        {proofStats.map((stat) => <article><strong>{stat.value}</strong><span>{stat.label}</span></article>)}
+      </section>
+
       <section id="case-studies" class="section" data-reveal>
         <SectionHeader eyebrow="Case studies" title="5 projets qui résument le positionnement" text="Des applications métier et des projets data détaillés par contexte, problème, livrables et impact." />
         <div class="featured-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
@@ -64,7 +80,17 @@ const archives = projects.filter((p) => p.category === 'archives');
       <section id="projets" class="section" data-reveal>
         <SectionHeader eyebrow="Portfolio" title="Projets, outils et archives" text="Les archives OpenClassrooms restent visibles, mais les projets actuels et data sont prioritaires." />
         <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}><Icon name={cat.icon} />{cat.label}</button>)}</div>
-        <div class="project-grid" data-project-grid>{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+        <div class="project-catalog" data-project-grid>
+          {projectGroups.map((group) => group.items.length > 0 && (
+            <section class="project-group" data-project-group>
+              <div class="project-group__head">
+                <h3>{group.title}</h3>
+                <p>{group.text}</p>
+              </div>
+              <div class="project-grid">{group.items.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+            </section>
+          ))}
+        </div>
         <p class="project-empty" data-project-empty aria-live="polite" hidden>Aucun projet dans ce filtre pour le moment.</p>
         <p class="archive-note">Archives OpenClassrooms visibles : {archives.length} projets secondaires documentant la progression web.</p>
       </section>
