@@ -92,8 +92,9 @@ export const skills = [
 
 export const journey = [
   { period: 'Aujourd’hui', title: 'Fullstack Java / Angular & Data / BI', text: "Positionnement centré sur les applications métier, la donnée exploitable, SQL, les dashboards et l'architecture front/back." },
+  { period: 'OpenClassrooms', title: 'Développeur concepteur web / logiciel React', text: 'Formation structurante en développement web et logiciel : React, Vue, Node.js, Express, MySQL, accessibilité, tests et documentation.' },
+  { period: 'Metz Numeric School', title: 'Concepteur logiciel Java / Angular', text: 'Formation orientée conception d’applications métier, Java, Angular, architecture front/back et pratiques professionnelles.' },
   { period: 'Formation data / BI', title: 'Analyse de données et modélisation', text: 'Projets de nettoyage, anonymisation RGPD, bases relationnelles PostgreSQL et analyses métier.' },
-  { period: 'OpenClassrooms', title: 'Développement web', text: 'Socle front-end puis fullstack : React, Vue, Node.js, Express, MySQL, accessibilité, tests et documentation.' },
   { period: 'Parcours terrain', title: 'Culture technique et usage réel', text: 'Expérience pratique issue de domaines techniques, utile pour comprendre les contraintes concrètes et les besoins opérationnels.' }
 ];
 
@@ -179,12 +180,81 @@ export const projects: Project[] = [
   },
   {
     id: 'guide-investissement', title: 'Guide Investissement', shortTitle: 'Outils finance perso', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard Guide Investissement', accent: '#8a6b2f',
-    stack: ['Astro', 'TypeScript', 'localStorage', 'GitHub Pages'], skills: ['SEO', 'Privacy-first', 'Scripts de vérification'], summary: 'Site éducatif statique avec outils interactifs, journal et dashboard personnel stockés localement.', context: 'Projet personnel orienté pédagogie financière et suivi local, sans collecte serveur ni compte utilisateur.', problem: 'Proposer un outil simple et privé pour suivre une démarche d’investissement personnelle.', solution: 'Architecture statique, données locales, contenus pédagogiques et contrôles automatisés.', deliverables: ['Site statique éducatif', 'Journal local', 'Dashboard personnel', 'Scripts de vérification'], decisions: ['Stocker les données dans le navigateur pour préserver la confidentialité', 'Favoriser des pages statiques compatibles GitHub Pages', 'Documenter les contrôles utiles avant publication'], learned: 'Structuration d’un outil privacy-first avec une attention SEO, contenu et vérification automatisée.', impact: 'Démontre une approche produit, SEO et respect de la confidentialité.', highlights: ['Journal', 'Dashboard', 'localStorage', 'SEO'], metrics: ['GitHub Pages', 'Privacy-first'], links: { repo: 'https://github.com/steve57000/guide-investissement' }
+    stack: ['Astro', 'TypeScript', 'localStorage', 'GitHub Pages'], skills: ['SEO', 'Privacy-first', 'Scripts de vérification'], summary: 'Site éducatif statique avec outils interactifs, journal et dashboard personnel stockés localement.', context: 'Projet personnel orienté pédagogie financière et suivi local, sans collecte serveur ni compte utilisateur.', problem: 'Proposer un outil simple et privé pour suivre une démarche d’investissement personnelle.', solution: 'Architecture statique, données locales, contenus pédagogiques et contrôles automatisés.', deliverables: ['Site statique éducatif', 'Journal local', 'Dashboard personnel', 'Scripts de vérification'], decisions: ['Stocker les données dans le navigateur pour préserver la confidentialité', 'Favoriser des pages statiques compatibles GitHub Pages', 'Documenter les contrôles utiles avant publication'], learned: 'Structuration d’un outil privacy-first avec une attention SEO, contenu et vérification automatisée.', impact: 'Démontre une approche produit, SEO et respect de la confidentialité.', highlights: ['Journal', 'Dashboard', 'localStorage', 'SEO'], metrics: ['GitHub Pages', 'Privacy-first'], links: { repo: 'https://github.com/steve57000/guide-investissement', demo: 'https://steve57000.github.io/guide-investissement/' }
   },
   {
-    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour l’application Recettes', accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes' }
+    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour l’application Recettes', accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes', demo: 'https://steve57000.github.io/recettes/' }
   },
-  { id: 'bt-carrelage', title: 'BT Carrelage', shortTitle: 'Site entreprise', category: 'fullstack', featured: false, status: 'Projet web', period: 'Projet existant', role: 'Développeur fullstack', image: btImage, imageAlt: 'Capture du site BT Carrelage', accent: '#6f5848', stack: ['React', 'Next.js', 'MongoDB'], skills: ['Cahier des charges', 'Guide technique', 'Site fullstack'], summary: 'Site pour une entreprise de carrelage, rénovation et aménagement intérieur.', problem: 'Présenter clairement une offre artisanale et ses services.', solution: 'Site web structuré autour des prestations, du savoir-faire et de la prise de contact.', impact: 'Expérience de conception et réalisation pour un contexte professionnel concret.', highlights: ['Cahier des charges', 'Guide technique', 'Responsive'], metrics: ['Site fullstack'], links: { demo: 'https://bt-carrelage.fr' } },
+
+  {
+    id: 'locatech', title: 'Locatech', shortTitle: 'Location matériel', category: 'fullstack', featured: false,
+    status: 'En cours / projet MNS', period: 'Formation MNS', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le projet Locatech', accent: '#3b6f8f',
+    stack: ['Projet MNS'], skills: ['Conception applicative', 'Documentation', 'Gestion de projet'],
+    summary: 'Projet MNS ajouté au portfolio comme application fullstack en cours, à documenter dès que le dépôt expose davantage d’éléments exploitables.',
+    context: 'Dépôt public repéré dans le périmètre portfolio, sans URL de démonstration fiable à rattacher.',
+    problem: 'Conserver une trace du projet sans inventer de fonctionnalités non vérifiées.',
+    solution: 'Fiche factuelle avec dépôt GitHub, catégorie probable fullstack et statut de projet MNS en cours.',
+    impact: 'Projet en cours permettant de suivre la progression Java / Angular et la conception applicative.',
+    highlights: ['Projet MNS', 'Dépôt public', 'Fiche à enrichir'], metrics: ['Statut en cours'],
+    links: { repo: 'https://github.com/steve57000/Locatech' }
+  },
+  {
+    id: 'locmns', title: 'LocMNS', shortTitle: 'Location MNS', category: 'fullstack', featured: false,
+    status: 'Projet MNS', period: 'Formation MNS', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le projet LocMNS', accent: '#507c62',
+    stack: ['Projet MNS'], skills: ['Conception applicative', 'Fullstack', 'Git'],
+    summary: 'Projet de formation MNS conservé comme réalisation fullstack, présenté factuellement en l’absence de démonstration fiable.',
+    problem: 'Documenter un projet de formation sans extrapoler au-delà des informations publiques disponibles.',
+    solution: 'Fiche synthétique orientée progression fullstack et lien vers le dépôt public.',
+    impact: 'Complète la lecture du parcours MNS et des projets applicatifs.',
+    highlights: ['Projet de formation', 'Dépôt public'], metrics: ['MNS'],
+    links: { repo: 'https://github.com/steve57000/LocMNS' }
+  },
+  {
+    id: 'bdshop', title: 'BDSHOP', shortTitle: 'Boutique', category: 'fullstack', featured: false,
+    status: 'Projet applicatif', period: 'Formation / pratique', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour BDSHOP', accent: '#8f5a3b',
+    stack: ['Application web'], skills: ['Catalogue', 'Architecture applicative', 'Git'],
+    summary: 'Projet public de boutique en ligne, retenu comme exercice applicatif démonstratif plutôt que comme archive mineure.',
+    problem: 'Structurer une application orientée catalogue et parcours utilisateur.',
+    solution: 'Fiche portfolio prudente, centrée sur la valeur applicative et le dépôt public.',
+    impact: 'Ajoute un exemple de projet web métier au catalogue.',
+    highlights: ['Boutique', 'Projet public'], metrics: ['Application web'],
+    links: { repo: 'https://github.com/steve57000/BDSHOP' }
+  },
+  {
+    id: 'compressor-img', title: 'compressorImg', shortTitle: 'Compression images', category: 'tools', featured: false,
+    status: 'Outil personnel', period: 'Projet public', role: 'Développeur front / outil', image: imageFallback, imageAlt: 'Visuel temporaire pour compressorImg', accent: '#6d6a9f',
+    stack: ['Outil web'], skills: ['Optimisation', 'UX utilitaire', 'Front-end'],
+    summary: 'Outil public dédié à la compression d’images, classé dans les utilitaires pour ne pas diluer les projets majeurs.',
+    problem: 'Réduire le poids d’images dans un usage web ou portfolio.',
+    solution: 'Projet utilitaire présenté avec son dépôt, sans ajout de visuel binaire.',
+    impact: 'Montre une sensibilité à l’optimisation des assets et à la performance web.',
+    highlights: ['Compression', 'Optimisation images', 'Outil'], metrics: ['Projet utilitaire'],
+    links: { repo: 'https://github.com/steve57000/compressorImg' }
+  },
+  {
+    id: 'doma-apero-site', title: 'DomaAperoSite', shortTitle: 'Site vitrine', category: 'frontend', featured: false,
+    status: 'Projet vitrine', period: 'Projet public', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour DomaAperoSite', accent: '#b2773f',
+    stack: ['Site web'], skills: ['Intégration', 'Responsive', 'Présentation'],
+    summary: 'Site vitrine public ajouté comme projet front-end, avec présentation volontairement factuelle.',
+    problem: 'Présenter un contenu vitrine dans une interface web claire.',
+    solution: 'Projet classé front-end avec dépôt public et sans URL de démo non vérifiée.',
+    impact: 'Complète les réalisations front-end hors parcours OpenClassrooms.',
+    highlights: ['Site vitrine', 'Front-end'], metrics: ['Dépôt public'],
+    links: { repo: 'https://github.com/steve57000/DomaAperoSite' }
+  },
+  {
+    id: 'exercices-progression', title: 'Exercices MNS et progression', shortTitle: 'Exercices', category: 'archives', featured: false,
+    status: 'Archives / progression', period: 'Formation MNS', role: 'Apprenant développeur', image: imageFallback, imageAlt: 'Visuel temporaire pour les exercices de progression', accent: '#66717a',
+    stack: ['Java', 'React', 'TypeScript', 'Python', 'Exercices'], skills: ['Bases langage', 'Algorithmique', 'Pratique régulière'],
+    summary: 'Regroupement des dépôts d’exercices publics pour documenter la progression sans surcharger le portfolio de petites fiches.',
+    context: 'Dépôts évalués : mns-cda-java, react-basics, todo-list-react-tsx, toDoListJava, Grand-Frais, laurent, devoirMns, foretEnchantee et pythonExoMNS.',
+    problem: 'Garder une trace des exercices tout en priorisant les projets professionnels, complets ou démonstratifs.',
+    solution: 'Regrouper ces dépôts en une archive unique orientée progression.',
+    impact: 'Clarifie le catalogue : les exercices restent consultables sans concurrencer les projets majeurs.',
+    highlights: ['Java', 'React / TypeScript', 'Python', 'Exercices MNS'], metrics: ['Archives regroupées'],
+    links: { repo: 'https://github.com/steve57000?tab=repositories' }
+  },
+  { id: 'bt-carrelage', title: 'BT Carrelage', shortTitle: 'Site entreprise', category: 'fullstack', featured: false, status: 'Projet web', period: 'Projet existant', role: 'Développeur fullstack', image: btImage, imageAlt: 'Capture du site BT Carrelage', accent: '#6f5848', stack: ['React', 'Next.js', 'MongoDB'], skills: ['Cahier des charges', 'Guide technique', 'Site fullstack'], summary: 'Site pour une entreprise de carrelage, rénovation et aménagement intérieur.', problem: 'Présenter clairement une offre artisanale et ses services.', solution: 'Site web structuré autour des prestations, du savoir-faire et de la prise de contact.', impact: 'Expérience de conception et réalisation pour un contexte professionnel concret.', highlights: ['Cahier des charges', 'Guide technique', 'Responsive'], metrics: ['Site fullstack'], links: {} },
   { id: 'groupomania', title: 'Groupomania', shortTitle: 'Réseau social interne', category: 'fullstack', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur fullstack', image: groupomaniaImage, imageAlt: 'Capture du réseau social interne Groupomania', accent: '#c84b45', stack: ['Vue', 'Node.js', 'Express', 'MySQL', 'Sass'], skills: ['Auth', 'CRUD', 'Modération'], summary: "Réseau social d'entreprise avec posts, commentaires, likes, profil et modération admin.", problem: 'Créer un espace interne d’échange sécurisé.', solution: 'Frontend Vue, API Express, base MySQL et rôles de modération.', impact: 'Projet fondateur sur le fullstack JavaScript.', highlights: ['Authentification', 'Posts', 'Commentaires', 'Likes', 'Admin'], metrics: ['API REST', 'MySQL'], links: { repo: 'https://github.com/steve57000/Groupomania' } },
   { id: 'sportsee', title: 'SportSee', shortTitle: 'Dashboard sportif', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur front', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard SportSee', accent: '#d35445', stack: ['React', 'D3', 'Axios'], skills: ['Dataviz', 'Composants', 'API'], summary: 'Dashboard sportif avec graphiques et indicateurs utilisateur.', problem: 'Rendre des données sportives lisibles sous forme de tableaux de bord.', solution: 'Composants React, intégration API et visualisations D3.', impact: 'Bon pont entre front-end et data visualisation.', highlights: ['Graphiques', 'KPI utilisateur', 'API'], metrics: ['React', 'D3'], links: { repo: 'https://github.com/steve57000/SportSee' } },
   { id: 'kasa', title: 'Kasa', shortTitle: 'Location immobilière', category: 'frontend', featured: false, status: 'Projet OpenClassrooms', period: 'Formation web', role: 'Développeur React', image: kasaImage, imageAlt: 'Capture de l’application de location Kasa', accent: '#ff6f61', stack: ['React', 'React Router', 'Composants'], skills: ['Routing', 'Composants', 'Responsive'], summary: 'Application de location avec pages logement, galeries, accordéons et routing.', problem: 'Construire une SPA structurée à partir de données logements.', solution: 'React Router, composants réutilisables et interface responsive.', impact: 'Renforce les bases React et architecture de composants.', highlights: ['Routing', 'Galleries', 'Accordions'], metrics: ['SPA React'], links: { repo: 'https://github.com/steve57000/kasa', demo: 'https://steve57000.github.io/kasa/' } },
