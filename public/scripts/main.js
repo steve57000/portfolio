@@ -49,16 +49,25 @@ filterButtons.forEach((button) => {
 });
 
 const revealElements = document.querySelectorAll('[data-reveal]');
+const revealElement = (entry, observer) => {
+  if (!entry.isIntersecting) return;
+  entry.target.classList.add('is-revealed');
+  observer.unobserve(entry.target);
+};
+
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-revealed');
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    entries.forEach((entry) => revealElement(entry, observer));
+  }, { rootMargin: '0px 0px -2% 0px', threshold: 0.04 });
 
-  revealElements.forEach((element) => revealObserver.observe(element));
+  const earlyRevealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => revealElement(entry, observer));
+  }, { rootMargin: '0px 0px 8% 0px', threshold: 0.01 });
+
+  revealElements.forEach((element) => {
+    const observer = element.dataset.reveal === 'early' ? earlyRevealObserver : revealObserver;
+    observer.observe(element);
+  });
 } else {
   revealElements.forEach((element) => element.classList.add('is-revealed'));
 }

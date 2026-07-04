@@ -317,6 +317,7 @@ button, a { outline-offset: 4px; }
 }
 
 /* animations */
+#projets { opacity: 1; transform: none; }
 [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 520ms ease, transform 520ms ease; transition-delay: var(--reveal-delay, 0ms); }
 [data-reveal].is-revealed { opacity: 1; transform: none; }
 @keyframes dialog-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
