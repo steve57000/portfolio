@@ -4,6 +4,8 @@ import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ProjectDetails from '../components/ProjectDetails.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import Icon from '../components/Icon.astro';
+import SeoHead from '../components/SeoHead.astro';
 import { profile, projectCategories, capabilities, skills, journey, projects, featuredProjects } from '../data/portfolioData';
 import '../styles/global.css';
 import { withBase } from '../utils/paths';
@@ -14,8 +16,12 @@ const archives = projects.filter((p) => p.category === 'archives');
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Portfolio de Steve Bell, développeur fullstack Java Angular et Data Analyst junior : applications métier, API sécurisées, SQL, dashboards et projets data." />
-    <title>Steve Bell — Fullstack Java Angular & Data Analyst junior</title>
+    <SeoHead
+      title="Steve Bell — Fullstack Java Angular & Data Analyst junior"
+      description="Portfolio de Steve Bell : applications métier, API sécurisées, SQL, dashboards et projets data."
+      canonical="https://steve57000.github.io/portfolio/"
+      twitterDescription="Applications métier, API sécurisées, SQL, dashboards et données propres."
+    />
   </head>
   <body>
     <Header />
@@ -26,10 +32,10 @@ const archives = projects.filter((p) => p.category === 'archives');
           <h1 id="hero-title">{profile.name}<span>{profile.title}</span></h1>
           <p class="hero__lead">{profile.value}</p>
           <div class="hero__chips" aria-label="Repères portfolio">
-            <span>{projects.length} projets</span>
-            <span>5 case studies</span>
-            <span>Fullstack + Data</span>
-            <span>Astro / GitHub Pages</span>
+            <span><Icon name="projects" />{projects.length} projets</span>
+            <span><Icon name="case-studies" />5 case studies</span>
+            <span><Icon name="fullstack" />Fullstack + Data</span>
+            <span><Icon name="github-pages" />Astro / GitHub Pages</span>
           </div>
           <div class="hero__actions">
             <a class="button" href="#case-studies">Voir les projets clés</a>
@@ -45,7 +51,7 @@ const archives = projects.filter((p) => p.category === 'archives');
             </div>
           </div>
           <ul>
-            {capabilities.map((cap) => <li><b>{cap.title}</b><span>{cap.text}</span></li>)}
+            {capabilities.map((cap) => <li><b><Icon name={cap.icon} />{cap.title}</b><span>{cap.text}</span></li>)}
           </ul>
         </aside>
       </section>
@@ -57,7 +63,7 @@ const archives = projects.filter((p) => p.category === 'archives');
 
       <section id="projets" class="section" data-reveal>
         <SectionHeader eyebrow="Portfolio" title="Projets, outils et archives" text="Les archives OpenClassrooms restent visibles, mais les projets actuels et data sont prioritaires." />
-        <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}>{cat.label}</button>)}</div>
+        <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}><Icon name={cat.icon} />{cat.label}</button>)}</div>
         <div class="project-grid" data-project-grid>{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
         <p class="project-empty" data-project-empty aria-live="polite" hidden>Aucun projet dans ce filtre pour le moment.</p>
         <p class="archive-note">Archives OpenClassrooms visibles : {archives.length} projets secondaires documentant la progression web.</p>
@@ -65,7 +71,7 @@ const archives = projects.filter((p) => p.category === 'archives');
 
       <section id="competences" class="section split" data-reveal>
         <SectionHeader eyebrow="Compétences" title="Un socle fullstack complété par la donnée" />
-        <div class="skill-grid">{skills.map((group) => <article data-reveal><h3>{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+        <div class="skill-grid">{skills.map((group) => <article data-reveal><h3><Icon name={group.icon} />{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
       </section>
 
       <section id="parcours" class="section" data-reveal>

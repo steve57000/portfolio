@@ -1,0 +1,13 @@
+---
+import { withBase } from '../utils/paths';
+
+const { name, label, class: className } = Astro.props as { name: string; label?: string; class?: string };
+---
+<img
+  class:list={['icon', className]}
+  src={withBase(`assets/icons/ui/${name}.svg`)}
+  alt={label ?? ''}
+  aria-hidden={label ? undefined : 'true'}
+  loading="lazy"
+  decoding="async"
+/>

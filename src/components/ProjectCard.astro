@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import type { Project } from '../data/portfolioData';
 
 const { project, index = 0 } = Astro.props as { project: Project; index?: number };
@@ -19,9 +20,9 @@ const links = project.links ?? {};
       {project.stack.slice(0, 5).map((item) => <li>{item}</li>)}
     </ul>
     <div class="project-card__actions">
-      <button class="button button--ghost" type="button" data-project-open={project.id}>Détails</button>
-      {links.repo && <a class="text-link" href={links.repo} target="_blank" rel="noreferrer">Repo</a>}
-      {links.demo && <a class="text-link" href={links.demo} target="_blank" rel="noreferrer">Démo</a>}
+      <button class="button button--ghost" type="button" data-project-open={project.id}><Icon name="details" />Détails</button>
+      {links.repo && <a class="text-link" href={links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Repo</a>}
+      {links.demo && <a class="text-link" href={links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Démo</a>}
     </div>
   </div>
 </article>
