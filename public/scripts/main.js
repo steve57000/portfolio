@@ -7,12 +7,31 @@ navToggle?.addEventListener('click', () => {
   nav?.classList.toggle('is-open', !expanded);
 });
 
+const projectGrid = document.querySelector('[data-project-grid]');
 const filterButtons = document.querySelectorAll('[data-filter]');
+const emptyState = document.querySelector('[data-project-empty]');
+const catalogCards = projectGrid ? projectGrid.querySelectorAll('[data-project-card]') : [];
+
+const applyProjectFilter = (filter) => {
+  let visibleCount = 0;
+
+  catalogCards.forEach((card) => {
+    const shouldShow = filter === 'all' || card.dataset.category === filter;
+    card.hidden = !shouldShow;
+    card.classList.toggle('is-filtered-out', !shouldShow);
+    if (shouldShow) visibleCount += 1;
+  });
+
+  if (emptyState) {
+    emptyState.hidden = visibleCount > 0;
+  }
+};
+
 filterButtons.forEach((button) => {
   button.setAttribute('aria-pressed', button.classList.contains('is-active') ? 'true' : 'false');
 
   button.addEventListener('click', () => {
-    const filter = button.dataset.filter;
+    const filter = button.dataset.filter ?? 'all';
 
     filterButtons.forEach((item) => {
       const active = item === button;
@@ -20,9 +39,7 @@ filterButtons.forEach((button) => {
       item.setAttribute('aria-pressed', String(active));
     });
 
-    document.querySelectorAll('[data-project-card]').forEach((card) => {
-      card.hidden = filter !== 'all' && card.dataset.category !== filter;
-    });
+    applyProjectFilter(filter);
   });
 });
 
