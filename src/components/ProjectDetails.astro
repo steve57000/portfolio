@@ -27,20 +27,20 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
     </section>
 
     <div class="detail-grid detail-grid--story" aria-label="Contexte, problème, solution et impact">
-      {project.context && <section><h4><Icon name="document" />Contexte</h4><p>{project.context}</p></section>}
-      {project.problem && <section><h4><Icon name="problem" />Problème</h4><p>{project.problem}</p></section>}
-      {project.solution && <section><h4><Icon name="solution" />Solution</h4><p>{project.solution}</p></section>}
-      {project.impact && <section><h4><Icon name="impact" />Impact</h4><p>{project.impact}</p></section>}
+      {project.context && <section><h4><span class="icon-badge"><Icon name="document" /></span>Contexte</h4><p>{project.context}</p></section>}
+      {project.problem && <section><h4><span class="icon-badge"><Icon name="problem" /></span>Problème</h4><p>{project.problem}</p></section>}
+      {project.solution && <section><h4><span class="icon-badge"><Icon name="solution" /></span>Solution</h4><p>{project.solution}</p></section>}
+      {project.impact && <section><h4><span class="icon-badge"><Icon name="impact" /></span>Impact</h4><p>{project.impact}</p></section>}
     </div>
 
     {(hasDeliverables || hasDecisions) && (
       <div class="detail-grid detail-grid--lists">
-        {hasDeliverables && <section><h4><Icon name="deliverables" />Livrables</h4><ul>{project.deliverables?.map((item) => <li>{item}</li>)}</ul></section>}
-        {hasDecisions && <section><h4><Icon name="decisions" />Choix techniques</h4><ul>{project.decisions?.map((item) => <li>{item}</li>)}</ul></section>}
+        {hasDeliverables && <section><h4><span class="icon-badge"><Icon name="deliverables" /></span>Livrables</h4><ul>{project.deliverables?.map((item) => <li>{item}</li>)}</ul></section>}
+        {hasDecisions && <section><h4><span class="icon-badge"><Icon name="decisions" /></span>Choix techniques</h4><ul>{project.decisions?.map((item) => <li>{item}</li>)}</ul></section>}
       </div>
     )}
 
-    {project.learned && <section class="project-detail__learned"><h4><Icon name="learnings" />Ce que j’ai appris</h4><p>{project.learned}</p></section>}
+    {project.learned && <section class="project-detail__learned"><h4><span class="icon-badge"><Icon name="learnings" /></span>Ce que j’ai appris</h4><p>{project.learned}</p></section>}
 
     {hasProof && (
       <section class="project-proof" aria-label="Ce projet démontre">
@@ -50,14 +50,14 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
         </div>
         <div class="project-proof__grid">
           {project.highlights.length > 0 && <article><h5>Points clés</h5><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}
-          {project.skills.length > 0 && <article><h5><Icon name="stack" />Compétences mobilisées</h5><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}
-          {project.metrics.length > 0 && <article><h5><Icon name="metrics" />Repères techniques</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.skills.length > 0 && <article><h5><span class="icon-badge"><Icon name="stack" /></span>Compétences mobilisées</h5><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.metrics.length > 0 && <article><h5><span class="icon-badge"><Icon name="metrics" /></span>Repères techniques</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
         </div>
       </section>
     )}
 
     <section class="project-detail__stack" aria-label="Stack technique">
-      <h4><Icon name="stack" />Stack technique</h4>
+      <h4><span class="icon-badge"><Icon name="stack" /></span>Stack technique</h4>
       <ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul>
     </section>
 
