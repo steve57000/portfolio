@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import '../styles/global.css';
+import { withBase } from '../utils/paths';
 ---
-<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Page introuvable — Steve Bell</title></head><body><Header /><main class="section not-found"><p class="eyebrow">404</p><h1>Page introuvable</h1><p>La page demandée n’existe pas ou a été déplacée.</p><a class="button" href={import.meta.env.BASE_URL}>Retour au portfolio</a></main><script src={`${import.meta.env.BASE_URL}scripts/main.js`} defer></script></body></html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><title>Page introuvable — Steve Bell</title></head><body><Header /><main class="section not-found"><p class="eyebrow">404</p><h1>Page introuvable</h1><p>La page demandée n’existe pas ou a été déplacée.</p><a class="button" href={withBase()}>Retour au portfolio</a></main><script src={withBase('scripts/main.js')} defer></script></body></html>

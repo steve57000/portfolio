@@ -1,3 +1,39 @@
+import type { ImageMetadata } from 'astro';
+
+export type ProjectCategory = 'all' | 'fullstack' | 'data-bi' | 'frontend' | 'tools' | 'archives';
+
+export type ProjectLink = {
+  demo?: string;
+  repo?: string;
+};
+
+export type Project = {
+  id: string;
+  title: string;
+  shortTitle: string;
+  category: Exclude<ProjectCategory, 'all'>;
+  featured: boolean;
+  status: string;
+  period: string;
+  role: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  accent: string;
+  stack: string[];
+  skills: string[];
+  summary: string;
+  context?: string;
+  problem: string;
+  solution: string;
+  deliverables?: string[];
+  decisions?: string[];
+  learned?: string;
+  impact: string;
+  highlights: string[];
+  metrics: string[];
+  links: ProjectLink;
+};
+
 import cardImage from '../assets/images/cardImage.png';
 import groupomaniaImage from '../assets/images/groupomania.PNG';
 import kasaImage from '../assets/images/kasa.PNG';
@@ -28,7 +64,7 @@ export const profile = {
   }
 };
 
-export const projectCategories = [
+export const projectCategories: { id: ProjectCategory; label: string }[] = [
   { id: 'all', label: 'Tous' },
   { id: 'fullstack', label: 'Fullstack' },
   { id: 'data-bi', label: 'Data / BI' },
@@ -62,7 +98,7 @@ export const journey = [
 
 const imageFallback = cardImage;
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
     status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: imageFallback, imageAlt: 'Visuel temporaire pour le dashboard JLH AutoPam', accent: '#2d7f82',
@@ -167,4 +203,4 @@ export const projects = [
 
 ];
 
-export const featuredProjects = projects.filter((project) => project.featured);
+export const featuredProjects: Project[] = projects.filter((project) => project.featured);
