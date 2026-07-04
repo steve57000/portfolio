@@ -9,16 +9,71 @@ import '../styles/global.css';
 import { withBase } from '../utils/paths';
 const archives = projects.filter((p) => p.category === 'archives');
 ---
-<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content="Portfolio de Steve Bell, développeur fullstack Java Angular et Data Analyst junior : applications métier, API sécurisées, SQL, dashboards et projets data."/><title>Steve Bell — Fullstack Java Angular & Data Analyst junior</title></head><body>
-<Header />
-<main>
-  <section class="hero" aria-labelledby="hero-title"><div><p class="eyebrow">Portfolio statique · Fullstack · Data</p><h1 id="hero-title">{profile.name}<span>{profile.title}</span></h1><p class="hero__lead">{profile.value}</p><div class="hero__actions"><a class="button" href="#case-studies">Voir les projets clés</a><a class="button button--ghost" href={withBase('cv/')}>CV synthétique</a></div></div><aside><strong>Focus 2026</strong><p>Applications métier Java/Angular, SQL décisionnel, qualité de données et restitution claire.</p><ul>{capabilities.map((cap) => <li><b>{cap.title}</b><span>{cap.text}</span></li>)}</ul></aside></section>
-  <section id="case-studies" class="section"><SectionHeader eyebrow="Case studies" title="5 projets qui résument le positionnement" text="Des applications métier et des projets data détaillés par contexte, problème, livrables et impact."/><div class="featured-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index} />)}</div></section>
-  <section id="projets" class="section"><SectionHeader eyebrow="Portfolio" title="Projets, outils et archives" text="Les archives OpenClassrooms restent visibles, mais les projets actuels et data sont prioritaires."/><div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''}>{cat.label}</button>)}</div><div class="project-grid" data-project-grid>{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div><p class="archive-note">Archives OpenClassrooms visibles : {archives.length} projets secondaires documentant la progression web.</p></section>
-  <section id="competences" class="section split"><SectionHeader eyebrow="Compétences" title="Un socle fullstack complété par la donnée"/><div class="skill-grid">{skills.map((group) => <article><h3>{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div></section>
-  <section id="parcours" class="section"><SectionHeader eyebrow="Parcours" title="Progression orientée usage réel"/><ol class="timeline">{journey.map((step) => <li><span>{step.period}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol></section>
-</main>
-{projects.map((project) => <ProjectDetails project={project} />)}
-<Footer />
-<script src={withBase('scripts/main.js')} defer></script>
-</body></html>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Portfolio de Steve Bell, développeur fullstack Java Angular et Data Analyst junior : applications métier, API sécurisées, SQL, dashboards et projets data." />
+    <title>Steve Bell — Fullstack Java Angular & Data Analyst junior</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="hero" aria-labelledby="hero-title" data-reveal>
+        <div class="hero__content">
+          <p class="eyebrow">Portfolio statique · Fullstack · Data</p>
+          <h1 id="hero-title">{profile.name}<span>{profile.title}</span></h1>
+          <p class="hero__lead">{profile.value}</p>
+          <div class="hero__chips" aria-label="Repères portfolio">
+            <span>22 projets</span>
+            <span>5 case studies</span>
+            <span>Fullstack + Data</span>
+            <span>Astro / GitHub Pages</span>
+          </div>
+          <div class="hero__actions">
+            <a class="button" href="#case-studies">Voir les projets clés</a>
+            <a class="button button--ghost" href={withBase('cv/')}>CV synthétique</a>
+          </div>
+        </div>
+        <aside class="hero__focus" data-reveal>
+          <div class="hero__focus-head">
+            <span aria-hidden="true"></span>
+            <div>
+              <strong>Focus 2026</strong>
+              <p>Applications métier Java/Angular, SQL décisionnel, qualité de données et restitution claire.</p>
+            </div>
+          </div>
+          <ul>
+            {capabilities.map((cap) => <li><b>{cap.title}</b><span>{cap.text}</span></li>)}
+          </ul>
+        </aside>
+      </section>
+
+      <section id="case-studies" class="section" data-reveal>
+        <SectionHeader eyebrow="Case studies" title="5 projets qui résument le positionnement" text="Des applications métier et des projets data détaillés par contexte, problème, livrables et impact." />
+        <div class="featured-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+      </section>
+
+      <section id="projets" class="section" data-reveal>
+        <SectionHeader eyebrow="Portfolio" title="Projets, outils et archives" text="Les archives OpenClassrooms restent visibles, mais les projets actuels et data sont prioritaires." />
+        <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''}>{cat.label}</button>)}</div>
+        <div class="project-grid" data-project-grid>{projects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
+        <p class="archive-note">Archives OpenClassrooms visibles : {archives.length} projets secondaires documentant la progression web.</p>
+      </section>
+
+      <section id="competences" class="section split" data-reveal>
+        <SectionHeader eyebrow="Compétences" title="Un socle fullstack complété par la donnée" />
+        <div class="skill-grid">{skills.map((group) => <article data-reveal><h3>{group.group}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+      </section>
+
+      <section id="parcours" class="section" data-reveal>
+        <SectionHeader eyebrow="Parcours" title="Progression orientée usage réel" />
+        <ol class="timeline">{journey.map((step) => <li data-reveal><span>{step.period}</span><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+      </section>
+    </main>
+    {projects.map((project) => <ProjectDetails project={project} />)}
+    <Footer />
+    <script src={withBase('scripts/main.js')} defer></script>
+  </body>
+</html>
