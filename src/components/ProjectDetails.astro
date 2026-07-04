@@ -1,5 +1,7 @@
 ---
-const { project } = Astro.props;
+import type { Project } from '../data/portfolioData';
+
+const { project } = Astro.props as { project: Project };
 const links = project.links ?? {};
 ---
 <dialog class="project-dialog" id={`project-${project.id}`} aria-labelledby={`project-${project.id}-title`}>
@@ -20,6 +22,7 @@ const links = project.links ?? {};
     <div class="project-card__actions">
       {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer">Voir le repo</a>}
       {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer">Voir la démo</a>}
+      {project.docs?.map((doc) => <a class="button" href={doc.href} target="_blank" rel="noreferrer">Voir le document</a>)}
     </div>
   </div>
 </dialog>
