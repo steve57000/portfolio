@@ -65,29 +65,29 @@ export const profile = {
   }
 };
 
-export const projectCategories: { id: ProjectCategory; label: string }[] = [
-  { id: 'all', label: 'Tous' },
-  { id: 'fullstack', label: 'Fullstack' },
-  { id: 'data-bi', label: 'Data / BI' },
-  { id: 'frontend', label: 'Front-end' },
-  { id: 'tools', label: 'Outils' },
-  { id: 'archives', label: 'Archives' }
+export const projectCategories: { id: ProjectCategory; label: string; icon: string }[] = [
+  { id: 'all', label: 'Tous', icon: 'filters' },
+  { id: 'fullstack', label: 'Fullstack', icon: 'fullstack' },
+  { id: 'data-bi', label: 'Data / BI', icon: 'data-bi' },
+  { id: 'frontend', label: 'Front-end', icon: 'frontend' },
+  { id: 'tools', label: 'Outils', icon: 'tools' },
+  { id: 'archives', label: 'Archives', icon: 'archives' }
 ];
 
 export const capabilities = [
-  { title: 'Applications métier', text: 'Transformer un besoin terrain en parcours utilisateur, règles métier et écrans utiles.' },
-  { title: 'APIs sécurisées', text: 'Structurer des backends Java/Spring Boot, authentification JWT, rôles et modèles relationnels.' },
-  { title: 'Données propres', text: 'Nettoyer, consolider, contrôler et documenter des jeux de données exploitables.' },
-  { title: 'Restitution décisionnelle', text: 'Construire des indicateurs, dashboards et analyses orientés action.' }
+  { title: 'Applications métier', icon: 'app', text: 'Transformer un besoin terrain en parcours utilisateur, règles métier et écrans utiles.' },
+  { title: 'APIs sécurisées', icon: 'api', text: 'Structurer des backends Java/Spring Boot, authentification JWT, rôles et modèles relationnels.' },
+  { title: 'Données propres', icon: 'database', text: 'Nettoyer, consolider, contrôler et documenter des jeux de données exploitables.' },
+  { title: 'Restitution décisionnelle', icon: 'dashboard', text: 'Construire des indicateurs, dashboards et analyses orientés action.' }
 ];
 
 export const skills = [
-  { group: 'Fullstack', items: ['Angular', 'React', 'Vue', 'Spring Boot', 'REST API', 'SSR'] },
-  { group: 'Backend', items: ['Java 17', 'Node.js', 'Express', 'JWT', 'PostgreSQL', 'MySQL'] },
-  { group: 'Frontend', items: ['TypeScript', 'JavaScript', 'HTML/CSS', 'SCSS', 'Styled-components', 'Accessibilité'] },
-  { group: 'Data / BI', items: ['SQL', 'Python', 'pandas', 'numpy', 'Jupyter', 'matplotlib', 'seaborn', 'Excel'] },
-  { group: 'Qualité / méthode', items: ['Modélisation', 'RGPD', 'Documentation', 'Contrôle qualité', 'Responsive', 'Git'] },
-  { group: 'Outils', items: ['Docker', 'GitHub Pages', 'localStorage', 'CSV', 'scripts de vérification', 'veille technique'] }
+  { group: 'Fullstack', icon: 'fullstack', items: ['Angular', 'React', 'Vue', 'Spring Boot', 'REST API', 'SSR'] },
+  { group: 'Backend', icon: 'backend', items: ['Java 17', 'Node.js', 'Express', 'JWT', 'PostgreSQL', 'MySQL'] },
+  { group: 'Frontend', icon: 'frontend', items: ['TypeScript', 'JavaScript', 'HTML/CSS', 'SCSS', 'Styled-components', 'Accessibilité'] },
+  { group: 'Data / BI', icon: 'data-bi', items: ['SQL', 'Python', 'pandas', 'numpy', 'Jupyter', 'matplotlib', 'seaborn', 'Excel'] },
+  { group: 'Qualité / méthode', icon: 'quality', items: ['Modélisation', 'RGPD', 'Documentation', 'Contrôle qualité', 'Responsive', 'Git'] },
+  { group: 'Outils', icon: 'tools', items: ['Docker', 'GitHub Pages', 'localStorage', 'CSV', 'scripts de vérification', 'veille technique'] }
 ];
 
 export const journey = [

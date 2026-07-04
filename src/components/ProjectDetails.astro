@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import type { Project } from '../data/portfolioData';
 
 const { project } = Astro.props as { project: Project };
@@ -26,20 +27,20 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
     </section>
 
     <div class="detail-grid detail-grid--story" aria-label="Contexte, problème, solution et impact">
-      {project.context && <section><h4>Contexte</h4><p>{project.context}</p></section>}
-      {project.problem && <section><h4>Problème</h4><p>{project.problem}</p></section>}
-      {project.solution && <section><h4>Solution</h4><p>{project.solution}</p></section>}
-      {project.impact && <section><h4>Impact</h4><p>{project.impact}</p></section>}
+      {project.context && <section><h4><Icon name="document" />Contexte</h4><p>{project.context}</p></section>}
+      {project.problem && <section><h4><Icon name="problem" />Problème</h4><p>{project.problem}</p></section>}
+      {project.solution && <section><h4><Icon name="solution" />Solution</h4><p>{project.solution}</p></section>}
+      {project.impact && <section><h4><Icon name="impact" />Impact</h4><p>{project.impact}</p></section>}
     </div>
 
     {(hasDeliverables || hasDecisions) && (
       <div class="detail-grid detail-grid--lists">
-        {hasDeliverables && <section><h4>Livrables</h4><ul>{project.deliverables?.map((item) => <li>{item}</li>)}</ul></section>}
-        {hasDecisions && <section><h4>Choix techniques</h4><ul>{project.decisions?.map((item) => <li>{item}</li>)}</ul></section>}
+        {hasDeliverables && <section><h4><Icon name="deliverables" />Livrables</h4><ul>{project.deliverables?.map((item) => <li>{item}</li>)}</ul></section>}
+        {hasDecisions && <section><h4><Icon name="decisions" />Choix techniques</h4><ul>{project.decisions?.map((item) => <li>{item}</li>)}</ul></section>}
       </div>
     )}
 
-    {project.learned && <section class="project-detail__learned"><h4>Ce que j’ai appris</h4><p>{project.learned}</p></section>}
+    {project.learned && <section class="project-detail__learned"><h4><Icon name="learnings" />Ce que j’ai appris</h4><p>{project.learned}</p></section>}
 
     {hasProof && (
       <section class="project-proof" aria-label="Ce projet démontre">
@@ -49,22 +50,22 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
         </div>
         <div class="project-proof__grid">
           {project.highlights.length > 0 && <article><h5>Points clés</h5><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}
-          {project.skills.length > 0 && <article><h5>Compétences mobilisées</h5><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}
-          {project.metrics.length > 0 && <article><h5>Repères techniques</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.skills.length > 0 && <article><h5><Icon name="stack" />Compétences mobilisées</h5><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.metrics.length > 0 && <article><h5><Icon name="metrics" />Repères techniques</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
         </div>
       </section>
     )}
 
     <section class="project-detail__stack" aria-label="Stack technique">
-      <h4>Stack</h4>
+      <h4><Icon name="stack" />Stack technique</h4>
       <ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul>
     </section>
 
     {hasLinks && (
       <nav class="project-card__actions project-detail__actions" aria-label="Liens du projet">
-        {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer">Voir le repo</a>}
-        {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer">Voir la démo</a>}
-        {docs.map((doc) => <a class="button button--ghost" href={doc.href} target="_blank" rel="noreferrer">{doc.label}</a>)}
+        {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Voir le repo</a>}
+        {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Voir la démo</a>}
+        {docs.map((doc) => <a class="button button--ghost" href={doc.href} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}
       </nav>
     )}
   </div>

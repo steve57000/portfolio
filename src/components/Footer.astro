@@ -1,7 +1,8 @@
 ---
+import Icon from './Icon.astro';
 import { profile } from '../data/portfolioData';
 ---
 <footer class="site-footer" id="contact">
   <div><p class="eyebrow">Contact</p><h2>Construire, fiabiliser, mesurer.</h2><p>{profile.summary}</p></div>
-  <address><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.links.github}>GitHub</a><a href={profile.links.linkedin}>LinkedIn</a></address>
+  <address><a class="icon-link" href={`mailto:${profile.email}`}><Icon name="mail" label="Email" />{profile.email}</a><a class="icon-link" href={profile.links.github}><Icon name="github" label="GitHub" />GitHub</a><a class="icon-link" href={profile.links.linkedin}><Icon name="linkedin" label="LinkedIn" />LinkedIn</a><span class="icon-link"><Icon name="location" />{profile.location}</span></address>
 </footer>

@@ -1,0 +1,38 @@
+---
+import { withBase } from '../utils/paths';
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = 'https://steve57000.github.io/portfolio/og-image.png',
+  ogType = 'website',
+  twitterDescription = description,
+} = Astro.props as {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  twitterDescription?: string;
+};
+---
+<meta name="description" content={description} />
+{canonical && <link rel="canonical" href={canonical} />}
+<link rel="icon" href={withBase('favicon.ico')} sizes="any" />
+<link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
+<link rel="manifest" href={withBase('manifest.json')} />
+<meta name="theme-color" content="#06100f" />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={twitterDescription} />
+<meta name="twitter:image" content={ogImage} />
+<title>{title}</title>
