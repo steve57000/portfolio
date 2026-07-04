@@ -73,6 +73,25 @@ export const profile = {
   }
 };
 
+
+export const about = {
+  eyebrow: 'À propos de moi',
+  title: 'Construire des outils utiles, lisibles et vérifiables',
+  intro: 'Je construis un profil volontairement hybride : applications métier Java/Angular, backends structurés, SQL et données exploitables. Basé autour de Metz / Ars-sur-Moselle, mon parcours m’a amené du développement web React à la conception Java/Angular, puis à l’analyse data/BI. Ce qui m’intéresse surtout : transformer un besoin réel en outil clair, documenté et utilisable.',
+  body: 'J’aime relier les pièces qui font tenir un projet : interface, API, base de données, contrôle qualité et documentation. L’objectif n’est pas de multiplier les effets, mais de livrer des projets consultables, maintenables et compréhensibles par une personne métier comme par un profil technique.',
+  points: [
+    'Comprendre le besoin avant l’écran.',
+    'Structurer l’application et la donnée.',
+    'Documenter les choix techniques.',
+    'Livrer des projets consultables et maintenables.'
+  ],
+  path: [
+    'OpenClassrooms : développement web / logiciel React.',
+    'Metz Numeric School : conception logiciel Java / Angular.',
+    'Formation data / BI : SQL, Python, nettoyage, modélisation, qualité de données, restitution.'
+  ]
+};
+
 export const projectCategories: { id: ProjectCategory; label: string; icon: string }[] = [
   { id: 'all', label: 'Tous', icon: 'filters' },
   { id: 'fullstack', label: 'Fullstack', icon: 'fullstack' },
