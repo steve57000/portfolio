@@ -10,11 +10,7 @@ navToggle?.addEventListener('click', () => {
 const themeToggle = document.querySelector('[data-theme-toggle]');
 const themeMeta = document.querySelector('meta[name="theme-color"]');
 const themeStorageKey = 'portfolio-theme';
-const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-let isThemeAnimating = false;
-const paintEnterFallbackMs = 980;
-const paintExitFallbackMs = 480;
 
 const getStoredTheme = () => {
   try { return localStorage.getItem(themeStorageKey); } catch { return null; }
@@ -50,79 +46,10 @@ systemDarkQuery.addEventListener?.('change', () => {
   if (!getStoredTheme()) applyTheme(getSystemTheme());
 });
 
-const createPaintOverlay = (targetTheme) => {
-  const paint = document.createElement('div');
-  paint.className = 'theme-paint';
-  paint.dataset.themePaint = targetTheme;
-  paint.setAttribute('aria-hidden', 'true');
-  const drips = [
-    ['6%', '4.4rem', '10.5rem', '14.2rem', '70ms', '760ms'],
-    ['18%', '2.7rem', '7.2rem', '9.6rem', '210ms', '680ms'],
-    ['31%', '6.2rem', '13rem', '17.4rem', '120ms', '860ms'],
-    ['47%', '3.4rem', '9rem', '12rem', '260ms', '720ms'],
-    ['59%', '5.1rem', '11.8rem', '15.8rem', '40ms', '820ms'],
-    ['74%', '2.9rem', '8.5rem', '11.4rem', '300ms', '700ms'],
-    ['88%', '6.7rem', '12.8rem', '17rem', '160ms', '880ms'],
-    ['97%', '3.8rem', '10rem', '13.4rem', '240ms', '760ms'],
-  ];
-
-  drips.forEach(([x, width, height, maxHeight, delay, speed]) => {
-    const drip = document.createElement('span');
-    drip.style.setProperty('--drip-x', x);
-    drip.style.setProperty('--drip-width', `clamp(${width}, 9vw, ${height})`);
-    drip.style.setProperty('--drip-height', `clamp(${height}, 18vw, ${maxHeight})`);
-    drip.style.setProperty('--drip-delay', delay);
-    drip.style.setProperty('--drip-speed', speed);
-    paint.appendChild(drip);
-  });
-  document.body.appendChild(paint);
-  return paint;
-};
-
-const waitForAnimation = (element, animationName, fallbackMs) => new Promise((resolve) => {
-  let done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    element.removeEventListener('animationend', onAnimationEnd);
-    window.clearTimeout(fallback);
-    resolve();
-  };
-  const onAnimationEnd = (event) => {
-    if (event.target === element && event.animationName === animationName) finish();
-  };
-  const fallback = window.setTimeout(finish, fallbackMs);
-  element.addEventListener('animationend', onAnimationEnd);
-});
-
-const animateThemeChange = async (targetTheme) => {
-  if (isThemeAnimating || targetTheme === getTheme()) return;
-
-  if (reducedMotionQuery.matches) {
-    applyTheme(targetTheme);
-    storeTheme(targetTheme);
-    return;
-  }
-
-  isThemeAnimating = true;
-  const paint = createPaintOverlay(targetTheme);
-
-  try {
-    await waitForAnimation(paint, 'paint-drop', paintEnterFallbackMs);
-    applyTheme(targetTheme);
-    storeTheme(targetTheme);
-    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    paint.classList.add('is-exiting');
-    await waitForAnimation(paint, 'paint-exit', paintExitFallbackMs);
-  } finally {
-    paint.remove();
-    isThemeAnimating = false;
-  }
-};
-
 themeToggle?.addEventListener('click', () => {
   const nextTheme = getTheme() === 'dark' ? 'light' : 'dark';
-  animateThemeChange(nextTheme);
+  applyTheme(nextTheme);
+  storeTheme(nextTheme);
 });
 
 const projectGrid = document.querySelector('[data-project-grid]');
