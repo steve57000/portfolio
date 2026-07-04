@@ -296,6 +296,8 @@ button, a { outline-offset: 4px; }
   .project-detail__header { padding-right: 0; }
   .project-detail__actions { justify-content: stretch; }
   .project-detail__actions .button { width: 100%; }
+  #projets[data-reveal],
+  #projets [data-reveal] { opacity: 1; transform: none; }
 }
 
 /* animations */
