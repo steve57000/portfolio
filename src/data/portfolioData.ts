@@ -257,4 +257,8 @@ export const projects: Project[] = [
 
 ];
 
-export const featuredProjects: Project[] = projects.filter((project) => project.featured);
+export const featuredProjectIds = ['jlh-autopam', 'locatech', 'bottleneck', 'assurance-data', 'guide-investissement'] as const;
+
+export const featuredProjects: Project[] = featuredProjectIds
+  .map((id) => projects.find((project) => project.id === id))
+  .filter((project): project is Project => Boolean(project));

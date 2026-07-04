@@ -3,6 +3,7 @@ import type { ProjectVisual as ProjectVisualType } from '../data/portfolioData';
 
 const { visual, title } = Astro.props as { visual: ProjectVisualType; title: string };
 const metrics = visual.metrics?.slice(0, 3) ?? [];
+const panelKinds = ['dashboard', 'data', 'app', 'tool', 'document'];
 ---
 <div class:list={["project-visual", `project-visual--${visual.kind}`]} role="img" aria-label={`Visuel CSS du projet ${title}`}>
   <div class="project-visual__chrome"><span></span><span></span><span></span></div>
@@ -24,8 +25,8 @@ const metrics = visual.metrics?.slice(0, 3) ?? [];
       </div>
     )}
 
-    {['dashboard', 'data', 'app', 'tool', 'document'].includes(visual.kind) && (
-      <div class="visual-panels" aria-hidden="true">
+    {panelKinds.includes(visual.kind) && (
+      <div class:list={["visual-panels", `visual-panels--${visual.kind}`]} aria-hidden="true">
         <span></span><span></span><span></span><span></span>
       </div>
     )}
