@@ -78,13 +78,13 @@ const projectGroups = [
         <div class="featured-grid">{featuredProjects.map((project, index) => <ProjectCard project={project} index={index} />)}</div>
       </section>
 
-      <section id="projets" class="section" data-reveal>
+      <section id="projets" class="section">
         <SectionHeader eyebrow="Portfolio" title="Projets, outils et fondations web" text="Chaque projet présente un contexte, une stack, des décisions et les liens disponibles." />
-        <div class="filters" aria-label="Filtrer les projets">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}><Icon name={cat.icon} />{cat.label}</button>)}</div>
+        <div class="filters" aria-label="Filtrer les projets" data-reveal="early">{projectCategories.map((cat) => <button type="button" data-filter={cat.id} class={cat.id === 'all' ? 'is-active' : ''} aria-pressed={cat.id === 'all' ? 'true' : 'false'}><Icon name={cat.icon} />{cat.label}</button>)}</div>
         <div class="project-catalog" data-project-grid>
           {projectGroups.map((group) => group.items.length > 0 && (
             <section class="project-group" data-project-group>
-              <div class="project-group__head">
+              <div class="project-group__head" data-reveal="early">
                 <h3>{group.title}</h3>
                 <p>{group.text}</p>
               </div>
