@@ -4,7 +4,13 @@ import { withBase } from '../utils/paths';
 ---
 <header class="site-header">
   <a class="brand" href={withBase()} aria-label="Accueil Steve Bell"><span>SB</span><strong>Steve Bell</strong></a>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <div class="header-actions">
+    <button class="theme-toggle" type="button" aria-label="Activer le mode sombre" aria-pressed="false" data-theme-toggle>
+      <span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__thumb"></span></span>
+      <span class="theme-toggle__text">Thème</span>
+    </button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
   <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
     <a class="nav-link" href={withBase('#projets')}><Icon name="projects" />Projets</a><a class="nav-link" href={withBase('#case-studies')}><Icon name="case-studies" />Case studies</a><a class="nav-link" href={withBase('#competences')}><Icon name="competences" />Compétences</a><a class="nav-link" href={withBase('#parcours')}><Icon name="journey" />Parcours</a><a class="nav-link" href={withBase('cv/')}><Icon name="cv" />CV</a><a class="nav-link" href={withBase('#contact')}><Icon name="contact" />Contact</a>
   </nav>

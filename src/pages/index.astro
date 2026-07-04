@@ -6,7 +6,7 @@ import ProjectDetails from '../components/ProjectDetails.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import Icon from '../components/Icon.astro';
 import SeoHead from '../components/SeoHead.astro';
-import { profile, projectCategories, capabilities, skills, journey, projects, featuredProjects } from '../data/portfolioData';
+import { profile, about, projectCategories, capabilities, skills, journey, projects, featuredProjects } from '../data/portfolioData';
 import '../styles/global.css';
 import { withBase } from '../utils/paths';
 const archives = projects.filter((p) => p.category === 'archives');
@@ -24,10 +24,22 @@ const projectGroups = [
 ];
 ---
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <script is:inline>
+      (() => {
+        const storageKey = 'portfolio-theme';
+        const root = document.documentElement;
+        const getSystemTheme = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const savedTheme = (() => { try { return localStorage.getItem(storageKey); } catch { return null; } })();
+        const theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : getSystemTheme();
+        root.dataset.theme = theme;
+        const meta = document.querySelector('meta[name="theme-color"]');
+        meta?.setAttribute('content', theme === 'dark' ? '#0b1110' : '#f5f1e8');
+      })();
+    </script>
     <SeoHead
       title="Steve Bell — Fullstack Java Angular & Data Analyst junior"
       description="Portfolio de Steve Bell : applications métier, API sécurisées, SQL, dashboards et projets data."
@@ -71,6 +83,28 @@ const projectGroups = [
 
       <section class="proof-strip" aria-label="Preuves rapides" data-reveal>
         {proofStats.map((stat) => <article><strong>{stat.value}</strong><span>{stat.label}</span></article>)}
+      </section>
+
+
+      <section class="about section" aria-labelledby="about-title" data-reveal>
+        <div class="about__card">
+          <div class="about__content">
+            <p class="eyebrow">{about.eyebrow}</p>
+            <h2 id="about-title">{about.title}</h2>
+            <p class="about__lead">{about.intro}</p>
+            <p>{about.body}</p>
+            <ul class="about__points">
+              {about.points.map((point) => <li><span class="icon-badge icon-badge--sm"><Icon name="quality" /></span>{point}</li>)}
+            </ul>
+          </div>
+          <aside class="about__path" aria-label="Parcours résumé">
+            <strong>{profile.name}</strong>
+            <span>{profile.location}</span>
+            <ol>
+              {about.path.map((item) => <li>{item}</li>)}
+            </ol>
+          </aside>
+        </div>
       </section>
 
       <section id="case-studies" class="section" data-reveal>
