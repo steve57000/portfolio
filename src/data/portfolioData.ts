@@ -8,7 +8,7 @@ export type ProjectLink = {
 };
 
 export type ProjectVisual = {
-  kind: 'dashboard' | 'data' | 'sql' | 'app' | 'api' | 'document' | 'tool';
+  kind: 'dashboard' | 'data' | 'sql' | 'app' | 'api' | 'document' | 'tool' | 'pipeline' | 'docker';
   eyebrow?: string;
   title?: string;
   metrics?: string[];
@@ -103,18 +103,19 @@ export const projectCategories: { id: ProjectCategory; label: string; icon: stri
 
 export const capabilities = [
   { title: 'Applications métier', icon: 'app', text: 'Transformer un besoin terrain en parcours utilisateur, règles métier et écrans utiles.' },
-  { title: 'APIs sécurisées', icon: 'api', text: 'Structurer des backends Java/Spring Boot, authentification JWT, rôles et modèles relationnels.' },
+  { title: 'APIs sécurisées', icon: 'api', text: 'Structurer des backends Java 21/Spring Boot, authentification JWT, rôles et modèles relationnels.' },
+  { title: 'CI/CD & conteneurisation', icon: 'tools', text: 'Dockeriser les fronts et backends, automatiser les contrôles GitHub Actions, publier les images et préparer des déploiements reproductibles.' },
   { title: 'Données propres', icon: 'database', text: 'Nettoyer, consolider, contrôler et documenter des jeux de données exploitables.' },
   { title: 'Restitution décisionnelle', icon: 'dashboard', text: 'Construire des indicateurs, dashboards et analyses orientés action.' }
 ];
 
 export const skills = [
   { group: 'Fullstack', icon: 'fullstack', items: ['Angular', 'React', 'Vue', 'Spring Boot', 'REST API', 'SSR'] },
-  { group: 'Backend', icon: 'backend', items: ['Java 17', 'Node.js', 'Express', 'JWT', 'PostgreSQL', 'MySQL'] },
+  { group: 'Backend', icon: 'backend', items: ['Java 21', 'Spring Boot', 'API REST', 'JWT', 'PostgreSQL', 'MySQL', 'MongoDB'] },
   { group: 'Frontend', icon: 'frontend', items: ['TypeScript', 'JavaScript', 'HTML/CSS', 'SCSS', 'Styled-components', 'Accessibilité'] },
   { group: 'Data / BI', icon: 'data-bi', items: ['SQL', 'Python', 'pandas', 'numpy', 'Jupyter', 'matplotlib', 'seaborn', 'Excel'] },
   { group: 'Qualité / méthode', icon: 'quality', items: ['Modélisation', 'RGPD', 'Documentation', 'Contrôle qualité', 'Responsive', 'Git'] },
-  { group: 'Outils', icon: 'tools', items: ['Docker', 'GitHub Pages', 'localStorage', 'CSV', 'scripts de vérification', 'veille technique'] }
+  { group: 'Outils', icon: 'tools', items: ['Docker', 'Docker Compose', 'GitHub Actions', 'Docker Hub', 'CI/CD', 'Déploiement Hostinger', 'GitHub Pages'] }
 ];
 
 export const journey = [
@@ -130,19 +131,19 @@ const placeholderImage = cardImage;
 export const projects: Project[] = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
-    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Interface métier JLH AutoPam générée en CSS', visual: { kind: 'app', eyebrow: 'Garage connecté', title: 'Demandes · devis · rendez-vous', metrics: ['Espace client', 'Back-office', 'JWT + rôles'] }, accent: '#2d7f82',
-    stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker'],
-    skills: ['Architecture front/back', 'API REST', 'Authentification', 'Rôles', 'Workflow métier'],
-    summary: 'Application métier complète pour un garage automobile, avec espace client, administration, demandes, devis et rendez-vous.',
-    context: 'Projet vitrine orienté garage automobile : l’objectif est de relier les besoins client, le suivi administratif et le pilotage interne dans une même application web.',
-    problem: 'Centraliser les demandes clients, les services, les rendez-vous et la gestion administrative dans une application unique.',
-    solution: 'Frontend Angular SSR, API Spring Boot sécurisée, rôles client/admin, calendrier, documents, promotions et dashboard.',
-    deliverables: ['Espace client', 'Back-office manager', 'API REST sécurisée', 'Modèle PostgreSQL', 'Parcours demandes / devis / rendez-vous'],
-    decisions: ['Angular SSR pour une base front moderne et performante', 'Spring Boot 3.5 / Java 17 pour structurer les règles métier', 'JWT et rôles pour séparer les usages client et administration', 'Docker pour faciliter l’exécution locale'],
-    learned: 'Renforcement de la conception fullstack : découpage front/back, sécurité, workflow métier et restitution claire pour un utilisateur non technique.',
-    impact: 'Projet le plus représentatif de mon profil fullstack actuel : conception applicative, sécurité, données et expérience utilisateur.',
-    highlights: ['Authentification JWT', 'Espace client', 'Back-office manager', 'Devis et rendez-vous', 'Dashboard', 'Docker'],
-    metrics: ['Angular SSR', 'Spring Boot 3.5', 'API REST sécurisée'],
+    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Chaîne applicative JLH AutoPam générée en CSS', visual: { kind: 'pipeline', eyebrow: 'Garage · CI/CD', title: 'Front/back → Docker Hub → Hostinger', metrics: ['Angular SSR', 'Containers front/back', 'GitHub Actions'] }, accent: '#2d7f82',
+    stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 21', 'PostgreSQL', 'JWT', 'Docker', 'GitHub Actions', 'Docker Hub', 'Hostinger', 'CI/CD'],
+    skills: ['Architecture front/back', 'API REST sécurisée', 'Authentification JWT', 'Rôles client/admin', 'Dockerisation', 'Pipeline CI/CD'],
+    summary: 'Application métier fullstack pour garage automobile, avec espace client, back-office, API sécurisée et chaîne CI/CD containerisée jusqu’au déploiement Hostinger.',
+    context: 'Projet vitrine orienté garage automobile : l’objectif est de relier les demandes client, le suivi administratif, les devis et les rendez-vous dans une même application web.',
+    problem: 'Centraliser les demandes clients, les services, les rendez-vous et la gestion administrative dans une application unique, sans perdre la séparation entre usages client et back-office.',
+    solution: 'Frontend Angular 20 avec SSR, API Spring Boot 3.5 en Java 21, authentification JWT, rôles client/admin, persistance PostgreSQL et containers front/back reliés à une chaîne de livraison GitHub Actions → Docker Hub → Hostinger.',
+    deliverables: ['Espace client', 'Administration / back-office', 'Gestion demandes / devis / rendez-vous', 'API REST sécurisée avec JWT', 'Containers Docker front/back', 'Chaîne de livraison GitHub Actions → Docker Hub → Hostinger'],
+    decisions: ['Angular SSR pour disposer d’un front moderne, routé et prêt pour une diffusion web plus robuste', 'Spring Boot 3.5 / Java 21 pour structurer les règles métier et l’API REST', 'JWT et rôles pour séparer les parcours client et administration', 'Dockeriser front et back pour rendre le déploiement reproductible', 'Publier les images validées vers Docker Hub avant déploiement des containers sur Hostinger'],
+    learned: 'Renforcement de la conception fullstack de bout en bout : découpage front/back, sécurité JWT, workflow métier, containers applicatifs et chaîne de publication contrôlée.',
+    impact: 'Projet le plus représentatif de mon profil fullstack actuel : application métier, API sécurisée, Dockerisation et démarche CI/CD concrète.',
+    highlights: ['Pipeline GitHub Actions → Docker Hub → Hostinger', 'Containers front/back', 'Contrôles avant publication', 'Déploiement reproductible', 'Espace client', 'Back-office'],
+    metrics: ['Angular 20 + SSR', 'Spring Boot 3.5 / Java 21', 'PostgreSQL', 'API REST sécurisée', 'Docker Hub', 'Hostinger'],
     links: { repo: 'https://github.com/steve57000/jlh' }
   },
   {
@@ -215,19 +216,19 @@ export const projects: Project[] = [
 
   {
     id: 'locatech', title: 'Locatech', shortTitle: 'Location matériel', category: 'fullstack', featured: true,
-    status: 'Projet MNS / application métier', period: 'Formation MNS', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Architecture métier Locatech générée en CSS', visual: { kind: 'api', eyebrow: 'Java / Angular', title: 'Location matériel orchestrée', metrics: ['Spring Boot', 'Angular 19', 'MySQL + MongoDB'] }, accent: '#3b6f8f',
-    stack: ['Java', 'Spring Boot', 'Angular', 'TypeScript', 'SCSS', 'HTML', 'MySQL', 'MongoDB', 'Docker Compose'],
-    skills: ['Architecture front/back', 'API REST', 'Données relationnelles', 'Données NoSQL', 'Conteneurisation'],
-    summary: 'Application métier fullstack de location de matériel, structurée avec un frontend Angular, un backend Java Spring Boot et une orchestration Docker Compose.',
-    context: 'Projet MNS organisé en deux socles applicatifs : une interface Angular pour les parcours utilisateur et une API Spring Boot reliée à MySQL pour les données métier et MongoDB pour l’historique matériel.',
-    problem: 'Outiller un processus de location de matériel avec des catégories, un suivi d’équipements et des données consultables via une application web plutôt que des fichiers dispersés.',
-    solution: 'Architecture front/back séparée : Angular 19 côté interface, Spring Boot côté API REST, persistance MySQL/MongoDB et démarrage local documenté avec Docker Compose.',
-    deliverables: ['Frontend Angular', 'Backend Java Spring Boot', 'API REST avec endpoints catégories et historique matériel', 'Bases MySQL et MongoDB orchestrées', 'Configuration Docker Compose pour lancer les services'],
-    decisions: ['Séparer clairement le frontend Angular et le backend Spring Boot', 'Utiliser MySQL pour les données relationnelles de location', 'Ajouter MongoDB pour l’historique des équipements', 'Documenter un démarrage reproductible avec Docker Compose'],
+    status: 'Projet MNS / application métier', period: 'Formation MNS', role: 'Développement fullstack / architecture applicative', image: placeholderImage, imageAlt: 'Architecture multi-services Locatech générée en CSS', visual: { kind: 'docker', eyebrow: 'Java 21 / Angular', title: 'Location matériel multi-services', metrics: ['Docker Compose', 'MySQL + MongoDB', 'API catégories'] }, accent: '#3b6f8f',
+    stack: ['Angular', 'TypeScript', 'SCSS', 'Spring Boot', 'Java 21', 'MySQL', 'MongoDB', 'Docker Compose'],
+    skills: ['Architecture front/back', 'API REST', 'Données relationnelles', 'Données documentaires', 'Orchestration multi-services', 'Conteneurisation'],
+    summary: 'Application métier fullstack de location de matériel, avec frontend Angular, backend Spring Boot Java 21, bases MySQL/MongoDB et orchestration Docker Compose.',
+    context: 'Projet MNS organisé autour d’un besoin de location de matériel : catalogue, catégories, disponibilité et historique des équipements, avec une séparation claire entre interface Angular et API Spring Boot.',
+    problem: 'Outiller un processus de location de matériel avec gestion de catalogue, disponibilité et historique, plutôt que disperser les informations entre fichiers ou services isolés.',
+    solution: 'Architecture front/back séparée : Angular côté interface, Spring Boot côté API REST, MySQL pour les données métier, MongoDB pour l’historique matériel et Docker Compose pour orchestrer les services en local.',
+    deliverables: ['Frontend Angular', 'Backend Java Spring Boot', 'API REST avec endpoints catégories', 'Historique matériel', 'Bases MySQL et MongoDB', 'Orchestration Docker Compose multi-services'],
+    decisions: ['Séparer clairement le frontend Angular et le backend Spring Boot', 'Utiliser MySQL pour les données relationnelles de location', 'Ajouter MongoDB pour l’historique des équipements', 'S’appuyer sur Docker Compose pour rendre l’environnement multi-services reproductible'],
     learned: 'Conception d’une application métier complète : découpage front/back, configuration d’environnements, persistance SQL/NoSQL et exposition d’endpoints REST vérifiables.',
-    impact: 'Renforce le positionnement Java / Angular avec un projet applicatif plus solide qu’un simple exercice, centré sur un besoin métier identifiable.',
-    highlights: ['Angular 19', 'Spring Boot', 'API REST', 'MySQL', 'MongoDB', 'Docker Compose'],
-    metrics: ['4 services Docker documentés', 'API catégories', 'Historique matériel'],
+    impact: 'Renforce le positionnement Java / Angular avec un projet applicatif sérieux, centré sur un besoin métier identifiable et une orchestration technique vérifiable.',
+    highlights: ['Développement fullstack', 'Architecture applicative', 'API catégories', 'Historique matériel', 'MySQL + MongoDB', 'Docker Compose'],
+    metrics: ['Orchestration multi-services', 'Backend Spring Boot Java 21', 'Frontend Angular', 'Persistance SQL/NoSQL'],
     links: { repo: 'https://github.com/steve57000/Locatech' }
   },
   {

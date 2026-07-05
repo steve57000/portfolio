@@ -25,6 +25,18 @@ const panelKinds = ['dashboard', 'data', 'app', 'tool', 'document'];
       </div>
     )}
 
+    {visual.kind === 'pipeline' && (
+      <div class="visual-pipeline" aria-hidden="true">
+        <span>GitHub</span><i></i><span>Build</span><i></i><span>Docker Hub</span><i></i><span>Hostinger</span>
+      </div>
+    )}
+
+    {visual.kind === 'docker' && (
+      <div class="visual-docker" aria-hidden="true">
+        <span>Front</span><span>API</span><span>MySQL</span><span>MongoDB</span>
+      </div>
+    )}
+
     {panelKinds.includes(visual.kind) && (
       <div class:list={["visual-panels", `visual-panels--${visual.kind}`]} aria-hidden="true">
         <span></span><span></span><span></span><span></span>
