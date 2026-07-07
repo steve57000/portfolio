@@ -41,6 +41,10 @@ export type Project = {
   metrics: string[];
   links: ProjectLink;
   docs?: { label: string; href: string }[];
+  workflow?: {
+    title: string;
+    steps: string[];
+  };
 };
 
 import cardImage from '../assets/images/cardImage.png';
@@ -104,7 +108,7 @@ export const projectCategories: { id: ProjectCategory; label: string; icon: stri
 export const capabilities = [
   { title: 'Applications métier', icon: 'app', text: 'Transformer un besoin terrain en parcours utilisateur, règles métier et écrans utiles.' },
   { title: 'APIs sécurisées', icon: 'api', text: 'Structurer des backends Java/Spring Boot, authentification JWT, rôles et modèles relationnels.' },
-  { title: 'CI/CD & conteneurisation', icon: 'tools', text: 'Dockeriser les fronts et backends, préparer l’automatisation GitHub Actions, publier les images et documenter des déploiements reproductibles.' },
+  { title: 'CI/CD & déploiement', icon: 'tools', text: 'Automatiser les contrôles, construire les images Docker, publier sur Docker Hub et préparer des déploiements reproductibles.' },
   { title: 'Données propres', icon: 'database', text: 'Nettoyer, consolider, contrôler et documenter des jeux de données exploitables.' },
   { title: 'Restitution décisionnelle', icon: 'dashboard', text: 'Construire des indicateurs, dashboards et analyses orientés action.' }
 ];
@@ -131,19 +135,20 @@ const placeholderImage = cardImage;
 export const projects: Project[] = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
-    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack & préparation CI/CD', image: placeholderImage, imageAlt: 'Chaîne applicative JLH AutoPam générée en CSS', visual: { kind: 'pipeline', eyebrow: 'Garage · Docker', title: 'Front/back → Docker Hub → Hostinger', metrics: ['Angular SSR', 'Containers front/back', 'Compose production'] }, accent: '#2d7f82',
-    stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker', 'Docker Hub', 'Hostinger'],
-    skills: ['Architecture front/back', 'API REST sécurisée', 'Authentification JWT', 'Rôles client/admin', 'Dockerisation', 'Préparation CI/CD'],
-    summary: 'Projet applicatif métier pour garage automobile : front/back Angular et Spring Boot, sécurité JWT, PostgreSQL, Docker et déploiement reproductible vers Hostinger.',
+    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack & CI/CD', image: placeholderImage, imageAlt: 'Chaîne applicative JLH AutoPam générée en CSS', visual: { kind: 'pipeline', eyebrow: 'Garage · CI/CD', title: 'GitHub Actions → Docker Hub → Hostinger', metrics: ['Angular SSR', 'Containers front/back', 'CI/CD complète'] }, accent: '#2d7f82',
+    stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker', 'GitHub Actions', 'Docker Hub', 'Hostinger', 'CI/CD'],
+    skills: ['Architecture front/back', 'API REST sécurisée', 'Authentification JWT', 'Rôles client/admin', 'Dockerisation', 'CI/CD GitHub Actions'],
+    summary: 'Application métier fullstack pour garage automobile, avec espace client, back-office, API sécurisée et chaîne CI/CD complète : contrôles GitHub Actions, images Docker front/back, publication Docker Hub et déploiement Hostinger.',
     context: 'Projet vitrine orienté garage automobile : l’objectif est de relier les demandes client, le suivi administratif, les devis et les rendez-vous dans une même application web.',
     problem: 'Centraliser les demandes clients, les services, les rendez-vous et la gestion administrative dans une application unique, sans perdre la séparation entre usages client et back-office.',
-    solution: 'Frontend Angular 20 avec SSR, API Spring Boot 3.5 en Java 17, authentification JWT, rôles client/admin, persistance PostgreSQL et containers front/back reliés à une chaîne Docker documentée, avec préparation CI/CD et objectif de pipeline GitHub Actions vers Docker Hub puis Hostinger.',
-    deliverables: ['Espace client', 'Administration / back-office', 'Gestion demandes / devis / rendez-vous', 'API REST sécurisée avec JWT', 'Containers Docker front/back', 'Chaîne Docker documentée pour publication et déploiement reproductible Docker Hub / Hostinger'],
-    decisions: ['Angular SSR pour disposer d’un front moderne, routé et prêt pour une diffusion web plus robuste', 'Spring Boot 3.5 / Java 17 pour structurer les règles métier et l’API REST', 'JWT et rôles pour séparer les parcours client et administration', 'Dockeriser front et back pour rendre le déploiement reproductible', 'Préparer la publication des images backend/frontend vers Docker Hub avant déploiement des containers sur Hostinger via docker-compose.hostinger.yml'],
-    learned: 'Renforcement de la conception fullstack de bout en bout : découpage front/back, sécurité JWT, workflow métier garage, containers applicatifs et chaîne Docker documentée.',
+    solution: 'Frontend Angular 20 avec SSR, API Spring Boot 3.5 en Java 17, authentification JWT, rôles client/admin, PostgreSQL et chaîne CI/CD GitHub Actions → Docker Hub → Hostinger pour livrer les containers front/back.',
+    workflow: { title: 'Chaîne CI/CD', steps: ['Push Git vers le repository', 'GitHub Actions lance les contrôles', 'Tests et build', 'Création des images Docker front/back', 'Publication des images sur Docker Hub', 'Mise à jour des containers sur Hostinger'] },
+    deliverables: ['Espace client', 'Back-office administration', 'Gestion demandes / devis / rendez-vous', 'API REST sécurisée JWT', 'Containers Docker front/back', 'Workflow GitHub Actions', 'Images Docker Hub backend/frontend', 'Déploiement Hostinger', 'docker-compose.hostinger.yml', 'Déploiement reproductible'],
+    decisions: ['Angular SSR pour disposer d’un front moderne, routé et prêt pour une diffusion web plus robuste', 'Spring Boot 3.5 / Java 17 pour structurer les règles métier et l’API REST', 'JWT et rôles pour séparer les parcours client et administration', 'Dockeriser front et back pour rendre le déploiement reproductible', 'Chaîne CI/CD GitHub Actions → Docker Hub → Hostinger : tests et build avant publication, puis images utilisées pour redéployer les containers front/back sur Hostinger via docker-compose.hostinger.yml'],
+    learned: 'Renforcement de la conception fullstack de bout en bout : découpage front/back, sécurité JWT, workflow métier garage, containers applicatifs et chaîne CI/CD GitHub Actions → Docker Hub → Hostinger.',
     impact: 'Projet le plus représentatif de mon profil fullstack actuel : garage automobile, API sécurisée, PostgreSQL, Dockerisation et déploiement reproductible Docker Hub / Hostinger.',
-    highlights: ['Backend image Docker', 'Frontend image Docker', 'Docker Hub', 'Hostinger', 'PostgreSQL', 'Compose production'],
-    metrics: ['Angular 20 + SSR', 'Spring Boot 3.5 / Java 17', 'docker-compose.hostinger.yml', 'API REST sécurisée', 'Déploiement reproductible', 'Images backend/frontend'],
+    highlights: ['Workflow GitHub Actions', 'Tests et build avant publication', 'Images backend/frontend', 'Docker Hub', 'Hostinger', 'PostgreSQL', 'Containers front/back', 'Déploiement reproductible'],
+    metrics: ['Angular 20 + SSR', 'Spring Boot 3.5 / Java 17', 'API REST sécurisée JWT', 'PostgreSQL', 'Docker Hub', 'Hostinger', 'CI/CD GitHub Actions', 'docker-compose.hostinger.yml'],
     links: { repo: 'https://github.com/steve57000/jlh' }
   },
   {

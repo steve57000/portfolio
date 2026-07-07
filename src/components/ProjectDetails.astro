@@ -8,6 +8,8 @@ const docs = project.docs ?? [];
 const hasDeliverables = Boolean(project.deliverables?.length);
 const hasDecisions = Boolean(project.decisions?.length);
 const hasProof = Boolean(project.highlights.length || project.metrics.length || project.skills.length);
+const workflow = project.workflow;
+const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
 const hasLinks = Boolean(links.repo || links.demo || docs.length);
 ---
 <dialog class="project-dialog" id={`project-${project.id}`} aria-labelledby={`project-${project.id}-title`}>
@@ -32,6 +34,23 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
       {project.solution && <section><h4><span class="icon-badge icon-badge--sm"><Icon name="solution" /></span>Solution</h4><p>{project.solution}</p></section>}
       {project.impact && <section><h4><span class="icon-badge icon-badge--sm"><Icon name="impact" /></span>Impact</h4><p>{project.impact}</p></section>}
     </div>
+
+    {workflow && (
+      <section class="project-workflow" aria-label={workflow.title}>
+        <div>
+          <p class="eyebrow">Chaîne de livraison</p>
+          <h4><span class="icon-badge icon-badge--sm"><Icon name="tools" /></span>{workflow.title}</h4>
+        </div>
+        <ol class="workflow-timeline">
+          {workflow.steps.map((step, index) => (
+            <li>
+              <span class="workflow-timeline__icon"><Icon name={workflowIcons[index] ?? 'tools'} /></span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
 
     {(hasDeliverables || hasDecisions) && (
       <div class="detail-grid detail-grid--lists">
