@@ -47,11 +47,12 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
         <div>
           <p class="eyebrow">Preuves techniques</p>
           <h4>Repères vérifiables du projet</h4>
+          <p class="project-proof__intro">Éléments concrets visibles dans le dépôt, la structure du projet ou les livrables.</p>
         </div>
         <div class="project-proof__grid">
-          {project.highlights.length > 0 && <article><h5>Points clés</h5><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.highlights.length > 0 && <article><h5>Preuves projet</h5><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}
           {project.skills.length > 0 && <article><h5><span class="icon-badge icon-badge--sm"><Icon name="stack" /></span>Compétences mobilisées</h5><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}
-          {project.metrics.length > 0 && <article><h5><span class="icon-badge icon-badge--sm"><Icon name="metrics" /></span>Repères techniques</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
+          {project.metrics.length > 0 && <article><h5><span class="icon-badge icon-badge--sm"><Icon name="metrics" /></span>Stack vérifiable</h5><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}
         </div>
       </section>
     )}

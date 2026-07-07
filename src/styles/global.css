@@ -127,7 +127,7 @@ button, a { outline-offset: 4px; }
 }
 .hero h1 { margin: 0; font-size: clamp(3.2rem, 10vw, 8rem); line-height: 0.9; letter-spacing: -0.08em; }
 .hero h1 span { display: block; max-width: 55rem; margin-top: 1rem; font-size: clamp(1.2rem, 2.5vw, 2rem); line-height: 1.2; letter-spacing: -0.02em; }
-.hero__lead { max-width: 56rem; color: #39443f; font-size: clamp(1.2rem, 2vw, 1.7rem); }
+.hero__lead { max-width: 56rem; color: var(--copy); font-size: clamp(1.2rem, 2vw, 1.7rem); }
 .hero__chips { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 1.4rem 0; }
 .hero__chips > span {
   display: inline-flex;
@@ -204,7 +204,7 @@ button, a { outline-offset: 4px; }
 .project-card__body { display: flex; flex: 1; flex-direction: column; gap: 1.05rem; padding: clamp(1.35rem, 2vw, 1.8rem); }
 .project-card__meta { display: flex; justify-content: space-between; gap: 0.5rem; color: var(--muted); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .project-card h3 { margin: 0; font-size: clamp(1.35rem, 2vw, 1.55rem); line-height: 1.08; letter-spacing: -0.035em; }
-.project-card p { margin: 0; color: #43504a; line-height: 1.65; }
+.project-card p { margin: 0; color: var(--copy-soft); line-height: 1.65; }
 .project-card .tags { margin-top: auto; margin-bottom: 0; padding-top: 0.45rem; padding-bottom: 0.15rem; }
 .project-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent), var(--line) 45%); box-shadow: var(--shadow-hover); }
 .project-card:hover img { transform: scale(1.045); filter: saturate(1.05) contrast(1.03); }
@@ -267,7 +267,7 @@ button, a { outline-offset: 4px; }
 .timeline li::before { content: counter(journey, decimal-leading-zero); display: grid; place-items: center; width: 2.15rem; height: 2.15rem; margin-bottom: 1rem; border-radius: 50%; background: var(--dark); color: #f4d7a1; font-size: 0.78rem; font-weight: 900; box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent), transparent 86%); }
 .timeline span { display: inline-flex; margin-bottom: 0.45rem; color: var(--accent); font-size: 0.82rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
 .timeline h3 { margin: 0 0 0.35rem; letter-spacing: -0.025em; }
-.timeline p { margin: 0; color: #43504a; }
+.timeline p { margin: 0; color: var(--copy-soft); }
 .timeline li:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent), var(--line) 40%); box-shadow: var(--shadow-card); }
 
 /* dialog */
@@ -279,11 +279,12 @@ button, a { outline-offset: 4px; }
 .dialog-close:hover { transform: rotate(4deg) scale(1.03); background: color-mix(in srgb, var(--accent), var(--dark) 45%); }
 .project-detail__header { max-width: 52rem; padding-right: 3rem; }
 .project-dialog__panel h3 { margin: 0; font-size: clamp(2rem, 5vw, 4rem); line-height: 0.96; letter-spacing: -0.055em; }
-.lead { color: #39443f; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+.lead { color: var(--copy); font-size: clamp(1.05rem, 2vw, 1.28rem); }
 .project-detail__summary, .project-detail__learned, .project-proof, .project-detail__stack { margin-top: 1rem; padding: clamp(1rem, 2vw, 1.25rem); border: 1px solid var(--line); border-radius: 1.05rem; background: linear-gradient(135deg, rgba(255,255,255,0.66), rgba(255,248,234,0.54)); }
 .project-detail__summary { display: grid; gap: 0.35rem; border-left: 5px solid var(--accent); }
 .project-detail__summary span { color: var(--accent); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
-.project-detail__summary p, .project-detail__learned p { margin: 0; color: #43504a; }
+.project-detail__summary p, .project-detail__learned p { margin: 0; color: var(--copy-soft); }
+.project-proof__intro { max-width: 52rem; margin: 0.3rem 0 0; color: var(--copy-soft); line-height: 1.55; }
 .detail-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
 .detail-grid section { padding: 1rem; border: 1px solid var(--line); border-radius: 1rem; background: rgba(255,255,255,0.5); }
 .detail-grid--story section:first-child { background: color-mix(in srgb, var(--accent), #fff 91%); }
@@ -603,7 +604,8 @@ html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(0.96rem); b
 .button { color: var(--button-text); }
 .button--ghost { color: var(--button-ghost-text); }
 .filters .is-active { color: var(--button-text); }
-.hero__lead, .project-card p, .timeline p, .lead, .project-detail__summary p, .project-detail__learned p { color: var(--copy); }
+.hero__lead, .lead, .project-detail__summary p { color: var(--copy); }
+.project-card p, .timeline p, .project-detail__learned p, .detail-grid p, .project-proof__intro { color: var(--copy-soft); }
 .project-empty { background: var(--chip-bg); color: var(--copy); }
 .hero__chips > span, .filters button, .skill-grid li { background: var(--tag-bg); color: var(--tag-text); border-color: var(--tag-border); }
 .hero__focus li, .detail-grid section, .project-proof article { background: color-mix(in srgb, var(--panel-strong), transparent 34%); }
