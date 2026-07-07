@@ -5,6 +5,7 @@ import type { Project } from '../data/portfolioData';
 
 const { project, index = 0 } = Astro.props as { project: Project; index?: number };
 const links = project.links ?? {};
+const visibleStackCount = project.featured ? 6 : 5;
 ---
 <article class:list={["project-card", project.featured && "is-featured"]} data-project-card data-reveal data-category={project.category} style={`--accent:${project.accent};--reveal-delay:${Math.min(index % 4, 3) * 80}ms`}>
   <div class="project-card__media">
@@ -22,7 +23,7 @@ const links = project.links ?? {};
     <h3>{project.title}</h3>
     <p>{project.summary}</p>
     <ul class="tags" aria-label={`Technologies ${project.title}`}>
-      {project.stack.slice(0, 5).map((item) => <li>{item}</li>)}
+      {project.stack.slice(0, visibleStackCount).map((item) => <li>{item}</li>)}
     </ul>
     <div class="project-card__actions">
       <button class="button button--ghost" type="button" data-project-open={project.id}><Icon name="details" />Détails</button>
