@@ -16,14 +16,26 @@ const {
   ogType?: string;
   twitterDescription?: string;
 };
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Steve Bell',
+  jobTitle: 'Développeur fullstack Java / Angular & Data Analyst junior',
+  url: 'https://steve57000.github.io/portfolio/',
+  sameAs: ['https://github.com/steve57000', 'https://www.linkedin.com/in/steve-bell57'],
+};
 ---
 <meta name="description" content={description} />
+<meta name="author" content="Steve Bell" />
+<meta name="robots" content="index, follow" />
 {canonical && <link rel="canonical" href={canonical} />}
 <link rel="icon" href={withBase('favicon.ico')} sizes="any" />
 <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
 <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
 <link rel="manifest" href={withBase('site.webmanifest')} />
-<meta name="theme-color" content="#06100f" />
+<meta name="theme-color" content="#f5f1e8" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0b1110" media="(prefers-color-scheme: dark)" />
 <meta property="og:type" content={ogType} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -35,4 +47,5 @@ const {
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={twitterDescription} />
 <meta name="twitter:image" content={ogImage} />
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 <title>{title}</title>

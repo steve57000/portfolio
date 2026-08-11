@@ -1,10 +1,26 @@
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 
+const closeNavigation = () => {
+  navToggle?.setAttribute('aria-expanded', 'false');
+  nav?.classList.remove('is-open');
+};
+
 navToggle?.addEventListener('click', () => {
   const expanded = navToggle.getAttribute('aria-expanded') === 'true';
   navToggle.setAttribute('aria-expanded', String(!expanded));
   nav?.classList.toggle('is-open', !expanded);
+});
+
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNavigation));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && nav?.classList.contains('is-open')) {
+    closeNavigation();
+    navToggle?.focus();
+  }
+});
+window.matchMedia('(min-width: 801px)').addEventListener?.('change', (event) => {
+  if (event.matches) closeNavigation();
 });
 
 const themeToggle = document.querySelector('[data-theme-toggle]');
@@ -117,15 +133,25 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   revealElements.forEach((element) => element.classList.add('is-revealed'));
 }
 
+let activeDialogTrigger = null;
+
 document.querySelectorAll('[data-project-open]').forEach((button) => {
   button.addEventListener('click', () => {
     const dialog = document.getElementById(`project-${button.dataset.projectOpen}`);
-    if (dialog?.showModal) dialog.showModal();
+    if (dialog?.showModal) {
+      activeDialogTrigger = button;
+      dialog.showModal();
+      dialog.querySelector('.dialog-close')?.focus();
+    }
   });
 });
 
 document.querySelectorAll('.project-dialog').forEach((dialog) => {
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => {
+    if (activeDialogTrigger instanceof HTMLElement) activeDialogTrigger.focus();
+    activeDialogTrigger = null;
   });
 });

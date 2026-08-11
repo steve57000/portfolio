@@ -102,7 +102,7 @@ export const projectCategories: { id: ProjectCategory; label: string; icon: stri
   { id: 'data-bi', label: 'Data / BI', icon: 'data-bi' },
   { id: 'frontend', label: 'Front-end', icon: 'frontend' },
   { id: 'tools', label: 'Outils', icon: 'tools' },
-  { id: 'archives', label: 'Fondations', icon: 'archives' }
+  { id: 'archives', label: 'Parcours web', icon: 'archives' }
 ];
 
 export const capabilities = [
@@ -135,7 +135,7 @@ const placeholderImage = cardImage;
 export const projects: Project[] = [
   {
     id: 'jlh-autopam', title: 'JLH AutoPam', shortTitle: 'Garage connecté', category: 'fullstack', featured: true,
-    status: 'En cours / projet vitrine', period: '2026', role: 'Développeur fullstack & CI/CD', image: placeholderImage, imageAlt: 'Chaîne applicative JLH AutoPam générée en CSS', visual: { kind: 'pipeline', eyebrow: 'Garage · CI/CD', title: 'GitHub Actions → Docker Hub → Hostinger', metrics: ['Angular SSR', 'Containers front/back', 'CI/CD complète'] }, accent: '#2d7f82',
+    status: 'Application métier · version 2026', period: '2026', role: 'Développeur fullstack & CI/CD', image: placeholderImage, imageAlt: 'Chaîne applicative JLH AutoPam générée en CSS', visual: { kind: 'pipeline', eyebrow: 'Garage · CI/CD', title: 'GitHub Actions → Docker Hub → Hostinger', metrics: ['Angular SSR', 'Containers front/back', 'CI/CD complète'] }, accent: '#2d7f82',
     stack: ['Angular 20', 'Angular SSR', 'TypeScript', 'SCSS', 'Spring Boot 3.5', 'Java 17', 'PostgreSQL', 'JWT', 'Docker', 'GitHub Actions', 'Docker Hub', 'Hostinger', 'CI/CD'],
     skills: ['Architecture front/back', 'API REST sécurisée', 'Authentification JWT', 'Rôles client/admin', 'Dockerisation', 'CI/CD GitHub Actions'],
     summary: 'Application métier fullstack pour garage automobile, avec espace client, back-office, API sécurisée et chaîne CI/CD complète : contrôles GitHub Actions, images Docker front/back, publication Docker Hub et déploiement Hostinger.',
@@ -212,11 +212,11 @@ export const projects: Project[] = [
     links: {}
   },
   {
-    id: 'guide-investissement', title: 'Guide Investissement', shortTitle: 'Outils finance perso', category: 'tools', featured: true, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Dashboard privacy-first Guide Investissement généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Outil publié', title: 'Journal local · dashboard · contenus', metrics: ['Démo GitHub Pages', 'Privacy-first', 'Astro statique'] }, accent: '#8a6b2f',
+    id: 'guide-investissement', title: 'Guide Investissement', shortTitle: 'Outils finance perso', category: 'tools', featured: true, status: 'Outil éducatif publié', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Dashboard privacy-first Guide Investissement généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Outil publié', title: 'Journal local · dashboard · contenus', metrics: ['Démo GitHub Pages', 'Privacy-first', 'Astro statique'] }, accent: '#8a6b2f',
     stack: ['Astro', 'TypeScript', 'localStorage', 'GitHub Pages'], skills: ['SEO', 'Privacy-first', 'Scripts de vérification'], summary: 'Site éducatif statique avec outils interactifs, journal et dashboard personnel stockés localement.', context: 'Projet personnel orienté pédagogie financière et suivi local, sans collecte serveur ni compte utilisateur.', problem: 'Proposer un outil simple et privé pour suivre une démarche d’investissement personnelle.', solution: 'Architecture statique, données locales, contenus pédagogiques et contrôles automatisés.', deliverables: ['Site statique éducatif', 'Journal local', 'Dashboard personnel', 'Scripts de vérification'], decisions: ['Stocker les données dans le navigateur pour préserver la confidentialité', 'Favoriser des pages statiques compatibles GitHub Pages', 'Documenter les contrôles utiles avant publication'], learned: 'Structuration d’un outil privacy-first avec une attention SEO, contenu et vérification automatisée.', impact: 'Démontre une approche produit, SEO et respect de la confidentialité.', highlights: ['Journal', 'Dashboard', 'localStorage', 'SEO'], metrics: ['GitHub Pages', 'Privacy-first'], links: { repo: 'https://github.com/steve57000/guide-investissement', demo: 'https://steve57000.github.io/guide-investissement/' }
   },
   {
-    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Projet personnel', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Mockup applicatif Recettes généré en CSS', visual: { kind: 'tool', eyebrow: 'Outil quotidien', title: 'Recettes · portions · courses', metrics: ['CRUD local', 'Export JSON', 'Sans backend'] }, accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes', demo: 'https://steve57000.github.io/recettes/' }
+    id: 'recettes', title: 'Recettes', shortTitle: 'Livre de cuisine', category: 'tools', featured: false, status: 'Application utilitaire publiée', period: '2026', role: 'Développeur front', image: placeholderImage, imageAlt: 'Mockup applicatif Recettes généré en CSS', visual: { kind: 'tool', eyebrow: 'Outil quotidien', title: 'Recettes · portions · courses', metrics: ['CRUD local', 'Export JSON', 'Sans backend'] }, accent: '#a65a42', stack: ['JavaScript', 'HTML/CSS', 'localStorage', 'JSON'], skills: ['CRUD', 'Export/import', 'UX utilitaire'], summary: 'Application statique de recettes avec portions dynamiques, liste de courses et sauvegarde JSON.', context: 'Projet personnel conçu pour gérer des recettes du quotidien dans une application simple, portable et sans backend obligatoire.', problem: 'Organiser des recettes et courses sans backend obligatoire.', solution: 'CRUD local, calcul des portions, export/import et synchronisation JSON possible.', deliverables: ['Catalogue de recettes', 'Calcul des portions', 'Liste de courses', 'Export/import JSON'], decisions: ['Garder une application statique pour faciliter l’hébergement', 'Utiliser le stockage local et un format JSON lisible', 'Prioriser les actions utiles en cuisine plutôt qu’une interface complexe'], learned: 'Conception d’un outil utilitaire centré sur les usages réels : données locales, édition rapide et portabilité.', impact: 'Projet utile, concret et orienté usage quotidien.', highlights: ['CRUD', 'Portions dynamiques', 'Liste de courses', 'JSON'], metrics: ['localStorage', 'Application statique'], links: { repo: 'https://github.com/steve57000/recettes', demo: 'https://steve57000.github.io/recettes/' }
   },
 
   {
@@ -238,20 +238,20 @@ export const projects: Project[] = [
   },
   {
     id: 'bdshop', title: 'BDSHOP', shortTitle: 'Boutique', category: 'fullstack', featured: false,
-    status: 'Projet applicatif', period: 'Projet applicatif', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Mockup catalogue BDSHOP généré en CSS', visual: { kind: 'app', eyebrow: 'Catalogue', title: 'Boutique et parcours achat', metrics: ['Produits', 'Navigation', 'Dépôt GitHub'] }, accent: '#8f5a3b',
+    status: 'Prototype e-commerce', period: 'Réalisation fullstack', role: 'Développeur fullstack', image: placeholderImage, imageAlt: 'Mockup catalogue BDSHOP généré en CSS', visual: { kind: 'app', eyebrow: 'Catalogue', title: 'Boutique et parcours achat', metrics: ['Produits', 'Navigation', 'Dépôt GitHub'] }, accent: '#8f5a3b',
     stack: ['Application web'], skills: ['Catalogue', 'Architecture applicative', 'Git'],
     summary: 'Application de boutique en ligne centrée sur un catalogue produits et un parcours d’achat démonstratif.',
     problem: 'Organiser une expérience e-commerce lisible autour de produits consultables et d’une logique boutique.',
-    solution: 'Projet applicatif conservé pour illustrer la modélisation d’un catalogue, la navigation produit et la structuration d’un dépôt web.',
+    solution: 'Prototype structuré pour illustrer la modélisation d’un catalogue, la navigation produit et la structuration d’un dépôt web.',
     deliverables: ['Catalogue boutique', 'Parcours utilisateur e-commerce', 'Dépôt applicatif versionné'],
     decisions: ['Présenter le catalogue comme un parcours applicatif lisible', 'Mettre en avant le dépôt tant qu’aucune démo publique stabilisée n’est disponible'],
     impact: 'Complète les réalisations métier avec un cas e-commerce orienté catalogue et navigation produit.',
-    highlights: ['Catalogue', 'Parcours boutique', 'Projet applicatif'], metrics: ['Dépôt GitHub'],
+    highlights: ['Catalogue', 'Parcours boutique', 'Architecture web'], metrics: ['Dépôt GitHub'],
     links: { repo: 'https://github.com/steve57000/BDSHOP' }
   },
   {
     id: 'compressor-img', title: 'compressorImg', shortTitle: 'Compression images', category: 'tools', featured: false,
-    status: 'Outil personnel', period: 'Projet public', role: 'Développeur front / outil', image: placeholderImage, imageAlt: 'Interface outil compressorImg générée en CSS', visual: { kind: 'tool', eyebrow: 'Web tool', title: 'Compression avant intégration', metrics: ['Optimisation', 'Navigateur', 'Workflow asset'] }, accent: '#6d6a9f',
+    status: 'Utilitaire web', period: 'Dépôt public', role: 'Développeur front / outil', image: placeholderImage, imageAlt: 'Interface outil compressorImg générée en CSS', visual: { kind: 'tool', eyebrow: 'Web tool', title: 'Compression avant intégration', metrics: ['Optimisation', 'Navigateur', 'Workflow asset'] }, accent: '#6d6a9f',
     stack: ['Interface web'], skills: ['Optimisation', 'UX utilitaire', 'Front-end'],
     summary: 'Utilitaire front-end de compression d’images pour préparer des assets plus légers avant intégration web.',
     problem: 'Réduire le poids des images sans alourdir le workflow avec un outil serveur ou une chaîne complexe.',
