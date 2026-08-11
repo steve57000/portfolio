@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import type { Project } from '../data/portfolioData';
+import { withBase } from '../utils/paths';
 
 const { project } = Astro.props as { project: Project };
 const links = project.links ?? {};
@@ -11,6 +12,7 @@ const hasProof = Boolean(project.highlights.length || project.metrics.length || 
 const workflow = project.workflow;
 const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
 const hasLinks = Boolean(links.repo || links.demo || docs.length);
+const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBase(href);
 ---
 <dialog class="project-dialog" id={`project-${project.id}`} aria-labelledby={`project-${project.id}-title`}>
   <div class="project-dialog__panel" style={`--accent:${project.accent}`}>
@@ -85,7 +87,7 @@ const hasLinks = Boolean(links.repo || links.demo || docs.length);
       <nav class="project-card__actions project-detail__actions" aria-label="Liens du projet">
         {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Voir le repo</a>}
         {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Voir la démo</a>}
-        {docs.map((doc) => <a class="button button--ghost" href={doc.href} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}
+        {docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}
       </nav>
     )}
   </div>
