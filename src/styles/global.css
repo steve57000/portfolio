@@ -1068,3 +1068,93 @@ html[data-theme="dark"] .icon-badge {
     text-align: left;
   }
 }
+
+/* Project evidence and published deliverables */
+.project-evidence {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--accent), var(--line) 72%);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent), var(--panel) 96%), var(--panel));
+  color: var(--copy);
+}
+
+.project-evidence h2,
+.project-evidence h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--heading);
+}
+
+.project-evidence__intro,
+.docs-note {
+  max-width: 58rem;
+  margin: 0;
+  color: var(--copy-soft);
+  line-height: 1.6;
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.evidence-card {
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--panel-elevated), transparent 8%);
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--accent), transparent 20%);
+}
+
+.evidence-card dt {
+  margin-bottom: 0.3rem;
+  color: var(--accent-readable);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.evidence-card dd {
+  margin: 0;
+  color: var(--copy);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.project-docs { display: grid; gap: 0.7rem; }
+.project-docs .project-detail__actions { flex-wrap: wrap; }
+.project-docs .button small { margin-left: 0.35rem; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; }
+.project-docs .button span { display: grid; text-align: left; }
+.project-docs .button span small { margin-left: 0; color: inherit; font-weight: 650; letter-spacing: 0; text-transform: none; opacity: 0.78; }
+
+.projects-page__proofs {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: clamp(2rem, 5vw, 5rem);
+  border-block: 1px solid var(--line);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent), transparent 95%), transparent 65%);
+}
+.projects-page__proofs h2 { margin: 0 0 0.65rem; }
+.projects-page__proofs > div > p:last-child { max-width: 58rem; color: var(--copy-soft); line-height: 1.65; }
+
+html[data-theme="dark"] .project-evidence,
+html[data-theme="dark"] .projects-page__proofs { background-color: var(--panel); }
+html[data-theme="dark"] .evidence-card { background: color-mix(in srgb, var(--panel-elevated), transparent 4%); }
+
+@media (min-width: 600px) {
+  .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 960px) {
+  .project-evidence .evidence-grid,
+  .projects-page__proofs .evidence-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
