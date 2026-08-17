@@ -1,0 +1,74 @@
+---
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import SeoHead from '../../components/SeoHead.astro';
+import { featuredProjects, projects } from '../../data/portfolioData';
+import { withBase } from '../../utils/paths';
+import '../../styles/global.css';
+
+const catalogueGroups = [
+  { title: 'Fullstack', items: projects.filter((project) => !project.featured && project.category === 'fullstack') },
+  { title: 'Data / BI', items: projects.filter((project) => !project.featured && project.category === 'data-bi') },
+  { title: 'Outils publiés', items: projects.filter((project) => !project.featured && project.category === 'tools') },
+  { title: 'Front-end / réalisations web', items: projects.filter((project) => !project.featured && ['frontend', 'archives'].includes(project.category)) },
+];
+---
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script is:inline>(()=>{const k='portfolio-theme';const r=document.documentElement;const sys=()=>window.matchMedia?.('(prefers-color-scheme: dark)').matches?'dark':'light';const saved=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=saved==='dark'||saved==='light'?saved:sys();})();</script>
+    <SeoHead
+      title="Projets — Steve Bell"
+      description="Études de cas, applications métier, projets data, outils publiés et réalisations web de Steve Bell."
+      canonical="https://steve57000.github.io/portfolio/projets/"
+    />
+  </head>
+  <body>
+    <Header />
+    <main class="projects-page">
+      <header class="projects-page__hero">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Projets et études de cas</h1>
+        <p>Applications métier, projets data, outils publiés et réalisations web sélectionnées.</p>
+        <a class="text-link" href={withBase()}>← Revenir à l’accueil</a>
+      </header>
+
+      <section class="section" aria-labelledby="case-studies-title">
+        <div class="projects-page__section-head">
+          <p class="eyebrow">Sélection</p>
+          <h2 id="case-studies-title">Études de cas</h2>
+          <p>Cinq projets détaillés par contexte, décisions, livrables et résultats.</p>
+        </div>
+        <div class="featured-grid">
+          {featuredProjects.map((project, index) => <ProjectCard project={project} index={index} showDetails={false} />)}
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="catalogue-title">
+        <div class="projects-page__section-head">
+          <p class="eyebrow">Portfolio complet</p>
+          <h2 id="catalogue-title">Catalogue</h2>
+          <p>Les autres réalisations, regroupées par domaine pour faciliter la lecture.</p>
+        </div>
+        <div class="projects-page__groups">
+          {catalogueGroups.map((group) => group.items.length > 0 && (
+            <section class="project-group" aria-labelledby={`group-${group.title.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+              <div class="project-group__head">
+                <h2 id={`group-${group.title.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{group.title}</h2>
+                <p>{group.items.length} réalisation{group.items.length > 1 ? 's' : ''}</p>
+              </div>
+              <div class="project-grid">
+                {group.items.map((project, index) => <ProjectCard project={project} index={index} showDetails={false} />)}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+    </main>
+    <Footer />
+    <script src={withBase('scripts/main.js')} defer></script>
+  </body>
+</html>
