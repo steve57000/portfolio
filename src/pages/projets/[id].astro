@@ -17,6 +17,20 @@ const canonical = `https://steve57000.github.io/portfolio/projets/${project.id}/
 const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
 const docs = project.docs ?? [];
 const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBase(href);
+const currentProjectIndex = featuredProjects.findIndex((item) => item.id === project.id);
+const previousProject = currentProjectIndex > 0 ? featuredProjects[currentProjectIndex - 1] : undefined;
+const nextProject = currentProjectIndex >= 0 && currentProjectIndex < featuredProjects.length - 1 ? featuredProjects[currentProjectIndex + 1] : undefined;
+const hasDeliverables = Boolean(project.deliverables?.length);
+const hasDecisions = Boolean(project.decisions?.length);
+const hasHighlights = Boolean(project.highlights?.length);
+const hasSkills = Boolean(project.skills?.length);
+const hasMetrics = Boolean(project.metrics?.length);
+const hasProof = hasHighlights || hasSkills || hasMetrics;
+const primaryLink = project.links.repo
+  ? { label: 'Repo GitHub', href: project.links.repo }
+  : project.links.demo
+    ? { label: 'Démo publiée', href: project.links.demo }
+    : undefined;
 ---
 <!doctype html>
 <html lang="fr" data-theme="light">
@@ -30,7 +44,7 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
     <Header />
     <main class="case-study" style={`--accent:${project.accent}`}>
       <nav class="case-study__breadcrumb" aria-label="Fil d’Ariane">
-        <a href={withBase()}><Icon name="projects" />Portfolio</a><span aria-hidden="true">/</span><a href={withBase('#case-studies')}>Case studies</a><span aria-hidden="true">/</span><span aria-current="page">{project.shortTitle}</span>
+        <a href={withBase()}><Icon name="projects" />Portfolio</a><span aria-hidden="true">/</span><a href={withBase('projets/')}>Projets</a><span aria-hidden="true">/</span><span aria-current="page">{project.shortTitle}</span>
       </nav>
 
       <header class="case-study__hero">
@@ -42,7 +56,7 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
           <div class="hero__actions">
             {project.links.repo && <a class="button" href={project.links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Voir le repo</a>}
             {project.links.demo && <a class="button" href={project.links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Voir la démo</a>}
-            <a class="button button--ghost" href={withBase('#case-studies')}><Icon name="case-studies" />Tous les projets clés</a>
+            <a class="button button--ghost" href={withBase('projets/')}><Icon name="case-studies" />Tous les projets</a>
           </div>
         </div>
         <div class="case-study__visual">
@@ -51,6 +65,18 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
       </header>
 
       <div class="case-study__body">
+        <section class="case-study__brief" aria-labelledby="brief-title">
+          <p class="eyebrow">Synthèse</p>
+          <h2 id="brief-title">En bref</h2>
+          <dl>
+            <div><dt>Rôle</dt><dd>{project.role}</dd></div>
+            <div><dt>Stack principale</dt><dd>{project.stack.slice(0, 4).join(', ')}</dd></div>
+            <div><dt>Type de projet</dt><dd>{project.category}</dd></div>
+            <div><dt>Livrable</dt><dd>{project.status}</dd></div>
+            {primaryLink && <div><dt>Preuve</dt><dd><a href={primaryLink.href} target="_blank" rel="noreferrer">{primaryLink.label}</a></dd></div>}
+          </dl>
+        </section>
+
         <section class="case-study__impact" aria-labelledby="impact-title"><p class="eyebrow">Résultat</p><h2 id="impact-title">Impact du projet</h2><p>{project.impact}</p></section>
 
         <div class="detail-grid detail-grid--story">
@@ -62,16 +88,25 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
         {project.workflow && <section class="project-workflow"><p class="eyebrow">Chaîne de livraison</p><h2>{project.workflow.title}</h2><ol class="workflow-timeline">{project.workflow.steps.map((step, index) => <li><span class="workflow-timeline__icon"><Icon name={workflowIcons[index] ?? 'tools'} /></span><span>{step}</span></li>)}</ol></section>}
 
         <div class="detail-grid detail-grid--lists">
-          {project.deliverables?.length && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="deliverables" /></span>Livrables</h2><ul>{project.deliverables.map((item) => <li>{item}</li>)}</ul></section>}
-          {project.decisions?.length && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="decisions" /></span>Choix techniques</h2><ul>{project.decisions.map((item) => <li>{item}</li>)}</ul></section>}
+          {hasDeliverables && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="deliverables" /></span>Livrables</h2><ul>{project.deliverables!.map((item) => <li>{item}</li>)}</ul></section>}
+          {hasDecisions && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="decisions" /></span>Choix techniques</h2><ul>{project.decisions!.map((item) => <li>{item}</li>)}</ul></section>}
         </div>
 
         {project.learned && <section class="project-detail__learned"><h2><span class="icon-badge icon-badge--sm"><Icon name="learnings" /></span>Ce que j’ai appris</h2><p>{project.learned}</p></section>}
 
-        <section class="project-proof" aria-labelledby="proof-title"><p class="eyebrow">Preuves techniques</p><h2 id="proof-title">Repères vérifiables du projet</h2><div class="project-proof__grid"><article><h3>Preuves projet</h3><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article><article><h3>Compétences mobilisées</h3><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article><article><h3>Stack vérifiable</h3><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article></div></section>
+        {hasProof && <section class="project-proof" aria-labelledby="proof-title"><p class="eyebrow">Preuves techniques</p><h2 id="proof-title">Repères vérifiables du projet</h2><div class="project-proof__grid">{hasHighlights && <article><h3>Preuves projet</h3><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}{hasSkills && <article><h3>Compétences mobilisées</h3><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}{hasMetrics && <article><h3>Stack vérifiable</h3><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}</div></section>}
 
         <section class="project-detail__stack"><h2><span class="icon-badge icon-badge--sm"><Icon name="stack" /></span>Stack technique</h2><ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul></section>
         {docs.length > 0 && <nav class="project-detail__actions" aria-label="Documents du projet">{docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}</nav>}
+
+        <section class="case-study__nav" aria-labelledby="project-nav-title">
+          <p class="eyebrow">Continuer la lecture</p>
+          <h2 id="project-nav-title">Navigation entre projets</h2>
+          <nav class="case-study__pager" aria-label="Projets précédent et suivant">
+            {previousProject && <a class="case-study__pager-link case-study__pager-link--previous" href={withBase(`projets/${previousProject.id}/`)}><span>← Projet précédent</span><strong>{previousProject.shortTitle || previousProject.title}</strong></a>}
+            {nextProject && <a class="case-study__pager-link case-study__pager-link--next" href={withBase(`projets/${nextProject.id}/`)}><span>Projet suivant →</span><strong>{nextProject.shortTitle || nextProject.title}</strong></a>}
+          </nav>
+        </section>
       </div>
     </main>
     <Footer />
