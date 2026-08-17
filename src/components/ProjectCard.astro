@@ -2,6 +2,7 @@
 import Icon from './Icon.astro';
 import ProjectVisual from './ProjectVisual.astro';
 import type { Project } from '../data/portfolioData';
+import { withBase } from '../utils/paths';
 
 const { project, index = 0 } = Astro.props as { project: Project; index?: number };
 const links = project.links ?? {};
@@ -27,6 +28,7 @@ const visibleStackCount = project.featured ? 6 : 5;
     </ul>
     <div class="project-card__actions">
       <button class="button button--ghost" type="button" data-project-open={project.id}><Icon name="details" />Détails</button>
+      {project.featured && <a class="text-link" href={withBase(`projets/${project.id}/`)}><Icon name="case-studies" />Étude de cas</a>}
       {links.repo && <a class="text-link" href={links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Repo</a>}
       {links.demo && <a class="text-link" href={links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Démo</a>}
     </div>
