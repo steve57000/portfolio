@@ -3,6 +3,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Icon from '../../components/Icon.astro';
 import ProjectVisual from '../../components/ProjectVisual.astro';
+import ProjectEvidence from '../../components/ProjectEvidence.astro';
 import SeoHead from '../../components/SeoHead.astro';
 import { featuredProjects, type Project } from '../../data/portfolioData';
 import { withBase } from '../../utils/paths';
@@ -16,7 +17,7 @@ const { project } = Astro.props as { project: Project };
 const canonical = `https://steve57000.github.io/portfolio/projets/${project.id}/`;
 const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
 const docs = project.docs ?? [];
-const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBase(href);
+const documentHref = (href: string) => /^https?:\/\//.test(href) || href.startsWith(import.meta.env.BASE_URL) ? href : withBase(href);
 const currentProjectIndex = featuredProjects.findIndex((item) => item.id === project.id);
 const previousProject = currentProjectIndex > 0 ? featuredProjects[currentProjectIndex - 1] : undefined;
 const nextProject = currentProjectIndex >= 0 && currentProjectIndex < featuredProjects.length - 1 ? featuredProjects[currentProjectIndex + 1] : undefined;
@@ -77,6 +78,8 @@ const primaryLink = project.links.repo
           </dl>
         </section>
 
+        <ProjectEvidence evidence={project.evidence} editorial idSuffix={`${project.id}-page`} />
+
         <section class="case-study__impact" aria-labelledby="impact-title"><p class="eyebrow">Résultat</p><h2 id="impact-title">Impact du projet</h2><p>{project.impact}</p></section>
 
         <div class="detail-grid detail-grid--story">
@@ -97,7 +100,7 @@ const primaryLink = project.links.repo
         {hasProof && <section class="project-proof" aria-labelledby="proof-title"><p class="eyebrow">Preuves techniques</p><h2 id="proof-title">Repères vérifiables du projet</h2><div class="project-proof__grid">{hasHighlights && <article><h3>Preuves projet</h3><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article>}{hasSkills && <article><h3>Compétences mobilisées</h3><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article>}{hasMetrics && <article><h3>Stack vérifiable</h3><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article>}</div></section>}
 
         <section class="project-detail__stack"><h2><span class="icon-badge icon-badge--sm"><Icon name="stack" /></span>Stack technique</h2><ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul></section>
-        {docs.length > 0 && <nav class="project-detail__actions" aria-label="Documents du projet">{docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}</nav>}
+        {docs.length > 0 && <section class="project-docs" aria-labelledby="project-docs-title"><p class="eyebrow">Consultation</p><h2 id="project-docs-title">Livrables disponibles</h2><p class="docs-note">Documents publiés et consultables pour approfondir les choix et les résultats du projet.</p><nav class="project-detail__actions" aria-label="Documents du projet">{docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" /><span>{doc.label}{doc.description && <small>{doc.description}</small>}</span>{doc.type && <small>{doc.type}</small>}</a>)}</nav></section>}
 
         <section class="case-study__nav" aria-labelledby="project-nav-title">
           <p class="eyebrow">Continuer la lecture</p>

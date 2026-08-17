@@ -13,6 +13,9 @@ const catalogueGroups = [
   { title: 'Outils publiés', items: projects.filter((project) => !project.featured && project.category === 'tools') },
   { title: 'Front-end / réalisations web', items: projects.filter((project) => !project.featured && ['frontend', 'archives'].includes(project.category)) },
 ];
+const evidenceProjectCount = projects.filter((project) => project.evidence?.length).length;
+const documentedProjects = projects.filter((project) => project.docs?.length);
+const documentTypes = [...new Set(documentedProjects.flatMap((project) => project.docs?.map((doc) => doc.type ?? 'other') ?? []))];
 ---
 <!doctype html>
 <html lang="fr" data-theme="light">
@@ -66,6 +69,20 @@ const catalogueGroups = [
             </section>
           ))}
         </div>
+      </section>
+
+      <section class="section projects-page__proofs" aria-labelledby="proofs-title">
+        <div>
+          <p class="eyebrow">Documentation</p>
+          <h2 id="proofs-title">Livrables et preuves</h2>
+          <p>Les projets data et applicatifs sont documentés par des notebooks, requêtes, rapports, modèles ou preuves techniques quand leur publication est possible.</p>
+        </div>
+        <dl class="evidence-grid" aria-label="Repères de documentation du portfolio">
+          <div class="evidence-card"><dt>Projets avec preuves</dt><dd>{evidenceProjectCount}</dd></div>
+          <div class="evidence-card"><dt>Projets avec documents</dt><dd>{documentedProjects.length}</dd></div>
+          <div class="evidence-card"><dt>Types référencés</dt><dd>{documentTypes.length ? documentTypes.join(' · ').toUpperCase() : 'Aucun document publié'}</dd></div>
+        </dl>
+        <p class="docs-note">Seuls les livrables réellement présents et publiables sont liés depuis le portfolio.</p>
       </section>
     </main>
     <Footer />

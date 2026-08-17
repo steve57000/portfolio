@@ -40,7 +40,16 @@ export type Project = {
   highlights: string[];
   metrics: string[];
   links: ProjectLink;
-  docs?: { label: string; href: string }[];
+  docs?: {
+    label: string;
+    href: string;
+    type?: 'pdf' | 'notebook' | 'csv' | 'xlsx' | 'pptx' | 'repo' | 'demo' | 'other';
+    description?: string;
+  }[];
+  evidence?: {
+    label: string;
+    value: string;
+  }[];
   workflow?: {
     title: string;
     steps: string[];
@@ -62,6 +71,7 @@ import btImage from '../assets/images/bt-accueil.webp';
 import laChouetteImage from '../assets/images/la-chouette-agence.png';
 import qrCodeImage from '../assets/images/QrCodeLogo.png';
 import piquanteImage from '../assets/images/piiquante.png';
+import auditSeoUrl from '../assets/docs/audit-SEO.pdf?url';
 
 export const profile = {
   name: 'Steve Bell',
@@ -155,15 +165,22 @@ export const projects: Project[] = [
     id: 'bottleneck', title: 'BottleNeck — nettoyage et analyse des stocks', shortTitle: 'Stocks & CA', category: 'data-bi', featured: true,
     status: 'Projet data analyst', period: 'Formation data', role: 'Data analyst junior', image: placeholderImage, imageAlt: 'Tableau de contrôle data BottleNeck généré en CSS', visual: { kind: 'data', eyebrow: 'Data quality', title: 'ERP + web + stocks', metrics: ['Jointures contrôlées', 'CA produit', 'Outliers prix'] }, accent: '#b66b33',
     stack: ['Python', 'pandas', 'numpy', 'Jupyter Notebook', 'Excel', 'matplotlib', 'seaborn'], skills: ['Nettoyage', 'Jointures', 'Outliers', 'Analyse commerciale'],
-    summary: 'Consolidation de fichiers ERP, web et liaison pour analyser les produits, ventes, stocks et anomalies.',
+    summary: 'Transformation de fichiers bruts ERP, web et de liaison en une analyse actionnable des ventes, stocks et anomalies, avec des contrôles de qualité traçables.',
     context: 'Analyse d’un catalogue de vins à partir de sources ERP, web et fichier de liaison, avec un besoin de fiabiliser les rapprochements avant toute lecture commerciale.',
     problem: 'Rendre cohérentes plusieurs sources de données avant de produire des indicateurs fiables.',
-    solution: 'Contrôles de qualité, jointures, calcul du chiffre d’affaires, analyse stock/rotation/marge et détection des prix atypiques.',
+    solution: 'Un notebook Python documente les contrôles d’unicité, de valeurs manquantes et de jointure, puis restitue le chiffre d’affaires par produit et total, le stock, la rotation et les prix atypiques.',
     deliverables: ['Notebook Python documenté', 'Jeux de données nettoyés', 'Contrôles de jointure ERP / web / liaison', 'Analyse CA, stock, marges et outliers prix', 'Recommandations de fiabilisation ERP'],
     decisions: ['Séparer les contrôles qualité des analyses métier', 'Tracer les anomalies plutôt que les masquer', 'Utiliser pandas pour consolider les sources et documenter chaque transformation'],
     learned: 'Passage de fichiers bruts à une lecture décisionnelle : qualité des données, cohérence des clés, anomalies et restitution exploitable.',
-    impact: 'Démontre la capacité à passer de fichiers bruts à une analyse lisible et actionnable.',
+    impact: 'Démontre la qualité de données, la consolidation de sources et la restitution métier nécessaires pour passer de fichiers bruts à des recommandations ERP actionnables.',
     highlights: ['Consolidation ERP/web', 'CA par produit', 'CA total', 'Stock et rotation', 'Outliers prix'], metrics: ['pandas', 'Notebook documenté', 'Recommandations ERP'],
+    evidence: [
+      { label: 'Sources consolidées', value: 'ERP, catalogue web et fichier de liaison' },
+      { label: 'Contrôles qualité', value: 'Unicité des clés, jointures et valeurs manquantes' },
+      { label: 'Analyses métier', value: 'CA par produit et total, stock, rotation et outliers prix' },
+      { label: 'Méthode', value: 'Notebook Python documenté, transformations traçables et recommandations ERP' },
+      { label: 'Stack analytique', value: 'Python, pandas, numpy, Jupyter, Excel, matplotlib et seaborn' }
+    ],
     links: { repo: 'https://github.com/steve57000/p6' }
   },
   {
@@ -179,6 +196,13 @@ export const projects: Project[] = [
     learned: 'Modélisation relationnelle, import de données, contrôles de cohérence et SQL orienté analyse métier.',
     impact: 'Met en avant une approche solide de modélisation et d’analyse SQL.',
     highlights: ['Modèle normalisé', 'Tables temporaires', 'Segmentation', 'Analyses géographiques'], metrics: ['PostgreSQL', 'CSV contrôlés', 'Requêtes métier'],
+    evidence: [
+      { label: 'Données sources', value: 'Fichiers CSV transformés avant intégration' },
+      { label: 'Modèle relationnel', value: 'PostgreSQL · REGION / DEPARTEMENT / COMMUNE / CONTRAT' },
+      { label: 'Qualité d’import', value: 'Tables temporaires et contrôles de cohérence' },
+      { label: 'Exploitation', value: 'Requêtes d’analyse géographique et métier' },
+      { label: 'Documentation', value: 'Règles de transformation et contrôles SQL documentés' }
+    ],
     links: { repo: 'https://github.com/steve57000/assurance_data' }
   },
   {
@@ -194,14 +218,20 @@ export const projects: Project[] = [
     learned: 'Approche RGPD pragmatique : minimisation, anonymisation, qualité de donnée et traçabilité des traitements.',
     impact: 'Montre une sensibilité à la protection des données et aux compromis métier.',
     highlights: ['Identifiants directs supprimés', 'Quasi-identifiants transformés', 'Dataset final exploitable'], metrics: ['Logique RGPD', 'Minimisation', 'Traçabilité'],
+    evidence: [
+      { label: 'Identifiants directs', value: 'Champs identifiants supprimés du périmètre publié' },
+      { label: 'Quasi-identifiants', value: 'Variables traitées pour limiter la ré-identification' },
+      { label: 'Data quality + privacy', value: 'Minimisation et anonymisation avec dataset final exploitable' },
+      { label: 'Traçabilité', value: 'Choix et compromis consignés dans une documentation RGPD' }
+    ],
     links: {}
   },
   {
     id: 'sportdatapulse', title: 'SportDataPulse', shortTitle: 'Football BI', category: 'data-bi', featured: false,
     status: 'Projet SQL / BI', period: 'Formation data', role: 'Data analyst SQL', image: placeholderImage, imageAlt: 'Dashboard football BI généré en CSS', visual: { kind: 'dashboard', eyebrow: 'Football BI', title: 'KPI joueurs · équipes · shortlist', metrics: ['SQL analytique', 'Indicateurs', 'Décisionnel'] }, accent: '#1d6f56',
     stack: ['PostgreSQL', 'SQL', 'Data analysis', 'Présentation métier'], skills: ['Indicateurs', 'Shortlist', 'Requêtes métier', 'Décisionnel'],
-    summary: 'Base sportive et analyses SQL autour des performances football pour éclairer recrutement et suivi joueurs/équipes.',
-    context: 'Projet BI football centré sur la transformation de données sportives en indicateurs lisibles pour un besoin de suivi et de recrutement.',
+    summary: 'Base sportive Ligue 1 et analyses SQL autour des performances football pour éclairer recrutement et suivi joueurs/équipes.',
+    context: 'Projet BI football centré sur la transformation de données de Ligue 1 en indicateurs lisibles pour un besoin de suivi et de recrutement.',
     problem: 'Transformer des données sportives en indicateurs compréhensibles pour décider.',
     solution: 'Requêtes SQL métier, indicateurs joueurs/équipes, shortlist et restitution orientée décision.',
     deliverables: ['Requêtes SQL analytiques', 'Indicateurs joueurs et équipes', 'Shortlist recrutement', 'Restitution métier synthétique'],
@@ -209,6 +239,13 @@ export const projects: Project[] = [
     learned: 'SQL analytique, construction de KPI sportifs et communication des résultats pour un public métier.',
     impact: 'Illustre le pont entre SQL, analyse et présentation métier.',
     highlights: ['Indicateurs joueurs', 'Comparaison équipes', 'Recrutement', 'Shortlist'], metrics: ['PostgreSQL', 'SQL analytique', 'Restitution métier'],
+    evidence: [
+      { label: 'Socle de données', value: 'Base sportive consacrée à la Ligue 1' },
+      { label: 'SQL analytique', value: 'Requêtes dédiées aux comparaisons joueurs et équipes' },
+      { label: 'KPI joueurs / équipes', value: 'Indicateurs comparables issus des requêtes métier' },
+      { label: 'Aide à la décision', value: 'Shortlist recrutement orientée décision' },
+      { label: 'Restitution métier', value: 'Synthèse conçue pour un directeur sportif' }
+    ],
     links: {}
   },
   {
@@ -273,7 +310,7 @@ export const projects: Project[] = [
   { id: 'reservia', title: 'Réservia', shortTitle: 'Intégration responsive', category: 'archives', featured: false, status: 'Projet front-end', period: 'Formation web', role: 'Intégrateur web', image: reserviaImage, imageAlt: 'Capture de l’intégration responsive Réservia', accent: '#0065fc', stack: ['HTML', 'CSS'], skills: ['Responsive', 'Sémantique', 'Maquette'], summary: 'Intégration responsive d’une maquette de réservation.', problem: 'Transformer une maquette desktop/tablette/mobile en HTML/CSS.', solution: 'Structure sémantique, flexbox et media queries.', impact: 'Base solide d’intégration web.', highlights: ['Responsive', 'Flexbox', 'Sémantique'], metrics: ['HTML/CSS'], links: { demo: 'https://steve57000.github.io/BellSteve_P2_27072021/' } },
   { id: 'ohmyfood', title: 'OhMyFood', shortTitle: 'Animations CSS', category: 'archives', featured: false, status: 'Projet front-end', period: 'Formation web', role: 'Intégrateur web', image: ohMyFoodImage, imageAlt: 'Capture du site mobile OhMyFood', accent: '#9356dc', stack: ['HTML', 'CSS', 'Sass'], skills: ['Animations', 'Mobile first', 'UI'], summary: 'Site mobile first avec animations CSS et pages de menus.', problem: 'Créer une expérience animée sans JavaScript.', solution: 'Animations CSS, loader, transitions et approche mobile first.', impact: 'Travail sur la finition visuelle et les micro-interactions.', highlights: ['Loader', 'Animations', 'Mobile first'], metrics: ['CSS/Sass'], links: { demo: 'https://steve57000.github.io/Bell_steve_P3_04082021/index.html' } },
 
-  { id: 'la-chouette-agence', title: 'La Chouette Agence', shortTitle: 'SEO & accessibilité', category: 'archives', featured: false, status: 'Projet qualité', period: 'Formation web', role: 'Intégrateur / audit SEO', image: laChouetteImage, imageAlt: 'Capture du site La Chouette Agence', accent: '#7f5d9b', stack: ['HTML', 'CSS', 'SEO', 'Accessibilité'], skills: ['Audit', 'Performance', 'WCAG', 'Optimisation'], summary: 'Optimisation d’un site existant pour améliorer référencement, performance et accessibilité.', problem: 'Le site manquait de visibilité et présentait des freins SEO, accessibilité et performance.', solution: 'Audit, corrections HTML/CSS, amélioration des contrastes, nettoyage du code et rapport d’optimisation.', impact: 'Démontre une approche qualité web : accessibilité, maintenabilité et référencement.', highlights: ['Audit SEO', 'Contrastes WCAG', 'Performance', 'Code maintenable'], metrics: ['Rapport d’audit', 'HTML/CSS'], links: { demo: 'https://steve57000.github.io/P4_10092021_site_corrig-/' }, docs: [{ label: 'Audit SEO', href: '/portfolio/assets/docs/audit-SEO.pdf' }] },
+  { id: 'la-chouette-agence', title: 'La Chouette Agence', shortTitle: 'SEO & accessibilité', category: 'archives', featured: false, status: 'Projet qualité', period: 'Formation web', role: 'Intégrateur / audit SEO', image: laChouetteImage, imageAlt: 'Capture du site La Chouette Agence', accent: '#7f5d9b', stack: ['HTML', 'CSS', 'SEO', 'Accessibilité'], skills: ['Audit', 'Performance', 'WCAG', 'Optimisation'], summary: 'Optimisation d’un site existant pour améliorer référencement, performance et accessibilité.', problem: 'Le site manquait de visibilité et présentait des freins SEO, accessibilité et performance.', solution: 'Audit, corrections HTML/CSS, amélioration des contrastes, nettoyage du code et rapport d’optimisation.', impact: 'Démontre une approche qualité web : accessibilité, maintenabilité et référencement.', highlights: ['Audit SEO', 'Contrastes WCAG', 'Performance', 'Code maintenable'], metrics: ['Rapport d’audit', 'HTML/CSS'], links: { demo: 'https://steve57000.github.io/P4_10092021_site_corrig-/' }, docs: [{ label: 'Audit SEO', href: auditSeoUrl, type: 'pdf', description: 'Rapport d’audit et recommandations' }] },
   { id: 'piquante', title: 'Piiquante', shortTitle: 'API sécurisée', category: 'archives', featured: false, status: 'Projet backend', period: 'Formation web', role: 'Développeur backend', image: piquanteImage, imageAlt: 'Capture du projet Piiquante', accent: '#a7432f', stack: ['Node.js', 'Express', 'MongoDB', 'Multer', 'JWT'], skills: ['API REST', 'Sécurité', 'CRUD', 'Upload'], summary: 'API sécurisée pour une application de sauces avec authentification, CRUD, upload d’images et likes.', problem: 'Créer un backend fiable pour gérer comptes, sauces, images et votes sans exposer les données utilisateurs.', solution: 'Routes Express, authentification JWT, hachage de mot de passe, modèle MongoDB et gestion d’upload avec Multer.', impact: 'Projet backend centré sur la sécurité, l’authentification et la conception d’API REST.', highlights: ['JWT', 'Hash mot de passe', 'CRUD sauces', 'Upload images'], metrics: ['Node/Express', 'MongoDB'], links: {} },
   { id: 'billed', title: 'Billed', shortTitle: 'Tests et debug', category: 'archives', featured: false, status: 'Projet front-end', period: 'Formation web', role: 'Développeur front', image: billedImage, imageAlt: 'Capture de l’application Billed', accent: '#0e8f88', stack: ['JavaScript', 'Jest', 'Testing Library'], skills: ['Tests', 'Debug', 'Qualité'], summary: 'Correction et tests d’un parcours de notes de frais.', problem: 'Stabiliser une application existante.', solution: 'Tests unitaires/intégration et corrections ciblées.', impact: 'Renforce la démarche qualité, la maintenance applicative et la fiabilisation des parcours utilisateur.', highlights: ['Tests', 'Debug', 'Parcours utilisateur'], metrics: ['Jest'], links: {} },
   { id: 'learnhome', title: 'Learn@Home', shortTitle: 'Conception', category: 'archives', featured: false, status: 'Projet conception', period: 'Formation web', role: 'Concepteur application', image: learnHomeImage, imageAlt: 'Capture des maquettes Learn@Home', accent: '#5d6d7e', stack: ['Figma', 'User stories', 'Kanban'], skills: ['Conception', 'Maquettes', 'Gestion projet'], summary: 'Préparation fonctionnelle d’une application de soutien scolaire avec cas d’usage, user stories, maquettes et Kanban.', problem: 'Clarifier le besoin d’une association de soutien scolaire avant le développement.', solution: 'Maquettes, user stories, parcours, tableau de bord, chat, calendrier et découpage Kanban.', impact: 'Renforce la conception produit, la documentation fonctionnelle et la préparation agile.', highlights: ['User stories', 'Wireframes', 'Kanban', 'Parcours utilisateurs'], metrics: ['Documentation'], links: {} },

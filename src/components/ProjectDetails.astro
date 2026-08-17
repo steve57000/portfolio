@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import ProjectEvidence from './ProjectEvidence.astro';
 import type { Project } from '../data/portfolioData';
 import { withBase } from '../utils/paths';
 
@@ -12,7 +13,7 @@ const hasProof = Boolean(project.highlights.length || project.metrics.length || 
 const workflow = project.workflow;
 const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
 const hasLinks = Boolean(links.repo || links.demo || docs.length);
-const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBase(href);
+const documentHref = (href: string) => /^https?:\/\//.test(href) || href.startsWith(import.meta.env.BASE_URL) ? href : withBase(href);
 ---
 <dialog class="project-dialog" id={`project-${project.id}`} aria-labelledby={`project-${project.id}-title`}>
   <div class="project-dialog__panel" style={`--accent:${project.accent}`}>
@@ -29,6 +30,8 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
       <strong>{project.status}</strong>
       <p>{project.impact}</p>
     </section>
+
+    <ProjectEvidence evidence={project.evidence} idSuffix={project.id} />
 
     <div class="detail-grid detail-grid--story" aria-label="Contexte, problème, solution et impact">
       {project.context && <section><h4><span class="icon-badge icon-badge--sm"><Icon name="document" /></span>Contexte</h4><p>{project.context}</p></section>}
@@ -84,10 +87,10 @@ const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBa
     </section>
 
     {hasLinks && (
-      <nav class="project-card__actions project-detail__actions" aria-label="Liens du projet">
+      <nav class="project-card__actions project-detail__actions project-docs" aria-label="Liens et documents du projet">
         {links.repo && <a class="button" href={links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Voir le repo</a>}
         {links.demo && <a class="button" href={links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Voir la démo</a>}
-        {docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}
+        {docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer" title={doc.description}><Icon name="document" />{doc.label}{doc.type && <small>{doc.type}</small>}</a>)}
       </nav>
     )}
   </div>

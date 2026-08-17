@@ -1,0 +1,23 @@
+---
+import Icon from './Icon.astro';
+import type { Project } from '../data/portfolioData';
+
+type Props = {
+  evidence?: Project['evidence'];
+  editorial?: boolean;
+  idSuffix?: string;
+};
+
+const { evidence = [], editorial = false, idSuffix = editorial ? 'page' : 'dialog' } = Astro.props;
+const Heading = editorial ? 'h2' : 'h4';
+---
+{evidence.length > 0 && (
+  <section class:list={['project-evidence', { 'project-evidence--editorial': editorial }]} aria-labelledby={`evidence-title-${idSuffix}`}>
+    <p class="eyebrow">Livrables et méthode</p>
+    <Heading id={`evidence-title-${idSuffix}`}><span class="icon-badge icon-badge--sm"><Icon name="quality" /></span>Éléments de preuve</Heading>
+    {editorial && <p class="project-evidence__intro">Des repères concrets sur les données, les contrôles et la restitution qui rendent la démarche vérifiable.</p>}
+    <dl class="evidence-grid">
+      {evidence.map((item) => <div class="evidence-card"><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+    </dl>
+  </section>
+)}
