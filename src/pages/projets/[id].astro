@@ -1,0 +1,80 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
+import ProjectVisual from '../../components/ProjectVisual.astro';
+import SeoHead from '../../components/SeoHead.astro';
+import { featuredProjects, type Project } from '../../data/portfolioData';
+import { withBase } from '../../utils/paths';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return featuredProjects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: Project };
+const canonical = `https://steve57000.github.io/portfolio/projets/${project.id}/`;
+const workflowIcons = ['repo', 'tools', 'quality', 'stack', 'docker', 'deploy'];
+const docs = project.docs ?? [];
+const documentHref = (href: string) => /^https?:\/\//.test(href) ? href : withBase(href);
+---
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script is:inline>(()=>{const k='portfolio-theme';const r=document.documentElement;const sys=()=>window.matchMedia?.('(prefers-color-scheme: dark)').matches?'dark':'light';const saved=(()=>{try{return localStorage.getItem(k)}catch{return null}})();r.dataset.theme=saved==='dark'||saved==='light'?saved:sys();})();</script>
+    <SeoHead title={`${project.title} — Case study · Steve Bell`} description={project.summary} canonical={canonical} ogType="article" />
+  </head>
+  <body>
+    <Header />
+    <main class="case-study" style={`--accent:${project.accent}`}>
+      <nav class="case-study__breadcrumb" aria-label="Fil d’Ariane">
+        <a href={withBase()}><Icon name="projects" />Portfolio</a><span aria-hidden="true">/</span><a href={withBase('#case-studies')}>Case studies</a><span aria-hidden="true">/</span><span aria-current="page">{project.shortTitle}</span>
+      </nav>
+
+      <header class="case-study__hero">
+        <div class="case-study__intro">
+          <p class="eyebrow">Case study · {project.category}</p>
+          <h1>{project.title}</h1>
+          <p class="lead">{project.summary}</p>
+          <div class="case-study__meta"><span>{project.period}</span><span>{project.role}</span><strong>{project.status}</strong></div>
+          <div class="hero__actions">
+            {project.links.repo && <a class="button" href={project.links.repo} target="_blank" rel="noreferrer"><Icon name="repo" />Voir le repo</a>}
+            {project.links.demo && <a class="button" href={project.links.demo} target="_blank" rel="noreferrer"><Icon name="demo" />Voir la démo</a>}
+            <a class="button button--ghost" href={withBase('#case-studies')}><Icon name="case-studies" />Tous les projets clés</a>
+          </div>
+        </div>
+        <div class="case-study__visual">
+          {project.visual ? <ProjectVisual visual={project.visual} title={project.title} /> : <img src={project.image.src} alt={project.imageAlt} />}
+        </div>
+      </header>
+
+      <div class="case-study__body">
+        <section class="case-study__impact" aria-labelledby="impact-title"><p class="eyebrow">Résultat</p><h2 id="impact-title">Impact du projet</h2><p>{project.impact}</p></section>
+
+        <div class="detail-grid detail-grid--story">
+          {project.context && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="document" /></span>Contexte</h2><p>{project.context}</p></section>}
+          <section><h2><span class="icon-badge icon-badge--sm"><Icon name="problem" /></span>Problème</h2><p>{project.problem}</p></section>
+          <section><h2><span class="icon-badge icon-badge--sm"><Icon name="solution" /></span>Solution</h2><p>{project.solution}</p></section>
+        </div>
+
+        {project.workflow && <section class="project-workflow"><p class="eyebrow">Chaîne de livraison</p><h2>{project.workflow.title}</h2><ol class="workflow-timeline">{project.workflow.steps.map((step, index) => <li><span class="workflow-timeline__icon"><Icon name={workflowIcons[index] ?? 'tools'} /></span><span>{step}</span></li>)}</ol></section>}
+
+        <div class="detail-grid detail-grid--lists">
+          {project.deliverables?.length && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="deliverables" /></span>Livrables</h2><ul>{project.deliverables.map((item) => <li>{item}</li>)}</ul></section>}
+          {project.decisions?.length && <section><h2><span class="icon-badge icon-badge--sm"><Icon name="decisions" /></span>Choix techniques</h2><ul>{project.decisions.map((item) => <li>{item}</li>)}</ul></section>}
+        </div>
+
+        {project.learned && <section class="project-detail__learned"><h2><span class="icon-badge icon-badge--sm"><Icon name="learnings" /></span>Ce que j’ai appris</h2><p>{project.learned}</p></section>}
+
+        <section class="project-proof" aria-labelledby="proof-title"><p class="eyebrow">Preuves techniques</p><h2 id="proof-title">Repères vérifiables du projet</h2><div class="project-proof__grid"><article><h3>Preuves projet</h3><ul>{project.highlights.map((item) => <li>{item}</li>)}</ul></article><article><h3>Compétences mobilisées</h3><ul>{project.skills.map((item) => <li>{item}</li>)}</ul></article><article><h3>Stack vérifiable</h3><ul>{project.metrics.map((item) => <li>{item}</li>)}</ul></article></div></section>
+
+        <section class="project-detail__stack"><h2><span class="icon-badge icon-badge--sm"><Icon name="stack" /></span>Stack technique</h2><ul class="tags">{project.stack.map((item) => <li>{item}</li>)}</ul></section>
+        {docs.length > 0 && <nav class="project-detail__actions" aria-label="Documents du projet">{docs.map((doc) => <a class="button button--ghost" href={documentHref(doc.href)} target="_blank" rel="noreferrer"><Icon name="document" />{doc.label}</a>)}</nav>}
+      </div>
+    </main>
+    <Footer />
+    <script src={withBase('scripts/main.js')} defer></script>
+  </body>
+</html>
