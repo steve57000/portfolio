@@ -160,7 +160,7 @@ export const projects: Project[] = [
     highlights: ['Workflow GitHub Actions', 'Tests et build avant publication', 'Images backend/frontend', 'Docker Hub', 'Hostinger', 'PostgreSQL', 'Containers front/back', 'Déploiement reproductible'],
     metrics: ['Angular 20 + SSR', 'Spring Boot 3.5 / Java 17', 'API REST sécurisée JWT', 'PostgreSQL', 'Docker Hub', 'Hostinger', 'CI/CD GitHub Actions', 'docker-compose.hostinger.yml'],
     links: { repo: 'https://github.com/steve57000/jlh' }
-  },,
+  },
   {
     id: 'pokevalue-pro', title: 'PokéValue Pro', shortTitle: 'Collection Pokémon', category: 'fullstack', featured: true,
     status: 'Projet personnel · application web', period: '2026', role: 'Concepteur & développeur fullstack', image: placeholderImage, imageAlt: 'Interface de gestion de collection Pokémon', visual: { kind: 'dashboard', eyebrow: 'Collection · prix · scan', title: 'Un classeur Pokémon connecté', metrics: ['Catalogue multi-langue', 'Scanner OCR', 'Historique des prix'] }, accent: '#8b6cf6',
