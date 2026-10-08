@@ -160,6 +160,23 @@ export const projects: Project[] = [
     highlights: ['Workflow GitHub Actions', 'Tests et build avant publication', 'Images backend/frontend', 'Docker Hub', 'Hostinger', 'PostgreSQL', 'Containers front/back', 'Déploiement reproductible'],
     metrics: ['Angular 20 + SSR', 'Spring Boot 3.5 / Java 17', 'API REST sécurisée JWT', 'PostgreSQL', 'Docker Hub', 'Hostinger', 'CI/CD GitHub Actions', 'docker-compose.hostinger.yml'],
     links: { repo: 'https://github.com/steve57000/jlh' }
+  },,
+  {
+    id: 'pokevalue-pro', title: 'PokéValue Pro', shortTitle: 'Collection Pokémon', category: 'fullstack', featured: true,
+    status: 'Projet personnel · application web', period: '2026', role: 'Concepteur & développeur fullstack', image: placeholderImage, imageAlt: 'Interface de gestion de collection Pokémon', visual: { kind: 'dashboard', eyebrow: 'Collection · prix · scan', title: 'Un classeur Pokémon connecté', metrics: ['Catalogue multi-langue', 'Scanner OCR', 'Historique des prix'] }, accent: '#8b6cf6',
+    stack: ['React', 'TypeScript', 'Vite', 'TCGdex', 'Pokémon TCG API', 'Cardmarket', 'Tesseract.js', 'GitHub Actions'],
+    skills: ['Conception produit', 'Application responsive', 'Intégration d’API', 'OCR dans le navigateur', 'Persistance locale', 'Synchronisation GitHub'],
+    summary: 'Application web personnelle pour identifier, classer et suivre une collection de cartes Pokémon, avec un classeur par impression, des prix indicatifs et un scanner mobile assisté par OCR.',
+    context: 'Le projet répond à un besoin de collectionneur : retrouver les cartes par série, langue et numéro, suivre les exemplaires possédés et consulter leur valeur indicative dans un même outil.',
+    problem: 'Les catalogues, les variantes d’impression, les quantités possédées et les relevés de prix sont difficiles à suivre lorsqu’ils sont dispersés entre plusieurs sources et supports.',
+    solution: 'Une application React et TypeScript regroupe un catalogue multi-langue, un classeur organisé par extension, la recherche et les favoris, un scanner mobile OCR avec confirmation visuelle, ainsi que des prix Cardmarket et leur historique lorsqu’ils sont disponibles.',
+    deliverables: ['Classeur avec quantités, filtres et prix manuels', 'Scanner mobile avec OCR et validation visuelle', 'Historique des prix et synchronisation optionnelle avec un dépôt privé', 'Sauvegarde locale et export/import JSON', 'Interface installable avec modes clair et sombre'],
+    decisions: ['Identifier une impression avec sa langue, sa série, son numéro et sa variante plutôt qu’avec son seul nom', 'Garder la reconnaissance OCR comme aide et demander une confirmation visuelle avant l’ajout', 'Conserver une copie locale pour rester utilisable hors ligne', 'Séparer la sauvegarde de collection et l’historique des prix dans un dépôt privé dédié'],
+    learned: 'Approfondissement de la conception d’une application centrée sur des données de catalogue, de la gestion de variantes, de la reconnaissance assistée et d’une synchronisation qui protège les données de l’utilisateur.',
+    impact: 'Un outil personnel en ligne qui rassemble le suivi de collection et l’identification des cartes, avec des limites de prix et de reconnaissance explicitement documentées.',
+    highlights: ['Classeur multi-langue', 'Scanner OCR mobile', 'Confirmation visuelle', 'Prix Cardmarket indicatifs', 'Historique de prix', 'Sauvegarde privée et export JSON'],
+    metrics: ['React + TypeScript', 'TCGdex et Pokémon TCG API', 'Tesseract.js', 'Responsive · installable'],
+    links: { demo: 'https://steve57000.github.io/pokevalue-pro/', repo: 'https://github.com/steve57000/pokevalue-pro' }
   },
   {
     id: 'bottleneck', title: 'BottleNeck — nettoyage et analyse des stocks', shortTitle: 'Stocks & CA', category: 'data-bi', featured: true,
@@ -319,7 +336,7 @@ export const projects: Project[] = [
 
 ];
 
-export const featuredProjectIds = ['jlh-autopam', 'locatech', 'bottleneck', 'assurance-data', 'guide-investissement'] as const;
+export const featuredProjectIds = ['jlh-autopam', 'pokevalue-pro', 'locatech', 'bottleneck', 'assurance-data'] as const;
 
 export const featuredProjects: Project[] = featuredProjectIds
   .map((id) => projects.find((project) => project.id === id))
