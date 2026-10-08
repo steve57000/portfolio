@@ -33,7 +33,7 @@ Dans **Settings → Pages**, la source de publication doit être réglée sur **
 
 Le contenu éditorial principal est centralisé dans `src/data/portfolioData.ts` : profil, liens, catégories, compétences, parcours, projets et projets vedettes.
 
-Le portfolio conserve 22 projets, dont 5 projets vedettes : JLH AutoPam, BottleNeck, Assurance Data, RGPD Dev’Immédiat et SportDataPulse.
+Le portfolio présente 25 projets, dont 5 projets vedettes : JLH AutoPam, PokéValue Pro, Locatech, BottleNeck et Assurance Data.
 
 ## Règle stricte sur les fichiers binaires
 
